@@ -1,0 +1,23 @@
+<svg width="60" height="46" viewBox="0 0 60 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M60.0001 22.8955C60.0001 30.8057 53.5435 37.2182 45.579 37.2182C37.6145 37.2182 31.158 30.8057 31.158 22.8955C31.158 14.9853 37.6145 8.57275 45.579 8.57275C53.5435 8.57275 60.0001 14.9853 60.0001 22.8955Z" fill="#23D5D5"/>
+<foreignObject x="-13.1275" y="-12.9996" width="77.5944" height="71.9989"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(7.64px);clip-path:url(#bgblur_0_0_756_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="15.276" d="M2.93066 5.55566C2.3109 4.02171 3.8077 2.48694 5.35742 3.02344L5.50781 3.08105L47.3926 21.2402C48.893 21.8907 48.9398 23.9536 47.5332 24.6924L47.3926 24.7598L5.50781 42.918C3.95676 43.5904 2.39249 42.1247 2.87793 40.5928L2.93066 40.4443L9.49805 24.1904C9.76805 23.5219 9.80212 22.7852 9.59961 22.0996L9.49805 21.8086L2.93066 5.55566Z" fill="url(#paint0_radial_0_756)" fill-opacity="0.4" stroke="url(#paint1_linear_0_756)" stroke-width="1.273" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<foreignObject x="-27.916" y="-27.7876" width="107.171" height="101.575"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(15px);clip-path:url(#bgblur_1_0_756_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="30" fill-rule="evenodd" clip-rule="evenodd" d="M5.73529 2.55626C3.67662 1.66376 1.5642 3.69982 2.40073 5.77028L8.96763 22.0238C9.22077 22.6504 9.22078 23.3498 8.96763 23.9764L2.40073 40.2299C1.56421 42.3004 3.67662 44.3364 5.73529 43.4439L47.6202 25.2855C49.6286 24.4148 49.6286 21.5854 47.6202 20.7147L5.73529 2.55626ZM2.28124 5.8179C1.40181 3.64126 3.62255 1.5008 5.7868 2.43907L47.6717 20.5975C49.7831 21.5129 49.7831 24.4873 47.6717 25.4027L5.7868 43.5611C3.62255 44.4994 1.40181 42.3589 2.28124 40.1823L8.84813 23.9287C9.08893 23.3327 9.08893 22.6674 8.84813 22.0714L2.28124 5.8179Z" fill="url(#paint2_linear_0_756)" fill-opacity="0.3"/>
+<defs>
+<clipPath id="bgblur_0_0_756_clip_path" transform="translate(13.1275 12.9996)"><path d="M2.93066 5.55566C2.3109 4.02171 3.8077 2.48694 5.35742 3.02344L5.50781 3.08105L47.3926 21.2402C48.893 21.8907 48.9398 23.9536 47.5332 24.6924L47.3926 24.7598L5.50781 42.918C3.95676 43.5904 2.39249 42.1247 2.87793 40.5928L2.93066 40.4443L9.49805 24.1904C9.76805 23.5219 9.80212 22.7852 9.59961 22.0996L9.49805 21.8086L2.93066 5.55566Z"/>
+</clipPath><clipPath id="bgblur_1_0_756_clip_path" transform="translate(27.916 27.7876)"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.73529 2.55626C3.67662 1.66376 1.5642 3.69982 2.40073 5.77028L8.96763 22.0238C9.22077 22.6504 9.22078 23.3498 8.96763 23.9764L2.40073 40.2299C1.56421 42.3004 3.67662 44.3364 5.73529 43.4439L47.6202 25.2855C49.6286 24.4148 49.6286 21.5854 47.6202 20.7147L5.73529 2.55626ZM2.28124 5.8179C1.40181 3.64126 3.62255 1.5008 5.7868 2.43907L47.6717 20.5975C49.7831 21.5129 49.7831 24.4873 47.6717 25.4027L5.7868 43.5611C3.62255 44.4994 1.40181 42.3589 2.28124 40.1823L8.84813 23.9287C9.08893 23.3327 9.08893 22.6674 8.84813 22.0714L2.28124 5.8179Z"/>
+</clipPath><radialGradient id="paint0_radial_0_756" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(13.9032 20.2466) rotate(-15.8817) scale(54.7265 95.4187)">
+<stop stop-color="#23D5D5"/>
+<stop offset="0.749777" stop-color="#20A4A4" stop-opacity="0.55"/>
+<stop offset="1" stop-color="#20A4A4"/>
+</radialGradient>
+<linearGradient id="paint1_linear_0_756" x1="5.99433" y1="17.3562" x2="20.5018" y2="46.3126" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0.64"/>
+<stop offset="1" stop-color="white" stop-opacity="0.24"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_756" x1="7.13183" y1="6.04823" x2="55.1314" y2="34.247" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A81FF" stop-opacity="0.9"/>
+<stop offset="0.447036" stop-color="#567DFF" stop-opacity="0.955296"/>
+<stop offset="1" stop-color="#4E78FF" stop-opacity="0.9"/>
+</linearGradient>
+</defs>
+</svg>
