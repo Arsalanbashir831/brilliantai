@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function GradientCTA() {
     return (
-        <section className="w-full flex justify-center px-4 py-10">
-            <div className="relative w-full max-w-5xl h-[200px] rounded-xl overflow-hidden flex items-center justify-between px-6 sm:px-10 text-white">
+        <section className="w-full flex justify-center px-4 py-20">
+            <div className="relative w-full max-w-6xl h-[200px] rounded-xl overflow-hidden flex items-center justify-between px-6 sm:px-10 text-white">
                 {/* Background Image */}
                 <Image
                     src="/home/grain.svg"

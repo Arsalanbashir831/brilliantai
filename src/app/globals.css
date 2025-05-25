@@ -41,7 +41,38 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-}
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
+  @keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+    }
+  25% {
+    background-position: 50% 100%;
+    transform: rotate(5deg) scale(1.1);
+    }
+  50% {
+    background-position: 100% 50%;
+    transform: rotate(-3deg) scale(0.95);
+    }
+  75% {
+    background-position: 50% 0%;
+    transform: rotate(3deg) scale(1.05);
+    }
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+    }
+  }
+  --animate-shine: shine var(--duration) infinite linear
+;
+  @keyframes shine {
+  0% {
+    background-position: 0% 0%;}
+  50% {
+    background-position: 100% 100%;}
+  to {
+    background-position: 0% 0%;}}}
 
 :root {
   --radius: 0.625rem;
@@ -117,7 +148,6 @@
   font-weight: normal;
   src: local('Lufga Regular'), url('./fonts/LufgaRegular.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga Italic';
@@ -125,7 +155,6 @@
   font-weight: normal;
   src: local('Lufga Italic'), url('./fonts/LufgaItalic.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga Thin';
@@ -133,7 +162,6 @@
   font-weight: normal;
   src: local('Lufga Thin'), url('./fonts/LufgaThin.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga Thin Italic';
@@ -141,7 +169,6 @@
   font-weight: normal;
   src: local('Lufga Thin Italic'), url('./fonts/LufgaThinItalic.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga ExtraLight';
@@ -149,7 +176,6 @@
   font-weight: normal;
   src: local('Lufga ExtraLight'), url('./fonts/LufgaExtraLight.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga ExtraLight Italic';
@@ -157,7 +183,6 @@
   font-weight: normal;
   src: local('Lufga ExtraLight Italic'), url('./fonts/LufgaExtraLightItalic.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga Light';
@@ -165,7 +190,6 @@
   font-weight: normal;
   src: local('Lufga Light'), url('./fonts/LufgaLight.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga Light Italic';
@@ -173,7 +197,6 @@
   font-weight: normal;
   src: local('Lufga Light Italic'), url('./fonts/LufgaLightItalic.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga Medium';
@@ -181,7 +204,6 @@
   font-weight: normal;
   src: local('Lufga Medium'), url('./fonts/LufgaMedium.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: './fonts/Lufga Medium Italic';
@@ -189,7 +211,6 @@
   font-weight: normal;
   src: local('Lufga Medium Italic'), url('./fonts/LufgaMediumItalic.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga SemiBold';
@@ -197,7 +218,6 @@
   font-weight: normal;
   src: local('Lufga SemiBold'), url('./fonts/LufgaSemiBold.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga SemiBold Italic';
@@ -205,7 +225,6 @@
   font-weight: normal;
   src: local('Lufga SemiBold Italic'), url('./fonts/LufgaSemiBoldItalic.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga Bold';
@@ -213,7 +232,6 @@
   font-weight: normal;
   src: local('Lufga Bold'), url('./fonts/LufgaBold.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga Bold Italic';
@@ -221,7 +239,6 @@
   font-weight: normal;
   src: local('Lufga Bold Italic'), url('./fonts/LufgaBoldItalic.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga ExtraBold';
@@ -229,7 +246,6 @@
   font-weight: normal;
   src: local('Lufga ExtraBold'), url('./fonts/LufgaExtraBold.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga ExtraBold Italic';
@@ -237,7 +253,6 @@
   font-weight: normal;
   src: local('Lufga ExtraBold Italic'), url('./fonts/LufgaExtraBoldItalic.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga Black';
@@ -245,7 +260,6 @@
   font-weight: normal;
   src: local('Lufga Black'), url('./fonts/LufgaBlack.woff') format('woff');
   }
-  
 
   @font-face {
   font-family: 'Lufga Black Italic';
@@ -257,12 +271,11 @@
 body{
     background-color: #011010;
     font-family: 'Lufga Regular', sans-serif;
-  
+
 }
 p{
   font-family: sans-serif
 }
-
 
 @layer base {
   * {

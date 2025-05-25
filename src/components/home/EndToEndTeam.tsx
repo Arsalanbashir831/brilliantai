@@ -2,6 +2,7 @@
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
+
 const services = [
     {
         title: "Machine Learning Engineering",
@@ -57,24 +58,27 @@ export default function EndToEndTeam() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl m-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl m-auto ">
                 {services.map((service, idx) => (
                     <div
                         key={idx}
                         className="rounded-2xl p-6 relative overflow-hidden 
-                        bg-teal-950 border-t border-teal-400/20  transition-colors duration-300
+                       bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
+        shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
+        backdrop-blur-[30px] border-t border-teal-400/20  transition-colors duration-300
              "
                     >
                         <div className="flex items-center gap-4 mb-4">
                             <div className="w-12 h-12 rounded-full flex items-center justify-center border border-white/10 bg-[linear-gradient(151.06deg,_rgba(217,217,217,0.09)_10.77%,_rgba(255,255,255,0)_85.22%)]">
                                 <Image src={service.icon} alt={service.title} width={24} height={24} />
                             </div>
-                            <h3 className="text-xl font-semibold">{service.title}</h3>
+                            <h3 className="text-[16px] font-semibold">{service.title}</h3>
                         </div>
-                        <p className="text-sm text-white/80">{service.description}</p>
+                        <p className="text-sm text-[#96CDCD]">{service.description}</p>
                         <div className="mt-4 text-sm text-teal-400 font-medium flex items-center justify-end">
                             Show more <ChevronDown className="ml-1 h-4 w-4" />
                         </div>
+                        {/* <BorderBeam colorFrom={'#23D5D5'} colorTo={'#00FFFF'} duration={8} size={100} /> */}
                     </div>
                 ))}
             </div>

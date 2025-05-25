@@ -1,6 +1,7 @@
 // components/Card.tsx
 import Image from "next/image";
-
+// import { BorderBeam } from "@/components/magicui/border-beam";
+import { ShineBorder } from "./magicui/shine-border";
 interface CardProps {
     imageSrc: string;
     title: string;
@@ -29,6 +30,7 @@ export default function Card({
         gap-y-2.5
       "
         >
+            <ShineBorder shineColor={["#23D5D5", "#00FFFF"]}></ShineBorder>
             <div className={`relative w-full h-40 ${imagePadding} overflow-hidden`}>
                 <Image
                     src={imageSrc}
@@ -42,6 +44,7 @@ export default function Card({
                 <h3 className="text-2xl font-medium text-left text-white mb-2">{title}</h3>
                 <p className="text-sm font-light text-left text-white/70">{description}</p>
             </div>
+            {/* <BorderBeam colorFrom={'#23D5D5'} colorTo={'#00FFFF'} duration={8} size={200} /> */}
         </div>
     );
 }

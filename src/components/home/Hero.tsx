@@ -1,5 +1,6 @@
 // components/Hero.tsx
 import { Button } from "@/components/ui/button"
+import { TextAnimate } from "@/components/magicui/text-animate";
 
 export default function Hero() {
     return (
@@ -20,8 +21,13 @@ export default function Hero() {
             <div className="max-w-4xl mx-auto">
                 {/* Heading */}
                 <h1 className="text-4xl z-20 relative md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-tight mb-8">
-                    Unlock Your Vision With{" "}
-                    <span
+                  <TextAnimate animation="blurIn" as="h1" by="character" delay={0.1} duration={1} once>
+                  Unlock Your Vision With
+                  </TextAnimate>{" "}
+                 
+                 <div className="flex justify-center items-center gap-5">
+             
+                 <span
                         className="bg-gradient-to-r from-[#00AEFF] via-[#00DE94] to-[#00FF52] bg-clip-text text-transparent"
                         style={{
                             background: "linear-gradient(90deg, #00AEFF 16.33%, #00DE94 45.1%, #00FF52 73.68%)",
@@ -30,9 +36,24 @@ export default function Hero() {
                             backgroundClip: "text",
                         }}
                     >
-                        Transformative
+                    Transformative
+                 
+                  
+                    {/* <TextAnimate style={{ }} className="bg-gradient-to-r from-[#00AEFF] via-[#00DE94] to-[#00FF52]   " by="character"  animation="blurIn" as="span" delay={1.1} duration={1}>
+            
+                      Transformative
+                    </TextAnimate> */}
+                    
+                  
+                     
+                        
                     </span>{" "}
+                    <TextAnimate animation="blurIn" as="h1" by="character" delay={1.3} duration={1} once>
+
                     AI
+                    </TextAnimate>
+                 </div>
+                  
                 </h1>
 
                 {/* Description */}
