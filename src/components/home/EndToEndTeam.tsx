@@ -57,7 +57,7 @@ export default function EndToEndTeam() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl m-auto">
                 {services.map((service, idx) => (
                     <div
                         key={idx}

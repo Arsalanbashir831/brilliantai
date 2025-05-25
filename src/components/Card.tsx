@@ -35,7 +35,7 @@ export default function Card({
                     alt={title}
                     width={150}
                     height={150}
-                    className="w-full "
+                    className="w-full h-full"
                 />
             </div>
             <div className="px-8 text-left mt-6">

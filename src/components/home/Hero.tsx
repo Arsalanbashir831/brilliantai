@@ -43,13 +43,34 @@ export default function Hero() {
 
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <Button className="bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl px-4 py-3 text-lg font-medium">
-                        Get in touch →
-                    </Button>
-                    <Button variant="ghost" className="text-white hover:text-cyan-300 rounded-full px-8 py-3 text-lg font-medium">
-                        Learn more →
-                    </Button>
-                </div>
+  <Button
+    className="
+      flex
+      h-[52px]
+      px-[32px] py-[13px]
+      justify-center items-center
+      gap-[10px]
+      rounded-[16px]
+      border-[0.7px] border-white/60
+      bg-[radial-gradient(128.85%_128.85%_at_50.32%_-28.85%,_#56FFFF_0%,_#00B9B9_100%)]
+      shadow-[0px_12px_112.4px_-12px_#23D5D5]
+      text-lg font-medium text-white
+      transition-opacity duration-200
+      hover:opacity-90
+    "
+  >
+    Get in touch →
+  </Button>
+
+  <Button
+    variant="ghost"
+    className="text-white hover:bg-transparent hover:text-white cursor-pointer  rounded-[16px]   h-[52px]
+      px-[32px] py-[13px] text-lg font-medium"
+  >
+    Learn more →
+  </Button>
+</div>
+
             </div>
         </main>
     )
