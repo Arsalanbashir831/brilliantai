@@ -1,24 +1,27 @@
-// components/Card.tsx
+import React from 'react';
 import Image from "next/image";
 // import { BorderBeam } from "@/components/magicui/border-beam";
 import { ShineBorder } from "./magicui/shine-border";
+import { motion } from "framer-motion";
+import { zoomVariants } from '@/effects/Effects';
+
 interface CardProps {
-    imageSrc: string;
-    title: string;
-    description: string;
-    /** horizontal padding around the image—defaults to 32px each side */
-    imagePadding?: string;
+  imageSrc: string;
+  title: string;
+  description: string;
+  /** horizontal padding around the image—defaults to 32px each side */
+  imagePadding?: string;
 }
 
 export default function Card({
-    imageSrc,
-    title,
-    description,
-    imagePadding = "px-8",
+  imageSrc,
+  title,
+  description,
+  imagePadding = "px-8",
 }: CardProps) {
-    return (
-        <div
-            className="
+  return (
+    <motion.div
+      className="
         rounded-2xl
         overflow-hidden
         border border-white/10
@@ -29,22 +32,27 @@ export default function Card({
         py-8
         gap-y-2.5
       "
-        >
-            <ShineBorder shineColor={["#23D5D5", "#00FFFF"]}></ShineBorder>
-            <div className={`relative w-full h-40 ${imagePadding} overflow-hidden`}>
-                <Image
-                    src={imageSrc}
-                    alt={title}
-                    width={150}
-                    height={150}
-                    className="w-full h-full"
-                />
-            </div>
-            <div className="px-8 text-left mt-6">
-                <h3 className="text-2xl font-medium text-left text-white mb-2">{title}</h3>
-                <p className="text-sm font-light text-left text-white/70">{description}</p>
-            </div>
-            {/* <BorderBeam colorFrom={'#23D5D5'} colorTo={'#00FFFF'} duration={8} size={200} /> */}
-        </div>
-    );
+      variants={zoomVariants}
+      initial="rest"
+      whileHover="hover"
+      transition={{ type: "spring", stiffness: 150, damping: 20 }}
+      style={{ transformOrigin: 'center' }}
+    >
+      <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
+      <div className={`relative w-full h-40 ${imagePadding} overflow-hidden`}>
+        <Image
+          src={imageSrc}
+          alt={title}
+          width={150}
+          height={150}
+          className="w-full h-full"
+        />
+      </div>
+      <div className="px-8 text-left mt-6">
+        <h3 className="text-2xl font-medium text-left text-white mb-2">{title}</h3>
+        <p className="text-sm font-light text-left text-white/70">{description}</p>
+      </div>
+      {/* <BorderBeam colorFrom={'#23D5D5'} colorTo={'#00FFFF'} duration={8} size={200} /> */}
+    </motion.div>
+  );
 }

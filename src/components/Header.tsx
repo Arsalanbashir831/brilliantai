@@ -1,9 +1,10 @@
 // components/Header.tsx
-
+'use client'
 import { Button } from "@/components/ui/button"
 import { Menu, ArrowRight } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Image from "next/image"
+import BrilliantButton from "./widgets/BrilliantButtons"
 
 export default function Header() {
     return (
@@ -22,11 +23,9 @@ export default function Header() {
             </div>
 
           
-            <Button className="hidden lg:flex bg-white text-teal-900 hover:bg-gray-100 rounded-xl px-6">
-                Book a call
-                <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-
+          <BrilliantButton className=" px-4 py-2 text-sm" variant="white">
+          Book a Call
+          </BrilliantButton>
             {/* Mobile Menu */}
             <Sheet>
                 <SheetTrigger asChild>

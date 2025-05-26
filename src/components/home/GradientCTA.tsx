@@ -1,6 +1,7 @@
 // components/GradientCTA.tsx
 import Image from "next/image";
-import Link from "next/link";
+
+import BrilliantButton from "../widgets/BrilliantButtons";
 
 export default function GradientCTA() {
     return (
@@ -29,11 +30,9 @@ export default function GradientCTA() {
                         </p>
                     </div>
 
-                    <Link href="/contact">
-                        <button className="bg-white text-black px-5 py-2 rounded-xl text-sm hover:bg-gray-200 transition">
-                            Get in Touch →
-                        </button>
-                    </Link>
+                   <BrilliantButton variant="white">
+                   Get in Touch
+                   </BrilliantButton>
                 </div>
             </div>
         </section>

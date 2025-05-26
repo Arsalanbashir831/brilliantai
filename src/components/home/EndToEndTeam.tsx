@@ -1,4 +1,6 @@
 // components/EndToEndTeam.tsx
+import { zoomVariants } from "@/effects/Effects";
+import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
@@ -60,9 +62,11 @@ export default function EndToEndTeam() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl m-auto ">
                 {services.map((service, idx) => (
-                    <div
+                    <motion.div
+                    whileHover={'hover'}
+                    variants={zoomVariants}
                         key={idx}
-                        className="rounded-2xl p-6 relative overflow-hidden 
+                        className="rounded-2xl p-6 relative overflow-hidden cursor-pointer
                        bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
         shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
         backdrop-blur-[30px] border-t border-teal-400/20  transition-colors duration-300
@@ -79,7 +83,7 @@ export default function EndToEndTeam() {
                             Show more <ChevronDown className="ml-1 h-4 w-4" />
                         </div>
                         {/* <BorderBeam colorFrom={'#23D5D5'} colorTo={'#00FFFF'} duration={8} size={100} /> */}
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </section>

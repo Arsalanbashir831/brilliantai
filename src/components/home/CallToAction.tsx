@@ -1,6 +1,7 @@
 // components/CallToAction.tsx
 import Image from "next/image";
-import Link from "next/link";
+
+import BrilliantButton from "../widgets/BrilliantButtons";
 
 export default function CallToAction() {
     return (
@@ -20,11 +21,9 @@ export default function CallToAction() {
                     <br />
                     We’re here to make it happen.
                 </h2>
-                <Link href="/contact">
-                    <button className="mt-4 px-6 py-2 text-sm sm:text-base bg-teal-400 hover:bg-teal-500 text-black rounded-full transition-all">
-                        Get in touch →
-                    </button>
-                </Link>
+               <BrilliantButton className="my-5">
+               Get in Touch
+               </BrilliantButton>
             </div>
         </section>
     );
