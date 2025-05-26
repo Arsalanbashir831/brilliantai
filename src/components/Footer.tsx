@@ -1,8 +1,9 @@
 // components/Footer.tsx
-
+'use client'
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Linkedin, X } from "lucide-react";
+import BrilliantButton from "./widgets/BrilliantButtons";
 
 export default function Footer() {
   return (
@@ -94,11 +95,7 @@ export default function Footer() {
           <h3 className="font-semibold text-2xl mb-4">
             We’d Love to Hear<br />from You!
           </h3>
-          <Link href="/contact">
-            <button className="px-6 py-3 border border-teal-400 rounded-full text-teal-400 hover:bg-teal-500 hover:text-white transition">
-              Get in Touch
-            </button>
-          </Link>
+       <BrilliantButton variant="outline">Get in Touch</BrilliantButton>
         </div>
       </div>
 
