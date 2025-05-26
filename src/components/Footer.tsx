@@ -10,11 +10,11 @@ export default function Footer() {
       className="
         relative
         overflow-hidden
-        bg-[#0A1F1E] text-white
+        text-white
         pb-2 pt-48
-        bg-[url('/ringbg.png')]
+        bg-[url(/home/Ellipse.png')]
         bg-no-repeat
-        bg-bottom
+      
         bg-center
       "
     >
