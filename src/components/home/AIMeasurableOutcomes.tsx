@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import BrilliantButton from "../widgets/BrilliantButtons";
 import { ShineBorder } from "../magicui/shine-border";
+import { AnimatePresence, motion } from "framer-motion";
+import { fadeUpVariants } from "@/effects/Effects";
 
 //
 // ── CARD COMPONENTS ───────────────────────────────────────────────────────────
@@ -29,8 +31,8 @@ function InternalAIAssistantsCard() {
             <div>
                 <h3 className="text-2xl font-semibold">Internal AI Assistants</h3>
                 <p className="mt-2 mb-1 text-[#A3BABF] leading-relaxed max-w-lg">
-                    Equip teams with AI-powered tools that<br />
-                    enable fast information retrieval,<br />
+                    Equip teams with AI-powered tools that
+                    enable fast information retrieval,
                     content generation and task execution.
                 </p>
                 <BrilliantButton
@@ -46,7 +48,7 @@ function InternalAIAssistantsCard() {
                 alt="Internal AI Assistants"
                 width={400}
                 height={400}
-                className="absolute top-40 right-10 w-96 pointer-events-none"
+                className="absolute top-30 right-10 w-[55%] pointer-events-none"
             />
 
             <div className="flex items-center mt-6 text-sm text-[#A3BABF]">
@@ -229,84 +231,92 @@ function DocumentIntelligenceCard() {
 // ── MAIN COMPONENT ────────────────────────────────────────────────────────────
 //
 const tabs = [
-    { key: "internal", label: "Internal AI Assistants" },
-    { key: "support", label: "Conversational AI for Support" },
-    { key: "automation", label: "AI-Driven Process Automation" },
-    { key: "document", label: "Document Intelligence" },
+  { key: 'internal', label: 'Internal AI Assistants' },
+  { key: 'support', label: 'Conversational AI for Support' },
+  { key: 'automation', label: 'AI-Driven Process Automation' },
+  { key: 'document', label: 'Document Intelligence' },
 ];
 
 const CARD_COMPONENTS: Record<string, React.FC> = {
-    internal: InternalAIAssistantsCard,
-    support: ConversationalAISupportCard,
-    automation: ProcessAutomationCard,
-    document: DocumentIntelligenceCard,
+  internal: InternalAIAssistantsCard,
+  support: ConversationalAISupportCard,
+  automation: ProcessAutomationCard,
+  document: DocumentIntelligenceCard,
 };
 
+// Animation variants for card transitions
+// const fadeUpVariants: Variants = {
+//   hidden: { opacity: 0, y: 20 },
+//   visible: { opacity: 1, y: 0 },
+// };
+
 export default function AIMeasurableOutcomes() {
-    const [activeKey, setActiveKey] = useState(tabs[0].key);
-    const ActiveCard = CARD_COMPONENTS[activeKey];
+  const [activeKey, setActiveKey] = useState(tabs[0].key);
+  const ActiveCard = CARD_COMPONENTS[activeKey];
 
-    return (
-        <section className="bg-[#011010] text-white py-20 px-6 lg:px-20">
-            {/* Header */}
-            <div className="max-w-7xl mx-auto text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold">
-                    AI That Drive Measurable Outcomes
-                </h2>
-                <p className="mt-4 text-white/80 text-base sm:text-lg max-w-3xl mx-auto">
-                    We craft AI solutions that tackle key operational challenges, enhance
-                    efficiency, and unlock new opportunities. Here’s how our clients
-                    leverage AI in their organisations.
-                </p>
-            </div>
+  return (
+    <section className="bg-[#011010] text-white py-20 px-6 lg:px-20">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto text-center mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold">
+          AI That Drive Measurable Outcomes
+        </h2>
+        <p className="mt-4 text-white/80 text-base sm:text-lg max-w-3xl mx-auto">
+          We craft AI solutions that tackle key operational challenges, enhance
+          efficiency, and unlock new opportunities. Here’s how our clients
+          leverage AI in their organisations.
+        </p>
+      </div>
 
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
-                {/* Sidebar */}
-                <ul className="w-full lg:w-1/3 space-y-6 pt-8 pl-8 relative">
-                    {tabs.map(({ key, label }) => (
-                        <li
-                            key={key}
-                            onClick={() => setActiveKey(key)}
-                            className="relative cursor-pointer pl-4  text-xl transition-colors"
-                        >
-                            {key === activeKey && (
-                                <>
-                                    {/* blurred gradient behind text */}
-                                    <span
-                                        className="
-                                        absolute
-                                        left-0
-                                        top-1/2
-                                        -translate-y-1/2
-                                        w-[300px]
-                                        h-[10px]
-                                        bg-[linear-gradient(180deg,#23D5D5_0%,#1EB2B2_100%)]
-                                        filter
-                                        blur-[30px]
-                                        rounded
-                                        "
-                                    />
-                                    {/* teal left border */}
-                                    <span className="absolute left-0 top-0 h-full w-1 bg-teal-400 rounded" />
-                                </>
-                            )}
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
+        {/* Sidebar */}
+        <ul className="w-full lg:w-1/3 space-y-6 pt-8 pl-8 relative">
+          {tabs.map(({ key, label }) => (
+            <li
+              key={key}
+              onClick={() => setActiveKey(key)}
+              className="relative cursor-pointer pl-4 text-xl transition-colors"
+            >
+              {key === activeKey && (
+                <>
+                  {/* blurred gradient behind text */}
+                  <span
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] h-[10px] bg-[linear-gradient(180deg,#23D5D5_0%,#1EB2B2_100%)] filter blur-[30px] rounded"
+                  />
+                  {/* teal left border */}
+                  <span className="absolute left-0 top-0 h-full w-1 bg-teal-400 rounded" />
+                </>
+              )}
 
-                            <span
-                                className={`relative ${key === activeKey ? "text-white font-medium" : "text-white/80 hover:text-white"
-                                    }`}
-                            >
-                                {label}
-                            </span>
-                        </li>
-                    ))}
-                </ul>
+              <span
+                className={`relative ${
+                  key === activeKey
+                    ? 'text-white font-medium'
+                    : 'text-white/80 hover:text-white'
+                }`}
+              >
+                {label}
+              </span>
+            </li>
+          ))}
+        </ul>
 
-
-                {/* Active Card */}
-                <div className="w-full lg:w-2/3">
-                    <ActiveCard />
-                </div>
-            </div>
-        </section>
-    );
+        {/* Active Card with animation */}
+        <div className="w-full lg:w-2/3">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeKey}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              transition={{ duration: 0.5 }}
+            >
+              <ActiveCard />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  );
 }
