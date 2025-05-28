@@ -5,7 +5,7 @@ import React from 'react';
 
 export default function Hero() {
     return (
-        <section className="bg-[url('/startup/hero.svg')] ">
+        <section className="bg-[url('/startup/22.svg')] ">
             {/* Hero overlay */}
             <div className="">
                 <div className="max-w-4xl mx-auto px-6 py-40 text-center text-white">
