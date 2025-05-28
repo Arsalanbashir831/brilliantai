@@ -28,9 +28,9 @@ function InternalAIAssistantsCard() {
 
             <div>
                 <h3 className="text-2xl font-semibold">Internal AI Assistants</h3>
-                <p className="mt-2 mb-1 text-[#A3BABF] leading-relaxed max-w-lg">
-                    Equip teams with AI-powered tools that<br />
-                    enable fast information retrieval,<br />
+                <p className="mt-2 mb-1 text-[#A3BABF] leading-relaxed max-w-80">
+                    Equip teams with AI-powered tools that
+                    enable fast information retrieval,
                     content generation and task execution.
                 </p>
                 <BrilliantButton
@@ -46,7 +46,7 @@ function InternalAIAssistantsCard() {
                 alt="Internal AI Assistants"
                 width={400}
                 height={400}
-                className="absolute top-40 right-10 w-96 pointer-events-none"
+                className="absolute top-34 right-14 w-96 pointer-events-none"
             />
 
             <div className="flex items-center mt-6 text-sm text-[#A3BABF]">

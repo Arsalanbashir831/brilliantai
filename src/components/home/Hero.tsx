@@ -6,16 +6,12 @@ import { motion } from "framer-motion";
 import BrilliantButton from "../widgets/BrilliantButtons";
 
 export default function Hero() {
-
+   
   return (
     <main className="relative   flex flex-col items-center justify-center min-h-[calc(105vh-120px)] px-4 text-center">
       <div
         className="
-                absolute -top-150 left-1/2                    
-                -translate-x-1/2                          
-                w-[1000px] h-[850px]                     
-                rounded-full
-                filter blur-[70px]                      
+                            
                 "
         style={{
           background:
