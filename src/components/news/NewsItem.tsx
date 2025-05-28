@@ -56,7 +56,7 @@ export default function NewsItem() {
     return (
         <section className="mx-auto max-w-7xl px-4 py-12 text-white">
             {/* Featured */}
-            <div className="flex flew-row gap-8 mb-12 px-20">
+            <div className="border-y border-gray-800 py-16 flex flew-row gap-8 mb-12 px-20">
                 <div className="relative h-64 sm:h-80 w-9/10 rounded-lg overflow-hidden">
                     <Image src={featured.imageUrl} alt={featured.title} fill className="object-cover" />
                 </div>
@@ -76,7 +76,7 @@ export default function NewsItem() {
             </div>
 
             {/* Grid of other articles */}
-            <div className="border-t border-gray-800 pt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className=" pt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {others.map(item => (
                     <div key={item.id} className="flex flex-col  rounded-lg overflow-hidden">
                         <div className="relative h-40 w-full">
