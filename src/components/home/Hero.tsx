@@ -36,10 +36,11 @@ export default function Hero() {
                 backgroundClip: "text",
               }}
             >
+              {/* <WordRotate words={["Transformative", "Unstoppable","Limitless"]} /> */}
+              
+
+
               Transformative
-
-
-
 
             </span>{" "}
             <TextAnimate animation="blurIn" as="h1" by="character" delay={1.3} duration={1} once>
