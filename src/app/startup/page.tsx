@@ -3,7 +3,7 @@ import CommunicationAndPayment from '@/components/startup/CommunicationAndPaymen
 import ComparisonCards from '@/components/startup/ComparisonCards'
 import CTABuildReal from '@/components/startup/CTABuildReal'
 import FAQ from '@/components/startup/FAQ'
-import Hero from '@/components/startup/Hero'
+// import Hero from '@/components/startup/Hero'
 import ServicesTabs from '@/components/startup/ServicesTabs'
 import TurnVisionIntoProduct from '@/components/startup/TurnVisionIntoProduct'
 import React from 'react'
@@ -11,7 +11,7 @@ import React from 'react'
 const page = () => {
     return (
         <div>
-            <Hero />
+            {/* <Hero /> */}
             <ServicesTabs/>
             <TurnVisionIntoProduct />
             <CommunicationAndPayment />
