@@ -7,20 +7,41 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
 import Link from "next/link";
 import BrilliantButton from "./widgets/BrilliantButtons";
+import { useEffect, useState } from "react";
 
 export default function Header() {
 	const pathname = usePathname();
+	const [hash, setHash] = useState("");
+
+	useEffect(() => {
+		// Update hash when it changes
+		const updateHash = () => setHash(window.location.hash);
+		updateHash();
+		window.addEventListener("hashchange", updateHash);
+		return () => window.removeEventListener("hashchange", updateHash);
+	}, []);
 
 	const navItems = [
 		{ name: "Home", href: "/" },
-		{ name: "Services", href: "/services" },
+		{ name: "Services", href: "/#services" },
 		{ name: "Startup", href: "/startup" },
 		{ name: "News", href: "/news" },
 		{ name: "Company", href: "/about" },
 		{ name: "Contact Us", href: "/contact-us" },
 	];
 
-	const isActive = (href: string) => pathname === href;
+	const isActive = (href: string) => {
+		if (href === "/") {
+			// Only active if pathname is "/" and there's no hash
+			return pathname === "/" && hash === "";
+		}
+		if (href.startsWith("/#")) {
+			// Only active if hash matches
+			return pathname === "/" && hash === href.replace("/", "");
+		}
+		// For other links (e.g., /about)
+		return pathname === href;
+	};
 
 	return (
 		<nav className="relative z-10 flex items-center bg-[#011010] border-b border-[#C3FFFF] justify-between p-4 lg:px-20 lg:py-6">
