@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 
 const stats = [
 	{ value: "130+", label: "AI solutions built" },
@@ -21,25 +21,44 @@ export function StatsSection() {
 							life with clarity and execution.
 						</p>
 					</div>
-					<div>
-						<Card className="bg-slate-800/60 border-slate-700/50 backdrop-blur-sm">
-							<CardContent className="p-0">
-								{stats.map((stat, index) => (
-									<div
-										key={index}
-										className={`p-6 ${
-											index < stats.length - 1
-												? "border-b border-slate-700/50"
-												: ""
-										}`}>
-										<div className="text-4xl font-bold text-white mb-1">
-											{stat.value}
+					<div className="md:w-3/5 flex justify-center justify-self-end">
+						<div
+							className="
+																				relative
+																				w-full md:max-w-sm       
+																				flex flex-col
+																				rounded-[10px]
+																				
+																		">
+							{/* SVG gradient behind the panel */}
+							<Image
+								src="/about/story.svg"
+								alt=""
+								width={1200}
+								height={1200}
+								className="absolute inset-0 object-cover"
+							/>
+
+							{/* semi-opaque overlay for contrast */}
+							<div className="absolute inset-0 bg-black/70" />
+							<div className="relative z-10 flex flex-col">
+								{stats.map((stat, idx) => (
+									<div key={stat.value}>
+										<div className="px-10 py-5 flex flex-col">
+											<span className="text-5xl font-normal text-white">
+												{stat.value}
+											</span>
+											<span className="mt-1 text-md leading-[28px] font-normal text-[#E0E0E0]">
+												{stat.label}
+											</span>
 										</div>
-										<div className="text-gray-400 text-sm">{stat.label}</div>
+										{idx < stats.length - 1 && (
+											<div className="h-px bg-gradient-to-r from-[#00AEFF] via-[#00DE94] to-[#00FF52]" />
+										)}
 									</div>
 								))}
-							</CardContent>
-						</Card>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

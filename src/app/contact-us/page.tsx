@@ -7,7 +7,7 @@ import { ContactForm } from "@/components/contact-us/contact-form";
 import { StatsSection } from "@/components/contact-us/stats-section";
 import { ProcessSection } from "@/components/contact-us/process-section";
 import { TrustSection } from "@/components/contact-us/trust-section";
-import FAQ from "@/components/contact-us/FAQ";
+import FAQ from "@/components/contact-us/faq";
 import CTA from "@/components/contact-us/cta";
 
 const sectionVariants = {
