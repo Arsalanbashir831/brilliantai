@@ -1,5 +1,6 @@
 "use client"
 import { FormEvent, useState } from "react";
+import { ShineBorder } from "../magicui/shine-border";
 
 export default function Newsletter() {
     const [email, setEmail] = useState("");
@@ -13,8 +14,9 @@ export default function Newsletter() {
 
     return (
         <section className="py-16 px-20 flex items-center justify-center">
-            <div className="relative w-full max-w-4xl bg-teal-950 bg-opacity-40 border border-gray-500 rounded-xl p-8 text-center overflow-hidden">
+            <div className="relative w-full max-w-4xl bg-teal-950 bg-opacity-40 rounded-xl p-8 text-center overflow-hidden">
                 {/* Black overlay */}
+                 <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
                 <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
 
                 {/* All your “real” content sits above the overlay */}

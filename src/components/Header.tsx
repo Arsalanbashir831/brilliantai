@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, ArrowRight } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Image from "next/image"
+import Link from "next/link"
 import BrilliantButton from "./widgets/BrilliantButtons"
 
 export default function Header() {
@@ -12,14 +13,13 @@ export default function Header() {
            
            <Image height={150} width={150} src="/logo.svg" alt="Logo" className="h-8 lg:h-10" />
 
-           
             <div className="hidden lg:flex items-center space-x-8">
-                <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">Home</a>
-                <a href="#" className="text-white hover:text-cyan-300 transition-colors">Services</a>
-                <a href="#" className="text-white hover:text-cyan-300 transition-colors">Startup</a>
-                <a href="#" className="text-white hover:text-cyan-300 transition-colors">News</a>
-                <a href="#" className="text-white hover:text-cyan-300 transition-colors">Company</a>
-                <a href="#" className="text-white hover:text-cyan-300 transition-colors">Contact Us</a>
+                <Link href="/" className="text-cyan-400 hover:text-cyan-300 transition-colors">Home</Link>
+                <Link href="" className="text-white hover:text-cyan-300 transition-colors">Services</Link>
+                <Link href="/startup" className="text-white hover:text-cyan-300 transition-colors">Startup</Link>
+                <Link href="/news" className="text-white hover:text-cyan-300 transition-colors">News</Link>
+                <Link href="/about" className="text-white hover:text-cyan-300 transition-colors">Company</Link>
+                <Link href="#" className="text-white hover:text-cyan-300 transition-colors">Contact Us</Link>
             </div>
 
           

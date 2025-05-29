@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { FC } from "react";
+import BrilliantButton from "../widgets/BrilliantButtons";
 
 const CtaSection: FC = () => {
     return (
@@ -28,20 +29,17 @@ const CtaSection: FC = () => {
                     our cutting-edge solutions.
                 </p>
 
-                <button
-                    type="button"
-                    className="
-            w-[229px] h-[52px]
-            flex items-center justify-center gap-[10px]
-            rounded-[16px]
-            bg-[linear-gradient(180deg,_#23D5D5_0%,_#1EB2B2_100%)]
-            shadow-[inset_0px_2px_1px_0px_rgba(255,255,255,0.25),_inset_0px_-4px_2px_0px_rgba(0,0,0,0.25),_0px_0px_1px_4px_rgba(255,255,255,0.1),_0px_0px_180px_0px_rgba(35,213,213,1)]
-            text-white font-medium
-            hover:opacity-90 transition
-          "
+
+
+                <BrilliantButton
+                    className=" w-[229px] h-[52px]
+                        flex items-center justify-center gap-[10px]
+                        rounded-[16px]
+                        text-white font-medium
+                    "
                 >
-                    Get in touch today →
-                </button>
+                    Get in touch today
+                </BrilliantButton>
             </div>
         </section>
     );

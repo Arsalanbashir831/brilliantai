@@ -22,9 +22,12 @@ export default function Home() {
     { Component: GradientCTA,   key: "gradient" },
     { Component: AIMeasurableOutcomes, key: "outcomes" },
     { Component: CallToAction,    key: "cta" },
-  ];
+    ];
+    
+    
 
-  return (
+    return (
+   
     <div>
       {sections.map(({ Component, key }, idx) => (
         <motion.div
