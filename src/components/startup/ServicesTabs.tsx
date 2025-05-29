@@ -1,8 +1,8 @@
-// components/ServicesTabs.tsx
 'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Service {
     id: string;
@@ -80,12 +80,11 @@ const SERVICES: Service[] = [
 ];
 
 export default function ServicesTabs() {
-    const [selectedId, setSelectedId] = useState<string>(SERVICES[0].id);
-    const active = SERVICES.find((s) => s.id === selectedId)!;
+    const [selectedId, setSelectedId] = useState<string>(SERVICES.length > 0 ? SERVICES[0].id : '');
+    const active = SERVICES.find((s) => s.id === selectedId) || SERVICES[0];
 
     return (
-        <section className="max-w-7xl mx-auto px-24 py-16  8  rounded-[16px]">
-           
+        <section className="max-w-7xl mx-auto px-24 py-16 rounded-[16px]">
             {/* Header */}
             <div className="text-center mb-16">
                 <h2 className="text-[40px] leading-normal text-white font-semibold">What We Deliver For Startups</h2>
@@ -96,8 +95,7 @@ export default function ServicesTabs() {
 
             <div className='bg-transparent border border-gray-400 rounded-2xl p-8'>
                 {/* Tabs */}
-                
-                <div className="overflow-x-auto  rounded-[16px]">
+                <div className="overflow-x-auto rounded-[16px]">
                     <div className="flex space-x-4 pb-4">
                         {SERVICES.map((svc) => {
                             const isActive = svc.id === selectedId;
@@ -109,14 +107,13 @@ export default function ServicesTabs() {
                     flex flex-col items-center flex-shrink-0 w-32 h-32 p-4 m-2
                     rounded-[16px]
                     bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)]
-                    
                     ${isActive
                                             ? 'ring-2 ring-teal-400 bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]'
                                             : 'hover:bg-[rgba(77,77,77,0.16)]'}
                     `}
                                 >
                                     <Image src={svc.icon} alt={svc.title} width={48} height={48} className="mb-3" />
-                                    <span className="text-white text-[11px]  ">{svc.title}</span>
+                                    <span className="text-white text-[11px]">{svc.title}</span>
                                 </button>
                             );
                         })}
@@ -124,22 +121,35 @@ export default function ServicesTabs() {
                 </div>
 
                 {/* Detail Panel */}
-                <div className="mt- p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Left: image */}
-                    <div className="flex justify-center">
-                        <Image src={active.detailImage} alt={active.detailTitle} width={300} height={300} className="rounded-[8px]" />
-                    </div>
-                    {/* Right: vertical line + text */}
-                    <div className="flex">
-                        
-                        <div className='flex flex-col gap-4'>
-                            <h4 className="text-md uppercase tracking-[1px] text-teal-400 mb-2">{active.title}</h4>
-                            <h3 className="text-4xl font-semibold text-white mb-4">{active.detailTitle}</h3>
-                            <p className="text-[18px] w-max-2xl leading-[28px] text-[#E0E0E0]">{active.detailText}</p>
-                        </div>
-                    </div>
-                </div>
+                <div className="mt-6 p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={active.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.4 }}
+                            className="flex justify-center"
+                        >
+                            <Image src={active.detailImage} alt={active.detailTitle} width={300} height={300} className="rounded-[8px]" />
+                        </motion.div>
 
+                        <motion.div
+                            key={active.id + '-text'}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.4 }}
+                            className="flex"
+                        >
+                            <div className='flex flex-col gap-4'>
+                                <h4 className="text-md uppercase tracking-[1px] text-teal-400 mb-2">{active.title}</h4>
+                                <h3 className="text-4xl font-semibold text-white mb-4">{active.detailTitle}</h3>
+                                <p className="text-[18px] w-max-2xl leading-[28px] text-[#E0E0E0]">{active.detailText}</p>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
             </div>
         </section>
     );

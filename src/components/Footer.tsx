@@ -12,7 +12,7 @@ export default function Footer() {
             className="
         relative overflow-hidden text-white
         pb-2 pt-32 lg:pt-48
-        bg-[url('/home/Ellipse.png')] bg-no-repeat bg-center
+        bg-[url('/home/Ellipse.png')] bg-repeat bg-center
       "
         >
             {/* → Glow rings (always present) */}
