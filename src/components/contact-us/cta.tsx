@@ -1,0 +1,41 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import BrilliantButton from "../widgets/BrilliantButtons";
+import { ShineBorder } from "../magicui/shine-border";
+
+export default function CTA() {
+	return (
+		<section className="relative  py-20  px-32">
+			{/* Frosted‐glass card */}
+			<div className="relative max-w-7xl mx-auto rounded-[16px] overflow-hidden bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)] shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
+				<ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
+				{/* Grain-green background image */}
+				<Image
+					src="/startup/Content.svg"
+					alt=""
+					fill
+					className="absolute inset-0 object-cover"
+				/>
+
+				{/* Content */}
+				<div className="relative flex flex-col items-center px-[120px] py-10">
+					<h2 className="text-[28px] leading-[48px] font-semibold text-white">
+						Still have questions?
+					</h2>
+					<p className="mt-4 text-[18px] leading-[28px] text-[#E0E0E0] text-center">
+						Can’t find the answer you’re looking for? Please chat to our
+						friendly team
+					</p>
+					{/* <button className="mt-8 inline-flex items-center justify-center h-[48px] px-[24px] text-[16px] font-medium text-black bg-white rounded-[8px]">
+                       
+                    </button> */}
+					<BrilliantButton variant="white" className="mt-8 ">
+						Get in touch
+					</BrilliantButton>
+				</div>
+			</div>
+		</section>
+	);
+}
