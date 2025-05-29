@@ -85,6 +85,7 @@ export default function ServicesTabs() {
 
     return (
         <section className="max-w-7xl mx-auto px-24 py-16  8  rounded-[16px]">
+           
             {/* Header */}
             <div className="text-center mb-16">
                 <h2 className="text-[40px] leading-normal text-white font-semibold">What We Deliver For Startups</h2>
@@ -95,6 +96,7 @@ export default function ServicesTabs() {
 
             <div className='bg-transparent border border-gray-400 rounded-2xl p-8'>
                 {/* Tabs */}
+                
                 <div className="overflow-x-auto  rounded-[16px]">
                     <div className="flex space-x-4 pb-4">
                         {SERVICES.map((svc) => {

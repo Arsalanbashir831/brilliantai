@@ -1,8 +1,7 @@
 // components/Hero.tsx
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import BrilliantButton from '../widgets/BrilliantButtons';
 
 export function Welcome() {
     return (
@@ -15,11 +14,12 @@ export function Welcome() {
 
             {/* right */}
             <div className="flex-1 flex justify-end">
-                <Button variant="outline" className='bg-[#141414] border-[#262626] text-white' asChild>
-                    <a href="/news" className="flex items-center">
-                        View All News<ArrowRight className="ml-2 w-4 h-4" />
-                    </a>
-                </Button>
+
+                <BrilliantButton variant='white'
+                    className="bg-[#141414] hover:bg-[#141414]  border-[#262626] text-white"
+                >
+                    View All News
+                </BrilliantButton>
             </div>
         </section>
     );

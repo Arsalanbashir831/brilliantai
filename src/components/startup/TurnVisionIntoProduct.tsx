@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import { ShineBorder } from '../magicui/shine-border';
 
 export default function TurnVisionIntoProduct() {
     return (
@@ -15,10 +16,12 @@ export default function TurnVisionIntoProduct() {
                 className="
                     max-w-7xl mx-auto px-12
                     rounded-[16px]
-                    bg-[url('/startup/vision.svg')] border
-                    
+                    bg-[url('/startup/vision.svg')] 
+                    relative
                     "
             >
+                   <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
+                
                 <div className="flex justify-center  items-center gap-16 py-12">
                     {/* Left: Heading + Button */}
                     <div className=" space-y-10">
