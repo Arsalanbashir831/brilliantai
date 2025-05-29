@@ -24,7 +24,7 @@ export default function ComparisonCards() {
                         <span className="text-white font-medium text-xl leading-6">Freelancers</span>
                     </div>
                     {/* Body */}
-                    <div className="flex flex-col items-center gap-10 w-80 pt-px pb-12 rounded-b-lg border-t border-t-[#808080] bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)] shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
+                    <div className="flex flex-col items-center gap-10 w-80 pt-px pb-12 rounded-b-lg   bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)] shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
                         <ul className="flex flex-col space-y-3 py-14">
                             {[
                                 'Unreliable timelines',
@@ -53,7 +53,7 @@ export default function ComparisonCards() {
                         <span className="text-white font-medium text-[30px] leading-[24px]">Brilliant AI</span>
                     </div>
                     {/* Body */}
-                    <div className="flex flex-col items-center gap-[49px] w-96 pb-[60px] rounded-b-[16px] border border-[#808080] bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)] shadow-[inset_-20px_4px_120px_0px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
+                    <div className="flex flex-col items-center gap-[49px] w-96 pb-[60px] rounded-b-[16px]   bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)] shadow-[inset_-20px_4px_120px_0px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
                         <ul className="flex flex-col space-y-3 py-16">
                             {[
                                 'Fast execution with technical precision',
@@ -82,7 +82,7 @@ export default function ComparisonCards() {
                         <span className="text-white font-medium text-xl leading-6">Agencies</span>
                     </div>
                     {/* Body */}
-                    <div className="flex flex-col items-center gap-10 w-80 pt-px pb-12 rounded-b-lg border-t border-t-[#808080] bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)] shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
+                    <div className="flex flex-col items-center gap-10 w-80 pt-px pb-12 rounded-b-lg  bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)] shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
                         <ul className="flex flex-col space-y-3 py-14">
                             {[
                                 'Slow, process-heavy',
