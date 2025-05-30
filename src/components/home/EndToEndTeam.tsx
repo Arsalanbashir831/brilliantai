@@ -48,11 +48,11 @@ export default function EndToEndTeam() {
     return (
         <section className="py-20 bg-[#011010] text-white px-4">
             <div className="max-w-6xl mx-auto text-center mb-12">
-                <h2 className="text-6xl  font-semibold mb-4">
+                <h2 className=" text-3xl md:text-6xl  font-semibold mb-4">
                     A Trusted End-To-End Team
                 </h2>
                 <div className="text-white/80  text-center text-base sm:text-lg mb-28">
-                    <p className="max-w-2xl mx-auto">
+                    <p className=" w-[80%] md:w-full md:max-w-2xl mx-auto">
                         Our team is committed to building your AI solution with end-to-end precision,
                         clear communication and zero compromise.
 

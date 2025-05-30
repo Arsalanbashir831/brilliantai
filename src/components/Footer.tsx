@@ -46,7 +46,7 @@ export default function Footer() {
                     </p>
 
                     {/* CTA button */}
-                    <BrilliantButton variant="white">Get in touch →</BrilliantButton>
+                    <BrilliantButton variant="white">Get in touch </BrilliantButton>
 
                     {/* Nav links */}
                     <nav>

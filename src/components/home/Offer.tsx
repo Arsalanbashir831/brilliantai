@@ -36,8 +36,8 @@ export default function WhatWeOffer() {
 
 	return (
 		<section id="services" className="py-20 px-4 text-center">
-			<h2 className="text-6xl text-white font-semibold mb-4">What We Offer</h2>
-			<p className="text-gray-100 max-w-xl text-xl mx-auto mb-20">
+			<h2 className=" text-3xl md:text-6xl text-white font-semibold mb-4">What We Offer</h2>
+			<p className="text-gray-100 max-w-xl text-lg md:text-xl mx-auto mb-20">
 				We build AI solutions from idea to launch, ensuring speed, scalability,
 				and real-world impact.
 			</p>

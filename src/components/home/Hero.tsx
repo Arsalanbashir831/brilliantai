@@ -8,7 +8,7 @@ import BrilliantButton from "../widgets/BrilliantButtons";
 export default function Hero() {
    
   return (
-    <main className="relative   flex flex-col items-center justify-center min-h-[calc(105vh-120px)] px-4 text-center">
+    <main className="relative   flex flex-col items-center py-20 justify-start md:justify-center h-auto md:min-h-[calc(105vh-120px)] px-4 text-center">
       <div
         className="
                             
@@ -20,7 +20,7 @@ export default function Hero() {
       />
       <div className="max-w-4xl mx-auto">
         {/* Heading */}
-        <h1 className="text-4xl z-20 relative md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-tight mb-8">
+        <h1 className="text-3xl z-20 relative md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-tight mb-8">
           <TextAnimate animation="blurIn" as="span" by="character" delay={0.1} duration={1} once>
             Unlock Your Vision With
           </TextAnimate>{" "}
@@ -56,14 +56,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
            transition={{ delay: 1, duration: 0.4 }}
-          className="text-gray-300 text-md md:text-md lg:text-xl  mx-auto mb-12 ">
+          className="text-gray-300 text-sm md:text-md lg:text-xl  mx-auto mb-12 ">
           We take you from idea to execution by building AI web apps, developing machine learning solutions and
           implementing AI-driven processes that power scalable products and smarter operations.
         </motion.p>
 
         {/* Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex  sm:flex-row gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.4 }}
@@ -71,7 +71,7 @@ export default function Hero() {
           //    variants={containerVariants}
         
         >
-          <BrilliantButton variant="gradient">
+          <BrilliantButton className="" variant="gradient">
                 Get in Touch
           </BrilliantButton>
 
