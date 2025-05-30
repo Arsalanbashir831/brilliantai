@@ -15,7 +15,7 @@ export default function TurnVisionIntoProduct() {
         >
             <div
                 className="
-                    max-w-[85%] mx-auto px-12
+                    max-w-[70%] mx-auto px-12
                     rounded-[16px]
                     bg-[url('/startup/vision.svg')] 
                     relative

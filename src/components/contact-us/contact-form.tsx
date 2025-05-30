@@ -31,7 +31,7 @@ export function ContactForm() {
 		<section className="px-6 py-16 ">
 			<div className="max-w-2xl mx-auto">
 				<div className="text-center mb-12">
-					<h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+					<h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
 						Start The Conversation
 					</h2>
 					<p className="text-gray-300 text-lg">
@@ -41,7 +41,14 @@ export function ContactForm() {
 					</p>
 				</div>
 
-				<Card className="bg-slate-800/80 border-slate-600 backdrop-blur-sm rounded-2xl">
+				<Card className="
+  bg-slate-700/10      
+  backdrop-blur-lg     
+  border
+  border-white/20      
+  rounded-2xl
+  shadow-lg           
+">
 					<CardContent className="p-8">
 						<form className="space-y-6">
 							{/* Name Fields */}
@@ -55,7 +62,7 @@ export function ContactForm() {
 									<Input
 										id="firstName"
 										placeholder="David"
-										className="bg-slate-700/60 border-slate-600 text-white placeholder:text-gray-400 rounded-lg h-12"
+										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
 									/>
 								</div>
 								<div className="space-y-2">
@@ -67,7 +74,7 @@ export function ContactForm() {
 									<Input
 										id="lastName"
 										placeholder="Johnson"
-										className="bg-slate-700/60 border-slate-600 text-white placeholder:text-gray-400 rounded-lg h-12"
+										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
 									/>
 								</div>
 							</div>
@@ -83,7 +90,7 @@ export function ContactForm() {
 									<Input
 										id="company"
 										placeholder="Ex. StaticMania"
-										className="bg-slate-700/60 border-slate-600 text-white placeholder:text-gray-400 rounded-lg h-12"
+									className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
 									/>
 								</div>
 								<div className="space-y-2">
@@ -96,7 +103,7 @@ export function ContactForm() {
 										id="email"
 										type="email"
 										placeholder="example@email.com"
-										className="bg-slate-700/60 border-slate-600 text-white placeholder:text-gray-400 rounded-lg h-12"
+										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
 									/>
 								</div>
 							</div>
@@ -112,7 +119,7 @@ export function ContactForm() {
 									<Input
 										id="phone"
 										placeholder="Ex. +44 7911 123456"
-										className="bg-slate-700/60 border-slate-600 text-white placeholder:text-gray-400 rounded-lg h-12"
+										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
 									/>
 								</div>
 								<div className="space-y-2">
@@ -120,7 +127,7 @@ export function ContactForm() {
 										Preferred Contact Method
 									</Label>
 									<Select>
-										<SelectTrigger className="bg-slate-700/60 border-slate-600 text-white rounded-lg h-16 w-full py-6">
+										<SelectTrigger className="bg-slate-700/10 w-full  border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg  py-6">
 											<SelectValue
 												placeholder="Select an option..."
 												className="text-gray-400"
@@ -193,7 +200,7 @@ export function ContactForm() {
 								<Textarea
 									id="message"
 									placeholder="Leave us a message..."
-									className="bg-slate-700/60 border-slate-600 text-white placeholder:text-gray-400 min-h-[120px] rounded-lg resize-none"
+									className="bg-slate-700/10 border-slate-600 text-white placeholder:text-gray-400 min-h-[120px] rounded-lg resize-none"
 								/>
 							</div>
 

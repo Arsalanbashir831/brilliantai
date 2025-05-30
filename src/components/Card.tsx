@@ -40,12 +40,15 @@ export default function Card({
     >
       <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
       <div className={`relative w-full h-40 ${imagePadding} overflow-hidden`}>
-        <Image
+      <Image
           src={imageSrc}
           alt={title}
-          width={150}
-          height={150}
-          className="w-full h-full"
+          fill
+          className="object-contain"
+          sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+          placeholder="blur"
+          // if you generate blurDataURL at build time, otherwise omit:
+          blurDataURL="/home/placeholder-blur.svg"
         />
       </div>
       <div className="px-8 text-left mt-6">
