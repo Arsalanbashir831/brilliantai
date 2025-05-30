@@ -44,7 +44,7 @@ function InternalAIAssistantsCard() {
             </div>
 
             <Image
-                src="/home/aiassistant.svg"
+                src="/home/aiAssistant.svg"
                 alt="Internal AI Assistants"
                 width={400}
                 height={400}
