@@ -4,7 +4,7 @@ import BrilliantButton from "../widgets/BrilliantButtons";
 
 export default function CallToAction() {
     return (
-        <section className="relative w-full h-auto flex items-center justify-center overflow-hidden bg-[#011010] px-4 py-10 md:h-[600px] md:py-0">
+        <section className="relative w-full h-auto flex items-center justify-center overflow-hidden bg-[#011010] px-4 py-24 md:h-[600px] md:py-0">
             {/* Background SVG (Grid Border) */}
             <Image
                 src="/home/border.svg"

@@ -30,15 +30,15 @@ function AICard({ title, description, buttonText, imageSrc, imageAlt, imageClass
         shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
         backdrop-blur-[15px]
         p-8
-        flex flex-col justify-between 
-       w-full h-96 overflow-hidden
+        flex flex-col md:justify-between justify-between 
+       w-auto md:w-full h-[100%] md:h-96 overflow-hidden flex-wrap
       "
         >
             <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
 
             <div>
                 <h3 className="text-2xl font-semibold">{title}</h3>
-                <p className="mt-2 mb-1 text-[#A3BABF] leading-relaxed max-w-80">{description}</p>
+                <p className="mt-2 mb-1 text-[#A3BABF] leading-relaxed max-w-90 md:max-w-80">{description}</p>
                 <BrilliantButton
                     variant="white"
                     className="text-[#052E2B] px-3 py-2 mt-4 rounded-lg font-medium"
@@ -189,14 +189,14 @@ export default function AIMeasurableOutcomes() {
                 {/* Active Card with animation */}
                 <div
                     className={`w-full ${
-                        isMobile ? "overflow-x-auto flex space-x-6" : "lg:w-2/3"
+                        isMobile ? "overflow-x-scroll flex space-x-6" : "lg:w-2/3"
                     }`}
                 >
                     {isMobile ? (
                         tabs.map(({ key, cardProps }) => (
                             <motion.div
                                 key={key}
-                                className="min-w-full flex-shrink-0"
+                                className="md:min-w-full w-[100%] flex-shrink-0"
                                 variants={fadeUpVariants}
                                 initial="hidden"
                                 animate="visible"

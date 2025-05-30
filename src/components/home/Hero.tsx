@@ -8,7 +8,7 @@ import BrilliantButton from "../widgets/BrilliantButtons";
 export default function Hero() {
    
   return (
-    <main className="relative   flex flex-col items-center py-20 justify-start md:justify-center h-auto md:min-h-[calc(105vh-120px)] px-4 text-center">
+    <main className="relative   flex flex-col items-center py-20 justify-start md:justify-center h-auto md:min-h-[calc(105vh-120px)] px-2 md:px-4 text-center">
       <div
         className="
                             
@@ -20,7 +20,7 @@ export default function Hero() {
       />
       <div className="max-w-4xl mx-auto">
         {/* Heading */}
-        <h1 className="text-3xl z-20 relative md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-tight mb-8">
+        <h1 className="text-3xl z-20 relative  w-full md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-tight mb-8">
           <TextAnimate animation="blurIn" as="span" by="character" delay={0.1} duration={1} once>
             Unlock Your Vision With
           </TextAnimate>{" "}
