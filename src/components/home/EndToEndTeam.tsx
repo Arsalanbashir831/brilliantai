@@ -62,15 +62,16 @@ export default function EndToEndTeam() {
         {services.map((service, idx) => (
           <motion.div
             key={idx}
-            // 1) Animate when the card scrolls into view:
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            // 1) Scroll-into-view animation with blur → sharp
+            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{
               delay: idx * 0.2, // 200ms stagger per card
               duration: 0.5,
+              ease: "easeOut",
             }}
-            // 2) Keep the hover‐zoom animation intact:
+            // 2) Hover-zoom animation (unchanged)
             whileHover="hover"
             variants={zoomVariants}
             className="
