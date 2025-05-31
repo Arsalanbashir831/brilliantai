@@ -22,8 +22,10 @@ const baseClasses =
   "cursor-pointer flex h-[52px] px-[32px] py-[13px] justify-center items-center gap-[10px] rounded-[16px] text-lg font-medium transition sm:h-[52px] sm:px-[32px] sm:py-[13px] h-[44px] px-[20px] py-[10px] text-base";
 
 const variantClasses: Record<BrilliantButtonVariant, string> = {
-  gradient:
-    "border-[0.7px] border-white/60 bg-[radial-gradient(128.85%_128.85%_at_50.32%_-28.85%,#56FFFF_0%,#00B9B9_100%)] shadow-[0px_12px_112.4px_-12px_#23D5D5] text-white hover:opacity-90",
+  gradient: 
+  "border-[0.7px] border-white/60 " +
+  "bg-[radial-gradient(80%_80%_at_50%_-20%,#56FFFF_0%,#00B9B9_100%)] " +
+  "shadow-[0px_12px_60px_-12px_#23D5D5] text-white hover:opacity-90",
   transparent: "text-white hover:bg-transparent hover:text-white",
   white: "bg-white text-black hover:bg-gray-200",
   outline:

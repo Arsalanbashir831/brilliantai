@@ -35,21 +35,21 @@ export default function WhatWeOffer() {
 	];
 
 	return (
-		<section id="services" className="py-20 px-4 text-center">
+		<section id="services" className="py-20 text-center">
 			<h2 className=" text-3xl md:text-6xl text-white font-semibold mb-4">What We Offer</h2>
-			<p className="text-gray-100 max-w-xl text-lg md:text-xl mx-auto mb-20">
+			<p className="text-gray-100 max-w-[80%] md:max-w-[30%] text-lg md:text-xl mx-auto mb-10">
 				We build AI solutions from idea to launch, ensuring speed, scalability,
 				and real-world impact.
 			</p>
 
-			<div className="max-w-5xl mx-auto space-y-6">
+			<div className="px-5 md:px-100 m-auto  space-y-6">
 				{/* Row 1: cards 1 & 2 */}
-				<div className="grid gap-6 grid-cols-1 sm:grid-cols-2">
+				<div className="grid gap-6  grid-cols-1 sm:grid-cols-2">
 					{services.slice(0, 2).map((svc, i) => (
 						<Card
 							key={i}
 							{...svc}
-							/* only card #2 (i===1) is full-bleed */
+						
 							imagePadding={i === 1 ? "p-0" : undefined}
 						/>
 					))}
@@ -63,9 +63,10 @@ export default function WhatWeOffer() {
 							<Card
 								key={idx}
 								{...svc}
-								/* only card #5 (idx===4) is full-bleed */
+							
 								imagePadding={idx === 4 ? "p-0" : undefined}
 							/>
+							
 						);
 					})}
 				</div>

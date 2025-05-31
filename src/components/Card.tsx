@@ -1,6 +1,8 @@
+// components/Card.tsx
+'use client';
+
 import React from 'react';
 import Image from "next/image";
-// import { BorderBeam } from "@/components/magicui/border-beam";
 import { ShineBorder } from "./magicui/shine-border";
 import { motion } from "framer-motion";
 import { zoomVariants } from '@/effects/Effects';
@@ -38,24 +40,36 @@ export default function Card({
       transition={{ type: "spring", stiffness: 150, damping: 20 }}
       style={{ transformOrigin: 'center' }}
     >
+      {/* ShineBorder draws the glowing border around this card */}
       <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
-      <div className={`relative w-full h-40 ${imagePadding} overflow-hidden`}>
-      <Image
+
+      {/* Image container */}
+      <div className={`relative w-full h-40 flex flex-col items-center  ${imagePadding} overflow-hidden`}>
+        <Image
           src={imageSrc}
           alt={title}
-          fill
+          // height={100}
+          // width={300}
+           fill
           className="object-contain"
-          sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+          sizes="(min-width:1024px) 25vw, (min-width:640px) 40vw, 90vw"
+          loading="lazy"
+          decoding="async"
+          priority={false}
           placeholder="blur"
-          // if you generate blurDataURL at build time, otherwise omit:
           blurDataURL="/home/placeholder-blur.svg"
         />
       </div>
+
+      {/* Content below the image */}
       <div className="px-8 text-left mt-6">
-        <h3 className="text-2xl font-medium text-left text-white mb-2">{title}</h3>
-        <p className="text-sm font-light text-left text-white/70">{description}</p>
+        <h3 className="text-2xl font-medium text-left text-white mb-2">
+          {title}
+        </h3>
+        <p className="text-sm font-light text-left text-white/70">
+          {description}
+        </p>
       </div>
-      {/* <BorderBeam colorFrom={'#23D5D5'} colorTo={'#00FFFF'} duration={8} size={200} /> */}
     </motion.div>
   );
 }

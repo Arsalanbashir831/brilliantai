@@ -8,7 +8,7 @@ export default function Hero() {
         <section className="bg-[url('/startup/22.svg')] bg-center ">
             {/* Hero overlay */}
             <div className="">
-                <div className="max-w-4xl mx-auto px-6 py-40 text-center text-white">
+                <div className="max-w-full mx-auto px-6 py-40 text-center text-white">
                     <h1 className="text-4xl sm:text-5xl lg:text-7xl font-medium">
                         AI Product Engineering  <br /> for{' '}
                         <span
@@ -36,11 +36,11 @@ export default function Hero() {
             </div>
 
             {/* Content + Stats */}
-            <div className="max-w-7xl mx-auto px-6 py-16">
+            <div className="max-w-full mx-auto px-6 py-16">
                 <div className="flex flex-col md:flex-row justify-center px-20 gap-12">
                     {/* Left text */}
                     <div className="md:w-1/2  space-y-6 text-white">
-                        <h2 className="text-3xl sm:text-4xl font-semibold">
+                        <h2 className="text-3xl md:text-5xl font-semibold">
                             AI-Powered Solutions for Startup Success
                         </h2>
                         <p className="text-gray-100">
