@@ -42,7 +42,7 @@ export default function WhatWeOffer() {
 				and real-world impact.
 			</p>
 
-			<div className="px-5 md:px-100 m-auto  space-y-6">
+			<div className="px-5 md:px-60 m-auto  space-y-6">
 				{/* Row 1: cards 1 & 2 */}
 				<div className="grid gap-6  grid-cols-1 sm:grid-cols-2">
 					{services.slice(0, 2).map((svc, i) => (
