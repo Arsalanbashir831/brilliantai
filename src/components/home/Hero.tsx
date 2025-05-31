@@ -8,14 +8,14 @@ import BrilliantButton from "../widgets/BrilliantButtons";
 export default function Hero() {
    
   return (
-    <main className="relative   flex flex-col items-center py-20 justify-start md:justify-center h-auto md:min-h-[calc(105vh-120px)] px-2 md:px-4 text-center">
+    <main className="relative   flex flex-col items-center py-20 justify-start md:justify-center h-auto  px-2 md:px-4 text-center">
       <div
         className="
                             
                 "
         style={{
           background:
-            "radial-gradient(circle at center, #00FFFF 0%, transparent 100%)",
+            "radial-gradient(circle at top, #00FFFF 0%, transparent 100%)",
         }}
       />
       <div className="max-w-4xl mx-auto">
