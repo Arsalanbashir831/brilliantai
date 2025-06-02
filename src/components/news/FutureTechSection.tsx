@@ -6,7 +6,7 @@ import { FC } from "react";
 const FutureTechSection: FC = () => {
     return (
         <section className="py-16">
-            <div className="max-w-5xl mx-auto px-4">
+            <div className="max-w-6xl mx-auto px-4">
                 {/* — Hero Block — */}
                 <div className="flex flex-col md:flex-row items-center md:items-start mb-12">
                     <div className="flex-shrink-0">
@@ -35,7 +35,7 @@ const FutureTechSection: FC = () => {
 
                 {/* — Resources Panel — */}
                 <div className="border border-[#262626] rounded-xl p-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 m-4">
                         {/* Card 1 */}
                         <div
                             className="

@@ -4,14 +4,14 @@
 
 export default function Hero() {
     return (
-        <section className="relative w-full h-screen flex items-center justify-center bg-[url('/news/HeroNews.svg')] bg-cover bg-center text-white">
+        <section className="relative w-full md:h-screen lg:h-screen py-10 lg:h-screen flex items-center justify-center bg-[url('/news/HeroNews.svg')] bg-cover bg-center text-white">
             {/* dark overlay */}
             <div className="absolute inset-0 bg-black/40"></div>
 
             {/* content */}
             <div className="relative z-10 max-w-4xl text-center px-4">
-                <h1 className="text-6xl font-semibold mb-4">News, insights and more</h1>
-                <p className="mb-6 text-lg">Dive into our newsletter for expert insights, tips, and industry trends to elevate <br />your project management journey.</p>
+                <h1 className="text-4xl md:text-6xl font-md mb-4">News, insights and more</h1>
+                <p className="mb-6 text-lg text-center">Dive into our newsletter for expert insights, tips, and industry trends to elevate <br />your project management journey.</p>
               
             </div>
         </section>
