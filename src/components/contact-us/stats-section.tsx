@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const stats = [
 	{ value: "130+", label: "AI solutions built" },
 	{ value: "40%", label: "Year-over-year team growth" },
@@ -6,37 +8,36 @@ const stats = [
 
 export function StatsSection() {
 	return (
-		<section className="md:px-20 py-20">
-			<div className="">
-				<div className="flex flex-col md:flex-row justify-center gap-12 md:gap-4">
-					<div className="px-4 md:px-0">
-						<h2 className="text-3xl md:text-[64px] mb-1 text-white font-normal md:font-medium">
+		<section className="px-6 py-16">
+			<div className="max-w-6xl mx-auto">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+					<div>
+						<h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
 							Empowering Innovation
 						</h2>
-						<p className="text-white text-sm md:text-xl font-normal pr-12 md:pr-0">
+						<p className="text-gray-300 text-lg leading-relaxed">
 							From MVPs to enterprise AI systems, we help founders, product
 							teams, and public sector organisations bring their AI visions to
 							life with clarity and execution.
 						</p>
 					</div>
-					<div className="md:w-3/5 flex justify-center justify-self-end relative">
+					<div className="md:w-3/5 flex justify-center justify-self-end">
 						<div
 							className="
-																				
-																				w-full md:max-w-[425px]       
+																				relative
+																				w-full md:max-w-sm       
 																				flex flex-col
 																				rounded-[10px]
 																				
 																		">
 							{/* SVG gradient behind the panel */}
-							<div className="absolute right-0 md:right-24 top-10 bg-gradient-to-r from-[#23D5D5] to-[#1EB2B2] blur-[60px] w-72 h-72 rounded-full" />
-							{/* <Image
+							<Image
 								src="/about/story.svg"
 								alt=""
 								width={1200}
 								height={1200}
-								className="absolute -right-10 top-0"
-							/> */}
+								className="absolute inset-0 object-cover"
+							/>
 
 							{/* semi-opaque overlay for contrast */}
 							<div className="absolute inset-0 bg-black/70" />

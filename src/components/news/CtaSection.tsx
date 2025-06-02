@@ -23,7 +23,7 @@ const CtaSection: FC = () => {
                 <h2 className="text-3xl md:text-4xl font-semibold text-white">
                     Stay Ahead with Brilliant AI
                 </h2>
-                <p className="text-gray-300 text-base md:text-lg">
+                <p className="text-gray-300 text-base w-full max-w-5xl md:text-lg">
                     Discover how our AI solutions can optimise your operations, boost
                     efficiency, and accelerate growth. Stay ahead of the competition with
                     our cutting-edge solutions.

@@ -38,7 +38,7 @@ export default function FAQ() {
     return (
         <section className="bg-[#000E0F] py-20">
             <div className="max-w-3xl mx-auto px-6">
-                <h2 className="text-[40px] font-semibold text-white text-center">Founder FAQ</h2>
+                <h2 className="text-[50px] font-semibold text-white text-center">Founder FAQ</h2>
                 <p className="mt-2 text-[18px] leading-[28px] text-[#E0E0E0] text-center">
                     Clarity before commitment. Everything you need to know before you build.
                 </p>
@@ -53,7 +53,7 @@ export default function FAQ() {
                                     onClick={() => setOpenIndex(isOpen ? null : idx)}
                                     className="flex items-center justify-between w-full py-4"
                                 >
-                                    <span className="text-[20px] leading-[28px] font-medium text-white">
+                                    <span className="text-[20px] leading-[28px] font-medium text-left text-white">
                                         {item.question}
                                     </span>
                                     {isOpen ? (

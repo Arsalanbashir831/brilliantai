@@ -44,7 +44,7 @@ export default function Header() {
 	};
 
 	return (
-		<nav className="relative z-10 flex items-center bg-[#011010] border-b border-[#C3FFFF] justify-between p-4 lg:px-20 lg:py-6">
+		<nav className="relative z-10 flex items-center bg-[#011010] border-b border-[#C3FFFF] justify-between p-4 lg:px-20 lg:py-3">
 			<Image
 				height={150}
 				width={150}
