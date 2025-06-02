@@ -37,8 +37,8 @@ function AICard({ title, description, buttonText, imageSrc, imageAlt, imageClass
             <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
 
             <div>
-                <h3 className="text-2xl font-semibold">{title}</h3>
-                <p className="mt-2 mb-1 text-[#A3BABF] leading-relaxed max-w-90 md:max-w-80">{description}</p>
+                <h3 className="text-lg font-light md:text-2xl md:font-semibold">{title}</h3>
+                <p className="mt-2 mb-1 text-[#A3BABF] leading-relaxed max-w-90 md:max-w-80 text-sm md:text-lg">{description}</p>
                 <BrilliantButton
                     variant="white"
                     className="text-[#052E2B] px-3 py-2 mt-4 rounded-lg font-medium"
@@ -57,13 +57,13 @@ function AICard({ title, description, buttonText, imageSrc, imageAlt, imageClass
                 />
             )}
 
-            <div className="flex items-center mt-6 text-sm text-[#A3BABF]">
+            <div className="flex gap-1 items-start md:items-center mt-6 text-xs md:text-lg text-white">
                 <Image
                     src="/home/checkmark.svg"
                     alt="Checkmark"
                     width={24}
                     height={24}
-                    className="mr-2"
+                    className=""
                 />
                 {footerText}
             </div>
@@ -138,10 +138,10 @@ export default function AIMeasurableOutcomes() {
     const isMobile = useMobile();
 
     return (
-        <section className="bg-[#011010] text-white py-20 px-6 lg:px-20">
+        <section className="bg-[#011010] text-white py-20 px-6 md:px-0 lg:px-20">
             {/* Header */}
             <div className="max-w-7xl mx-auto text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold">
+                <h2 style={{fontSize: !isMobile?'70px':'30px'}} className=" font-bold">
                     AI That Drive Measurable Outcomes
                 </h2>
                 <p className="mt-4 text-white/80 text-base sm:text-lg max-w-3xl mx-auto">
@@ -151,10 +151,10 @@ export default function AIMeasurableOutcomes() {
                 </p>
             </div>
 
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
+            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-5 md:justify-center">
                 {/* Sidebar */}
                 {!isMobile && (
-                    <ul className="w-full lg:w-1/3 space-y-6 pt-8 pl-8 relative">
+                    <ul className="  space-y-6 pt-8 pl-8 relative w-[33%]">
                         {tabs.map(({ key, label }) => (
                             <li
                                 key={key}
@@ -173,7 +173,7 @@ export default function AIMeasurableOutcomes() {
                                 )}
 
                                 <span
-                                    className={`relative ${
+                                    className={`relative text-[24px] font-light ${
                                         key === activeKey
                                             ? "text-white font-medium"
                                             : "text-white/80 hover:text-white"
@@ -196,7 +196,7 @@ export default function AIMeasurableOutcomes() {
                         tabs.map(({ key, cardProps }) => (
                             <motion.div
                                 key={key}
-                                className="md:min-w-full w-[100%] flex-shrink-0"
+                                className="md:min-w-[80%] w-[85%] flex-shrink-0"
                                 variants={fadeUpVariants}
                                 initial="hidden"
                                 animate="visible"
@@ -209,6 +209,7 @@ export default function AIMeasurableOutcomes() {
                     ) : (
                         <AnimatePresence mode="wait">
                             <motion.div
+                         
                                 key={activeKey}
                                 variants={fadeUpVariants}
                                 initial="hidden"

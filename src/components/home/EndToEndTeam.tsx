@@ -112,7 +112,7 @@ export default function EndToEndTeam() {
 
             <p className="text-sm text-[#96CDCD]">{service.description}</p>
 
-            <div className="mt-4 text-sm text-teal-400 font-medium flex items-center justify-end">
+            <div className="mt-4 text-sm text-whites font-medium flex items-center justify-end">
               Show more <ChevronDown className="ml-1 h-4 w-4" />
             </div>
           </motion.div>

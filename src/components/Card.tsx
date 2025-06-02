@@ -6,9 +6,11 @@ import Image from "next/image";
 import { ShineBorder } from "./magicui/shine-border";
 import { motion } from "framer-motion";
 import { zoomVariants } from '@/effects/Effects';
+import useMobile from '@/hook/useMobile';
 
 interface CardProps {
-  imageSrc: string;
+  imageSrcDesktop: string;
+  imageSrcMobile:string;
   title: string;
   description: string;
   /** horizontal padding around the image—defaults to 32px each side */
@@ -16,15 +18,20 @@ interface CardProps {
 }
 
 export default function Card({
-  imageSrc,
+  imageSrcDesktop,
+  imageSrcMobile,
   title,
   description,
   imagePadding = "px-8",
+ 
 }: CardProps) {
+  const isMobile = useMobile()
   return (
     <motion.div
       className="
         rounded-2xl
+       md:h-[400px]
+        h-auto
         overflow-hidden
         border border-white/10
         bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
@@ -32,6 +39,7 @@ export default function Card({
         backdrop-blur-[30px]
         flex flex-col
         py-8
+        justify-between
         gap-y-2.5
       "
       variants={zoomVariants}
@@ -46,13 +54,13 @@ export default function Card({
       {/* Image container */}
       <div className={`relative w-full h-40 flex flex-col items-center  ${imagePadding} overflow-hidden`}>
         <Image
-          src={imageSrc}
+          src={isMobile?imageSrcMobile:imageSrcDesktop}
           alt={title}
           // height={100}
           // width={300}
            fill
           className="object-contain"
-          sizes="(min-width:1024px) 25vw, (min-width:640px) 40vw, 90vw"
+         
           loading="lazy"
           decoding="async"
           priority={false}
@@ -62,11 +70,11 @@ export default function Card({
       </div>
 
       {/* Content below the image */}
-      <div className="px-8 text-left mt-6">
-        <h3 className="text-2xl font-medium text-left text-white mb-2">
+      <div className="md:px-8 px-5 text-left ">
+        <h3 className="text-2xl  text-left font-bold text-white mb-2">
           {title}
         </h3>
-        <p className="text-sm font-light text-left text-white/70">
+        <p className="text-md font-light text-left text-white/70">
           {description}
         </p>
       </div>

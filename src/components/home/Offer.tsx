@@ -1,39 +1,52 @@
 import { motion } from "framer-motion";
 import Card from "../Card";
 
+interface Service {
+  title: string;
+  description: string;
+  imageSrcDesktop: string;
+  imageSrcMobile: string;
+}
+
 export default function WhatWeOffer() {
-  const services = [
-    {
-      imageSrc: "/home/conversational-ai1.svg",
-      title: "Conversational AI",
-      description:
-        "Advanced chatbots and virtual agents designed to handle customer support, internal queries and dynamic interactions.",
-    },
-    {
-      imageSrc: "/home/workflow-icons.svg",
-      title: "Workflow Automations",
-      description:
-        "We automate your workflows to streamline repetitive tasks, enhance efficiency, save time, and eliminate errors.",
-    },
-    {
-      imageSrc: "/home/Analytics Filter Data.svg",
-      title: "Data Preparation",
-      description:
-        "Curation, cleaning and structuring of data to ensure high-quality inputs for effective AI and machine learning outcomes.",
-    },
-    {
-      imageSrc: "/home/Code editor.svg",
-      title: "AI Web Apps",
-      description:
-        "Custom-built applications powered by AI to deliver smarter user experiences and fast go-to-market.",
-    },
-    {
-      imageSrc: "/home/Chart.svg",
-      title: "AI Consulting",
-      description:
-        "Our experts provide strategic guidance, enabling your business to implement AI solutions that drive transformative growth.",
-    },
-  ];
+  const services: Service[] = [
+		{
+		  title: "Conversational AI",
+		  description:
+			"Advanced chatbots and virtual agents designed to handle customer support, internal queries and dynamic interactions.",
+		  imageSrcDesktop: "/home/conversational-ai1.svg",
+		  imageSrcMobile: "/others/Bento_Mobile.svg",
+		},
+		{
+		  title: "Workflow Automations",
+		  description:
+			"We automate your workflows to streamline repetitive tasks, enhance efficiency, save time, and eliminate errors.",
+		  imageSrcDesktop:  "/home/workflow-icons.svg",
+		  imageSrcMobile: "/home/workflow-icons.svg",
+		},
+		{
+		  title: "Data Preparation",
+		  description:
+			"Curation, cleaning and structuring of data to ensure high-quality inputs for effective AI and machine learning outcomes.",
+		  imageSrcDesktop: "/home/Analytics Filter Data.svg",
+		  imageSrcMobile: "/home/Analytics Filter Data.svg",
+		},
+		{
+		  title: "AI Web Apps",
+		  description:
+			"Custom-built applications powered by AI to deliver smarter user experiences and fast go-to-market.",
+		  imageSrcDesktop: "/home/Code editor.svg",
+		  imageSrcMobile: "/home/Code editor.svg",
+		},
+		{
+		  title: "AI Consulting",
+		  description:
+			"Our experts provide strategic guidance, enabling your business to implement AI solutions that drive transformative growth.",
+		  imageSrcDesktop: "/home/Chart.svg",
+		  imageSrcMobile: "/home/Chart.svg",
+		},
+	  ];
+	
 
   // 1. Container variant: staggerChildren controls delay between items
   const containerVariants = {
@@ -65,19 +78,21 @@ export default function WhatWeOffer() {
   };
 
   return (
-    <section id="services" className="py-20 text-center">
+    <section id="services" className="pb-10 py-0  text-center">
       <h2 className="text-3xl md:text-6xl text-white font-semibold mb-4">
         What We Offer
       </h2>
-      <p className="text-gray-100 max-w-[80%] md:max-w-[40%] text-lg md:text-xl mx-auto mb-10">
+      <p className="text-gray-100 max-w-[80%] md:max-w-[40%] text-lg md:text-xl mx-auto mb-20">
         We build AI solutions from idea to launch, ensuring speed, scalability,
         and real-world impact.
       </p>
 
-      <div className="px-5 md:px-60 m-auto space-y-6">
+      <div className=" m-auto px-5 md:px-[280px] space-y-6"> {/*
+	 ideal px-[220px] 
+	  */}
         {/* Wrap Row 1 in a motion.div using containerVariants */}
         <motion.div
-          className="grid gap-6 grid-cols-1 sm:grid-cols-2"
+          className="grid gap-6 grid-cols-1 sm:grid-cols-2 "
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

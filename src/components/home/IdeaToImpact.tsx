@@ -30,18 +30,18 @@ const steps = [
 
 export default function IdeaToImpact() {
     return (
-        <section className="py-20 bg-[#011010] text-white px-0">
-            <div className="max-w-6xl mx-auto text-center">
+        <section className="py-20 px-[60] bg-[#011010] text-white ">
+            <div className="md:max-w-[1200px] mx-auto text-center">
                 <h2 className=" text-3xl md:text-6xl  font-semibold mb-4">From Idea To Impact</h2>
-                <div className="text-white/80  text-center text-base sm:text-lg mb-28">
-                    <p className=" w-[80%] md:max-w-xl  mx-auto text-md">
+                <div className="text-white  text-center text-base sm:text-lg mb-28">
+                    <p className=" w-[82%] md:max-w-xl  mx-auto text-md">
                         We deliver AI solutions fast and safely, from concept to scale, driving
                         real results with full-cycle support and seamless integration.
                     
                     </p>                   
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-left mx-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-left px-[40px]    ">
                     {steps.map((step, index) => (
                         <div key={index} className="flex flex-col items-start">
                             <Image
@@ -52,7 +52,7 @@ export default function IdeaToImpact() {
                                 className="mb-4"
                             />
                             <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                            <p className="text-xs text-white/80">{step.description}</p>
+                            <p className="text-[13px] text-white/80">{step.description}</p>
                         </div>
                     ))}
                 </div>

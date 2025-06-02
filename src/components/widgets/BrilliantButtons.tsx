@@ -19,7 +19,7 @@ interface BrilliantButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElem
 }
 
 const baseClasses =
-  "cursor-pointer flex h-[52px] px-[32px] py-[13px] justify-center items-center gap-[10px] rounded-[16px] text-lg font-medium transition sm:h-[52px] sm:px-[32px] sm:py-[13px] h-[44px] px-[20px] py-[10px] text-base";
+  "cursor-pointer flex h-[50px]  justify-center items-center  rounded-[16px]  ";
 
 const variantClasses: Record<BrilliantButtonVariant, string> = {
   gradient: 

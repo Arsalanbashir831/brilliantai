@@ -1,0 +1,23 @@
+<svg width="44" height="34" viewBox="0 0 44 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 16.9227C44 22.7694 39.2652 27.5091 33.4246 27.5091C27.5839 27.5091 22.8491 22.7694 22.8491 16.9227C22.8491 11.076 27.5839 6.33636 33.4246 6.33636C39.2652 6.33636 44 11.076 44 16.9227Z" fill="#23D5D5"/>
+<foreignObject x="-13.7003" y="-13.5934" width="65.0497" height="61.1867"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(7.64px);clip-path:url(#bgblur_0_1139_460_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="15.276" d="M2.30713 4.04587C1.90222 3.03572 2.88045 2.04567 3.87354 2.39157L3.97021 2.42966L34.686 15.8506C35.6561 16.2747 35.6864 17.6236 34.7769 18.1054L34.686 18.1494L3.97021 31.5703C2.97737 32.0041 1.9555 31.0594 2.27295 30.0517L2.30713 29.9541L7.12354 17.9404C7.33513 17.4123 7.36133 16.8306 7.20264 16.289L7.12354 16.0595L2.30713 4.04587Z" fill="url(#paint0_radial_1139_460)" fill-opacity="0.4" stroke="url(#paint1_linear_1139_460)" stroke-width="1.273" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<foreignObject x="-28.4717" y="-28.3648" width="94.5923" height="90.7296"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(15px);clip-path:url(#bgblur_1_1139_460_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="30" fill-rule="evenodd" clip-rule="evenodd" d="M4.20594 1.88935C2.69625 1.22968 1.14715 2.73459 1.7606 4.26493L6.57632 16.2784C6.76197 16.7415 6.76197 17.2585 6.57632 17.7216L1.7606 29.7351C1.14715 31.2654 2.69625 32.7703 4.20595 32.1107L34.9216 18.6892C36.3944 18.0456 36.3944 15.9544 34.9216 15.3108L4.20594 1.88935ZM1.67297 4.30013C1.02806 2.69131 2.6566 1.10922 4.24372 1.80273L34.9593 15.2242C36.5077 15.9008 36.5077 18.0992 34.9593 18.7758L4.24372 32.1973C2.65661 32.8908 1.02806 31.3087 1.67297 29.6999L6.4887 17.6864C6.66528 17.2459 6.66528 16.7541 6.48869 16.3136L1.67297 4.30013Z" fill="url(#paint2_linear_1139_460)" fill-opacity="0.3"/>
+<defs>
+<clipPath id="bgblur_0_1139_460_clip_path" transform="translate(13.7003 13.5934)"><path d="M2.30713 4.04587C1.90222 3.03572 2.88045 2.04567 3.87354 2.39157L3.97021 2.42966L34.686 15.8506C35.6561 16.2747 35.6864 17.6236 34.7769 18.1054L34.686 18.1494L3.97021 31.5703C2.97737 32.0041 1.9555 31.0594 2.27295 30.0517L2.30713 29.9541L7.12354 17.9404C7.33513 17.4123 7.36133 16.8306 7.20264 16.289L7.12354 16.0595L2.30713 4.04587Z"/>
+</clipPath><clipPath id="bgblur_1_1139_460_clip_path" transform="translate(28.4717 28.3648)"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.20594 1.88935C2.69625 1.22968 1.14715 2.73459 1.7606 4.26493L6.57632 16.2784C6.76197 16.7415 6.76197 17.2585 6.57632 17.7216L1.7606 29.7351C1.14715 31.2654 2.69625 32.7703 4.20595 32.1107L34.9216 18.6892C36.3944 18.0456 36.3944 15.9544 34.9216 15.3108L4.20594 1.88935ZM1.67297 4.30013C1.02806 2.69131 2.6566 1.10922 4.24372 1.80273L34.9593 15.2242C36.5077 15.9008 36.5077 18.0992 34.9593 18.7758L4.24372 32.1973C2.65661 32.8908 1.02806 31.3087 1.67297 29.6999L6.4887 17.6864C6.66528 17.2459 6.66528 16.7541 6.48869 16.3136L1.67297 4.30013Z"/>
+</clipPath><radialGradient id="paint0_radial_1139_460" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(10.1959 14.9649) rotate(-16.0009) scale(40.1566 70.4849)">
+<stop stop-color="#23D5D5"/>
+<stop offset="0.749777" stop-color="#20A4A4" stop-opacity="0.55"/>
+<stop offset="1" stop-color="#20A4A4"/>
+</radialGradient>
+<linearGradient id="paint1_linear_1139_460" x1="4.396" y1="12.8286" x2="15.1693" y2="34.1632" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0.64"/>
+<stop offset="1" stop-color="white" stop-opacity="0.24"/>
+</linearGradient>
+<linearGradient id="paint2_linear_1139_460" x1="5.23008" y1="4.47037" x2="40.5714" y2="25.0699" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A81FF" stop-opacity="0.9"/>
+<stop offset="0.447036" stop-color="#567DFF" stop-opacity="0.955296"/>
+<stop offset="1" stop-color="#4E78FF" stop-opacity="0.9"/>
+</linearGradient>
+</defs>
+</svg>
