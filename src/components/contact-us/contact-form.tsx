@@ -29,19 +29,20 @@ const services = [
 export function ContactForm() {
 	return (
 		<section className="px-6 py-16 ">
-			<div className="max-w-2xl mx-auto">
-				<div className="text-center mb-12">
-					<h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+			<div className="max-w-2xl mx-auto space-y-10">
+				<div className="text-center">
+					<h2 className="text-3xl md:text-[64px] mb-1 text-white font-normal md:font-medium">
 						Start The Conversation
 					</h2>
-					<p className="text-gray-300 text-lg">
+					<p className="text-white text-sm md:text-xl px-6 font-normal">
 						Leave your details and we&rsquo;ll take it from there. Whether
 						you&rsquo;re exploring ideas or ready to build, we&rsquo;ll guide
 						you through the next steps.
 					</p>
 				</div>
 
-				<Card className="
+				<Card
+					className="
   bg-slate-700/10      
   backdrop-blur-lg     
   border
@@ -56,25 +57,25 @@ export function ContactForm() {
 								<div className="space-y-2">
 									<Label
 										htmlFor="firstName"
-										className="text-gray-300 text-sm font-medium">
+										className="text-white text-sm font-medium">
 										First Name
 									</Label>
 									<Input
 										id="firstName"
 										placeholder="David"
-										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
+										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-[#B3B3B3] rounded-lg h-12"
 									/>
 								</div>
 								<div className="space-y-2">
 									<Label
 										htmlFor="lastName"
-										className="text-gray-300 text-sm font-medium">
+										className="text-white text-sm font-medium">
 										Last Name
 									</Label>
 									<Input
 										id="lastName"
 										placeholder="Johnson"
-										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
+										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-[#B3B3B3] rounded-lg h-12"
 									/>
 								</div>
 							</div>
@@ -84,26 +85,26 @@ export function ContactForm() {
 								<div className="space-y-2">
 									<Label
 										htmlFor="company"
-										className="text-gray-300 text-sm font-medium">
+										className="text-white text-sm font-medium">
 										Company Name
 									</Label>
 									<Input
 										id="company"
 										placeholder="Ex. StaticMania"
-									className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
+										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-[#B3B3B3] rounded-lg h-12"
 									/>
 								</div>
 								<div className="space-y-2">
 									<Label
 										htmlFor="email"
-										className="text-gray-300 text-sm font-medium">
+										className="text-white text-sm font-medium">
 										Business Email
 									</Label>
 									<Input
 										id="email"
 										type="email"
 										placeholder="example@email.com"
-										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
+										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-[#B3B3B3] rounded-lg h-12"
 									/>
 								</div>
 							</div>
@@ -113,21 +114,21 @@ export function ContactForm() {
 								<div className="space-y-2">
 									<Label
 										htmlFor="phone"
-										className="text-gray-300 text-sm font-medium">
+										className="text-white text-sm font-medium">
 										Phone Number
 									</Label>
 									<Input
 										id="phone"
 										placeholder="Ex. +44 7911 123456"
-										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
+										className="bg-slate-700/10   border-slate-600 backdrop-blur-lg text-white placeholder:text-[#B3B3B3] rounded-lg h-12"
 									/>
 								</div>
 								<div className="space-y-2">
-									<Label className="text-gray-300 text-sm font-medium">
+									<Label className="text-white text-sm font-medium">
 										Preferred Contact Method
 									</Label>
 									<Select>
-										<SelectTrigger className="bg-slate-700/10 w-full  border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg  py-6">
+										<SelectTrigger className="bg-slate-700/10 w-full  border-slate-600 backdrop-blur-lg text-white placeholder:text-[#B3B3B3] rounded-lg  py-6">
 											<SelectValue
 												placeholder="Select an option..."
 												className="text-gray-400"
@@ -156,7 +157,7 @@ export function ContactForm() {
 
 							{/* Services Interest */}
 							<div className="space-y-4">
-								<Label className="text-gray-300 text-sm font-medium">
+								<Label className="text-white text-sm font-medium">
 									What AI services are you interested in?
 								</Label>
 								<div className="grid grid-cols-2 gap-4">
@@ -168,7 +169,7 @@ export function ContactForm() {
 											/>
 											<Label
 												htmlFor={service}
-												className="text-gray-300 text-sm font-normal">
+												className="text-white text-sm font-normal">
 												{service}
 											</Label>
 										</div>
@@ -178,7 +179,7 @@ export function ContactForm() {
 
 							{/* Attachments */}
 							<div className="space-y-2">
-								<Label className="text-gray-300 text-sm font-medium">
+								<Label className="text-white text-sm font-medium">
 									Attachments
 								</Label>
 								<div className="border-2 border-dashed border-slate-600 rounded-lg p-4 text-center bg-slate-700/30 flex justify-center items-center gap-2">
@@ -194,13 +195,13 @@ export function ContactForm() {
 							<div className="space-y-2">
 								<Label
 									htmlFor="message"
-									className="text-gray-300 text-sm font-medium">
+									className="text-white text-sm font-medium">
 									Message
 								</Label>
 								<Textarea
 									id="message"
 									placeholder="Leave us a message..."
-									className="bg-slate-700/10 border-slate-600 text-white placeholder:text-gray-400 min-h-[120px] rounded-lg resize-none"
+									className="bg-slate-700/10 border-slate-600 text-white placeholder:text-[#B3B3B3] min-h-[120px] rounded-lg resize-none"
 								/>
 							</div>
 
