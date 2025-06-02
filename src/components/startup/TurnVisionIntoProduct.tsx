@@ -3,84 +3,63 @@
 
 import React from 'react';
 import { ShineBorder } from '../magicui/shine-border';
+import BrilliantButton from '../widgets/BrilliantButtons';
 
 export default function TurnVisionIntoProduct() {
-    return (
-        <section
-            className="
-               
-                py-16 px-32 
-            "
-        >
-            <div
-                className=" 
-                max-w-7xl mx-auto px-12
-                rounded-[16px]
-                bg-[url('/startup/vision.svg')]
-                bg  -no-repeat
-                bg-center      
-                bg-contain      /* scale it so it’s always fully visible */
-                min-h-[300px]   /* give the box enough height so you can always see it */
-                relative
-                                "
-            >
-                   <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
-                
-                <div className="flex justify-center  items-center gap-16 py-12">
-                    {/* Left: Heading + Button */}
-                    <div className=" space-y-10">
-                        <h2
-                            className="
-                        text-4xl font-medium text-white 
-                        capitalize 
-                        
-              "
-                        >
-                            Turn Vision Into Product.<br />
-                            Start The Journey
-                        </h2>
+  return (
+    <section className="w-full py-16 lg:px-32">
+      <div
+        className="
+          max-w-full
+          mx-auto
+          px-4 sm:px-12 rounded-0
+          md:rounded-[16px] lg:rounded-[16px]
+          bg-[url('/startup/vision.svg')]
+          bg-center bg-cover
+          relative
+        "
+      >
+        <ShineBorder className='hidden md:block lg:block' shineColor={['#23D5D5', '#00FFFF']} />
 
-                        <button
-                            className="
-                inline-flex items-center justify-center gap-[10px]
-                h-12 px-6 py-4
-                rounded-[16px]
-                bg-[linear-gradient(180deg,_#23D5D5_0%,_#1EB2B2_100%)]
-                shadow-[0_0_180px_0_#23D5D5,0_0_1px_4px_rgba(255,255,255,0.1),
-                        0_-4px_2px_0px_rgba(0,0,0,0.25)_inset,
-                        0_2px_1px_0px_rgba(255,255,255,0.25)_inset]
-                text-white font-medium text-[18px] leading-[28px]
-                transition-shadow shadow-[0_0_200px_0_#23D5D5]
-              "
-                        >
-                            Get in touch →
-                        </button>
-                    </div>
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16 py-12">
+          {/* ------------------------------------------------
+              LEFT SIDE: Title (and Desktop‐only button)
+              ------------------------------------------------ */}
+          <div className="w-full sm:w-auto space-y-6 text-center sm:text-left">
+            <h2 className="text-4xl font-medium text-white capitalize">
+              Turn Vision Into Product.
+              <br />
+              Start The Journey
+            </h2>
 
-                    {/* Right: Description */}
-                    <div className="w-2/5 space-y-6">
-                        <p
-                            className="
-                text-md  text-white font-normal
-                
-              "
-                        >
-                            We help early stage teams turn ideas into reality by building
-                            intelligent and scalable AI systems. From MVP to launch and
-                            beyond, we provide the technical and product expertise to move
-                            fast, avoid costly mistakes, and scale with confidence.
-                        </p>
-                        <p
-                            className="
-                text-md  text-white font-normal
-               
-              "
-                        >
-                            Let’s build something real, and built to last.
-                        </p>
-                    </div>
-                </div>
+            {/* This button is only visible on desktop (≥ sm) */}
+            <div className="hidden sm:flex">
+              <BrilliantButton>Get in touch →</BrilliantButton>
             </div>
-        </section>
-    );
+          </div>
+
+          {/* ------------------------------------------------
+              RIGHT SIDE: Paragraphs (always visible)
+              ------------------------------------------------ */}
+          <div className="w-full sm:w-2/5 space-y-4 text-center sm:text-left">
+            <p className="text-md text-white font-normal">
+              We help early stage teams turn ideas into reality by building intelligent and scalable AI systems.
+              From MVP to launch and beyond, we provide the technical and product expertise to move fast, avoid
+              costly mistakes, and scale with confidence.
+            </p>
+            <p className="text-md text-white font-normal">
+              Let’s build something real, and built to last.
+            </p>
+          </div>
+
+          {/* ------------------------------------------------
+              MOBILE‐ONLY BUTTON: (visible on <sm)
+              ------------------------------------------------ */}
+          <div className="flex sm:hidden justify-center w-full">
+            <BrilliantButton>Get in touch →</BrilliantButton>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

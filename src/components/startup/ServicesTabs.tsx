@@ -1,8 +1,9 @@
-// components/ServicesTabs.tsx
 'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft } from 'lucide-react';
 
 interface Service {
     id: string;
@@ -80,25 +81,86 @@ const SERVICES: Service[] = [
 ];
 
 export default function ServicesTabs() {
+    // === DESKTOP STATE (unchanged) ===
     const [selectedId, setSelectedId] = useState<string>(SERVICES[0].id);
-    const active = SERVICES.find((s) => s.id === selectedId)!;
+    const active = SERVICES.find((svc) => svc.id === selectedId) || SERVICES[0];
+
+    // === MOBILE STATE (new): simple index-based carousel ===
+    const [mobileIndex, setMobileIndex] = useState<number>(0);
+    const mobileActive = SERVICES[mobileIndex];
+    const totalCount = SERVICES.length;
+
+    const goToPrev = () => {
+        setMobileIndex((prev) => (prev - 1 + totalCount) % totalCount);
+    };
+    const goToNext = () => {
+        setMobileIndex((prev) => (prev + 1) % totalCount);
+    };
 
     return (
-        <section className="max-w-7xl mx-auto px-24 py-16  8  rounded-[16px]">
-           
-            {/* Header */}
-            <div className="text-center mb-16">
-                <h2 className="text-[40px] leading-normal text-white font-semibold">What We Deliver For Startups</h2>
-                <p className="mt-2 text-[18px] leading-[28px] text-[#E0E0E0]">
-                    We know what it takes to launch in the early stages—speed without compromise, flexibility without confusion, and expert execution. Brilliant AI turns ideas into fully functional products with precision and structure.
+        <section className="max-w-7xl mx-auto px-6 md:px-20 py-16 rounded-[16px]">
+            {/* Header (same for both) */}
+            <div className="text-center mb-16 max-w-5xl mx-auto">
+                <h2 className="text-4xl md:text-6xl leading-normal text-white font-semibold">
+                    What We Deliver For Startups
+                </h2>
+                <p className="mt-2 text-[16px] md:text-[20px] leading-[24px] md:leading-[28px] text-[#E0E0E0]">
+                    We know what it takes to launch in the early stages—speed without compromise, flexibility without confusion,
+                    and expert execution. Brilliant AI turns ideas into fully functional products with precision and structure.
                 </p>
             </div>
 
-            <div className='bg-transparent border border-gray-400 rounded-2xl p-8'>
-                {/* Tabs */}
-                
-                <div className="overflow-x-auto  rounded-[16px]">
-                    <div className="flex space-x-4 pb-4">
+            {/* =======================
+            MOBILE CAROUSEL (md:hidden)
+          ======================= */}
+            <div className="md:hidden bg-transparent  border-gray-400 rounded-2xl p-5">
+                {/* Each “slide” of the carousel shows icon + title + detailTitle + detailText */}
+                <div className="flex flex-col items-left gap-4 text-center">
+                    <Image src={mobileActive.icon} alt={mobileActive.title} width={64} height={64} />
+
+                    <h3 className="text-white text-left text-[18px] uppercase tracking-[1px]">{mobileActive.title}</h3>
+
+                    <h4 className="text-lg text-left font-semibold text-white mb-2 ">{mobileActive.detailTitle}</h4>
+
+                    <p className="text-[16px] text-left leading-[24px] text-[#E0E0E0] ">{mobileActive.detailText}</p>
+                </div>
+
+                {/* Navigation controls */}
+                <div className="mt-6 flex items-center justify-center gap-4">
+                    <button
+                        onClick={goToPrev}
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 text-white hover:bg-gray-700"
+                        aria-label="Previous"
+                    >
+                        <ArrowLeft size={26} /> {/* Replaced Image with Lucide icon */}
+                    </button>
+
+                    
+
+                    <span className="text-[14px]">
+                        <span className="text-white">{String(mobileIndex + 1).padStart(2, '0')}</span>
+                        <span className="text-gray-500"> of </span>
+                        <span className="text-gray-500">{String(totalCount).padStart(2, '0')}</span>
+                    </span>
+
+                    <button
+                        onClick={goToNext}
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 text-white hover:bg-gray-700"
+                        aria-label="Next"
+                    >
+                        {/* simple right arrow */}
+                        <Image src="/right-white.svg" alt="Next" width={26} height={26} className='font-white text-white'  />
+                    </button>
+                </div>
+            </div>
+
+            {/* =======================
+            DESKTOP TABS + DETAIL (hidden on small, shown from md+)
+          ======================= */}
+            <div className="hidden md:block bg-transparent border border-gray-400 rounded-2xl p-5">
+                {/* Tabs Row */}
+                <div className="overflow-x-auto rounded-[16px]">
+                    <div className="flex pb-4">
                         {SERVICES.map((svc) => {
                             const isActive = svc.id === selectedId;
                             return (
@@ -106,17 +168,33 @@ export default function ServicesTabs() {
                                     key={svc.id}
                                     onClick={() => setSelectedId(svc.id)}
                                     className={`
-                    flex flex-col items-center flex-shrink-0 w-32 h-32 p-4 m-2
-                    rounded-[16px]
-                    bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)]
-                    
+                    flex
+                    flex-col
+                    items-center
+                    flex-shrink-0
+                    w-36
+                    h-40
+                    p-[32px]
+                    m-1
+                    gap-[10px]
+                    rounded-[12px]
                     ${isActive
-                                            ? 'ring-2 ring-teal-400 bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]'
-                                            : 'hover:bg-[rgba(77,77,77,0.16)]'}
+                                            ? `
+                      bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
+                      border-[1px] 
+                      border-transparent rounded-[12px]
+                      [border-image-source:linear-gradient(180deg,#23D5D5_0%,#1EB2B2_100%)]
+                      [border-image-slice:1]
+                      shadow-[0_0_4px_1px_#23D5D5]
+                    `
+                                            : `
+                      bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)]
+                      hover:bg-[rgba(77,77,77,0.16)] rounded-[12px]
                     `}
+                  `}
                                 >
                                     <Image src={svc.icon} alt={svc.title} width={48} height={48} className="mb-3" />
-                                    <span className="text-white text-[11px]  ">{svc.title}</span>
+                                    <span className="text-white text-[11px]">{svc.title}</span>
                                 </button>
                             );
                         })}
@@ -124,22 +202,41 @@ export default function ServicesTabs() {
                 </div>
 
                 {/* Detail Panel */}
-                <div className="mt- p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Left: image */}
-                    <div className="flex justify-center">
-                        <Image src={active.detailImage} alt={active.detailTitle} width={300} height={300} className="rounded-[8px]" />
-                    </div>
-                    {/* Right: vertical line + text */}
-                    <div className="flex">
-                        
-                        <div className='flex flex-col gap-4'>
-                            <h4 className="text-md uppercase tracking-[1px] text-teal-400 mb-2">{active.title}</h4>
-                            <h3 className="text-4xl font-semibold text-white mb-4">{active.detailTitle}</h3>
-                            <p className="text-[18px] w-max-2xl leading-[28px] text-[#E0E0E0]">{active.detailText}</p>
-                        </div>
-                    </div>
-                </div>
+                <div className="mt-6 p-6 grid grid-cols-1 lg:grid-cols-2 gap-6 px-16">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={active.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.4 }}
+                            className="flex justify-start"
+                        >
+                            <Image
+                                src={active.detailImage}
+                                alt={active.detailTitle}
+                                width={350}
+                                height={350}
+                                className="rounded-[8px] object-contain"
+                            />
+                        </motion.div>
 
+                        <motion.div
+                            key={active.id + '-text'}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.4 }}
+                            className="flex"
+                        >
+                            <div className="flex flex-col gap-4">
+                                <h4 className="text-md uppercase tracking-[1px] text-teal-400 mb-2">{active.title}</h4>
+                                <h3 className="text-4xl font-semibold text-white mb-4">{active.detailTitle}</h3>
+                                <p className="text-[18px] max-w-2xl leading-[28px] text-[#E0E0E0]">{active.detailText}</p>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
             </div>
         </section>
     );

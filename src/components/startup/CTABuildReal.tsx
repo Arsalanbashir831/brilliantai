@@ -2,33 +2,54 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import BrilliantButton from '../widgets/BrilliantButtons';
 import { ShineBorder } from '../magicui/shine-border';
 
 export default function CTABuildReal() {
     return (
-        <section className="relative  py-20  px-32">
-            {/* Frosted‐glass card */}
-            <div className="relative max-w-7xl mx-auto rounded-[16px] overflow-hidden bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)] shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
-                 <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
-                {/* Grain-green background image */}
-                <Image src="/startup/Content.svg" alt="" fill className="absolute inset-0 object-cover" />
+        <section className="relative w-full py-20 px-0 md:px-32  lg:px-32">
+            {/* 
+        On mobile (below sm), this container is full‐width (edge to edge of its parent Section),
+        but we wrap it in px-4 so there’s 16px of breathing room on either side.
+        On sm+ (640px+), we give the Section px-32, so the inner card shrinks to sm:max-w-7xl.
+      */}
+            <div
+                className="
+          relative
+          w-full
+          sm:max-w-7xl
+          mx-auto
+          overflow-hidden
+            rounded-0          
+            md:rounded-[16px]  lg:rounded-[16px]
+          bg-[linear-gradient(111deg,rgba(77,77,77,0.24)_1.21%,rgba(151,151,151,0.04)_100%)]
+          shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
+          backdrop-blur-[15px]
+        "
+            >
+                {/* The “shine” border effect */}
+                <ShineBorder shineColor={['#23D5D5', '#00FFFF']} />
 
-                {/* Content */}
-                <div className="relative flex flex-col items-center px-[120px] py-10">
-                    <h2 className="text-[28px] leading-[48px] font-semibold text-white">Let’s Build Something Real</h2>
+                {/* 
+          Content wrapper: 
+          - On mobile: padding left/right = 24px (px-6), vertical padding = 40px (py-10) 
+          - On sm+: padding left/right = 120px (px-[120px]), vertical padding = 40px (py-10)
+        */}
+                <div className="relative flex flex-col items-center px-6 sm:px-[120px] py-10">
+                    {/* Title */}
+                    <h2 className="text-[28px] leading-[48px] font-semibold text-white text-center">
+                        Let’s Build Something Real
+                    </h2>
+
+                    {/* Subtitle / Paragraph */}
                     <p className="mt-4 text-[18px] leading-[28px] text-[#E0E0E0] text-center">
                         Your idea deserves more than just a plan. Let’s turn it into a working AI product.
                     </p>
-                    {/* <button className="mt-8 inline-flex items-center justify-center h-[48px] px-[24px] text-[16px] font-medium text-black bg-white rounded-[8px]">
-                       
-                    </button> */}
-                      <BrilliantButton variant='white'
-                                                className="mt-8 "
-                                            >
-                        Talk to Our Team 
-                                            </BrilliantButton>
+
+                    {/* Button */}
+                    <div className="mt-8">
+                        <BrilliantButton variant="white">Talk to Our Team →</BrilliantButton>
+                    </div>
                 </div>
             </div>
         </section>

@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
-
 const services = [
     {
         title: "Machine Learning Engineering",
@@ -46,43 +45,74 @@ const services = [
 
 export default function EndToEndTeam() {
     return (
-        <section className="py-20 bg-[#011010] text-white px-4">
+        <section className="py-20 bg-[#011010] text-white px-2">
             <div className="max-w-6xl mx-auto text-center mb-12">
-                <h2 className="text-6xl  font-semibold mb-4">
+                <h2 className="text-4xl md:text-6xl font-semibold mb-4">
                     A Trusted End-To-End Team
                 </h2>
-                <div className="text-white/80  text-center text-base sm:text-lg mb-28">
-                    <p className="max-w-2xl mx-auto">
-                        Our team is committed to building your AI solution with end-to-end precision,
-                        clear communication and zero compromise.
-
+                <div className="text-white/80 text-center text-base sm:text-lg mb-28">
+                    <p className="w-[85%] md:w-full md:max-w-2xl mx-auto">
+                        Our team is committed to building your AI solution with end-to-end
+                        precision, clear communication and zero compromise.
                     </p>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl m-auto ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
                 {services.map((service, idx) => (
                     <motion.div
-                    whileHover={'hover'}
-                    variants={zoomVariants}
                         key={idx}
-                        className="rounded-2xl p-6 relative overflow-hidden cursor-pointer
-                       bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
-        shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
-        backdrop-blur-[30px] border-t border-teal-400/20  transition-colors duration-300
-             "
+                        initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+                        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            delay: idx * 0.2,
+                            duration: 0.5,
+                            ease: "easeOut",
+                        }}
+                        whileHover="hover"
+                        variants={zoomVariants}
+                        className="
+              flex
+                flex-col
+                md:flex-row
+              gap-4
+              rounded-2xl
+              p-6
+              relative
+              overflow-hidden
+              cursor-pointer
+              bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
+              shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
+              backdrop-blur-[30px]
+              border-t border-teal-400/20
+              transition-colors duration-300
+            "
                     >
-                        <div className="flex items-center gap-4 mb-4">
-                            <div className="w-12 h-12 rounded-full flex items-center justify-center border border-white/10 bg-[linear-gradient(151.06deg,_rgba(217,217,217,0.09)_10.77%,_rgba(255,255,255,0)_85.22%)]">
-                                <Image src={service.icon} alt={service.title} width={24} height={24} />
+                        <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center border border-white/10 bg-[linear-gradient(151.06deg,_rgba(217,217,217,0.09)_10.77%,_rgba(255,255,255,0)_85.22%)]">
+                            <Image
+                                src={service.icon}
+                                alt={service.title}
+                                width={24}
+                                height={24}
+                                loading="lazy"
+                                decoding="async"
+                                priority={false}
+                            />
+                        </div>
+
+                        <div className="flex-1 flex flex-col">
+                            <h3 className="text-[18px] font-semibold text-white leading-[28px] mb-[8px]">
+                                {service.title}
+                            </h3>
+                            <p className="text-[14px] text-[#96CDCD] leading-[22px] mb-auto">
+                                {service.description}
+                            </p>
+                            <div className="self-end mt-4 flex items-center gap-1 text-white/80 text-sm cursor-pointer">
+                                Show more
+                                <ChevronDown className="w-4 h-4" />
                             </div>
-                            <h3 className="text-[16px] font-semibold">{service.title}</h3>
                         </div>
-                        <p className="text-sm text-[#96CDCD]">{service.description}</p>
-                        <div className="mt-4 text-sm text-teal-400 font-medium flex items-center justify-end">
-                            Show more <ChevronDown className="ml-1 h-4 w-4" />
-                        </div>
-                        {/* <BorderBeam colorFrom={'#23D5D5'} colorTo={'#00FFFF'} duration={8} size={100} /> */}
                     </motion.div>
                 ))}
             </div>

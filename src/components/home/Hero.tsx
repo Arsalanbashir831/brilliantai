@@ -1,90 +1,165 @@
 // components/Hero.tsx
-'use client'
+"use client";
 
-import { TextAnimate } from "@/components/magicui/text-animate";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence, MotionProps } from "framer-motion";
 import BrilliantButton from "../widgets/BrilliantButtons";
+import useMobile from "@/hook/useMobile";
+
+// Array of keywords to loop through
+const LOOP_WORDS = ["Transformative", "Unstoppable", "Limitless"];
+
+// Corresponding widths for each keyword
+// const WIDTHS: Record<string, string> = {
+//   Transformative: "12ch",
+//   Unstoppable: "10ch",
+//   Limitless: "6.5ch",
+// };
+
+// Base gradient‐text style (only applies to the looped word)
+const gradientTextStyle: React.CSSProperties = {
+  background:
+    "linear-gradient(90deg, #00AEFF 16.33%, #00DE94 45.1%, #00FF52 73.68%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  backgroundClip: "text",
+  backgroundSize: "200% 200%",
+  animation: "gradientShift 3s ease infinite",
+};
+
+const rotateMotionProps: MotionProps = {
+  initial: { opacity: 0, y: -50 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 50 },
+  transition: { duration: 0.25, ease: "easeOut" },
+};
 
 export default function Hero() {
-   
+  const [currentIndex, setCurrentIndex] = useState(0);
+const isMobile = useMobile()
+  // Cycle through words every 2 seconds
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % LOOP_WORDS.length);
+    }, 2000);
+    return () => clearInterval(id);
+  }, []);
+
+  
+
+  const currentWord = LOOP_WORDS[currentIndex];
+  // const containerWidth = WIDTHS[currentWord];
   return (
-    <main className="relative   flex flex-col items-center justify-center min-h-[calc(105vh-120px)] px-4 text-center">
-      <div
-        className="
-                            
-                "
-        style={{
-          background:
-            "radial-gradient(circle at center, #00FFFF 0%, transparent 100%)",
-        }}
-      />
-      <div className="max-w-4xl mx-auto">
-        {/* Heading */}
-        <h1 className="text-4xl z-20 relative md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-tight mb-8">
-          <TextAnimate animation="blurIn" as="span" by="character" delay={0.1} duration={1} once>
+    <>
+      {/* Keyframes for gradient‐shift animation */}
+      <style jsx>{`
+        @keyframes gradientShift {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
+
+      <div className="relative md:top-[-30px] top-[0px] flex flex-col items-center justify-center pt-20 pb-20  md:py-42 px-4 text-center overflow-hidden">
+        {/* Blurred radial gradient background */}
+        <div
+          className="absolute inset-0 top-[-100px] md:top-[-300px] filter blur-3xl"
+          style={{
+          
+            background: !isMobile? `
+              radial-gradient(
+                circle 800px at 50% -50px,
+                #23D5D5CC 80%,
+                transparent 60%
+              ),
+              #011010
+            `:` radial-gradient(
+                circle 600px at 50% -50px,
+                #23D5D5CC 0%,
+                transparent 60%
+              ),
+              #011010`,
+          }}
+        />
+ {/* mobile  style={{
+            background: `
+              radial-gradient(
+                circle 600px at 50% -50px,
+                #23D5D5CC 0%,
+                transparent 60%
+              ),
+              #011010
+            `,
+          }} */}
+        {/* Content on top of blurred background */}
+        <main className="relative z-10 max-w-full  md:mx-auto">
+          {/* Static heading */}
+          <h1 className="w-full text-[33px] font-light text-white leading-tight md:text-5xl lg:text-6xl xl:text-[86px] ">
             Unlock Your Vision With
-          </TextAnimate>{" "}
+          </h1>
 
-          <div className="flex justify-center items-center gap-5">
+          {/* Looping word + “AI” (animated together) */}
+          <div className="flex items-center justify-center w-full m-auto mb-8">
+            <h1 className="inline-flex items-center text-[35px] font-light text-white leading-tight md:text-5xl lg:text-6xl xl:text-[86px]">
+          
+            <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWord}
+                    style={gradientTextStyle}
+                    {...rotateMotionProps}
+                    className="block whitespace-nowrap"
+                  >
+                    {currentWord}
+                  </motion.span>
+                </AnimatePresence>
+             
 
-            <span
-              className="bg-gradient-to-r from-[#00AEFF] via-[#00DE94] to-[#00FF52] bg-clip-text text-transparent"
-              style={{
-                background: "linear-gradient(90deg, #00AEFF 16.33%, #00DE94 45.1%, #00FF52 73.68%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Transformative
+              {/* “AI” in plain white, animates in sync */}
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={`${currentWord}-AI`}
+                  {...rotateMotionProps}
+                  className="ml-3 inline-flex items-center text-3xl font-light text-white leading-tight md:text-5xl lg:text-6xl xl:text-7xl"
+                >
+                  AI
+                </motion.span>
+              </AnimatePresence>
 
 
 
-
-            </span>{" "}
-            <TextAnimate animation="blurIn" as="h1" by="character" delay={1.3} duration={1} once>
-
-              AI
-            </TextAnimate>
+            </h1>
           </div>
 
-        </h1>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-           transition={{ delay: 1, duration: 0.4 }}
-          className="text-gray-300 text-md md:text-md lg:text-xl  mx-auto mb-12 ">
-          We take you from idea to execution by building AI web apps, developing machine learning solutions and
-          implementing AI-driven processes that power scalable products and smarter operations.
-        </motion.p>
-
-        {/* Buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3, duration: 0.4 }}
-          // transition={{ delay: 2.0, duration: 1 }}
-          //    variants={containerVariants}
-        
-        >
-          <BrilliantButton variant="gradient">
-                Get in Touch
-          </BrilliantButton>
-
-          <BrilliantButton
-            variant="transparent"
-            
+          {/* Description */}
+          <motion.p
+            // initial={{ opacity: 0, y: 20 }}
+            // animate={{ opacity: 1, y: 0 }}
+            // transition={{ delay: 1, duration: 0.4, ease: "easeOut" }}
+            className="mx-auto mb-5 md:mb-12 md:text-[14px] text-[17px] text-gray-300 md:text-md lg:text-xl md:max-w-[73%] max-w-[90%] "
           >
-            Learn More
-          
-          
-          </BrilliantButton>
-        </motion.div>
+            We take you from idea to execution by building AI web apps, developing
+            machine learning solutions and implementing AI-driven processes that power
+            scalable products and smarter operations.
+          </motion.p>
 
+          {/* Buttons */}
+          <motion.div
+            className="flex gap-5 flex-wrap  justify-center items-center pb-5 md:pb-0"
+            // initial={{ opacity: 0, y: 20 }}
+            // animate={{ opacity: 1, y: 0 }}
+            // transition={{ delay: 1.3, duration: 0.4, ease: "easeOut" }}
+          >
+            <BrilliantButton variant="gradient">Get in Touch</BrilliantButton>
+            <BrilliantButton variant="transparent">Learn More</BrilliantButton>
+          </motion.div>
+        </main>
       </div>
-    </main>
-  )
+    </>
+  );
 }

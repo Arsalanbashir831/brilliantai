@@ -6,7 +6,7 @@ import { Check, X } from 'lucide-react';
 
 export default function ComparisonCards() {
     return (
-        <div className="px-40 pb-32">
+        <div className="px-4 sm:px-6 md:px-40 pb-32">
             <div className="text-center mb-10">
                 <h2 className="text-5xl leading-normal text-white font-semibold">
                     What Makes Us Different
@@ -16,15 +16,21 @@ export default function ComparisonCards() {
                 </p>
             </div>
 
-            <div className="flex justify-center items-start gap-4 pt-16 px-40">
+            <div className="flex flex-col md:flex-row justify-center items-start gap-4 pt-16">
                 {/* Freelancers */}
-                <div className="flex flex-col items-center mt-8">
+                <div className="flex flex-col items-stretch w-full md:w-80 mt-8">
                     {/* Title */}
-                    <div className="flex flex-col justify-center items-center gap-2 w-80 h-16 p-8 rounded-tl-lg rounded-tr-lg bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)] shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
+                    <div className="flex flex-col justify-center items-center gap-2 w-full h-16 px-8 rounded-tl-lg rounded-tr-lg
+            bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
+            shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]"
+                    >
                         <span className="text-white font-medium text-xl leading-6">Freelancers</span>
                     </div>
                     {/* Body */}
-                    <div className="flex flex-col items-center gap-10 w-80 pt-px pb-12 rounded-b-lg border-t border-t-[#808080] bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)] shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
+                    <div className="flex flex-col items-center gap-10 w-full pt-px pb-12
+            rounded-b-lg bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)]
+            shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]"
+                    >
                         <ul className="flex flex-col space-y-3 py-14">
                             {[
                                 'Unreliable timelines',
@@ -37,7 +43,7 @@ export default function ComparisonCards() {
                             ].map((text) => (
                                 <li key={text} className="flex items-center gap-[10px]">
                                     <X className="w-5 h-5 text-[#E0E0E0]" />
-                                    <span className="text-[#E0E0E0] font-medium text-md leading-[24px] ">
+                                    <span className="text-[#E0E0E0] font-medium text-md leading-[24px]">
                                         {text}
                                     </span>
                                 </li>
@@ -47,13 +53,20 @@ export default function ComparisonCards() {
                 </div>
 
                 {/* Brilliant AI */}
-                <div className="flex flex-col items-center mt-4">
+                <div className="flex flex-col items-stretch w-full md:w-96 mt-4 ">
                     {/* Title */}
-                    <div className="flex flex-col justify-center items-center gap-[10px] w-96 h-16 p-[32px] rounded-tl-[16px] rounded-tr-[16px] bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)] shadow-[inset_-20px_4px_120px_0px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
+                    <div className="flex flex-col justify-center items-center gap-[10px] w-full h-16 px-[32px]
+            rounded-tl-[16px] rounded-tr-[16px]
+            bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
+            shadow-[inset_-20px_4px_120px_0px_rgba(31,187,187,0.14)] backdrop-blur-[15px]"
+                    >
                         <span className="text-white font-medium text-[30px] leading-[24px]">Brilliant AI</span>
                     </div>
                     {/* Body */}
-                    <div className="flex flex-col items-center gap-[49px] w-96 pb-[60px] rounded-b-[16px] border border-[#808080] bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)] shadow-[inset_-20px_4px_120px_0px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
+                    <div className="flex flex-col items-center  gap-[49px] w-full pb-[60px]
+            rounded-b-[16px] bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
+            shadow-[inset_-20px_4px_120px_0px_rgba(31,187,187,0.14)] backdrop-blur-[15px]"
+                    >
                         <ul className="flex flex-col space-y-3 py-16">
                             {[
                                 'Fast execution with technical precision',
@@ -66,7 +79,7 @@ export default function ComparisonCards() {
                             ].map((text) => (
                                 <li key={text} className="flex items-center gap-[10px]">
                                     <Check className="w-5 h-5 text-[#E0E0E0]" />
-                                    <span className="text-[#E0E0E0] font-medium text-md leading-[24px] ">
+                                    <span className="text-[#E0E0E0] font-medium text-md leading-[24px]">
                                         {text}
                                     </span>
                                 </li>
@@ -76,13 +89,20 @@ export default function ComparisonCards() {
                 </div>
 
                 {/* Agencies */}
-                <div className="flex flex-col items-center mt-8">
+                <div className="flex flex-col items-stretch w-full md:w-80 mt-8">
                     {/* Title */}
-                    <div className="flex flex-col justify-center items-center gap-2 w-80 h-16 p-8 rounded-tl-lg rounded-tr-lg bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)] shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
+                    <div className="flex flex-col justify-center items-center gap-2 w-full h-16 px-8 
+            rounded-tl-lg rounded-tr-lg
+            bg-[linear-gradient(111deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
+            shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]"
+                    >
                         <span className="text-white font-medium text-xl leading-6">Agencies</span>
                     </div>
                     {/* Body */}
-                    <div className="flex flex-col items-center gap-10 w-80 pt-px pb-12 rounded-b-lg border-t border-t-[#808080] bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)] shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]">
+                    <div className="flex flex-col items-center gap-10 w-full pt-px pb-12
+            rounded-b-lg bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)]
+            shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]"
+                    >
                         <ul className="flex flex-col space-y-3 py-14">
                             {[
                                 'Slow, process-heavy',
@@ -95,7 +115,7 @@ export default function ComparisonCards() {
                             ].map((text) => (
                                 <li key={text} className="flex items-center gap-[10px]">
                                     <X className="w-5 h-5 text-[#E0E0E0]" />
-                                    <span className="text-[#E0E0E0] font-medium text-md leading-[24px] ">
+                                    <span className="text-[#E0E0E0] font-medium text-md leading-[24px]">
                                         {text}
                                     </span>
                                 </li>

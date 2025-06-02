@@ -76,7 +76,7 @@ export default function NewsItem() {
             </div>
 
             {/* Grid of other articles */}
-            <div className=" pt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className=" pt-12 px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {others.map(item => (
                     <div key={item.id} className="flex flex-col  rounded-lg overflow-hidden">
                         <div className="relative h-40 w-full">

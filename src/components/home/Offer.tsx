@@ -1,69 +1,138 @@
-import Card from "../Card"
+import { motion } from "framer-motion";
+import Card from "../Card";
+
+interface Service {
+    title: string;
+    description: string;
+    imageSrcDesktop: string;
+    imageSrcMobile: string;
+    imageObjectFit: string;
+}
 
 export default function WhatWeOffer() {
-    const services = [
+    const services: Service[] = [
         {
-            imageSrc: "/home/conversational-ai1.svg",
             title: "Conversational AI",
-            description: "Advanced chatbots and virtual agents designed to handle customer support, internal queries and dynamic interactions.",
+            description:
+                "Advanced chatbots and virtual agents designed to handle customer support, internal queries and dynamic interactions.",
+            imageSrcDesktop: "/home/conversational-ai1.svg",
+            imageSrcMobile: "/others/Bento_Mobile.svg",
+            imageObjectFit: "object-contain",
         },
         {
-            imageSrc: "/home/workflow-icons.svg",
             title: "Workflow Automations",
-            description: "We automate your workflows to streamline repetitive tasks, enhance efficiency, save time, and eliminate errors.",
+            description:
+                "We automate your workflows to streamline repetitive tasks, enhance efficiency, save time, and eliminate errors.",
+            imageSrcDesktop: "/home/workflow-icons.svg",
+            imageSrcMobile: "/home/workflow-icons.svg",
+            imageObjectFit: "object-cover",
         },
         {
-            imageSrc: "/home/Analytics Filter Data.svg",
             title: "Data Preparation",
-            description: "Curation, cleaning and structuring of data to ensure high-quality inputs for effective AI and machine learning outcomes.",
+            description:
+                "Curation, cleaning and structuring of data to ensure high-quality inputs for effective AI and machine learning outcomes.",
+            imageSrcDesktop: "/home/Analytics Filter Data.svg",
+            imageSrcMobile: "/home/Analytics Filter Data.svg",
+            imageObjectFit: "object-contain",
         },
         {
-            imageSrc: "/home/Code editor.svg",
             title: "AI Web Apps",
-            description: "Custom-built applications powered by AI to deliver smarter user experiences and fast go-to-market.",
+            description:
+                "Custom-built applications powered by AI to deliver smarter user experiences and fast go-to-market.",
+            imageSrcDesktop: "/home/Code editor.svg",
+            imageSrcMobile: "/home/Code editor.svg",
+            imageObjectFit: "object-contain",
         },
         {
-            imageSrc: "/home/Chart.svg",
             title: "AI Consulting",
-            description: "Our experts provide strategic guidance, enabling your business to implement AI solutions that drive transformative growth.",
+            description:
+                "Our experts provide strategic guidance, enabling your business to implement AI solutions that drive transformative growth.",
+            imageSrcDesktop: "/home/Chart.png",
+            imageSrcMobile: "/home/Chart.png",
+            imageObjectFit: "object-cover",
         },
-    ]
+
+    ];
+
+
+    // 1. Container variant: staggerChildren controls delay between items
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                // 0.2s gap between each child's animation
+                staggerChildren: 0.2,
+            },
+        },
+    };
+
+    // 2. Item variant: defines how each card animates in
+    const itemVariants = {
+        hidden: {
+            opacity: 0,
+            filter: "blur(8px)",
+            y: 20,
+        },
+        visible: {
+            opacity: 1,
+            filter: "blur(0px)",
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut",
+            },
+        },
+    };
 
     return (
-        <section className="py-20 px-4 text-center">
-            <h2 className="text-6xl text-white font-semibold mb-4">What We Offer</h2>
-            <p className="text-gray-100 max-w-xl text-xl mx-auto mb-20">
-                We build AI solutions from idea to launch, ensuring speed, scalability, and real-world impact.
+        <section id="services" className="pb-10 py-0  text-center">
+            <h2 className="text-3xl md:text-6xl text-white font-semibold mb-4">
+                What We Offer
+            </h2>
+            <p className="text-gray-100 max-w-[80%] md:max-w-[40%] text-lg md:text-xl mx-auto mb-20">
+                We build AI solutions from idea to launch, ensuring speed, scalability,
+                and real-world impact.
             </p>
 
-            <div className="max-w-5xl mx-auto space-y-6">
-                {/* Row 1: cards 1 & 2 */}
-                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2">
+            <div className=" m-auto px-5 md:px-28 space-y-6"> {/*
+	 ideal px-[220px] 
+	  */}
+                {/* Wrap Row 1 in a motion.div using containerVariants */}
+                <motion.div
+                    className="grid gap-6 grid-cols-1 sm:grid-cols-2 "
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     {services.slice(0, 2).map((svc, i) => (
-                        <Card
-                            key={i}
-                            {...svc}
-                            /* only card #2 (i===1) is full-bleed */
-                            imagePadding={i === 1 ? "p-0" : undefined}
-                        />
+                        <motion.div key={i} variants={itemVariants}>
+                            <Card {...svc} imagePadding={i === 1 ? "p-0" : undefined} />
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
-                {/* Row 2: cards 3, 4 & 5 */}
-                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                {/* Wrap Row 2 in another motion.div using the same containerVariants */}
+                <motion.div
+                    className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     {services.slice(2).map((svc, j) => {
-                        const idx = j + 2;
+                        const idx = j + 2; // for clarity, though idx isn't used directly for delay now
                         return (
-                            <Card
-                                key={idx}
-                                {...svc}
-                                /* only card #5 (idx===4) is full-bleed */
-                                imagePadding={idx === 4 ? "p-0" : undefined}
-                            />
+                            <motion.div key={idx} variants={itemVariants}>
+                                <Card
+                                    {...svc}
+                                    imagePadding={idx === 4 ? "p-0" : undefined}
+                                />
+                            </motion.div>
                         );
                     })}
-                </div>
+                </motion.div>
             </div>
         </section>
-    )
+    );
 }

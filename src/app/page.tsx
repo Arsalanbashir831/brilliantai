@@ -35,7 +35,7 @@ export default function Home() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, delay: idx * 0.2 }}
         >
           <Component />
