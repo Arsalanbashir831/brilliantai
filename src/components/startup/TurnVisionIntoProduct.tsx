@@ -13,12 +13,16 @@ export default function TurnVisionIntoProduct() {
             "
         >
             <div
-                className="
-                    max-w-7xl mx-auto px-12
-                    rounded-[16px]
-                    bg-[url('/startup/vision.svg')] 
-                    relative
-                    "
+                className=" 
+                max-w-7xl mx-auto px-12
+                rounded-[16px]
+                bg-[url('/startup/vision.svg')]
+                bg  -no-repeat
+                bg-center      
+                bg-contain      /* scale it so it’s always fully visible */
+                min-h-[300px]   /* give the box enough height so you can always see it */
+                relative
+                                "
             >
                    <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
                 
