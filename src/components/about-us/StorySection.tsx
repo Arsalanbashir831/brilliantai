@@ -36,7 +36,7 @@ export default function StorySection() {
 																				
 																		">
 							{/* SVG gradient behind the panel */}
-							<div className="absolute right-0 -top-28 md:right-10 md:top-10 bg-gradient-to-r from-[#23D5D5] to-[#1EB2B2] blur-[100px] w-76 h-76 md:w-96 md:h-96 rounded-full" />
+							<div className="absolute right-0 -top-28 md:right-10 md:top-10 bg-gradient-to-r from-[#23D5D5] to-[#1EB2B2] blur-[100px] w-76 h-76 md:w-96 md:h-96 rounded-full z-[-10]" />
 							{/* <Image
 								src="/about/story.svg"
 								alt=""

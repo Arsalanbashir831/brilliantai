@@ -5,7 +5,7 @@ import BrilliantButton from "../widgets/BrilliantButtons";
 
 export default function ContactCta() {
 	return (
-		<section className="mb-12 md:-mb-12 ">
+		<section className=" md:-mb-12 ">
 			<div className="max-w-[930px] mx-auto px-5 md:px-6">
 				{/* outer wrapper: gradient border + glow */}
 				<div

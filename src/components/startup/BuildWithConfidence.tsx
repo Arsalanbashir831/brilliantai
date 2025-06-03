@@ -63,7 +63,7 @@ export default function BuildWithConfidence() {
           [border-image-source:linear-gradient(110.21deg,rgba(128,128,128,0.7)_2.78%,rgba(35,213,213,0.7)_58.48%,rgba(35,213,213,0.07)_72.66%,rgba(128,128,128,0.595)_100%)]
           [border-image-slice:1]
           backdrop-blur-[30px]
-          shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
+         shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)]
         "
             >
                 {/* Text + Button container */}

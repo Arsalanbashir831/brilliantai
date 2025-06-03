@@ -35,7 +35,7 @@ export default function ApproachSection() {
 				<h2 className="text-4xl md:text-5xl font-semibold text-white text-center">
 					Our Approach
 				</h2>
-				<p className="mt-2 text-lg text-gray-400 text-center">
+				<p className="mt-2 text-lg text-white text-center">
 					Collaborative, responsive and focused on outcomes that matter to you
 				</p>
 				<p className="mt-4 text-center text-gray-300 max-w-2xl mx-auto leading-relaxed">

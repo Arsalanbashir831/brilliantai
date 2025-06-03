@@ -13,11 +13,11 @@ export default function MissionSection() {
 				</h2>
 				<p style={{
 					fontFamily:'Lufga Regular'
-				}} className="text-white text-center text-[20px] text-normal ">
+				}} className="text-white text-center text-[20px] text-normal px-5 md:px-0 ">
 					To turn ambitious ideas into high performing AI systems
 				</p>
 
-				<div  className="flex pl-32 flex-col md:flex-row items-center gap-12 mt-4 w-full text-center md:text-left text-[16px] text-normal pt-10">
+				<div  className="flex md:pl-32 px-5 flex-col md:flex-row items-center gap-12 mt-4 w-full text-center md:text-left text-[16px] text-normal pt-10">
 					{/* — Left text block */}
 					<div className="md:w-1/2 space-y-6 text-white">
 						<div  className="space-y-4">
