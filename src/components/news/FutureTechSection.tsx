@@ -11,13 +11,13 @@ const FutureTechSection: FC = () => {
             <div className="max-w-7xl mx-auto px-0">
                 {/* — Hero Block — */}
                 <div className="flex flex-col md:flex-row items-center md:items-start mb-12">
-                    <div className="flex-shrink-0 flex justify-start items-center w-[100%] px-4">
+                    <div className="flex-shrink-0 flex justify-start items-center w-[100%] md:w-auto px-4">
                         <Image
                             src="/news/logo.svg"
                             alt="Company Logo"
                             width={50}
                             height={50}
-                            className="w-10 h-10"
+                            className="md:w-40 md:h-40 w-10 h-10"
                         />
                        {isMobile && (<>
                         <p className="text-[#23D5D5] uppercase text-sm md:text-base font-medium">
