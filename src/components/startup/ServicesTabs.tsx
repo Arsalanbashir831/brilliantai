@@ -197,7 +197,7 @@ export default function ServicesTabs() {
             <div className="hidden md:block bg-transparent border border-gray-400 rounded-2xl p-5">
                 {/* Tabs Row */}
                 <div className="overflow-x-auto rounded-[16px]">
-                    <div className="flex pb-4">
+                    <div className="flex pb-4 gap-4">
                         {SERVICES.map((svc) => {
                             const isActive = svc.id === selectedId;
                             return (
@@ -209,9 +209,9 @@ export default function ServicesTabs() {
                     flex-col
                     items-center
                     flex-shrink-0
-                    w-36
-                    h-40
-                    p-[32px]
+                    w-32
+                    h-32
+                    p-[10px]
                     m-1
                     gap-[10px]
                     rounded-[12px]

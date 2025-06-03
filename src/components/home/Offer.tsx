@@ -1,3 +1,7 @@
+// components/WhatWeOffer.tsx
+'use client';
+
+import React from "react";
 import { motion } from "framer-motion";
 import Card from "../Card";
 
@@ -7,6 +11,8 @@ interface Service {
     imageSrcDesktop: string;
     imageSrcMobile: string;
     imageObjectFit: string;
+    /** new: whether to draw the inner border around this card’s image */
+    hasInnerBorder?: boolean;
 }
 
 export default function WhatWeOffer() {
@@ -18,6 +24,7 @@ export default function WhatWeOffer() {
             imageSrcDesktop: "/home/conversational-ai1.svg",
             imageSrcMobile: "/others/Bento_Mobile.svg",
             imageObjectFit: "object-contain",
+            hasInnerBorder: false,
         },
         {
             title: "Workflow Automations",
@@ -26,6 +33,7 @@ export default function WhatWeOffer() {
             imageSrcDesktop: "/home/workflow-icons.svg",
             imageSrcMobile: "/home/workflow-icons.svg",
             imageObjectFit: "object-cover",
+            hasInnerBorder: true, // ← ONLY this one gets the inner‐border wrapper
         },
         {
             title: "Data Preparation",
@@ -34,6 +42,7 @@ export default function WhatWeOffer() {
             imageSrcDesktop: "/home/Analytics Filter Data.svg",
             imageSrcMobile: "/home/Analytics Filter Data.svg",
             imageObjectFit: "object-contain",
+            hasInnerBorder: false,
         },
         {
             title: "AI Web Apps",
@@ -42,6 +51,7 @@ export default function WhatWeOffer() {
             imageSrcDesktop: "/home/Code editor.svg",
             imageSrcMobile: "/home/Code editor.svg",
             imageObjectFit: "object-contain",
+            hasInnerBorder: false,
         },
         {
             title: "AI Consulting",
@@ -50,23 +60,21 @@ export default function WhatWeOffer() {
             imageSrcDesktop: "/home/Chart.png",
             imageSrcMobile: "/home/Chart.png",
             imageObjectFit: "object-cover",
+            hasInnerBorder: false,
         },
-
     ];
 
-
-    // 1. Container variant: staggerChildren controls delay between items
+    // Container variant: stagger children
     const containerVariants = {
         hidden: {},
         visible: {
             transition: {
-                // 0.2s gap between each child's animation
                 staggerChildren: 0.2,
             },
         },
     };
 
-    // 2. Item variant: defines how each card animates in
+    // Item animation variant
     const itemVariants = {
         hidden: {
             opacity: 0,
@@ -85,21 +93,19 @@ export default function WhatWeOffer() {
     };
 
     return (
-        <section id="services" className="pb-10 py-0  text-center">
+        <section id="services" className="pb-10 text-center">
             <h2 className="text-3xl md:text-6xl text-white font-semibold mb-4">
                 What We Offer
             </h2>
-            <p className="text-gray-100 max-w-[80%] md:max-w-[40%] text-lg md:text-xl mx-auto mb-20">
+            <p className="text-gray-100 max-w-[80%] md:max-w-[40%] text-lg md:text-xl mx-auto mb-10">
                 We build AI solutions from idea to launch, ensuring speed, scalability,
                 and real-world impact.
             </p>
 
-            <div className=" m-auto px-5 md:px-28 space-y-6"> {/*
-	 ideal px-[220px] 
-	  */}
-                {/* Wrap Row 1 in a motion.div using containerVariants */}
+            <div className="mx-auto px-4 sm:px-5 md:px-6 lg:px-28 space-y-6">
+                {/* ── ROW 1: 2 cards on sm+, 1 on xs ── */}
                 <motion.div
-                    className="grid gap-6 grid-cols-1 sm:grid-cols-2 "
+                    className="grid gap-6 grid-cols-1 sm:grid-cols-2"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -107,12 +113,17 @@ export default function WhatWeOffer() {
                 >
                     {services.slice(0, 2).map((svc, i) => (
                         <motion.div key={i} variants={itemVariants}>
-                            <Card {...svc} imagePadding={i === 1 ? "p-0" : undefined} />
+                            <Card
+                                {...svc}
+                                imagePadding={i === 1 ? "p-0" : undefined}
+                                /** Pass hasInnerBorder down to Card **/
+                                hasInnerBorder={svc.hasInnerBorder}
+                            />
                         </motion.div>
                     ))}
                 </motion.div>
 
-                {/* Wrap Row 2 in another motion.div using the same containerVariants */}
+                {/* ── ROW 2: 3 cards on lg, 2 on sm, 1 on xs ── */}
                 <motion.div
                     className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
                     variants={containerVariants}
@@ -121,12 +132,13 @@ export default function WhatWeOffer() {
                     viewport={{ once: true, amount: 0.2 }}
                 >
                     {services.slice(2).map((svc, j) => {
-                        const idx = j + 2; // for clarity, though idx isn't used directly for delay now
+                        const idx = j + 2;
                         return (
                             <motion.div key={idx} variants={itemVariants}>
                                 <Card
                                     {...svc}
                                     imagePadding={idx === 4 ? "p-0" : undefined}
+                                    hasInnerBorder={svc.hasInnerBorder}
                                 />
                             </motion.div>
                         );

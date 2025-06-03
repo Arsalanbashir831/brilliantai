@@ -34,11 +34,15 @@ export default function BuildWithConfidence() {
                     Build with Confidence
                 </h2>
 
-                {/* Paragraph */}
-                <p className="mt-3 text-base text-[#E0E0E0] leading-relaxed">
-                    You have the vision. We have the team, the expertise and the structure to deliver it.
-                    Let’s create an AI product that is reliable, scalable and built to perform.
-                </p>
+                <div className='w-full max-w-[360px]  '>
+                    {/* Paragraph */}
+                    <p className="mt-3 text-base text-[#E0E0E0] leading-relaxed">
+                        You have the vision. We have the team, the expertise and the structure to deliver it.
+                        Let’s create an AI product that is reliable, scalable and built to perform.
+                    </p>
+
+                </div>
+                
 
                 {/* Button */}
                 <div className="mt-6">

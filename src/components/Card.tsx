@@ -16,6 +16,7 @@ interface CardProps {
     /** horizontal padding around the image—defaults to 32px each side */
     imagePadding?: string;
     imageObjectFit?: string;
+    hasInnerBorder?: boolean;
 }
 
 export default function Card({
@@ -25,6 +26,7 @@ export default function Card({
     description,
     imagePadding = "px-0",
     imageObjectFit = "object-contain",
+    hasInnerBorder = false,
 
 }: CardProps) {
     const isMobile = useMobile()

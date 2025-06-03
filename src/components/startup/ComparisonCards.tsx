@@ -29,9 +29,9 @@ export default function ComparisonCards() {
                     {/* Body */}
                     <div className="flex flex-col items-center gap-10 w-full pt-px pb-12
             rounded-b-lg bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)]
-            shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]"
+            shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px] "
                     >
-                        <ul className="flex flex-col space-y-3 py-14">
+                        <ul className="flex flex-col space-y-3 py-14 ">
                             {[
                                 'Unreliable timelines',
                                 'Limited and inconsistent',
@@ -41,9 +41,9 @@ export default function ComparisonCards() {
                                 'Hard to scale with confidence',
                                 'Inconsistent quality',
                             ].map((text) => (
-                                <li key={text} className="flex items-center gap-[10px]">
+                                <li key={text} className="flex w-96 px-4 items-start  md:items-center lg:items-center gap-[10px]">
                                     <X className="w-5 h-5 text-[#E0E0E0]" />
-                                    <span className="text-[#E0E0E0] font-medium text-md leading-[24px]">
+                                    <span className="text-[#E0E0E0] font-medium text-xl md:text-md lg:text-md leading-[24px]">
                                         {text}
                                     </span>
                                 </li>
@@ -77,9 +77,9 @@ export default function ComparisonCards() {
                                 'Built to scale your product & infrastructure',
                                 'Lean, structured and built for efficiency',
                             ].map((text) => (
-                                <li key={text} className="flex items-center gap-[10px]">
+                                <li key={text} className="flex px-4 items-start  md:items-center lg:items-center gap-[10px]">
                                     <Check className="w-5 h-5 text-[#E0E0E0]" />
-                                    <span className="text-[#E0E0E0] font-medium text-md leading-[24px]">
+                                    <span className="text-[#E0E0E0] font-medium text-xl md:text-md lg:text-md  leading-[24px]">
                                         {text}
                                     </span>
                                 </li>
@@ -103,7 +103,7 @@ export default function ComparisonCards() {
             rounded-b-lg bg-[linear-gradient(111deg,_rgba(77,77,77,0.12)_1.21%,_rgba(151,151,151,0.02)_100%)]
             shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)] backdrop-blur-[15px]"
                     >
-                        <ul className="flex flex-col space-y-3 py-14">
+                        <ul className="flex flex-col items-start space-y-3 py-14">
                             {[
                                 'Slow, process-heavy',
                                 'Generalist teams',
@@ -113,9 +113,9 @@ export default function ComparisonCards() {
                                 'High cost as needs grow',
                                 'Expensive for early stage',
                             ].map((text) => (
-                                <li key={text} className="flex items-center gap-[10px]">
+                                <li key={text} className="flex  w-96 px-4 items-start  md:items-center lg:items-center gap-[10px]">
                                     <X className="w-5 h-5 text-[#E0E0E0]" />
-                                    <span className="text-[#E0E0E0] font-medium text-md leading-[24px]">
+                                    <span className="text-[#E0E0E0] font-medium text-xl md:text-md lg:text-md  leading-[24px]">
                                         {text}
                                     </span>
                                 </li>
