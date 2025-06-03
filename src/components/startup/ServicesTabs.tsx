@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { fadeUpVariants } from "@/effects/Effects"; // your existing fade-up variants
 
 interface Service {
 	id: string;
@@ -81,14 +82,14 @@ const SERVICES: Service[] = [
 ];
 
 export default function ServicesTabs() {
-	// === DESKTOP STATE (unchanged) ===
+	/*** DESKTOP STATE (unchanged) ***/
 	const [selectedId, setSelectedId] = useState<string>(SERVICES[0].id);
 	const active = SERVICES.find((svc) => svc.id === selectedId) || SERVICES[0];
 
-	// === MOBILE STATE (new): simple index-based carousel ===
+	/*** MOBILE STATE: now only an index (no “direction”) ***/
 	const [mobileIndex, setMobileIndex] = useState<number>(0);
-	const mobileActive = SERVICES[mobileIndex];
 	const totalCount = SERVICES.length;
+	const mobileActive = SERVICES[mobileIndex];
 
 	const goToPrev = () => {
 		setMobileIndex((prev) => (prev - 1 + totalCount) % totalCount);
@@ -96,6 +97,10 @@ export default function ServicesTabs() {
 	const goToNext = () => {
 		setMobileIndex((prev) => (prev + 1) % totalCount);
 	};
+
+	/*** Animation Variants for just the TEXT ***/
+	// We will animate each text block with fadeUpVariants
+	const textVariants: Variants = fadeUpVariants; // you can also define custom ones
 
 	return (
 		<section className="max-w-7xl mx-auto px-6 md:px-20 py-16 rounded-[16px]">
@@ -112,39 +117,63 @@ export default function ServicesTabs() {
 				</p>
 			</div>
 
-			{/* =======================
-            MOBILE CAROUSEL (md:hidden)
-          ======================= */}
-			<div className="md:hidden bg-transparent  border-gray-400 rounded-2xl p-5">
-				{/* Each “slide” of the carousel shows icon + title + detailTitle + detailText */}
-				<div className="flex flex-col items-left gap-4 text-center">
-					<Image
-						src={mobileActive.icon}
-						alt={mobileActive.title}
-						width={64}
-						height={64}
-					/>
+			{/***
+			 * MOBILE CAROUSEL (md:hidden)
+			 * – No ‘slide’ animations on the container, just fade‐up for text
+			 ***/}
+			<div className="md:hidden bg-transparent border-gray-400 rounded-2xl p-5">
+				<div className="flex flex-col items-start gap-4 text-left">
+					{/* Icon is static (no animation) */}
+					<div className="flex items-center justify-left w-full">
+						<Image
+							src={mobileActive.icon}
+							alt={mobileActive.title}
+							width={64}
+							height={64}
+						/>
+					</div>
 
-					<h3 className="text-white text-left text-[18px] uppercase tracking-[1px]">
+					{/* Animate service.title */}
+					<motion.h3
+						key={mobileActive.id + "-title"}
+						variants={textVariants}
+						initial="hidden"
+						animate="visible"
+						transition={{ duration: 0.4 }}
+						className="text-white text-[18px] uppercase tracking-[1px]">
 						{mobileActive.title}
-					</h3>
+					</motion.h3>
 
-					<h4 className="text-lg text-left font-semibold text-white mb-2 ">
+					{/* Animate detailTitle */}
+					<motion.h4
+						key={mobileActive.id + "-detailTitle"}
+						variants={textVariants}
+						initial="hidden"
+						animate="visible"
+						transition={{ duration: 0.4, delay: 0.1 }}
+						className="text-lg font-semibold text-white mb-2">
 						{mobileActive.detailTitle}
-					</h4>
+					</motion.h4>
 
-					<p className="text-[16px] text-left leading-[24px] text-[#E0E0E0] ">
+					{/* Animate detailText */}
+					<motion.p
+						key={mobileActive.id + "-detailText"}
+						variants={textVariants}
+						initial="hidden"
+						animate="visible"
+						transition={{ duration: 0.4, delay: 0.2 }}
+						className="text-[16px] leading-[24px] text-[#E0E0E0]">
 						{mobileActive.detailText}
-					</p>
+					</motion.p>
 				</div>
 
-				{/* Navigation controls */}
+				{/* Navigation controls (Prev/Next) */}
 				<div className="mt-6 flex items-center justify-center gap-4">
 					<button
 						onClick={goToPrev}
 						className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 text-white hover:bg-gray-700"
 						aria-label="Previous">
-						<ArrowLeft size={26} /> {/* Replaced Image with Lucide icon */}
+						<ArrowLeft size={20} />
 					</button>
 
 					<span className="text-[14px]">
@@ -161,21 +190,16 @@ export default function ServicesTabs() {
 						onClick={goToNext}
 						className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 text-white hover:bg-gray-700"
 						aria-label="Next">
-						{/* simple right arrow */}
-						<Image
-							src="/right-white.svg"
-							alt="Next"
-							width={26}
-							height={26}
-							className="font-white text-white"
-						/>
+						<ArrowRight size={20} />
 					</button>
 				</div>
 			</div>
 
-			{/* =======================
-            DESKTOP TABS + DETAIL (hidden on small, shown from md+)
-          ======================= */}
+			{/***
+			 * DESKTOP TABS + DETAIL (hidden on small, shown from md+)
+			 * – Only TEXT (title + detailTitle + detailText) get fade‐up.
+			 * – The icon/image sits static, only the copy fades in/out.
+			 ***/}
 			<div className="hidden md:block bg-transparent border border-gray-400 rounded-2xl p-5">
 				{/* Tabs Row */}
 				<div className="overflow-x-auto rounded-[16px]">
@@ -201,7 +225,7 @@ export default function ServicesTabs() {
 											isActive
 												? `
                       bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
-                      border-[1px] 
+                      border-[1px]
                       border-transparent rounded-[12px]
                       [border-image-source:linear-gradient(180deg,#23D5D5_0%,#1EB2B2_100%)]
                       [border-image-slice:1]
@@ -229,41 +253,36 @@ export default function ServicesTabs() {
 
 				{/* Detail Panel */}
 				<div className="mt-6 p-6 grid grid-cols-1 lg:grid-cols-2 gap-6 px-16">
+					{/* LEFT: static image (no animation on the image itself) */}
+					<div className="flex justify-start">
+						<Image
+							src={active.detailImage}
+							alt={active.detailTitle}
+							width={350}
+							height={350}
+							className="rounded-[8px] object-contain"
+						/>
+					</div>
+
+					{/* RIGHT: animate only the text portion */}
 					<AnimatePresence mode="wait">
 						<motion.div
-							key={active.id}
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: -20 }}
+							key={active.id + "-textblock"}
+							variants={textVariants}
+							initial="hidden"
+							animate="visible"
+							exit="hidden"
 							transition={{ duration: 0.4 }}
-							className="flex justify-start">
-							<Image
-								src={active.detailImage}
-								alt={active.detailTitle}
-								width={350}
-								height={350}
-								className="rounded-[8px] object-contain"
-							/>
-						</motion.div>
-
-						<motion.div
-							key={active.id + "-text"}
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: -20 }}
-							transition={{ duration: 0.4 }}
-							className="flex">
-							<div className="flex flex-col gap-4">
-								<h4 className="text-md uppercase tracking-[1px] text-teal-400 mb-2">
-									{active.title}
-								</h4>
-								<h3 className="text-4xl font-semibold text-white mb-4">
-									{active.detailTitle}
-								</h3>
-								<p className="text-[18px] max-w-2xl leading-[28px] text-[#E0E0E0]">
-									{active.detailText}
-								</p>
-							</div>
+							className="flex flex-col gap-4">
+							<h4 className="text-md uppercase tracking-[1px] text-teal-400 mb-2">
+								{active.title}
+							</h4>
+							<h3 className="text-4xl font-semibold text-white mb-4">
+								{active.detailTitle}
+							</h3>
+							<p className="text-[18px] max-w-2xl leading-[28px] text-[#E0E0E0]">
+								{active.detailText}
+							</p>
 						</motion.div>
 					</AnimatePresence>
 				</div>
