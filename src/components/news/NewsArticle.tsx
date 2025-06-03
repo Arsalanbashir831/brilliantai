@@ -142,7 +142,7 @@ const NewsArticle: FC = () => {
                     <div className="flex space-x-4">
                         {shareLinks.map(({ Icon, href, label }) => (
                             <Link key={label} href={href} aria-label={`Share on ${label}`}>
-                                <Icon className="w-10 h-10 text-gray-400 border rounded-full p-2 font-white text-white hover:text-white transition-colors" />
+                                <Icon className="w-10 h-10 text-gray-400 border rounded-full p-2 font-white  hover:text-white transition-colors" />
                             </Link>
                         ))}
                     </div>

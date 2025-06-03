@@ -215,9 +215,10 @@ export default function ServicesTabs() {
                     flex-col
                     items-center
                     flex-shrink-0
+					justify-center
                     w-36
-                    h-40
-                    p-[32px]
+                    h-auto
+                    p-[10px]
                     m-1
                     gap-[10px]
                     rounded-[12px]

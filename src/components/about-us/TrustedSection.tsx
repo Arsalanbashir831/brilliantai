@@ -8,13 +8,13 @@ import { ShineBorder } from "../magicui/shine-border";
 export default function TrustedSection() {
 	return (
 		<section className="py-20">
-			<div className="max-w-7xl mx-auto md:px-8">
+			<div className="max-w-7xl mx-auto ">
 				{/* Relative wrapper to clip/position the background SVG */}
 				<div
 					style={{
 						boxShadow: "inset -20px 4px 120px -80px #1FBBBB",
 					}}
-					className="relative overflow-hidden md:rounded-2xl bg-[radial-gradient(circle,#4d4d4d00,#9797971A)]">
+					className="relative overflow-hidden md:rounded-2xl bg-[radial-gradient(circle,#166b6dad,#0cc9de47)]">
 					<ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
 
 					{/* Background SVG */}

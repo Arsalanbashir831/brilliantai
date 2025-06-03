@@ -115,7 +115,7 @@ const BlogList: FC = () => (
                     <div
                         className="
               /* On mobile: center the button under everything else */
-              flex justify-center 
+              flex justify-start 
               /* On desktop: shrink-to-fit and align right */
               md:justify-end md:w-auto
             "

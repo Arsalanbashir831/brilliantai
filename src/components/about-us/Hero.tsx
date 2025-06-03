@@ -8,8 +8,8 @@ export default function Hero() {
 		<section className="bg-[url('/startup/22.svg')] bg-center bg-no-repeat ">
 			{/* Hero overlay */}
 			<div className="">
-				<div className="max-w-4xl mx-auto pt-[77px] pb-11 md:px-6 md:pt-40 md:pb-20 text-center text-white">
-					<h1 className="text-3xl lg:text-7xl font-normal">
+				<div className="max-w-7xl mx-auto pt-[77px] pb-11 md:px-6 md:pt-40 md:pb-20 text-center text-white">
+					<h1 className="text-3xl md:text-[86px] font-normal">
 						Driving Innovation with Scalable AI Solutions.
 					</h1>
 				</div>

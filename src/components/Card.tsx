@@ -40,7 +40,7 @@ export default function Card({
         shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
         backdrop-blur-[30px]
         flex flex-col
-        py-8
+       md:py-8 py-6
         justify-between
         gap-y-2.5
         "

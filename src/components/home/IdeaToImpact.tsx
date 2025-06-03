@@ -30,8 +30,8 @@ const steps = [
 
 export default function IdeaToImpact() {
 	return (
-		<section className="py-20 px-[60] bg-[#011010] text-white ">
-			<div className="md:max-w-[1200px] mx-auto text-center">
+		<section className="py-20 px-[60] bg-[#011010] text-white  ">
+			<div className="md:max-w-full md:px-[200px] mx-auto text-center">
 				<h2 className=" text-3xl md:text-6xl  font-semibold mb-4">
 					From Idea To Impact
 				</h2>
@@ -43,7 +43,7 @@ export default function IdeaToImpact() {
 					</p>
 				</div>
 
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-left px-[40px]    ">
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-left px-[30px]    ">
 					{steps.map((step, index) => (
 						<div key={index} className="flex flex-col items-start">
 							{/* Give the icon a fixed 60px-tall wrapper so all titles “start” at the same height */}

@@ -45,7 +45,7 @@ const services = [
 
 export default function EndToEndTeam() {
 	return (
-		<section className="py-20 bg-[#011010] text-white px-2">
+		<section className="py-20 bg-[#011010] text-white ">
 			<div className="max-w-6xl mx-auto text-center mb-12">
 				<h2 className="text-4xl md:text-6xl font-semibold mb-4">
 					A Trusted End-To-End Team
@@ -58,7 +58,7 @@ export default function EndToEndTeam() {
 				</div>
 			</div>
 
-			<div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
+			<div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:px-[200px] px-[20px] mx-auto">
 				{services.map((service, idx) => (
 					<motion.div
 						key={idx}
@@ -104,7 +104,7 @@ export default function EndToEndTeam() {
 							<h3 className="text-[18px] font-semibold text-white leading-[28px] mb-[8px]">
 								{service.title}
 							</h3>
-							<p className="text-[14px] text-[#96CDCD] leading-[22px] mb-auto">
+							<p className="text-[17px] text-[#96CDCD] leading-[22px] mb-auto">
 								{service.description}
 							</p>
 							<div className="self-end mt-4 flex items-center gap-1 text-white/80 text-sm cursor-pointer">

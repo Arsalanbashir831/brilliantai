@@ -8,7 +8,7 @@ export default function OurPeopleSection() {
 			<div className="max-w-7xl mx-auto px-9 flex flex-col md:flex-row items-center gap-12">
 				{/* Text */}
 				<div className="md:w-1/2 space-y-6 text-white">
-					<h2 className="text-3xl md:text-6xl font-medium">Our People</h2>
+					<h2 className="text-3xl md:text-6xl font-bold">Our People</h2>
 					<p className="text-white text-sm md:text-xl font-normal leading-relaxed">
 						Brilliant AI is built by a global team of engineers, data
 						scientists, designers and product experts who care about doing

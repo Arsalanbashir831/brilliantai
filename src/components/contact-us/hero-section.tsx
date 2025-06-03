@@ -5,19 +5,19 @@ import BrilliantButton from "../widgets/BrilliantButtons";
 
 export default function HeroSection() {
 	return (
-		<section className="bg-[url('/contact-us/hero.svg')] bg-center bg-no-repeat w-full bg-cover px-20">
+		<section className="bg-[url('/contact-us/hero.svg')] bg-center bg-no-repeat w-full bg-cover px-20 ">
 			{/* Hero overlay */}
-			<div className="">
+			<div className="px-10">
 				<div className="pt-40 pb-10 text-white">
-					<h1 className="text-4xl sm:text-5xl lg:text-7xl font-medium">
+					<h1 className="text-4xl  lg:text-7xl font-bold">
 						Get In Touch With Us
 					</h1>
 				</div>
 			</div>
 
 			{/* Content + Stats */}
-			<div className="flex flex-col md:flex-row gap-12 pb-20">
-				<div className="text-white w-[70%] line-spacing-8">
+			<div className="flex flex-col md:flex-row gap-12 pb-20 md:px-10">
+				<div className="text-white w-[60%] text-xl line-spacing-8">
 					<div className="py-2">
 						If you are planning to build an AI product, implement machine
 						learning, automate business processes or explore strategic AI

@@ -16,7 +16,7 @@ export default function WhatWeOffer() {
 			description:
 				"Advanced chatbots and virtual agents designed to handle customer support, internal queries and dynamic interactions.",
 			imageSrcDesktop: "/home/conversational-ai1.svg",
-			imageSrcMobile: "/others/Bento_Mobile.svg",
+			imageSrcMobile: "/mobile/ai-mobile-conv.png",
 			imageObjectFit: "object-contain",
 		},
 		{
@@ -24,7 +24,7 @@ export default function WhatWeOffer() {
 			description:
 				"We automate your workflows to streamline repetitive tasks, enhance efficiency, save time, and eliminate errors.",
 			imageSrcDesktop: "/home/workflow-icons.svg",
-			imageSrcMobile: "/home/workflow-icons.svg",
+			imageSrcMobile: "/mobile/workflows-mobile.png",
 			imageObjectFit: "object-cover",
 		},
 		{
@@ -92,7 +92,7 @@ export default function WhatWeOffer() {
 				and real-world impact.
 			</p>
 
-			<div className=" m-auto px-5 md:px-28 space-y-6">
+			<div className=" m-auto px-5 md:px-54 space-y-6">
 				{" "}
 				{/*
 	 ideal px-[220px] 

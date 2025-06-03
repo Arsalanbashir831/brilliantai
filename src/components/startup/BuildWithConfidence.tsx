@@ -21,7 +21,7 @@ export default function BuildWithConfidence() {
           md:rounded-[16px] lg:rounded-[16px]
           pt-12
           pb-8
-          px-6 bg-teal-950
+          px-6 bg-[#011e1e]
           flex 
           flex-col 
           items-center 
@@ -42,7 +42,7 @@ export default function BuildWithConfidence() {
 
                 {/* Button */}
                 <div className="mt-6">
-                    <BrilliantButton variant="white">Talk to Our Team →</BrilliantButton>
+                    <BrilliantButton variant="white">Talk to Our Team </BrilliantButton>
                 </div>
 
                 {/* Teal divider line at bottom */}
@@ -54,7 +54,7 @@ export default function BuildWithConfidence() {
                 className="
           hidden sm:block
           relative
-          w-[1200px]
+          w-[1100px]
           h-[400px]
           bg-[linear-gradient(110.72deg,rgba(77,77,77,0.24)_1.21%,rgba(151,151,151,0.04)_100%)]
           rounded-[16px]
@@ -90,7 +90,7 @@ export default function BuildWithConfidence() {
                         </p>
                     </div>
 
-                    <BrilliantButton variant="white">Talk to Our Team →</BrilliantButton>
+                    <BrilliantButton variant="white">Talk to Our Team </BrilliantButton>
                 </div>
 
                 {/* Rainbow graphic (desktop) */}
@@ -100,7 +100,7 @@ export default function BuildWithConfidence() {
                     width={700.8}
                     height={300}
                     className="absolute top-[100px] left-[441.2px]"
-                    style={{ width: '700.8px', height: '300px' }}
+                    style={{ width: '670.8px', height: '300px' }}
                 />
             </div>
         </section>

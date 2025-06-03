@@ -10,14 +10,14 @@ const stats = [
 export default function StorySection() {
 	return (
 		<section className="pb-20">
-			<div className="max-w-7xl mx-auto md:px-20">
+			<div className="max-w-7xl mx-auto md:px-10">
 				<div className="flex flex-col md:flex-row gap-12">
 					{/* — Left text */}
 					<div className="md:w-3/5 space-y-6 text-white">
-						<h2 className="text-2xl md:text-[64px] font-medium leading-tight text-white text-center md:text-left">
+						<h2 className="text-2xl md:text-[64px] font-bold leading-tight text-white text-center md:text-left">
 							Numbers are telling our story
 						</h2>
-						<p className="text-white font-normal text-sm text-center px-10 md:pl-0 md:text-left md:text-2xl">
+						<p className="text-white font-normal text-sm text-center px-10 md:pl-0 md:text-left md:text-lg">
 							Brilliant AI is not an experimental lab or a prototype vendor. We
 							are a delivery-first AI partner, committed to building reliable,
 							measurable and scalable systems that perform in real operational

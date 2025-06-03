@@ -7,7 +7,7 @@ import { ShineBorder } from "../magicui/shine-border";
 
 export default function CTABuildReal() {
 	return (
-		<section className="relative w-full py-20 px-0 md:px-32  lg:px-32">
+		<section className="relative w-full py-20 px-0 md:px-50 lg:px-50">
 			{/* 
         On mobile (below sm), this container is full‐width (edge to edge of its parent Section),
         but we wrap it in px-4 so there’s 16px of breathing room on either side.
@@ -49,7 +49,7 @@ export default function CTABuildReal() {
 					{/* Button */}
 					<div className="mt-8">
 						<BrilliantButton variant="white">
-							Talk to Our Team →
+							Talk to Our Team
 						</BrilliantButton>
 					</div>
 				</div>

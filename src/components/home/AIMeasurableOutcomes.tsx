@@ -147,7 +147,7 @@ export default function AIMeasurableOutcomes() {
 	const isMobile = useMobile();
 
 	return (
-		<section className="bg-[#011010] text-white py-20  md:px-0 lg:px-20">
+		<section className="bg-[#011010] text-white py-20  md:px-0 lg:px-40">
 			{/* Header */}
 			<div className="max-w-8xl mx-auto text-center mb-12 px-6">
 				<h2

@@ -66,7 +66,7 @@ export default function AiFeaturesSection() {
 	return (
 		<section className="py-20">
 			<div className="max-w-7xl mx-auto">
-				<h2 className="text-3xl md:text-[64px] font-medium leading-tight text-white pl-12 mb-12">
+				<h2 className="text-3xl md:text-[64px] font-bold leading-tight text-white pl-12 mb-12">
 					Transforming Ideas into
 					<br />
 					AI-Powered Realities

@@ -8,7 +8,7 @@ export default function ComparisonCards() {
 	return (
 		<div className="px-4 sm:px-6 md:px-40 pb-32">
 			<div className="text-center mb-10">
-				<h2 className="text-5xl leading-normal text-white font-semibold">
+				<h2 className="md:text-5xl text-4xl leading-normal text-white font-semibold">
 					What Makes Us Different
 				</h2>
 				<p className="text-[18px] leading-[28px] text-[#E0E0E0] mt-2">

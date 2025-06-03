@@ -3,9 +3,11 @@
 
 import { FormEvent, useState } from 'react';
 import { ShineBorder } from '../magicui/shine-border';
+import useMobile from '@/hook/useMobile';
 
 export default function Newsletter() {
     const [email, setEmail] = useState('');
+    const isMobile = useMobile()
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -20,14 +22,17 @@ export default function Newsletter() {
         px-4 on mobile (16px each side), px-14 on ≥sm (56px each side). 
         That way the card never touches the very edge on phones, but still has plenty of gutter. 
       */}
-            <div className="relative w-full max-w-5xl">
+            <div className="relative w-full max-w-7xl">
                 <div
                     className="
-            relative w-full max-w-5xl bg-teal-950 bg-opacity-40 rounded-0 md:rounded-xl lg:rounded-xl p-14 text-center overflow-hidden
+            relative w-full max-w-7xl bg-teal-950 bg-opacity-40 rounded-0 md:rounded-xl lg:rounded-xl p-14 text-center overflow-hidden
           "
                 >
                     {/* 1) The shine border around the card */}
+                    {!isMobile && (<>
+                    
                     <ShineBorder shineColor={['#23D5D5', '#00FFFF']} />
+                    </>)}
 
                     {/* 2) Semi-transparent black overlay so text is always readable */}
                     <div className="absolute inset-0 bg-black/40 z-0 pointer-events-none" />
@@ -35,12 +40,12 @@ export default function Newsletter() {
                     {/* 3) Actual content (above overlay, z-10) */}
                     <div className="relative z-10 space-y-6 text-center">
                         {/* Heading */}
-                        <h2 className="text-2xl sm:text-3xl font-semibold text-white leading-tight">
+                        <h2 className=" text-xl md:text-2xl  font-semibold text-white leading-tight">
                             Stay Updated with Brilliant AI
                         </h2>
 
                         {/* Description */}
-                        <p className="text-[14px] sm:text-[16px] text-gray-300 mx-auto max-w-xs sm:max-w-xl">
+                        <p className="text-[17px] md:text-[14px] text-gray-300 mx-auto max-w-xs sm:max-w-xl">
                             Subscribe to our newsletter for the latest AI insights, product updates, and industry news
                             delivered straight to your inbox.
                         </p>

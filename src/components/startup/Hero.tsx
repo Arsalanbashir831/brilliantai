@@ -1,13 +1,15 @@
 // components/Hero.tsx
 "use client";
 
+import useMobile from "@/hook/useMobile";
 import React from "react";
 
 export default function Hero() {
+	const isMobile = useMobile()
 	return (
-		<section className="bg-[url('/startup/22.svg')] bg-center bg-cover">
+		<section className="bg-[url('/startup/22.svg')] bg-center bg-cover ">
 			{/* Single centered container for both rows */}
-			<div className="max-w-7xl mx-auto px-0  md:px-4 lg:px-4 sm:px-6 lg:px-20">
+			<div className="max-w-7xl mx-auto px-0  md:px-4  sm:px-6 lg:px-20">
 				{/* ------------------- HERO TEXT ------------------- */}
 				<div className="py-20 md:py-40 text-center">
 					<h1 className="text-4xl sm:text-5xl lg:text-7xl font-medium leading-tight text-white">
@@ -26,7 +28,7 @@ export default function Hero() {
 							Startups
 						</span>
 					</h1>
-					<p className="mt-4 text-md sm:text-lg max-w-3xl mx-auto text-white">
+					<p className="mt-4 text-lg md:text-md  px-3 md:px-0 max-w-3xl mx-auto text-white">
 						We help founders bring AI ideas to life. From focused MVPs to
 						complete, scalable platforms, we deliver intelligent systems built
 						for performance, speed and long-term growth.
@@ -34,11 +36,15 @@ export default function Hero() {
 				</div>
 
 				{/* ------------------- STATS / SECOND SECTION ------------------- */}
-				<div className="py-8 md:py-16">
+				<div className="py-10 ">
 					<div className="flex flex-col md:flex-row justify-center items-center gap-8">
 						{/* Left‐side Text (50% of the same parent container) */}
-						<div className="w-full md:w-1/2 space-y-4 px-4 text-white text-center md:text-left">
-							<h2 className="text-3xl md:text-4xl leading-snug font-semibold">
+						<div  className= {`${isMobile?
+						'w-full md:w-1/2 space-y-4 px-4 text-white text-center md:text-left bg-[radial-gradient(circle_300px_at_center,rgba(35,213,213,0.5),transparent)] '
+						:'w-full md:w-1/2 space-y-4 px-4 text-white text-center md:text-left'}
+    `}
+  >
+							<h2 className="text-3xl md:text-4xl leading-snug font-semibold my-5">
 								AI-Powered Solutions for Startup Success
 							</h2>
 							<p className="text-[#E0E0E0EE] text-lg">
@@ -54,7 +60,7 @@ export default function Hero() {
 								Our structured, results-driven approach ensures every product is
 								built for speed, quality, and long-term growth.
 							</p>
-							<p className="text-[#E0E0E0EE] text-lg">
+							<p className="text-[#E0E0E0EE] text-lg my-5">
 								Looking to validate an idea, accelerate development, or launch a
 								complete AI product? We’re ready when you are.
 							</p>
