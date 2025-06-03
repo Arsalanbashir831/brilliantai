@@ -55,6 +55,7 @@ const FutureTechSection: FC = () => {
     bg-teal-950/40
     backdrop-blur-xl
     border border-teal-200/10
+    shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)]
                             "
                         >
                             {/* Black overlay */}
@@ -92,6 +93,7 @@ const FutureTechSection: FC = () => {
                               relative overflow-hidden
                               p-6 rounded-lg
                                bg-teal-950/40
+                               shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)]
                             "
                         >
                             {/* Black overlay */}

@@ -37,7 +37,7 @@ export default function Card({
         overflow-hidden
         border border-white/10
         bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
-        shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
+       shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)]
         backdrop-blur-[30px]
         flex flex-col
        md:py-8 py-6

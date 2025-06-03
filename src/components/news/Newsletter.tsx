@@ -35,10 +35,10 @@ export default function Newsletter() {
                     </>)}
 
                     {/* 2) Semi-transparent black overlay so text is always readable */}
-                    <div className="absolute inset-0 bg-black/40 z-0 pointer-events-none" />
+                    <div className="absolute inset-0 bg-black/40 z-0 pointer-events-none shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)]" />
 
                     {/* 3) Actual content (above overlay, z-10) */}
-                    <div className="relative z-10 space-y-6 text-center">
+                    <div className="relative z-10 space-y-6 text-center ">
                         {/* Heading */}
                         <h2 className=" text-xl md:text-2xl  font-semibold text-white leading-tight">
                             Stay Updated with Brilliant AI

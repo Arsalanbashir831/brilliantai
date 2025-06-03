@@ -27,6 +27,7 @@ export default function BuildWithConfidence() {
           items-center 
           text-center 
           relative
+          shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)]
         "
             >
                 {/* Heading */}

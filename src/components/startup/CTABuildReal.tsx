@@ -4,8 +4,10 @@
 import React from "react";
 import BrilliantButton from "../widgets/BrilliantButtons";
 import { ShineBorder } from "../magicui/shine-border";
+import useMobile from "@/hook/useMobile";
 
 export default function CTABuildReal() {
+	const isMobile = useMobile()
 	return (
 		<section className="relative w-full py-20 px-0 md:px-50 lg:px-50">
 			{/* 
@@ -23,11 +25,14 @@ export default function CTABuildReal() {
             rounded-0          
             md:rounded-[16px]  lg:rounded-[16px]
           bg-[linear-gradient(111deg,rgba(77,77,77,0.24)_1.21%,rgba(151,151,151,0.04)_100%)]
-          shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
+        shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)]
           backdrop-blur-[15px]
         ">
 				{/* The “shine” border effect */}
+				{!isMobile && (<>
+				
 				<ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
+				</>)}
 
 				{/* 
           Content wrapper: 
