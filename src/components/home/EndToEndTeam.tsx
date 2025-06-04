@@ -1,7 +1,7 @@
 // components/EndToEndTeam.tsx
 import { zoomVariants } from "@/effects/Effects";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+// import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 const services = [
@@ -107,10 +107,10 @@ export default function EndToEndTeam() {
 							<p className="text-[17px] text-[#96CDCD] leading-[22px] mb-auto">
 								{service.description}
 							</p>
-							<div className="self-end mt-4 flex items-center gap-1 text-white/80 text-sm cursor-pointer">
+							{/* <div className="self-end mt-4 flex items-center gap-1 text-white/80 text-sm cursor-pointer">
 								Show more
 								<ChevronDown className="w-4 h-4" />
-							</div>
+							</div> */}
 						</div>
 					</motion.div>
 				))}

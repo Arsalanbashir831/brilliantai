@@ -28,12 +28,12 @@ const trustItems = [
 export function TrustSection() {
   return (
     <section className="px-6 py-16">
-      <div className="max-w-7xl mx-auto">
+      <div className="md:max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-6xl font-bold text-white mb-4">
+          <h2 className="md:text-6xl text-4xl md:font-bold font-light text-white mb-4">
             Why Clients Trust Us
           </h2>
-          <p className="text-gray-400 text-lg">Discover What Makes Us Different</p>
+          <p className="text-white text-lg">Discover What Makes Us Different</p>
         </div>
 
         {/* 
@@ -46,7 +46,7 @@ export function TrustSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-8">
           {trustItems.map((item, idx) => {
             // On medium screens, let the center (idx === 1) span 2 rows:
-            const rowSpanClass = idx === 1 ? "md:row-span-2 pt-20" : "";
+            const rowSpanClass = idx === 1 ? "md:row-span-2 md:pt-20" : "";
 
             return (
               <div key={idx} className={`p-[2px] rounded-2xl transition-shadow ${rowSpanClass}`}>
@@ -55,6 +55,7 @@ export function TrustSection() {
                     bg-transparent backdrop-blur-md 
                     rounded-[inherit] flex flex-col items-center text-center space-y-4 p-3 
                     border border-teal-900
+			
                   `}
                 >
                   <Image
@@ -66,10 +67,10 @@ export function TrustSection() {
                   />
 
                   <div
-                    style={{
-                      backgroundImage: "radial-gradient(circle at center, #004D53, #000E0E)",
-                    }}
-                    className="p-8 rounded-2xl backdrop-blur-lg space-y-2 w-full"
+                    // style={{
+                    //   backgroundImage: "radial-gradient(circle at center, #004D53, #000E0E)",
+                    // }}
+                    className="p-8 rounded-2xl backdrop-blur-lg space-y-2 w-full shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)]"
                   >
                     <h3 className="text-xl font-semibold text-white">{item.title}</h3>
                     <p className="text-gray-300 text-sm">{item.description}</p>

@@ -2,14 +2,23 @@
 
 import React from "react";
 import BrilliantButton from "../widgets/BrilliantButtons";
+import useMobile from "@/hook/useMobile";
 
 export default function HeroSection() {
+	const isMobile = useMobile()
 	return (
-		<section className="bg-[url('/contact-us/hero.svg')] bg-center bg-no-repeat w-full bg-cover px-20 ">
+		<section style={
+			isMobile
+			  ? {
+				  backgroundPositionX: "-745px",
+				  backgroundPositionY: "0px",
+				}
+			  : {}
+		  }className="bg-[url('/contact-us/hero.svg')] bg-center bg-no-repeat w-full bg-cover  ">
 			{/* Hero overlay */}
-			<div className="px-10">
-				<div className="pt-40 pb-10 text-white">
-					<h1 className="text-4xl  lg:text-7xl font-bold">
+			<div className="md:px-20 px-7">
+				<div className=" pt-10 md:pt-40 pb-10 text-white">
+					<h1 className=" text-4xl md:text-4xl  text-center md:text-left lg:text-7xl md:font-bold font-light ">
 						Get In Touch With Us
 					</h1>
 				</div>
@@ -17,7 +26,7 @@ export default function HeroSection() {
 
 			{/* Content + Stats */}
 			<div className="flex flex-col md:flex-row gap-12 pb-20 md:px-10">
-				<div className="text-white w-[60%] text-xl line-spacing-8">
+				<div className="text-white md:w-[60%] px-10 md:text-xl text-md line-spacing-8">
 					<div className="py-2">
 						If you are planning to build an AI product, implement machine
 						learning, automate business processes or explore strategic AI

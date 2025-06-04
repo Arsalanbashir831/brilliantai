@@ -223,6 +223,7 @@ export default function ServicesTabs() {
                     gap-[10px]
                     rounded-[12px]
 					shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)
+					cursor-pointer
                     ${
 											isActive
 												? `

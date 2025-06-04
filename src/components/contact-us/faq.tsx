@@ -38,10 +38,10 @@ export default function FAQ() {
 	return (
 		<section className="bg-[#000E0F] py-20">
 			<div className="max-w-3xl mx-auto px-6">
-				<h2 className="text-[40px] font-semibold text-white text-center">
+				<h2 className="md:text-[40px] text-3xl font-semibold text-white text-center">
 					Frequently asked questions
 				</h2>
-				<p className="mt-2 text-[18px] leading-[28px] text-[#E0E0E0] text-center">
+				<p className="mt-2 md:text-[18px] text-xl leading-[28px] text-[#E0E0E0] text-center">
 					Everything you need to know about the Brilliant Ai
 				</p>
 
@@ -54,7 +54,7 @@ export default function FAQ() {
 									type="button"
 									onClick={() => setOpenIndex(isOpen ? null : idx)}
 									className="flex items-center justify-between w-full py-4">
-									<span className="text-[20px] leading-[28px] font-medium text-white">
+									<span className="text-[20px] text-left md:text-center  leading-[28px] font-medium text-white">
 										{item.question}
 									</span>
 									{isOpen ? (

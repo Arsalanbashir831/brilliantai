@@ -12,7 +12,7 @@ export function StatsSection() {
 			<div className="max-w-7xl mx-auto">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 					<div>
-						<h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+						<h2 className="text-3xl md:text-5xl md:font-bold font-light text-white mb-6">
 							Empowering Innovation
 						</h2>
 						<p className="text-gray-300 text-lg leading-relaxed">
@@ -21,7 +21,7 @@ export function StatsSection() {
 							life with clarity and execution.
 						</p>
 					</div>
-					<div className="md:w-3/5 flex justify-center justify-self-end">
+					<div className="md:w-3/5 flex justify-center justify-self-end w-full">
 						<div
 							className="
 																				relative

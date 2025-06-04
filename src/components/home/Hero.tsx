@@ -1,13 +1,13 @@
 // components/Hero.tsx
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence, MotionProps } from "framer-motion";
+// import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import BrilliantButton from "../widgets/BrilliantButtons";
 import useMobile from "@/hook/useMobile";
 
 // Array of keywords to loop through
-const LOOP_WORDS = ["Transformative", "Unstoppable", "Limitless"];
+// const LOOP_WORDS = ["Transformative", "Unstoppable", "Limitless"];
 
 // Corresponding widths for each keyword
 // const WIDTHS: Record<string, string> = {
@@ -27,25 +27,25 @@ const gradientTextStyle: React.CSSProperties = {
 	animation: "gradientShift 3s ease infinite",
 };
 
-const rotateMotionProps: MotionProps = {
-	initial: { opacity: 0, y: -50 },
-	animate: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: 50 },
-	transition: { duration: 0.25, ease: "easeOut" },
-};
+// const rotateMotionProps: MotionProps = {
+// 	initial: { opacity: 0, y: -50 },
+// 	animate: { opacity: 1, y: 0 },
+// 	exit: { opacity: 0, y: 50 },
+// 	transition: { duration: 0.25, ease: "easeOut" },
+// };
 
 export default function Hero() {
-	const [currentIndex, setCurrentIndex] = useState(0);
+	// const [currentIndex, setCurrentIndex] = useState(0);
 	const isMobile = useMobile();
 	// Cycle through words every 2 seconds
-	useEffect(() => {
-		const id = setInterval(() => {
-			setCurrentIndex((prev) => (prev + 1) % LOOP_WORDS.length);
-		}, 2000);
-		return () => clearInterval(id);
-	}, []);
+	// useEffect(() => {
+	// 	const id = setInterval(() => {
+	// 		setCurrentIndex((prev) => (prev + 1) % LOOP_WORDS.length);
+	// 	}, 2000);
+	// 	return () => clearInterval(id);
+	// }, []);
 
-	const currentWord = LOOP_WORDS[currentIndex];
+	// const currentWord = LOOP_WORDS[currentIndex];
 	// const containerWidth = WIDTHS[currentWord];
 	return (
 		<>
@@ -106,7 +106,7 @@ export default function Hero() {
 					{/* Looping word + “AI” (animated together) */}
 					<div className="flex items-center justify-center w-full m-auto mb-8">
 						<h1 className="inline-flex items-center text-[35px] font-light text-white leading-tight md:text-5xl lg:text-6xl xl:text-[86px]">
-							<AnimatePresence mode="wait">
+							{/* <AnimatePresence mode="wait">
 								<motion.span
 									key={currentWord}
 									style={gradientTextStyle}
@@ -114,17 +114,18 @@ export default function Hero() {
 									className="block whitespace-nowrap">
 									{currentWord}
 								</motion.span>
-							</AnimatePresence>
+							</AnimatePresence> */}
 
 							{/* “AI” in plain white, animates in sync */}
-							<AnimatePresence mode="wait">
+							{/* <AnimatePresence mode="wait">
 								<motion.span
 									key={`${currentWord}-AI`}
 									{...rotateMotionProps}
 									className="ml-3 inline-flex items-center text-3xl font-light text-white leading-tight md:text-5xl lg:text-6xl xl:text-7xl">
 									AI
 								</motion.span>
-							</AnimatePresence>
+							</AnimatePresence> */}
+              <span style={gradientTextStyle}>Transformative</span>  <span className="px-2">AI</span>
 						</h1>
 					</div>
 

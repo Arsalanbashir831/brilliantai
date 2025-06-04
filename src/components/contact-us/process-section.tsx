@@ -72,10 +72,10 @@ const processSteps: ProcessStep[] = [
 export function ProcessSection() {
   return (
     <section className="px-3 py-16">
-      <div className="max-w-7xl mx-auto">
+      <div className="md:max-w-full mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-6xl font-bold text-white mb-4">
+        <div className="text-center mb-12 px-5 md:px-0 ">
+          <h2 className="text-[32px]   md:text-6xl md:font-bold font-light text-white mb-4 md:tracking-[0.07em]">
             What To Expect After You Hit Submit!
           </h2>
           <p className="text-gray-300 text-lg">
@@ -86,23 +86,23 @@ export function ProcessSection() {
         {/* Timeline container */}
         <div className="relative">
           {/* Continuous vertical dashed line behind the steps */}
-          <div className="absolute left-[45px] top-[14px] bottom-[14px] border-l-2 border-dashed border-cyan-500 z-0 h-[700px]" />
+          <div className="absolute hidden md:block left-[140px] top-[14px] bottom-[14px] border-l-2 border-dashed border-cyan-500 z-0 h-[700px]" />
 
           {/* Steps and content */}
-          <div className="relative space-y-10 z-10">
+          <div className="relative space-y-10 z-10 md:px-25 px-5">
             {processSteps.map((process, index) => (
-              <div key={index} className="flex items-start">
+              <div key={index} className="flex flex-col md:flex-row items-start gap-5">
                 {/* Step pill */}
-                <div className="w-[90px] flex-shrink-0 text-center">
-                  <div className="bg-gray-900 border border-cyan-500 px-3 py-1 rounded-full text-sm font-medium mx-auto">
-                    <span className="text-transparent text-xl bg-clip-text bg-gradient-to-r from-cyan-400 to-green-500">
+                <div className="w-[150px] md:w-[90px] flex-shrink-0 text-center">
+                  <div className="bg-gray-900 border border-cyan-500 p-5 md:px-3 md:py-1 md:rounded-full rounded-xl text-sm font-medium mx-auto ">
+                    <span className="text-transparent text-xl font-bold md:font-light bg-clip-text bg-gradient-to-r from-cyan-400 to-green-500 ">
                       {process.step}
                     </span>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="ml-6 flex-1">
+                <div className="md:ml-6  flex-1">
                   <h3 className="text-xl font-semibold text-white mb-4">
                     {process.title}
                   </h3>
@@ -114,7 +114,7 @@ export function ProcessSection() {
                         return (
                           <li key={itemIndex} className="flex items-start ml-3">
                             <CheckCircle2 className="w-4 h-4 fill-cyan-400 text-black mt-1 mr-2 flex-shrink-0" />
-                            <span className="text-gray-300 text-sm">{item}</span>
+                            <span className="text-gray-300 text-md md:text-sm">{item}</span>
                           </li>
                         );
                       }
@@ -125,7 +125,7 @@ export function ProcessSection() {
                           {/* Main line with a check bullet */}
                           <div className="flex items-start">
                             <CheckCircle2 className="w-4 h-4 fill-cyan-400 text-black mt-1 mr-2 flex-shrink-0" />
-                            <span className="text-gray-300 text-sm">{item.text}</span>
+                            <span className="text-gray-300 text-md md:text-sm">{item.text}</span>
                           </div>
 
                           {/* Nested bullet list */}

@@ -32,7 +32,7 @@ export function ContactForm() {
     <section className="px-6 py-16">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-5xl md:font-bold font-light text-white mb-4">
             Start The Conversation
           </h2>
           <p className="text-gray-300 text-lg">
@@ -44,16 +44,20 @@ export function ContactForm() {
 
         <Card
           className="
-            relative
-          bg-[radial-gradient(circle_at_center,#004D53,#000E0E)]
-            backdrop-blur-lg
-            border border-teal-500/30
+       relative
+         bg-[radial-gradient(circle_at_center,rgba(35,213,213,0.6)_0%,rgba(35,213,213,0.1)_0%,rgba(35,213,213,0.04)_100%)]
+            bg-opacity-10
+            /* — Backdrop blur: 30px (matches “Background blur: Blur 30” in Figma) */
+            backdrop-blur-[30px]
+            border-[1px]
+            border-[linear-gradient(90deg,rgba(128,128,128,1)_0%,rgba(35,213,213,1)_50%,rgba(35,213,213,0.1)_60%,rgba(128,128,128,0.85)_100%)]
+            /* — Rounded corners: 16px (you had rounded-2xl) */
             rounded-2xl
-            shadow-lg
+            shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
           "
         >
-          <CardContent className="p-8">
-            <form className="space-y-6">
+<CardContent className="p-8">
+  <form  className="space-y-6">
               {/* Name Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -64,6 +68,7 @@ export function ContactForm() {
                     First Name
                   </Label>
                   <Input
+		
                     id="firstName"
                     placeholder="David"
                     className="bg-transparent border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12"
@@ -135,16 +140,16 @@ export function ContactForm() {
                     Preferred Contact Method
                   </Label>
                   <Select>
-                    <SelectTrigger className="bg-transparent w-full border-slate-600 backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12 flex items-center">
+                    <SelectTrigger className="bg-transparent w-full border-slate-600  backdrop-blur-lg text-white placeholder:text-gray-400 rounded-lg h-12 py-6 flex items-center">
                       <SelectValue
                         placeholder="Select an option..."
                         className="text-gray-400"
                       />
                     </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-slate-600">
+                    <SelectContent className="bg-teal-900 border-slate-600">
                       <SelectItem
                         value="email"
-                        className="text-white hover:bg-slate-600"
+                        className="text-white hover:bg-teal-900"
                       >
                         Email
                       </SelectItem>
@@ -156,7 +161,7 @@ export function ContactForm() {
                       </SelectItem>
                       <SelectItem
                         value="both"
-                        className="text-white hover:bg-slate-600"
+                        className="text-white hover:bg-teal-600"
                       >
                         Both
                       </SelectItem>

@@ -2,7 +2,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+// import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ShineBorder } from "../magicui/shine-border";
 
 const features = [
@@ -37,35 +37,35 @@ export default function AiFeaturesSection() {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // On mount: scroll so the 3rd card sits half-visible (as before)
+    // On mount (mobile only), scroll so the 3rd card sits half-visible
     const slider = sliderRef.current;
     if (!slider) return;
     const card = slider.querySelector<HTMLDivElement>(".feature-card");
     if (!card) return;
 
-    const cardWidth = card.clientWidth + 16; // include gap (16px)
+    const cardWidth = card.clientWidth + 16; // including 16px gap
     const maxScroll = slider.scrollWidth - slider.clientWidth;
     // center the last card
     slider.scrollLeft = Math.max(0, maxScroll - cardWidth / 2);
   }, []);
 
-  function scrollByCard(dir: "left" | "right") {
-    const slider = sliderRef.current;
-    if (!slider) return;
-    const card = slider.querySelector<HTMLDivElement>(".feature-card");
-    if (!card) return;
+//   function scrollByCard(dir: "left" | "right") {
+//     const slider = sliderRef.current;
+//     if (!slider) return;
+//     const card = slider.querySelector<HTMLDivElement>(".feature-card");
+//     if (!card) return;
 
-    const gap = 16; // Tailwind’s gap-4 = 1rem = 16px
-    const step = card.clientWidth + gap;
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
+//     const gap = 16; // Tailwind’s gap-4 = 16px
+//     const step = card.clientWidth + gap;
+//     const maxScroll = slider.scrollWidth - slider.clientWidth;
 
-    let next = slider.scrollLeft + (dir === "left" ? -step : step);
-    next = Math.max(0, Math.min(maxScroll, next));
-    slider.scrollTo({ left: next, behavior: "smooth" });
-  }
+//     let next = slider.scrollLeft + (dir === "left" ? -step : step);
+//     next = Math.max(0, Math.min(maxScroll, next));
+//     slider.scrollTo({ left: next, behavior: "smooth" });
+//   }
 
   return (
-    <section className="py-20">
+    <section className="py-20 md:mb-15">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-[64px] font-bold leading-tight text-white pl-12 mb-12">
           Transforming Ideas into
@@ -73,19 +73,16 @@ export default function AiFeaturesSection() {
           AI-Powered Realities
         </h2>
 
-        <div className="relative">
-          {/* Slider container: on mobile, overflow-x-auto + snap; on desktop, overflow-hidden */}
+        {/* ─────────────── MOBILE SLIDER (shown below md) ─────────────── */}
+        <div className="md:hidden">
           <div
             ref={sliderRef}
             className="
-              flex
-              gap-4
-              pl-4 md:pl-40
-              overflow-x-auto md:overflow-hidden
+              flex gap-4 pl-4
+              overflow-x-auto
               scroll-smooth
-  hide-scrollbar
-              /* Enable scroll snapping on mobile (all sizes, but only necessary for mobile) */
               snap-x snap-mandatory
+              hide-scrollbar
             "
           >
             {features.map(({ title, text }, idx) => (
@@ -98,14 +95,8 @@ export default function AiFeaturesSection() {
                   feature-card
                   relative
                   flex-shrink-0
-
-                  /* On mobile: card is ~90% width, so swipe shows one card at a time */
-                  w-[90%] sm:w-[400px]
-
-                  /* On desktop: you can see multiple cards in a row */
-                  md:w-[400px]
-
-                  snap-center      /* ensure each card snaps to center */
+                  w-[90%]
+                  snap-center
                   rounded-2xl
                   bg-[radial-gradient(circle,#4d4d4d00,#9797971A)]
                   p-6
@@ -113,17 +104,12 @@ export default function AiFeaturesSection() {
                 "
               >
                 <ShineBorder
-                  shineColor={[
-                    "#808080",
-                    "#23D5D5",
-                    "#23D5D51A",
-                    "#808080D9",
-                  ]}
+                  shineColor={["#808080", "#23D5D5", "#23D5D51A", "#808080D9"]}
                 />
                 {/* subtle overlay */}
                 <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
-                <h3 className="relative z-10 text-xl md:text-2xl font-normal text-white mb-4">
+                <h3 className="relative z-10 text-xl font-normal text-white mb-4">
                   {title}
                 </h3>
                 <p className="relative z-10 text-[#96CDCD] text-sm">{text}</p>
@@ -131,31 +117,59 @@ export default function AiFeaturesSection() {
             ))}
           </div>
 
-          {/* Desktop‐only arrows: hidden on mobile */}
-          <div className="hidden md:flex justify-end gap-4 p-16">
+          {/* Only show arrows on mobile if desired (optional) */}
+          {/* 
+          <div className="flex justify-end gap-4 p-4">
             <button
               onClick={() => scrollByCard("left")}
               className="
-                w-12 h-12
-                flex items-center justify-center
-                rounded-full
-                bg-[linear-gradient(0deg,rgba(35,213,213,0.15),rgba(35,213,213,0.15)),radial-gradient(87.24%_82.94%_at_112.61%_5.18%,rgba(255,255,255,0.6)_0%,rgba(255,255,255,0)_100%)]
+                w-10 h-10 flex items-center justify-center
+                rounded-full bg-[rgba(35,213,213,0.15)]
               "
             >
-              <ChevronLeft className="w-6 h-6 text-[#23D5D5]" />
+              <ChevronLeft className="w-5 h-5 text-[#23D5D5]" />
             </button>
             <button
               onClick={() => scrollByCard("right")}
               className="
-                w-12 h-12
-                flex items-center justify-center
-                rounded-full
-                bg-[linear-gradient(0deg,rgba(35,213,213,0.15),rgba(35,213,213,0.15)),radial-gradient(87.24%_82.94%_at_112.61%_5.18%,rgba(255,255,255,0.6)_0%,rgba(255,255,255,0)_100%)]
+                w-10 h-10 flex items-center justify-center
+                rounded-full bg-[rgba(35,213,213,0.15)]
               "
             >
-              <ChevronRight className="w-6 h-6 text-[#23D5D5]" />
+              <ChevronRight className="w-5 h-5 text-[#23D5D5]" />
             </button>
           </div>
+          */}
+        </div>
+
+        {/* ─────────────── DESKTOP GRID (shown at md and up) ─────────────── */}
+        <div className="hidden md:grid md:grid-cols-3 md:gap-6 px-12">
+          {features.map(({ title, text }, idx) => (
+            <div
+              key={idx}
+              style={{
+                boxShadow: "inset -20px 4px 120px -80px #1FBBBB",
+              }}
+              className="
+                relative
+                rounded-2xl
+                bg-[radial-gradient(circle,#4d4d4d00,#9797971A)]
+                p-6
+                shadow-lg
+              "
+            >
+              <ShineBorder
+                shineColor={["#808080", "#23D5D5", "#23D5D51A", "#808080D9"]}
+              />
+              {/* subtle overlay */}
+              <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+
+              <h3 className="relative z-10 text-2xl font-normal text-white mb-4">
+                {title}
+              </h3>
+              <p className="relative z-10 text-[#96CDCD] text-sm">{text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
