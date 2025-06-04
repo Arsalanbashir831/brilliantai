@@ -1,27 +1,38 @@
 "use client";
 
+import useMobile from "@/hook/useMobile";
 import Image from "next/image";
 import { FC } from "react";
 
 const FutureTechSection: FC = () => {
+    const isMobile = useMobile()
     return (
         <section className="py-16">
-            <div className="max-w-6xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-0">
                 {/* — Hero Block — */}
                 <div className="flex flex-col md:flex-row items-center md:items-start mb-12">
-                    <div className="flex-shrink-0">
+                    <div className="flex-shrink-0 flex justify-start items-center w-[100%] md:w-auto px-4">
                         <Image
                             src="/news/logo.svg"
                             alt="Company Logo"
-                            width={150}
-                            height={150}
-                            className="w-40 h-40"
+                            width={50}
+                            height={50}
+                            className="md:w-40 md:h-40 w-10 h-10"
                         />
-                    </div>
-                    <div className="mt-6 md:mt-0 md:ml-6 text-center md:text-left">
+                       {isMobile && (<>
                         <p className="text-[#23D5D5] uppercase text-sm md:text-base font-medium">
                             Learn, Connect, and Innovate
                         </p>
+                       </>)}
+                   
+                    </div>
+                    <div className="mt-6 md:mt-0 md:ml-6 text-left px-4">
+                      {!isMobile &&(<>
+                        <p className="text-[#23D5D5] uppercase text-sm md:text-base font-medium">
+                            Learn, Connect, and Innovate
+                        </p>
+                      </>)}
+                      
                         <h2 className="mt-2 text-3xl md:text-4xl font-semibold text-white leading-tight">
                             Be Part of the Future Tech Revolution
                         </h2>
@@ -34,14 +45,17 @@ const FutureTechSection: FC = () => {
                 </div>
 
                 {/* — Resources Panel — */}
-                <div className="border border-[#262626] rounded-xl p-6">
+                <div className="border border-[#262626] rounded-xl p-6 mx-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 m-4">
                         {/* Card 1 */}
                         <div
                             className="
-                              relative overflow-hidden
-                              p-6 rounded-lg
-                             bg-teal-950
+                             relative overflow-hidden
+    p-6 rounded-lg
+    bg-teal-950/40
+    backdrop-blur-xl
+    border border-teal-200/10
+    shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)]
                             "
                         >
                             {/* Black overlay */}
@@ -78,7 +92,8 @@ const FutureTechSection: FC = () => {
                             className="
                               relative overflow-hidden
                               p-6 rounded-lg
-                              bg-teal-950
+                               bg-teal-950/40
+                               shadow-[inset_-20px_4px_120px_-80px_rgb(31,187,187)]
                             "
                         >
                             {/* Black overlay */}

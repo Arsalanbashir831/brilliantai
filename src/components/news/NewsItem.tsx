@@ -64,7 +64,7 @@ export default function NewsItem() {
         py-16 
         flex flex-col md:flex-row gap-8 
         mb-12 
-        px-4 sm:px-20
+        px-0
       ">
                 {/* Image – full width on mobile, half on desktop */}
                 <div className="relative w-full md:w-1/2 h-64 sm:h-80 rounded-lg overflow-hidden">
@@ -85,7 +85,7 @@ export default function NewsItem() {
                         {featured.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-4 mb-6 text-white">
+                    <div className="flex flex-wrap gap-4 mb-6  text-white">
                         <div>
                             <span className="text-sm text-gray-400 font-semibold block">Category</span>
                             <span className="text-sm">{featured.category}</span>
@@ -100,8 +100,8 @@ export default function NewsItem() {
                         </div>
                     </div>
 
-                    <div className="flex justify-end">
-                        <Button className="border bg-[#141414] border-[#262626]">
+                    <div className="md:flex md:justify-end ">
+                        <Button className="border  w-full p-5 md:p-0 md:w-auto  bg-[#141414] border-[#262626]">
                             <a href={featured.link} className="flex items-center">
                                 Read More
                                 <ArrowRight className="ml-2 w-4 h-4 text-[#23D5D5] -rotate-45" />
@@ -114,7 +114,7 @@ export default function NewsItem() {
             {/* ====================
           Grid of Other Articles
           ==================== */}
-            <div className="pt-12 px-0 md:px-12 lg:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="pt-12 px-0   grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {others.map(item => (
                     <div key={item.id} className="flex flex-col rounded-lg overflow-hidden">
                         <div className="relative h-62 md:h-40 lg:h-40 w-full">
@@ -130,8 +130,8 @@ export default function NewsItem() {
                                 <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
                                 <p className="text-sm text-gray-400 mb-4">{item.category}</p>
                             </div>
-                            <div className="w-full flex justify-end">
-                                <Button className="border bg-[#141414] border-[#262626] w-40">
+                            <div className="w-full md:flex md:justify-end">
+                                <Button className="border bg-[#141414] border-[#262626] w-full md:w-40">
                                     <a href={item.link} className="flex items-center justify-center">
                                         Read More
                                         <ArrowRight className="ml-2 w-4 h-4 text-[#23D5D5] -rotate-45" />

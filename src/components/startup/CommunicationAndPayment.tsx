@@ -10,12 +10,12 @@ export default function CommunicationAndPayment() {
             className="
         max-w-screen-xl    /* cap the total width */
         mx-auto             /* center it */
-        px-4 sm:px-6 lg:px-40 /* responsive horizontal padding */
+       md:px-22 px-6  /* responsive horizontal padding */
         py-20
       "
         >
             {/* Row 1 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-between">
                 {/* Text */}
                 <div className="space-y-4">
                     <p className="text-md uppercase text-white font-normal">
@@ -42,7 +42,7 @@ export default function CommunicationAndPayment() {
                 </div>
 
                 {/* Icon */}
-                <div className="flex justify-center md:justify-end hidden md:block">
+                <div className="md:flex justify-center md:justify-end hidden ">
                     <Image
                         src="/startup/lightning.svg"
                         alt="Lightning"
@@ -56,7 +56,7 @@ export default function CommunicationAndPayment() {
             {/* Row 2 */}
             <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                 {/* Icon */}
-                <div className="flex justify-center md:justify-start hidden md:block">
+                <div className="md:flex justify-center md:justify-start hidden ">
                     <Image
                         src="/startup/Coins.svg"
                         alt="Coins"

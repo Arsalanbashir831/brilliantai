@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 
 const stats = [
 	{ value: "130+", label: "AI solutions delivered" },
@@ -11,14 +10,14 @@ const stats = [
 export default function StorySection() {
 	return (
 		<section className="pb-20">
-			<div className="max-w-7xl mx-auto px-6">
+			<div className="max-w-7xl mx-auto md:px-10">
 				<div className="flex flex-col md:flex-row gap-12">
 					{/* — Left text */}
-					<div className="md:w-3/5 space-y-6 pl-20 text-white">
-						<h2 className="text-4xl md:text-5xl font-semibold">
+					<div className="md:w-3/5 space-y-6 text-white">
+						<h2 className="text-2xl md:text-[64px] font-bold leading-tight text-white text-center md:text-left">
 							Numbers are telling our story
 						</h2>
-						<p className="text-gray-300 w-4/5">
+						<p className="text-white font-normal text-sm text-center px-10 md:pl-0 md:text-left md:text-lg">
 							Brilliant AI is not an experimental lab or a prototype vendor. We
 							are a delivery-first AI partner, committed to building reliable,
 							measurable and scalable systems that perform in real operational
@@ -27,31 +26,31 @@ export default function StorySection() {
 					</div>
 
 					{/* — Right stats panel */}
-					<div className="md:w-3/5 flex justify-center">
+					<div className="md:w-2/5 flex justify-center relative">
 						<div
 							className="
-                            relative
-                            w-full md:max-w-sm       
-                            flex flex-col
-                            rounded-[10px]
-                            overflow-hidden
-                        ">
+																				
+																				w-full md:max-w-[425px]       
+																				flex flex-col
+																				rounded-[10px]
+																				
+																		">
 							{/* SVG gradient behind the panel */}
-							<Image
+							<div className="absolute right-0 -top-28 md:right-10 md:top-10 bg-gradient-to-r from-[#23D5D5] to-[#1EB2B2] blur-[100px] w-76 h-76 md:w-96 md:h-96 rounded-full z-[-10]" />
+							{/* <Image
 								src="/about/story.svg"
 								alt=""
-								fill
-								className="absolute inset-0 object-cover"
-							/>
+								width={1200}
+								height={1200}
+								className="absolute -right-10 top-0"
+							/> */}
 
 							{/* semi-opaque overlay for contrast */}
 							<div className="absolute inset-0 bg-black/70" />
-
-							{/* stats content */}
-							<div className="relative z-10 flex flex-col">
+							<div className="relative z-10 flex flex-col w-full">
 								{stats.map((stat, idx) => (
-									<div key={stat.value}>
-										<div className="px-6 py-3 flex flex-col">
+									<div key={stat.value} className="w-full">
+										<div className="px-10 py-5 flex flex-col">
 											<span className="text-5xl font-normal text-white">
 												{stat.value}
 											</span>
@@ -60,7 +59,7 @@ export default function StorySection() {
 											</span>
 										</div>
 										{idx < stats.length - 1 && (
-											<div className="mx-6 h-px bg-gradient-to-r from-[#00AEFF] via-[#00DE94] to-[#00FF52]" />
+											<div className="h-px bg-gradient-to-r from-[#00AEFF] via-[#00DE94] to-[#00FF52] w-full" />
 										)}
 									</div>
 								))}
