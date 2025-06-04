@@ -12,5 +12,5 @@ if (!admin.apps.length) {
 	});
 }
 
-export const BLOG_DB = admin.database();
-export const BLOG_BUCKET = admin.storage().bucket();
+export const db = admin.database();
+export const bucket = admin.storage().bucket();
