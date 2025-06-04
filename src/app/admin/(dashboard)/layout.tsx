@@ -2,7 +2,7 @@
 
 import { useState, useEffect, ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import { onAuthStateChanged, type User } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase/client";
 import { Sidebar } from "@/components/admin/Sidebar";
 
@@ -13,12 +13,9 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
 	const router = useRouter();
 	const [loading, setLoading] = useState(true);
-	const [user, setUser] = useState<User | null>(null);
-
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (fbUser) => {
 			if (fbUser) {
-				setUser(fbUser);
 				setLoading(false);
 			} else {
 				router.replace("/admin/auth");
