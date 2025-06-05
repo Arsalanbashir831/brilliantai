@@ -15,9 +15,8 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import { Upload, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import BrilliantButton from "../widgets/BrilliantButtons";
-import Image from "next/image";
 
 const personalFields = [
     { id: "firstName", label: "First Name", placeholder: "David", type: "text" },
@@ -162,8 +161,6 @@ export function ContactForm() {
             const result = await res.json();
             // If server responded with { success: false, error: "..." }, show that
             if (!res.ok || result.success === false) {
-                // If the server set an HTTP 500, res.ok will be false;
-                // if it returned {success:false, ...} with HTTP 200, res.ok is true but success= false.
                 const errMsg = result.error || "Failed to send email";
                 throw new Error(errMsg);
             }
@@ -179,7 +176,6 @@ export function ContactForm() {
             setMessage("");
             setSelectedFiles([]);
             alert("✅ Email sent successfully!");
-
         } catch (err: any) {
             console.error("Error sending email:", err);
             alert("❌ Error sending email: " + (err.message || err));
@@ -332,22 +328,22 @@ export function ContactForm() {
                                 </div>
                             </div>
 
-                            {/* Attachments */}
+                            {/* Attachments (only .pdf, .doc, .docx allowed) */}
                             <div className="space-y-2">
                                 <Label className="text-gray-300 text-sm font-medium">Attachments</Label>
                                 <input
                                     id="attachments"
                                     type="file"
-                                    accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx"
+                                    accept=".pdf,.doc,.docx"
                                     multiple
                                     onChange={handleFilesChange}
                                     className="hidden"
                                 />
                                 <label htmlFor="attachments" className="w-full flex justify-center">
                                     <div className="w-full border-2 border-dashed border-slate-600 rounded-lg p-4 text-center bg-transparent flex justify-center items-center gap-2 cursor-pointer hover:border-cyan-400">
-                                        <Upload className="w-5 h-5 text-white" />
+                                        <FileText className="w-5 h-5 text-white" />
                                         <p className="text-gray-400 text-sm">
-                                            <span className="text-cyan-400 font-medium">Add files</span> or drop files here
+                                            <span className="text-cyan-400 font-medium">Add PDF/Word files</span> or drop files here
                                         </p>
                                     </div>
                                 </label>
@@ -355,24 +351,13 @@ export function ContactForm() {
                                 {selectedFiles.length > 0 && (
                                     <div className="mt-4 space-y-2">
                                         {selectedFiles.map((file, idx) => {
-                                            const isImage = file.type.startsWith("image/");
                                             const key = `${file.name}-${idx}`;
                                             return (
                                                 <div
                                                     key={key}
                                                     className="flex items-center space-x-3 bg-transparent border border-slate-600 rounded-lg p-2"
                                                 >
-                                                    {isImage ? (
-                                                        <Image
-                                                            src={URL.createObjectURL(file)}
-                                                            alt={file.name}
-                                                            width={40}
-                                                            height={40}
-                                                            className="w-10 h-10 object-cover rounded"
-                                                        />
-                                                    ) : (
-                                                        <FileText className="w-6 h-6 text-cyan-400" />
-                                                    )}
+                                                    <FileText className="w-6 h-6 text-cyan-400" />
                                                     <span className="text-gray-300 text-sm break-all">{file.name}</span>
                                                 </div>
                                             );
