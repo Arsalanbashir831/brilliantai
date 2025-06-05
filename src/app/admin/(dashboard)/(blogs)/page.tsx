@@ -4,17 +4,21 @@ import React from "react";
 import DataTable from "@/components/admin/Datatable";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Edit, Trash2 } from "lucide-react";
+import { Edit, Trash2, Plus } from "lucide-react";
+
+import { useRouter } from "next/navigation";
 
 interface Blog {
   id: string;
   thumbnail: string;
   title: string;
   publishedDate: string;
+  description: string;
   [key: string]: unknown;
 }
 
 const BlogsPage = () => {
+  const router = useRouter()
   const handleEdit = (blog: Blog) => {
     console.log("Edit blog:", blog);
     alert(`Edit: ${blog.title}`);
@@ -30,11 +34,17 @@ const BlogsPage = () => {
     }
   };
 
+  const handleAddNew = () => {
+    console.log("Redirect to Add Blog page");
+    router.push("/admin/new")
+    // You can replace this with router.push("/admin/blogs/create") or open a modal
+  };
+
   const columns = [
     {
       accessor: "thumbnail",
       header: "Thumbnail",
-      cell: ({  getValue }: { row: Blog; getValue: () => unknown }) => (
+      cell: ({ getValue }: { getValue: () => unknown }) => (
         <div className="w-24 h-14 relative">
           <Image
             src={getValue() as string}
@@ -42,12 +52,6 @@ const BlogsPage = () => {
             fill
             style={{ objectFit: "cover" }}
             className="rounded"
-            // onError={(e) => {
-            //   const target = e.target as HTMLImageElement;
-            //   target.src =
-            //     "https://placehold.co/96x56/E0E0E0/B0B0B0?text=No+Image";
-            //   target.alt = "Placeholder image";
-            // }}
           />
         </div>
       ),
@@ -55,14 +59,26 @@ const BlogsPage = () => {
     {
       accessor: "title",
       header: "Title",
-      cell: ({  getValue }: { row: Blog; getValue: () => unknown }) => (
+      cell: ({ getValue }: { getValue: () => unknown }) => (
         <span className="font-medium text-gray-800">{getValue() as string}</span>
+      ),
+    },
+    {
+      accessor: "description",
+      header: "Content",
+      cell: ({ getValue }: { getValue: () => unknown }) => (
+        <span
+          className="font-medium text-gray-800 truncate max-w-[300px] block"
+          title={getValue() as string}
+        >
+          {getValue() as string}
+        </span>
       ),
     },
     {
       accessor: "publishedDate",
       header: "Published Date",
-      cell: ({  getValue }: { row: Blog; getValue: () => unknown }) => (
+      cell: ({ getValue }: { getValue: () => unknown }) => (
         <span className="text-gray-600">{getValue() as string}</span>
       ),
     },
@@ -95,24 +111,35 @@ const BlogsPage = () => {
   const data: Blog[] = [
     {
       id: "1",
-      thumbnail: "https://plus.unsplash.com/premium_photo-1748936421969-218bf51428f8?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      thumbnail:
+        "https://plus.unsplash.com/premium_photo-1748936421969-218bf51428f8?q=80&w=3132&auto=format&fit=crop",
       title: "How to Build a React App",
       publishedDate: "2025-05-20",
+      description:
+        "This blog post covers the basics of building a React application from scratch, including setting up the development environment, creating components, and managing state.",
     },
     {
       id: "2",
-      thumbnail: "https://plus.unsplash.com/premium_photo-1748936421969-218bf51428f8?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      thumbnail:
+        "https://plus.unsplash.com/premium_photo-1748936421969-218bf51428f8?q=80&w=3132&auto=format&fit=crop",
       title: "Understanding Next.js Routing",
       publishedDate: "2025-05-28",
+      description:
+        "This article explains how routing works in Next.js, including dynamic routes, API routes, and how to handle navigation between pages.",
     },
-    
   ];
 
   return (
-    <div className="p-4 md:p-8 min-h-screen ">
-      <h1 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
-        Blogs
-      </h1>
+    <div className="p-4 md:p-8 min-h-screen">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">
+          Blogs
+        </h1>
+        <Button  className="bg-blue-700 hover:bg-blue-900 cursor-pointer" onClick={handleAddNew}>
+          <Plus className="w-4 h-4 mr-2" />
+          Add New Blog
+        </Button>
+      </div>
       <div className="bg-white shadow rounded-lg overflow-hidden">
         <DataTable<Blog> columns={columns} data={data} />
       </div>
