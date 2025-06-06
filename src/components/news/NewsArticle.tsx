@@ -5,7 +5,7 @@ import {
 	ArrowLeft,
 	FacebookIcon,
 	LinkedinIcon,
-	TwitterIcon,
+	
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,7 +31,7 @@ interface Blog {
 const defaultShareLinks: ShareLink[] = [
 	{ Icon: LinkedinIcon, href: "#", label: "LinkedIn" },
 	{ Icon: FacebookIcon, href: "#", label: "Facebook" },
-	{ Icon: TwitterIcon, href: "#", label: "Twitter" },
+	
 ];
 
 const NewsArticle: FC = () => {

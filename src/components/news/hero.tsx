@@ -4,7 +4,7 @@
 
 export default function Hero() {
     return (
-        <section className="relative w-full md:py-32 p-10  flex items-center justify-center bg-[url('/news/HeroNews.svg')] bg-cover bg-center text-white">
+        <section className="relative w-full md:py-32 p-10  flex items-center justify-center bg-[url('/startup/hero.svg')] bg-cover bg-center text-white">
             {/* dark overlay */}
             <div className="absolute inset-0 bg-black/40"></div>
 

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Linkedin, X, LucideArrowRight } from "lucide-react";
+import { Mail, Linkedin, LucideArrowRight } from "lucide-react";
 import BrilliantButton from "./widgets/BrilliantButtons";
 import useMobile from "@/hook/useMobile";
 
@@ -29,9 +29,9 @@ export default function Footer() {
 
   const socialIcons = (
     <div className="flex space-x-4">
-      <button aria-label="X Twitter" className="border rounded-full p-2 hover:text-gray-300">
+      {/* <button aria-label="X Twitter" className="border rounded-full p-2 hover:text-gray-300">
         <X />
-      </button>
+      </button> */}
       <button aria-label="LinkedIn" className="border rounded-full p-2 hover:text-gray-300">
         <Linkedin />
       </button>

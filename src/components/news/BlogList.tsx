@@ -2,9 +2,10 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import Link from "next/link";
+
 import ReactMarkdown from "react-markdown";
 import { truncateMarkdown } from "@/lib/markdown-utils";
+import ReadMoreButton from "../widgets/ReadMoreButton";
 
 interface Headline {
 	id: string;
@@ -101,30 +102,10 @@ export const BlogList: FC = () => {
                 /* On desktop: shrink‐to‐fit and align right */
                 md:justify-end md:w-auto
               ">
-							<Link
-								href={`/news/${post.id}`}
-								className="
-                  inline-flex items-center 
-                  px-4 py-2 
-                  border border-gray-700 rounded-lg 
-                  text-sm font-medium text-white 
-                  hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-green-400 
-                  transition
-                ">
-								Read More
-								<svg
-									className="w-4 h-4 ml-2 text-[#23D5D5] -rotate-45"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="2"
-									viewBox="0 0 24 24">
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										d="M17 8l4 4m0 0l-4 4m4-4H3"
-									/>
-								</svg>
-							</Link>
+				<ReadMoreButton href={`/news/${post.id}`}>
+					Read More
+				</ReadMoreButton>
+							
 						</div>
 					</div>
 				))}

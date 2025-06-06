@@ -1,8 +1,8 @@
 // components/Hero.tsx
 'use client';
 
-import { ArrowRight } from "lucide-react";
-import { Button } from "../ui/button";
+
+import ReadMoreButton from "../widgets/ReadMoreButton";
 
 
 export function Welcome() {
@@ -24,12 +24,9 @@ export function Welcome() {
                     View All News
                 </BrilliantButton> */}
                  <div className="w-[90%] m-auto md:m-0 md:flex md:justify-end">
-                                <Button className="border bg-[#141414] border-[#262626] w-full md:w-40 p-5">
-                                    <a href={"#"} className="flex items-center justify-center">
-                                        View All
-                                        <ArrowRight className="ml-2 w-4 h-4 text-[#23D5D5] -rotate-45" />
-                                    </a>
-                                </Button>
+                               <ReadMoreButton  href="/news">
+                               View All
+                               </ReadMoreButton>
                             </div>
 
             </div>

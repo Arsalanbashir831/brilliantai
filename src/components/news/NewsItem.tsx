@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+
 import ReactMarkdown from "react-markdown";
 import { truncateMarkdown } from "@/lib/markdown-utils";
+import ReadMoreButton from "../widgets/ReadMoreButton";
 interface BlogItem {
 	id: string;
 	title: string;
@@ -105,12 +105,13 @@ export default function NewsItem() {
 					</div>
 
 					<div className="md:flex md:justify-end ">
-						<Button className="border w-full p-5 md:p-0 md:w-auto bg-[#141414] border-[#262626]">
+						{/* <Button className="border w-full p-5 md:p-0 md:w-auto bg-[#141414] border-[#262626]">
 							<a href={`/news/${featured.id}`} className="flex items-center">
 								Read More
 								<ArrowRight className="ml-2 w-4 h-4 text-[#23D5D5] -rotate-45" />
 							</a>
-						</Button>
+						</Button> */}
+						<ReadMoreButton href={`/news/${featured.id}`}/>
 					</div>
 				</div>
 			</div>
@@ -139,14 +140,8 @@ export default function NewsItem() {
 								</p>
 							</div>
 							<div className="w-full md:flex md:justify-end">
-								<Button className="border bg-[#141414] border-[#262626] w-full md:w-40">
-									<a
-										href={`/news/${item.id}`}
-										className="flex items-center justify-center">
-										Read More
-										<ArrowRight className="ml-2 w-4 h-4 text-[#23D5D5] -rotate-45" />
-									</a>
-								</Button>
+							
+								<ReadMoreButton 	href={`/news/${item.id}`} />
 							</div>
 						</div>
 					</div>
