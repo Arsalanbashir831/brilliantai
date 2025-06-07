@@ -3,9 +3,11 @@
 import React from "react";
 import BrilliantButton from "../widgets/BrilliantButtons";
 import useMobile from "@/hook/useMobile";
+import { useRouter } from "next/navigation";
 
 export default function HeroSection() {
 	const isMobile = useMobile()
+	const router =useRouter()
 	return (
 		<section style={
 			isMobile
@@ -41,7 +43,7 @@ export default function HeroSection() {
 						Share your goals with us and we will show you how we can help you
 						move forward with clarity and confidence.
 					</div>
-					<BrilliantButton className="mt-10" variant="gradient">
+					<BrilliantButton onClick={()=>router.push('/contact-us')} className="mt-10" variant="gradient">
 						Get in Touch
 					</BrilliantButton>
 				</div>

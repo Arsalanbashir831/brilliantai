@@ -5,6 +5,7 @@
 import { motion } from "framer-motion";
 import BrilliantButton from "../widgets/BrilliantButtons";
 import useMobile from "@/hook/useMobile";
+import { useRouter } from "next/navigation";
 
 // Array of keywords to loop through
 // const LOOP_WORDS = ["Transformative", "Unstoppable", "Limitless"];
@@ -37,6 +38,7 @@ const gradientTextStyle: React.CSSProperties = {
 export default function Hero() {
 	// const [currentIndex, setCurrentIndex] = useState(0);
 	const isMobile = useMobile();
+	const router = useRouter()
 	// Cycle through words every 2 seconds
 	// useEffect(() => {
 	// 	const id = setInterval(() => {
@@ -147,8 +149,8 @@ export default function Hero() {
 						// animate={{ opacity: 1, y: 0 }}
 						// transition={{ delay: 1.3, duration: 0.4, ease: "easeOut" }}
 					>
-						<BrilliantButton variant="gradient">Get in Touch</BrilliantButton>
-						<BrilliantButton variant="transparent">Learn More</BrilliantButton>
+						<BrilliantButton onClick={()=>router.push('/contact-us')} variant="gradient">Get in Touch</BrilliantButton>
+						<BrilliantButton onClick={()=>router.push('/about')} variant="transparent">Learn More</BrilliantButton>
 					</motion.div>
 				</main>
 			</div>

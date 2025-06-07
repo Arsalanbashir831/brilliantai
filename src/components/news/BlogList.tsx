@@ -6,6 +6,7 @@ import { FC, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { truncateMarkdown } from "@/lib/markdown-utils";
 import ReadMoreButton from "../widgets/ReadMoreButton";
+import Image from "next/image";
 
 interface Headline {
 	id: string;
@@ -71,6 +72,7 @@ export const BlogList: FC = () => {
               /* DESKTOP (≥md): 2-column layout */
               md:flex-row md:px-32 md:py-8 md:items-start md:justify-between md:space-y-0
             ">
+				<Image width={100} height={100} className="rounded-full m-auto md:m-0" src={'/useravatar.jpg'} alt="logo"/>
 						{/*** 1) DATE / TITLE / DESCRIPTION BLOCK ***/}
 						<div
 							className="
@@ -102,7 +104,7 @@ export const BlogList: FC = () => {
                 /* On desktop: shrink‐to‐fit and align right */
                 md:justify-end md:w-auto
               ">
-				<ReadMoreButton href={`/news/${post.id}`}>
+				<ReadMoreButton href={`/headlines/${post.id}`}>
 					Read More
 				</ReadMoreButton>
 							

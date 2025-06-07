@@ -3,8 +3,10 @@ import Image from "next/image";
 
 import BrilliantButton from "../widgets/BrilliantButtons";
 import { ShineBorder } from "../magicui/shine-border";
+import { useRouter } from "next/navigation";
 
 export default function GradientCTA() {
+	const router = useRouter()
 	return (
 		<section className="w-full flex justify-center px-0 md:px-32 py-24">
 			<div className=" relative w-full h-[300px] max-w-6xl md:h-[220px] rounded-none md:rounded-xl overflow-hidden flex items-center justify-between px-6 sm:px-10 text-white">
@@ -31,7 +33,7 @@ export default function GradientCTA() {
 						</p>
 					</div>
 					<div className="m-auto md:m-0">
-						<BrilliantButton variant="white" className="px-4">
+						<BrilliantButton onClick={()=>router.push('/contact-us')} variant="white" className="px-4">
 							Get in Touch
 						</BrilliantButton>
 					</div>

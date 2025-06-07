@@ -2,9 +2,11 @@
 import Image from "next/image";
 import BrilliantButton from "../widgets/BrilliantButtons";
 import useMobile from "@/hook/useMobile";
+import { useRouter } from "next/navigation";
 
 export default function CallToAction() {
 	const isMobile = useMobile();
+	const router = useRouter()
 	return (
 		<section className="relative  w-full  flex items-center justify-center overflow-hidden bg-[#011010] px-4 py-24 md:h-[600px] md:py-0">
 			{/* Background SVG (Grid Border) */}
@@ -26,7 +28,7 @@ export default function CallToAction() {
 						We’re here to make it happen.{" "}
 					</span>
 				</h2>
-				<BrilliantButton className="mt-5 px-6 py-3 text-sm md:text-base">
+				<BrilliantButton onClick={()=>router.push('/contact-us')} className="mt-5 px-6 py-3 text-sm md:text-base">
 					Get In Touch
 				</BrilliantButton>
 			</div>

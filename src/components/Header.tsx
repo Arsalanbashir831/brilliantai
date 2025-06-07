@@ -1,7 +1,7 @@
 // components/Header.tsx
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Menu, ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -16,7 +16,7 @@ export default function Header() {
   const [hash, setHash] = useState("");
   const isMobile = useMobile();
   const [mobileOpen, setMobileOpen] = useState(false);
-
+const router = useRouter()
   useEffect(() => {
     // Update hash when it changes
     const updateHash = () => setHash(window.location.hash);
@@ -77,7 +77,7 @@ export default function Header() {
 
         {/* Desktop “Book a Call” */}
         {!isMobile && (
-          <BrilliantButton className="px-4 py-2 text-sm" variant="white">
+          <BrilliantButton onClick={()=>router.push('/contact-us')} className="px-4 py-2 text-sm" variant="white">
             Book a Call
           </BrilliantButton>
         )}

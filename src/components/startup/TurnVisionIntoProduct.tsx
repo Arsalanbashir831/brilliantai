@@ -3,8 +3,10 @@
 
 import React from "react";
 import BrilliantButton from "../widgets/BrilliantButtons";
+import { useRouter } from "next/navigation";
 
 export default function TurnVisionIntoProduct() {
+  const router=useRouter()
   return (
     <section className="w-full py-16 flex flex-col items-center md:px-50 justify-center">
       <div
@@ -49,7 +51,7 @@ export default function TurnVisionIntoProduct() {
 
             {/* This button is only visible on desktop (≥ sm) */}
             <div className="hidden sm:flex">
-              <BrilliantButton>Get in touch</BrilliantButton>
+              <BrilliantButton onClick={()=>router.push('/contact-us')}>Get in touch</BrilliantButton>
             </div>
           </div>
 
@@ -72,7 +74,7 @@ export default function TurnVisionIntoProduct() {
               MOBILE‐ONLY BUTTON: (visible on <sm)
             ------------------------------------------------ */}
           <div className="flex sm:hidden justify-center w-full">
-            <BrilliantButton>Get in touch →</BrilliantButton>
+            <BrilliantButton onClick={()=>router.push('/contact-us')} >Get in touch →</BrilliantButton>
           </div>
         </div>
       </div>

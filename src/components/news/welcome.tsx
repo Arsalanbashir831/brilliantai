@@ -2,7 +2,7 @@
 'use client';
 
 
-import ReadMoreButton from "../widgets/ReadMoreButton";
+// import ReadMoreButton from "../widgets/ReadMoreButton";
 
 
 export function Welcome() {
@@ -23,11 +23,11 @@ export function Welcome() {
                 >
                     View All News
                 </BrilliantButton> */}
-                 <div className="w-[90%] m-auto md:m-0 md:flex md:justify-end">
+                 {/* <div className="w-[90%] m-auto md:m-0 md:flex md:justify-end">
                                <ReadMoreButton  href="/news">
                                View All
                                </ReadMoreButton>
-                            </div>
+                            </div> */}
 
             </div>
         </section>

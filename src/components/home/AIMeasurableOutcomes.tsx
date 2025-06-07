@@ -8,6 +8,7 @@ import { ShineBorder } from "../magicui/shine-border";
 import { AnimatePresence, motion } from "framer-motion";
 import { fadeUpVariants } from "@/effects/Effects";
 import useMobile from "@/hook/useMobile";
+import { useRouter } from "next/navigation";
 
 interface AICardProps {
 	title: string;
@@ -29,6 +30,7 @@ function AICard({
 	footerText,
 }: AICardProps) {
 	const isMobile = useMobile();
+	const router =useRouter()
 	return (
 		<div
 			className="
@@ -50,7 +52,7 @@ function AICard({
 				<p className="mt-2 mb-1 text-[#96CDCD] leading-relaxed max-w-90  text-sm md:text-lg">
 					{description}
 				</p>
-				<BrilliantButton
+				<BrilliantButton onClick={()=>router.push('/contact-us')}
 					variant="white"
 					className="text-[#052E2B] px-3 py-0  mt-4 rounded-lg font-medium">
 					{buttonText}

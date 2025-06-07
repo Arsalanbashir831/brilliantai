@@ -4,9 +4,11 @@ import React from "react";
 import BrilliantButton from "../widgets/BrilliantButtons";
 import { ShineBorder } from "../magicui/shine-border";
 import useMobile from "@/hook/useMobile";
+import { useRouter } from "next/navigation";
 
 export default function CTA() {
   const isMobile = useMobile()
+const router = useRouter()  
   return (
     <section className="relative py-20 md:px-32">
       <div
@@ -43,7 +45,7 @@ export default function CTA() {
           <p className="mt-4 text-[18px] leading-[28px] text-[#E0E0E0] px-[49px] md:px-0 text-center">
             Can’t find the answer you’re looking for? Please chat to our friendly team
           </p>
-          <BrilliantButton variant="white" className="mt-8">
+          <BrilliantButton onClick={()=>router.push('/contact-us')} variant="white" className="mt-8">
             Get in touch
           </BrilliantButton>
         </div>

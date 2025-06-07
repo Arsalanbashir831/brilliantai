@@ -1,9 +1,11 @@
 // app/components/ContactCta.tsx
 "use client";
 
+import { useRouter } from "next/navigation";
 import BrilliantButton from "../widgets/BrilliantButtons";
 
 export default function ContactCta() {
+	const router = useRouter()
 	return (
 		<section className=" md:-mb-12 ">
 			<div className="max-w-[930px] mx-auto px-5 md:px-6">
@@ -26,7 +28,7 @@ export default function ContactCta() {
 							Ready to start the conversation?
 						</h3>
 
-						<BrilliantButton
+						<BrilliantButton onClick={() => {router.push("/contact-us")}} 
 							variant="white"
 							className="flex items-center  text-[#23D5D5] bg-gradient-to-b from-[#23D5D546] to-[#1eb2b246] text-xs h-fit py-2 rounded-lg md:text-xl">
 							Book a call

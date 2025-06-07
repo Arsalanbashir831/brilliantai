@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button"
 import { Menu, ArrowRight } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+
 
 export default function Header() {
+const router = useRouter()
     return (
         <nav className="relative z-10 flex items-center bg-[#011010] border-b border-[#C3FFFF]  justify-between p-4 lg:px-20 lg:py-6">
            
@@ -21,7 +24,7 @@ export default function Header() {
             </div>
 
           
-            <Button className="hidden lg:flex bg-white text-teal-900 hover:bg-gray-100 rounded-xl px-6">
+            <Button onClick={()=>{router.push('/contact-us')}} className="hidden lg:flex bg-white text-teal-900 hover:bg-gray-100 rounded-xl px-6">
                 Book a call
                 <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

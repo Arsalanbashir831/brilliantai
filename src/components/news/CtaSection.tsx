@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { FC } from "react";
 import BrilliantButton from "../widgets/BrilliantButtons";
+import { useRouter } from "next/navigation";
 
 const CtaSection: FC = () => {
+    const router = useRouter()
     return (
         <section className="relative py-16 my-16 bg-teal-950 overflow-hidden">
             {/* full-bleed SVG background as <img> */}
@@ -32,6 +34,7 @@ const CtaSection: FC = () => {
 
 
                 <BrilliantButton
+                onClick={() => router.push('/contact-us')}
                     className=" w-[229px] h-[52px]
                         flex items-center justify-center gap-[10px]
                         rounded-[16px]

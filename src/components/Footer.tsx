@@ -6,10 +6,11 @@ import Link from "next/link";
 import { Mail, Linkedin, LucideArrowRight } from "lucide-react";
 import BrilliantButton from "./widgets/BrilliantButtons";
 import useMobile from "@/hook/useMobile";
+import { useRouter } from "next/navigation";
 
 export default function Footer() {
   const isMobile = useMobile();
-
+const router = useRouter()
   // Shared elements
   const logo = <Image src="/logo.svg" alt="Brilliant AI" width={160} height={64} />;
   const description = (
@@ -22,8 +23,8 @@ export default function Footer() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/startup", label: "Startup" },
-    { href: "/contact", label: "Contact Us" },
-    { href: "/company", label: "Company" },
+    { href: "/contact-us", label: "Contact Us" },
+    { href: "/about", label: "Company" },
     { href: "/news", label: "News" },
   ];
 
@@ -118,9 +119,9 @@ export default function Footer() {
             <div>
               <h3 className="font-semibold text-xl mb-4">Our Policies</h3>
               <ul className="space-y-3 text-md">
-                <li><Link href="/privacy-policy" className="hover:text-gray-300">Privacy Policy</Link></li>
-                <li><Link href="/cookies-policy" className="hover:text-gray-300">Cookies Policy</Link></li>
-                <li><Link href="/terms" className="hover:text-gray-300">Terms &amp; Conditions</Link></li>
+                <li><Link href="/policies/privacy" className="hover:text-gray-300">Privacy Policy</Link></li>
+                <li><Link href="/policies/cookies" className="hover:text-gray-300">Cookies Policy</Link></li>
+                <li><Link href="/policies/terms" className="hover:text-gray-300">Terms &amp; Conditions</Link></li>
               </ul>
             </div>
 
@@ -129,7 +130,7 @@ export default function Footer() {
               <h3 className="font-semibold text-2xl">
                 We’d Love to Hear <br /> from You!
               </h3>
-              <BrilliantButton variant="outline">Get in Touch</BrilliantButton>
+              <BrilliantButton onClick={()=>router.push('/contact-us')} variant="outline">Get in Touch</BrilliantButton>
             </div>
           </div>
         )}
