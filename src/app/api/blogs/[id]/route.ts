@@ -1,13 +1,12 @@
 // /app/api/blogs/[id]/route.ts
-import { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getBlogById, updateBlog, deleteBlog } from "@/services/blog-services";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await params;
+  const id = params.id;
   try {
     const blog = await getBlogById(id);
     if (!blog) {
@@ -22,9 +21,9 @@ export async function GET(
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await params;
+  const id = params.id;
   try {
     const formData = await req.formData();
     const title = formData.get("title") as string;
@@ -32,7 +31,10 @@ export async function PATCH(
     const file = formData.get("thumbnail") as File | null;
 
     if (!title || !description) {
-      return NextResponse.json({ error: "Missing title or description" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing title or description" },
+        { status: 400 }
+      );
     }
 
     let newFileBuffer:
@@ -62,9 +64,9 @@ export async function PATCH(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await params;
+  const id = params.id;
   try {
     const success = await deleteBlog(id);
     if (!success) {
