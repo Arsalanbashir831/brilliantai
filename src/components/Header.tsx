@@ -16,7 +16,8 @@ export default function Header() {
   const [hash, setHash] = useState("");
   const isMobile = useMobile();
   const [mobileOpen, setMobileOpen] = useState(false);
-const router = useRouter()
+  const router = useRouter();
+
   useEffect(() => {
     // Update hash when it changes
     const updateHash = () => setHash(window.location.hash);
@@ -36,19 +37,16 @@ const router = useRouter()
 
   const isActive = (href: string) => {
     if (href === "/") {
-      // Only active if pathname is "/" and there's no hash
       return pathname === "/" && hash === "";
     }
     if (href.startsWith("/#")) {
-      // Only active if hash matches
       return pathname === "/" && hash === href.replace("/", "");
     }
-    // For other links (e.g., /about)
     return pathname === href;
   };
 
   return (
-    <nav className="relative z-10 bg-[#011010] border-b border-[#C3FFFF]">
+    <nav className="sticky top-0 z-50 bg-[#011010] bg-opacity-100 border-b border-[#C3FFFF]">
       <div className="flex items-center justify-between p-4 lg:px-20 lg:py-3">
         <Image
           height={150}
@@ -77,7 +75,11 @@ const router = useRouter()
 
         {/* Desktop “Book a Call” */}
         {!isMobile && (
-          <BrilliantButton onClick={()=>router.push('/contact-us')} className="px-4 py-2 text-sm" variant="white">
+          <BrilliantButton
+            onClick={() => router.push("/contact-us")}
+            className="px-4 py-2 text-sm"
+            variant="white"
+          >
             Book a Call
           </BrilliantButton>
         )}
@@ -101,7 +103,7 @@ const router = useRouter()
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden bg-[#011010] border-t border-[#C3FFFF]"
+            className="overflow-hidden bg-[#011010] bg-opacity-100 border-t border-[#C3FFFF]"
           >
             <div className="flex flex-col space-y-6 p-4">
               {navItems.map((item) => (
