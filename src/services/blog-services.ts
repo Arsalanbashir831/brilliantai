@@ -61,7 +61,7 @@ export async function createBlog(
 
 	await blogRef.set(blogData);
 
-	return { id, ...blogData };
+	return { id, ...blogData } as Blog;
 }
 
 // List all blogs (returns array of Blog)
@@ -71,7 +71,7 @@ export async function listBlogs(): Promise<Blog[]> {
 	return Object.entries(raw).map(([id, data]) => ({
 		id,
 		...data,
-	}));
+	} as Blog));
 }
 
 // Get a single blog by id
@@ -79,9 +79,11 @@ export async function getBlogById(id: string): Promise<Blog | null> {
 	const snapshot = await db.ref(`blogs/${id}`).once("value");
 	const data = snapshot.val();
 	if (!data) return null;
-	return { id, ...(data as Omit<Blog, "id">) };
-}
-
+  
+	// Assert that the spread object now fully satisfies Blog
+	return { id, ...(data as Omit<Blog, "id">) } as Blog;
+  }
+  
 // Update an existing blog:
 // - If new thumbnailBuffer is provided, delete the old file from Storage, upload new one, update fields
 // - Otherwise, only update title/description
@@ -104,7 +106,7 @@ export async function updateBlog(
 
 	if (newFile) {
 		// 1) Delete old thumbnail from Storage
-		if (thumbnailPath) {
+		if (typeof thumbnailPath === 'string' && thumbnailPath.length > 0) {
 			try {
 				await bucket.file(thumbnailPath).delete();
 			} catch (err) {
@@ -136,9 +138,9 @@ export async function updateBlog(
 		id,
 		title,
 		description,
-		thumbnailUrl,
-		thumbnailPath,
-		publishedDate: existing.publishedDate,
+		thumbnailUrl: thumbnailUrl as string,
+		thumbnailPath: thumbnailPath as string,
+		publishedDate: existing.publishedDate as string,
 	};
 }
 

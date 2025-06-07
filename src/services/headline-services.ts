@@ -19,7 +19,7 @@ export async function createHeadline(
 	};
 
 	await headlineRef.set(payload);
-	return { id, ...payload };
+	return { id, ...payload } as Headline;
 }
 
 // List all headlines (returns array of Headline)
@@ -29,7 +29,7 @@ export async function listHeadlines(): Promise<Headline[]> {
 	return Object.entries(raw).map(([id, data]) => ({
 		id,
 		...data,
-	}));
+	}) as Headline);
 }
 
 // Get a single headline by ID
@@ -37,7 +37,8 @@ export async function getHeadlineById(id: string): Promise<Headline | null> {
 	const snapshot = await db.ref(`headlines/${id}`).once("value");
 	const data = snapshot.val();
 	if (!data) return null;
-	return { id, ...(data as Omit<Headline, "id">) };
+	return { id, ...(data as Omit<Headline, "id">) } as Headline;
+
 }
 
 // Update an existing headline:
@@ -50,11 +51,12 @@ export async function updateHeadline(
 	const snapshot = await headlineRef.once("value");
 	if (!snapshot.exists()) return null;
 
-	const publishedDate = (snapshot.val() as Omit<Headline, "id">).publishedDate;
+	const snapshotData = snapshot.val() as Omit<Headline, "id">;
+	const publishedDate = snapshotData.publishedDate;
 	const updatedData: Partial<Omit<Headline, "id">> = { title, description };
 	await headlineRef.update(updatedData);
 
-	return { id, title, description, publishedDate };
+	return { id, title, description, publishedDate } as Headline;
 }
 
 // Delete a headline:
