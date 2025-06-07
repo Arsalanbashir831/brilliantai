@@ -1,12 +1,9 @@
-// /app/api/blogs/[id]/route.ts
-import { NextRequest, NextResponse } from "next/server";
+// src/app/api/blogs/[id]/route.ts
+import { NextResponse } from "next/server";
 import { getBlogById, updateBlog, deleteBlog } from "@/services/blog-services";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  const id = params.id;
+export async function GET(req: Request, { params }: { params: { id: string } }) {
+  const id = params.id as string;
   try {
     const blog = await getBlogById(id);
     if (!blog) {
@@ -19,11 +16,8 @@ export async function GET(
   }
 }
 
-export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  const id = params.id;
+export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+  const id = params.id as string;
   try {
     const formData = await req.formData();
     const title = formData.get("title") as string;
@@ -62,11 +56,8 @@ export async function PATCH(
   }
 }
 
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  const id = params.id;
+export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+  const id = params.id as string;
   try {
     const success = await deleteBlog(id);
     if (!success) {
