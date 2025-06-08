@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import BuildWithConfidence from '@/components/startup/BuildWithConfidence';
 import CommunicationAndPayment from '@/components/startup/CommunicationAndPayment';
@@ -12,11 +12,21 @@ import ServicesTabs from '@/components/startup/ServicesTabs';
 import TurnVisionIntoProduct from '@/components/startup/TurnVisionIntoProduct';
 
 // Define a simple fade-in-up animation
-const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 }
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 40,      // softer spring
+      damping: 14,        // gentle settle
+      mass: 0.6,          // a bit more “weight”
+      ease: [0.42, 0, 0.58, 1], // smooth fallback
+    },
+  },
 };
-
 const transition = { duration: 0.6, ease: 'easeOut' };
 
 const page = () => {

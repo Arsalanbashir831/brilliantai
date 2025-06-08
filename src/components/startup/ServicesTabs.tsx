@@ -82,11 +82,10 @@ const SERVICES: Service[] = [
 ];
 
 export default function ServicesTabs() {
-	/*** DESKTOP STATE (unchanged) ***/
+
 	const [selectedId, setSelectedId] = useState<string>(SERVICES[0].id);
 	const active = SERVICES.find((svc) => svc.id === selectedId) || SERVICES[0];
 
-	/*** MOBILE STATE: now only an index (no “direction”) ***/
 	const [mobileIndex, setMobileIndex] = useState<number>(0);
 	const totalCount = SERVICES.length;
 	const mobileActive = SERVICES[mobileIndex];
@@ -98,8 +97,6 @@ export default function ServicesTabs() {
 		setMobileIndex((prev) => (prev + 1) % totalCount);
 	};
 
-	/*** Animation Variants for just the TEXT ***/
-	// We will animate each text block with fadeUpVariants
 	const textVariants: Variants = fadeUpVariants; // you can also define custom ones
 
 	return (
@@ -117,10 +114,7 @@ export default function ServicesTabs() {
 				</p>
 			</div>
 
-			{/***
-			 * MOBILE CAROUSEL (md:hidden)
-			 * – No ‘slide’ animations on the container, just fade‐up for text
-			 ***/}
+		=
 			<div className="md:hidden bg-transparent border-gray-400 rounded-2xl p-5">
 				<div className="flex flex-col items-start gap-4 text-left">
 					{/* Icon is static (no animation) */}

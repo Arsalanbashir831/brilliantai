@@ -1,14 +1,38 @@
-// components/TurnVisionIntoProduct.tsx
-"use client";
+'use client';
 
 import React from "react";
+import { motion } from "framer-motion";
 import BrilliantButton from "../widgets/BrilliantButtons";
 import { useRouter } from "next/navigation";
 
+const fadeUpBlur = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+    filter: "blur(8px)"
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
+    }
+  }
+};
+
 export default function TurnVisionIntoProduct() {
-  const router=useRouter()
+  const router = useRouter();
+
   return (
-    <section className="w-full py-16 flex flex-col items-center md:px-50 justify-center">
+    <motion.section
+      variants={fadeUpBlur}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className="w-full py-16 flex flex-col items-center md:px-50 justify-center"
+    >
       <div
         className="
           max-w-full
@@ -19,10 +43,6 @@ export default function TurnVisionIntoProduct() {
           bg-center bg-cover
         "
         style={{
-          /* 
-            Layer two small radial gradients (teal top‐right, cyan bottom‐left)
-            on top of the 'vision.svg' image. 
-          */
           backgroundImage: `
             radial-gradient(
               circle 300px at 100% 0%,
@@ -39,9 +59,6 @@ export default function TurnVisionIntoProduct() {
         }}
       >
         <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16 py-12">
-          {/* ------------------------------------------------
-              LEFT SIDE: Title (and Desktop‐only button)
-            ------------------------------------------------ */}
           <div className="w-full sm:w-auto space-y-6 text-center sm:text-left">
             <h2 className="text-3xl md:text-4xl font-bold text-white capitalize">
               Turn Vision Into Product.
@@ -49,15 +66,13 @@ export default function TurnVisionIntoProduct() {
               Start The Journey
             </h2>
 
-            {/* This button is only visible on desktop (≥ sm) */}
             <div className="hidden sm:flex">
-              <BrilliantButton onClick={()=>router.push('/contact-us')}>Get in touch</BrilliantButton>
+              <BrilliantButton onClick={() => router.push('/contact-us')}>
+                Get in touch
+              </BrilliantButton>
             </div>
           </div>
 
-          {/* ------------------------------------------------
-              RIGHT SIDE: Paragraphs (always visible)
-            ------------------------------------------------ */}
           <div className="w-full sm:w-2/5 space-y-4 text-center sm:text-left">
             <p className="text-md text-white font-normal">
               We help early stage teams turn ideas into reality by building
@@ -70,14 +85,13 @@ export default function TurnVisionIntoProduct() {
             </p>
           </div>
 
-          {/* ------------------------------------------------
-              MOBILE‐ONLY BUTTON: (visible on <sm)
-            ------------------------------------------------ */}
           <div className="flex sm:hidden justify-center w-full">
-            <BrilliantButton onClick={()=>router.push('/contact-us')} >Get in touch →</BrilliantButton>
+            <BrilliantButton onClick={() => router.push('/contact-us')}>
+              Get in touch →
+            </BrilliantButton>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
