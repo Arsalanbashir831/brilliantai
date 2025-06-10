@@ -2,20 +2,20 @@
 
 const stats = [
 	{
-	  value: "75K+",
-	  label: "	Load-Tested Concurrent Users",
+	  value: "Deliver",
+	  label: "Multiple solutions deployed to production.",
 	},
 	{
-	  value: "30%",
-	  label: "Latency Improvement faster than average",
+	  value: "Launch",
+	  label: "Avg. 6-week turnaround from brief to build.",
 	},
 	{
-	  value: "98%",
-	  label: " Integration Success Rate",
+	  value: "Engineer",
+	  label: " 100K+ lines of clean, scalable Al code.",
 	},
 	{
-	  value: "< 0.5%",
-	  label: "Post-Launch Error Rate",
+	  value: "Secure",
+	  label: "100% compliant. Built for trust and scale.",
 	},
   ];
   
@@ -63,7 +63,7 @@ export default function StorySection() {
 								{stats.map((stat, idx) => (
 									<div key={stat.value} className="w-full">
 										<div className="px-10 py-5 flex flex-col">
-											<span className="text-5xl font-normal text-white">
+											<span className="text-4xl font-normal text-white">
 												{stat.value}
 											</span>
 											<span className="mt-1 text-md leading-[28px] font-normal text-[#E0E0E0]">

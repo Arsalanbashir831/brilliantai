@@ -79,36 +79,36 @@ export default function Hero() {
                 ">
 								{/* Stat #1 */}
 								<div className="flex-1 flex flex-col justify-center px-6 py-4">
-									<p className="text-5xl font-normal text-white">75K+</p>
+									<p className="text-4xl font-normal text-white">Partner</p>
 									<p className="text-md leading-[28px] font-normal text-[#E0E0E0]">
-									Load-Tested Concurrent Users
+									We build Al startups side by side with founders.
 									</p>
 								</div>
 								<div className="h-[1px] w-full bg-[linear-gradient(90deg,_#00AEFF_16.33%,_#00DE94_45.1%,_#00FF52_73.68%)]" />
 
 								{/* Stat #2 */}
 								<div className="flex-1 flex flex-col justify-center px-6 py-4">
-									<p className="text-5xl font-normal text-white">30%</p>
+									<p className="text-4xl font-normal text-white">Ship</p>
 									<p className="text-md leading-[28px] font-normal text-[#E0E0E0]">
-									Latency Improvement faster than average
+									From MVP to market in under 6 weeks.
 									</p>
 								</div>
 								<div className="h-[1px] w-full bg-[linear-gradient(90deg,_#00AEFF_16.33%,_#00DE94_45.1%,_#00FF52_73.68%)]" />
 
 								{/* Stat #3 */}
 								<div className="flex-1 flex flex-col justify-center px-6 py-4">
-									<p className="text-5xl font-normal text-white">98%</p>
+									<p className="text-4xl font-normal text-white">Scale</p>
 									<p className="text-md leading-[28px] font-normal text-[#E0E0E0]">
-									 Integration Success Rate
+									Tech that grows with your vision - no rewrites.
 									</p>
 								</div>
 								<div className="h-[1px] w-full bg-[linear-gradient(90deg,_#00AEFF_16.33%,_#00DE94_45.1%,_#00FF52_73.68%)]" />
 
 								{/* Stat #4 */}
 								<div className="flex-1 flex flex-col justify-center px-6 py-4">
-									<p className="text-5xl font-normal text-white">{`< 0.5%`}</p>
+									<p className="text-4xl font-normal text-white">Protect</p>
 									<p className="text-md leading-[28px] font-normal text-[#E0E0E0]">
-									Post-Launch Error Rate
+									Secure, compliant, and investor-ready from day one.
 									</p>
 								</div>
 							</div>
