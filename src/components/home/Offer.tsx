@@ -83,7 +83,8 @@ export default function WhatWeOffer() {
 	};
 
 	return (
-		<section className="md:pb-10 py-0  text-center">
+		<section  className="pb-10 py-0  text-center">
+			<section id="services" className="pb-10 py-0 text-center scroll-mt-80 md:scroll-mt-20"></section>
 			<h2 className="text-3xl md:text-6xl text-white font-semibold mb-4">
 				What We Offer
 			</h2>
@@ -93,7 +94,7 @@ export default function WhatWeOffer() {
 			</p>
 
 			<div className=" m-auto px-5 md:px-54 space-y-6">
-				{" "}
+				
 				{/*
 	 ideal px-[220px] 
 	  */}

@@ -154,7 +154,7 @@ export default function Hero() {
 					</motion.div>
 				</main>
 			</div>
-			<div id="services"></div>
+			
 		</>
 	);
 }
