@@ -2,20 +2,20 @@
 
 const stats = [
 	{
-	  value: "AI SaaS Products",
-	  label: "Cloud-native subscription platforms",
+	  value: "75K+",
+	  label: "	Load-Tested Concurrent Users",
 	},
 	{
-	  value: "AI MCP Products",
-	  label: "Enterprise-grade multi-cloud solutions",
+	  value: "30%",
+	  label: "Latency Improvement faster than average",
 	},
 	{
-	  value: "AI Automation Products",
-	  label: "End-to-end process automation",
+	  value: "98%",
+	  label: " Integration Success Rate",
 	},
 	{
-	  value: "AI Chatbot Products",
-	  label: "Conversational AI assistants",
+	  value: "< 0.5%",
+	  label: "Post-Launch Error Rate",
 	},
   ];
   
@@ -27,11 +27,13 @@ export default function StorySection() {
 					{/* — Left text */}
 					<div className="md:w-3/5 space-y-6 text-white">
 						<h2 className="text-2xl md:text-[64px] font-bold leading-tight text-white text-center md:text-left">
-							What We Create For Our Clients
+						Numbers are telling our story
 						</h2>
 						<p className="text-white font-normal text-sm text-center px-10 md:pl-0 md:text-left md:text-lg">
-						At Brilliant AI, we turn your ideas into real-world AI solutions—from rapid MVP prototypes and custom machine-learning pipelines to end-to-end automation workflows and intuitive analytics dashboards. Every system is built on secure, scalable architecture, rigorously tested and monitored to perform under real operational demands. Through agile delivery and close collaboration, we deliver reliable, measurable outcomes that accelerate your growth and give you a lasting competitive edge.
-
+						Brilliant AI is not an experimental lab or a prototype vendor. We
+							are a delivery-first AI partner, committed to building reliable,
+							measurable and scalable systems that perform in real operational
+							environments.
 						</p>
 					</div>
 
@@ -61,7 +63,7 @@ export default function StorySection() {
 								{stats.map((stat, idx) => (
 									<div key={stat.value} className="w-full">
 										<div className="px-10 py-5 flex flex-col">
-											<span className="text-3xl font-normal text-white">
+											<span className="text-5xl font-normal text-white">
 												{stat.value}
 											</span>
 											<span className="mt-1 text-md leading-[28px] font-normal text-[#E0E0E0]">

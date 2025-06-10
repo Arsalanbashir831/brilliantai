@@ -79,36 +79,36 @@ export default function Hero() {
                 ">
 								{/* Stat #1 */}
 								<div className="flex-1 flex flex-col justify-center px-6 py-4">
-									<p className="text-3xl font-normal text-white">Seamless Integrations</p>
+									<p className="text-5xl font-normal text-white">75K+</p>
 									<p className="text-md leading-[28px] font-normal text-[#E0E0E0]">
-									Plug into your existing tools ( AI Models, Payments) smoothly so you can keep using what already works.
+									Load-Tested Concurrent Users
 									</p>
 								</div>
 								<div className="h-[1px] w-full bg-[linear-gradient(90deg,_#00AEFF_16.33%,_#00DE94_45.1%,_#00FF52_73.68%)]" />
 
 								{/* Stat #2 */}
 								<div className="flex-1 flex flex-col justify-center px-6 py-4">
-									<p className="text-3xl font-normal text-white">Custom AI Roadmap</p>
+									<p className="text-5xl font-normal text-white">30%</p>
 									<p className="text-md leading-[28px] font-normal text-[#E0E0E0]">
-									We align your business goals with a step-by-step AI plan—no more guessing which features to build first.
+									Latency Improvement faster than average
 									</p>
 								</div>
 								<div className="h-[1px] w-full bg-[linear-gradient(90deg,_#00AEFF_16.33%,_#00DE94_45.1%,_#00FF52_73.68%)]" />
 
 								{/* Stat #3 */}
 								<div className="flex-1 flex flex-col justify-center px-6 py-4">
-									<p className="text-3xl font-normal text-white">MVP Prototyping</p>
+									<p className="text-5xl font-normal text-white">98%</p>
 									<p className="text-md leading-[28px] font-normal text-[#E0E0E0]">
-									Get a working prototype in record time, test it on real users, then iterate with confidence.
+									 Integration Success Rate
 									</p>
 								</div>
 								<div className="h-[1px] w-full bg-[linear-gradient(90deg,_#00AEFF_16.33%,_#00DE94_45.1%,_#00FF52_73.68%)]" />
 
 								{/* Stat #4 */}
 								<div className="flex-1 flex flex-col justify-center px-6 py-4">
-									<p className="text-3xl font-normal text-white">Ongoing Growth Partnership</p>
+									<p className="text-5xl font-normal text-white">{`< 0.5%`}</p>
 									<p className="text-md leading-[28px] font-normal text-[#E0E0E0]">
-									We don’t just launch your product—we stay on as your technical co-pilot, optimizing performance, adding features, and scaling alongside you.
+									Post-Launch Error Rate
 									</p>
 								</div>
 							</div>

@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 const stats = [
-	{ value: "130+", label: "AI solutions built" },
+	{ value: "25+", label: "Platforms Supported (AI Models)" },
 	{ value: "40%", label: "Year-over-year team growth" },
-	{ value: "5", label: "Successful product exits" },
+	{ value: "95%", label: "Coverage for identified technical risks" },
 ];
 
 export function StatsSection() {
