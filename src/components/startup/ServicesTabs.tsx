@@ -222,7 +222,7 @@ export default function ServicesTabs() {
 											isActive
 												? `
                       bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
-                      border-[1px]
+                    
                       border-transparent rounded-[12px]
                       [border-image-source:linear-gradient(180deg,#23D5D5_0%,#1EB2B2_100%)]
                       [border-image-slice:1]
