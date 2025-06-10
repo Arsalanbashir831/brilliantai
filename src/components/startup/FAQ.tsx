@@ -33,59 +33,65 @@ const FAQ_ITEMS = [
 ];
 
 export default function FAQ() {
-    const [openIndex, setOpenIndex] = useState<number | null>(0);
-
+    // State starts at 0 (no FAQ open by default)
+    const [openIndex, setOpenIndex] = useState<number>(0);
+  
     return (
-        <section className="bg-[#000E0F] py-20">
-            <div className="max-w-3xl mx-auto px-6">
-                <h2 className="text-[50px] font-semibold text-white text-center">Founder FAQ</h2>
-                <p className="mt-2 text-[18px] leading-[28px] text-[#E0E0E0] text-center">
-                    Clarity before commitment. Everything you need to know before you build.
-                </p>
-
-                <div className="mt-12">
-                    {FAQ_ITEMS.map((item, idx) => {
-                        const isOpen = idx === openIndex;
-                        return (
-                            <div key={idx}>
-                                <button
-                                    type="button"
-                                    onClick={() => setOpenIndex(isOpen ? null : idx)}
-                                    className="flex items-center justify-between w-full py-4"
-                                >
-                                    <span className="text-[20px] leading-[28px] font-medium text-left text-white">
-                                        {item.question}
-                                    </span>
-                                    {isOpen ? (
-                                        <MinusCircle size={24} className="text-[#23D5D5]" />
-                                    ) : (
-                                        <PlusCircle size={24} className="text-[#23D5D5]" />
-                                    )}
-                                </button>
-
-                                <AnimatePresence initial={false}>
-                                    {isOpen && (
-                                        <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            exit={{ opacity: 0, height: 0 }}
-                                            transition={{ duration: 0.3, ease: 'easeInOut' }}
-                                        >
-                                            <p className="px-1 pb-4 text-[14px] leading-[28px] text-[#E0E0E0]">
-                                                {item.answer}
-                                            </p>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-
-                                {idx < FAQ_ITEMS.length - 1 && (
-                                    <hr className="border-t border-2 border-[#404040]" />
-                                )}
-                            </div>
-                        );
-                    })}
+      <section className="bg-[#000E0F] py-20">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="md:text-[40px] text-3xl font-semibold text-white text-center">
+            Frequently asked questions
+          </h2>
+          <p className="mt-2 md:text-[18px] text-xl leading-[28px] text-[#E0E0E0] text-center">
+            Everything you need to know about Brilliant AI
+          </p>
+  
+          <div className="mt-12">
+            {FAQ_ITEMS.map((item, idx) => {
+              // Convert to 1-based index
+              const itemIndex = idx + 1;
+              const isOpen = itemIndex === openIndex;
+              return (
+                <div key={itemIndex}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? 0 : itemIndex)}
+                    className="flex items-center justify-between w-full py-4"
+                  >
+                    <span className="text-[20px] leading-[28px] font-medium text-white">
+                      {item.question}
+                    </span>
+                    {isOpen ? (
+                      <MinusCircle size={24} className="text-[#23D5D5]" />
+                    ) : (
+                      <PlusCircle size={24} className="text-[#23D5D5]" />
+                    )}
+                  </button>
+  
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                      >
+                        <p className="px-1 pb-4 text-[14px] leading-[28px] text-[#E0E0E0]">
+                          {item.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+  
+                  {idx < FAQ_ITEMS.length - 1 && (
+                    <hr className="border-t border-2 border-[#404040]" />
+                  )}
                 </div>
-            </div>
-        </section>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     );
-}
+  }
+  
