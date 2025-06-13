@@ -24,7 +24,8 @@ export default function Home() {
     { Component: CallToAction,    key: "cta" },
     ];
     
-    
+
+
 
     return (
    
@@ -42,5 +43,7 @@ export default function Home() {
         </motion.div>
       ))}
     </div>
+
+    
   );
 }

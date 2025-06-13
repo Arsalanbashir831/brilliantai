@@ -66,7 +66,7 @@ export default function CTA() {
             Can’t find the answer you’re looking for? Please chat to our friendly team
           </p>
           <BrilliantButton
-            onClick={() => router.push('/contact-us')}
+           onClick={()=>router.push('/contact-us#contact-form')}
             variant="white"
             className="mt-8"
           >

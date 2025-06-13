@@ -1,8 +1,6 @@
-// components/AiFeaturesSection.tsx
 "use client";
 
-import { useRef, useEffect } from "react";
-// import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef, useEffect, useState } from "react";
 import { ShineBorder } from "../magicui/shine-border";
 
 const features = [
@@ -35,34 +33,21 @@ const features = [
 
 export default function AiFeaturesSection() {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    // On mount (mobile only), scroll so the 3rd card sits half-visible
-    const slider = sliderRef.current;
-    if (!slider) return;
-    const card = slider.querySelector<HTMLDivElement>(".feature-card");
-    if (!card) return;
-
-    const cardWidth = card.clientWidth + 16; // including 16px gap
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
-    // center the last card
-    slider.scrollLeft = Math.max(0, maxScroll - cardWidth / 2);
+    // Align to the first card on mount
+    if (sliderRef.current) sliderRef.current.scrollLeft = 0;
   }, []);
 
-//   function scrollByCard(dir: "left" | "right") {
-//     const slider = sliderRef.current;
-//     if (!slider) return;
-//     const card = slider.querySelector<HTMLDivElement>(".feature-card");
-//     if (!card) return;
-
-//     const gap = 16; // Tailwind’s gap-4 = 16px
-//     const step = card.clientWidth + gap;
-//     const maxScroll = slider.scrollWidth - slider.clientWidth;
-
-//     let next = slider.scrollLeft + (dir === "left" ? -step : step);
-//     next = Math.max(0, Math.min(maxScroll, next));
-//     slider.scrollTo({ left: next, behavior: "smooth" });
-//   }
+  const handleScroll = () => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    const gap = 16; // Tailwind gap-4
+    const cardWidth = slider.clientWidth * 0.9 + gap;
+    const index = Math.round(slider.scrollLeft / cardWidth);
+    setCurrentIndex(index);
+  };
 
   return (
     <section className="py-20 md:mb-15">
@@ -73,10 +58,11 @@ export default function AiFeaturesSection() {
           AI-Powered Realities
         </h2>
 
-        {/* ─────────────── MOBILE SLIDER (shown below md) ─────────────── */}
+        {/* MOBILE SLIDER */}
         <div className="md:hidden">
           <div
             ref={sliderRef}
+            onScroll={handleScroll}
             className="
               flex gap-4 pl-4
               overflow-x-auto
@@ -88,9 +74,7 @@ export default function AiFeaturesSection() {
             {features.map(({ title, text }, idx) => (
               <div
                 key={idx}
-                style={{
-                  boxShadow: "inset -20px 4px 120px -80px #1FBBBB",
-                }}
+                style={{ boxShadow: "inset -20px 4px 120px -80px #1FBBBB" }}
                 className="
                   feature-card
                   relative
@@ -103,10 +87,7 @@ export default function AiFeaturesSection() {
                   shadow-lg
                 "
               >
-                <ShineBorder
-                  shineColor={["#808080", "#23D5D5", "#23D5D51A", "#808080D9"]}
-                />
-                {/* subtle overlay */}
+                <ShineBorder shineColor={["#808080", "#23D5D5", "#23D5D51A", "#808080D9"]} />
                 <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
                 <h3 className="relative z-10 text-xl font-normal text-white mb-4">
@@ -116,40 +97,25 @@ export default function AiFeaturesSection() {
               </div>
             ))}
           </div>
-
-          {/* Only show arrows on mobile if desired (optional) */}
-          {/* 
-          <div className="flex justify-end gap-4 p-4">
-            <button
-              onClick={() => scrollByCard("left")}
-              className="
-                w-10 h-10 flex items-center justify-center
-                rounded-full bg-[rgba(35,213,213,0.15)]
-              "
-            >
-              <ChevronLeft className="w-5 h-5 text-[#23D5D5]" />
-            </button>
-            <button
-              onClick={() => scrollByCard("right")}
-              className="
-                w-10 h-10 flex items-center justify-center
-                rounded-full bg-[rgba(35,213,213,0.15)]
-              "
-            >
-              <ChevronRight className="w-5 h-5 text-[#23D5D5]" />
-            </button>
+          {/* Pagination Dots */}
+          <div className="flex justify-center mt-4 space-x-2">
+            {features.map((_, idx) => (
+              <span
+                key={idx}
+                className={`h-3 transition-all rounded-full ${
+                  idx === currentIndex ? "w-6 bg-cyan-400" : "w-3 bg-gray-600"
+                }`}
+              />
+            ))}
           </div>
-          */}
         </div>
 
-        {/* ─────────────── DESKTOP GRID (shown at md and up) ─────────────── */}
+        {/* DESKTOP GRID */}
         <div className="hidden md:grid md:grid-cols-3 md:gap-6 px-12">
           {features.map(({ title, text }, idx) => (
             <div
               key={idx}
-              style={{
-                boxShadow: "inset -20px 4px 120px -80px #1FBBBB",
-              }}
+              style={{ boxShadow: "inset -20px 4px 120px -80px #1FBBBB" }}
               className="
                 relative
                 rounded-2xl
@@ -158,10 +124,7 @@ export default function AiFeaturesSection() {
                 shadow-lg
               "
             >
-              <ShineBorder
-                shineColor={["#808080", "#23D5D5", "#23D5D51A", "#808080D9"]}
-              />
-              {/* subtle overlay */}
+              <ShineBorder shineColor={["#808080", "#23D5D5", "#23D5D51A", "#808080D9"]} />
               <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
               <h3 className="relative z-10 text-2xl font-normal text-white mb-4">

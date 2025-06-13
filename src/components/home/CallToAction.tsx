@@ -28,7 +28,7 @@ export default function CallToAction() {
 						We’re here to make it happen.{" "}
 					</span>
 				</h2>
-				<BrilliantButton onClick={()=>router.push('/contact-us')} className="mt-5 px-6 py-3 text-sm md:text-base">
+				<BrilliantButton onClick={()=>router.push('/contact-us#contact-form')} className="mt-5 px-6 py-3 text-sm md:text-base">
 					Get In Touch
 				</BrilliantButton>
 			</div>

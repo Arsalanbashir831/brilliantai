@@ -1,7 +1,8 @@
 'use client';
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+
 import HeroSection from "@/components/contact-us/hero-section";
 import { ContactForm } from "@/components/contact-us/contact-form";
 import { StatsSection } from "@/components/contact-us/stats-section";
@@ -27,10 +28,10 @@ const sectionVariants = {
     scale: 1,
     transition: {
       type: "spring",
-      stiffness: 40,  // more “float”
-      damping: 14,    // gentler settle
-      mass: 0.6,      // adds a bit of weight
-      ease: [0.42, 0, 0.58, 1], // smooth fallback
+      stiffness: 40,
+      damping: 14,
+      mass: 0.6,
+      ease: [0.42, 0, 0.58, 1],
     },
   },
 };
@@ -47,6 +48,29 @@ const AnimatedSection = ({ children }: { children: React.ReactNode }) => (
 );
 
 export default function Page() {
+  const contactFormRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      if (hash === "#contact-form" && contactFormRef.current) {
+        setTimeout(() => {
+          const offset = 80; // adjust this value as needed
+          const elementRect = contactFormRef.current?.getBoundingClientRect();
+          if (!elementRect) return;
+          const elementPosition = elementRect.top + window.pageYOffset;
+          const scrollTo = elementPosition - offset;
+  
+          window.scrollTo({
+            top: scrollTo,
+            behavior: "smooth",
+          });
+        }, 100); // delay to ensure DOM is rendered
+      }
+    }
+  }, []);
+  
+
   return (
     <motion.div
       variants={containerVariants}
@@ -54,8 +78,20 @@ export default function Page() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <AnimatedSection><HeroSection /></AnimatedSection>
-      <AnimatedSection><ContactForm /></AnimatedSection>
+      <AnimatedSection><HeroSection onScrollToContact={() => {
+    if (contactFormRef.current) {
+      const offset = 80;
+      const top = contactFormRef.current.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  }}/></AnimatedSection>
+
+      <AnimatedSection >
+        <div ref={contactFormRef}>
+          <ContactForm />
+        </div>
+      </AnimatedSection>
+
       <AnimatedSection><StatsSection /></AnimatedSection>
       <AnimatedSection><ProcessSection /></AnimatedSection>
       <AnimatedSection><TrustSection /></AnimatedSection>

@@ -34,7 +34,7 @@ const CtaSection: FC = () => {
 
 
                 <BrilliantButton
-                onClick={() => router.push('/contact-us')}
+               onClick={()=>router.push('/contact-us#contact-form')}
                     className=" w-[229px] h-[52px]
                         flex items-center justify-center gap-[10px]
                         rounded-[16px]

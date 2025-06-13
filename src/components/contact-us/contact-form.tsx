@@ -17,29 +17,30 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { FileText } from "lucide-react";
 import BrilliantButton from "../widgets/BrilliantButtons";
+import SubmissionModal from "../SubmissionModal";
 
 const personalFields = [
-    { id: "firstName", label: "First Name", placeholder: "David", type: "text" },
-    { id: "lastName", label: "Last Name", placeholder: "Johnson", type: "text" },
+    { id: "firstName", label: "First Name", placeholder: "Enter your First Name", type: "text" },
+    { id: "lastName", label: "Last Name", placeholder: "Enter your Last Name", type: "text" },
 ];
 
 const companyFields = [
     {
         id: "company",
         label: "Company Name",
-        placeholder: "Ex. StaticMania",
+        placeholder: "Enter your Company Name",
         type: "text",
     },
     {
         id: "email",
         label: "Business Email",
-        placeholder: "example@email.com",
+        placeholder: "Enter your Email",
         type: "email",
     },
 ];
 
 const contactFields = [
-    { id: "phone", label: "Phone Number", placeholder: "Ex. +44 7911 123456", type: "text" },
+    { id: "phone", label: "Phone Number", placeholder: "Enter your Contact Number", type: "text" },
 ];
 
 const servicesList = [
@@ -70,7 +71,7 @@ export function ContactForm() {
     const [message, setMessage] = useState("");
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const [isSending, setIsSending] = useState(false);
-
+    const [modalOpen, setModalOpen] = useState(false);
     // ─── Toggle a service checkbox on/off ───────────────────────────
     function toggleService(service: string) {
         setServices((prev) =>
@@ -166,6 +167,7 @@ export function ContactForm() {
             }
 
             // 4) Clear form on success
+            setModalOpen(true);
             setFirstName("");
             setLastName("");
             setCompany("");
@@ -175,7 +177,7 @@ export function ContactForm() {
             setServices([]);
             setMessage("");
             setSelectedFiles([]);
-            alert("✅ Email sent successfully!");
+        
         } catch (err: any) {
             console.error("Error sending email:", err);
             alert("❌ Error sending email: " + (err.message || err));
@@ -185,7 +187,7 @@ export function ContactForm() {
     }
 
     return (
-        <section className="px-6 py-16">
+        <section  className="px-6 py-16">
             <div className="max-w-2xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
@@ -399,6 +401,7 @@ export function ContactForm() {
                     </CardContent>
                 </Card>
             </div>
+            <SubmissionModal open={modalOpen} onClose={()=>setModalOpen(false)} />
         </section>
     );
 }

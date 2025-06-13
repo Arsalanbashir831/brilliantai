@@ -52,7 +52,7 @@ function AICard({
 				<p className="mt-2 mb-1 text-[#96CDCD] leading-relaxed max-w-90  text-sm md:text-lg">
 					{description}
 				</p>
-				<BrilliantButton onClick={()=>router.push('/contact-us')}
+				<BrilliantButton onClick={()=>router.push('/contact-us#contact-form')}
 					variant="white"
 					className="text-[#052E2B] px-3 py-0  mt-4 rounded-lg font-medium">
 					{buttonText}

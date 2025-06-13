@@ -67,7 +67,7 @@ export default function TurnVisionIntoProduct() {
             </h2>
 
             <div className="hidden sm:flex">
-              <BrilliantButton onClick={() => router.push('/contact-us')}>
+              <BrilliantButton onClick={()=>router.push('/contact-us#contact-form')}>
                 Get in touch
               </BrilliantButton>
             </div>
@@ -86,8 +86,8 @@ export default function TurnVisionIntoProduct() {
           </div>
 
           <div className="flex sm:hidden justify-center w-full">
-            <BrilliantButton onClick={() => router.push('/contact-us')}>
-              Get in touch →
+            <BrilliantButton onClick={()=>router.push('/contact-us#contact-form')}>
+              Get in touch 
             </BrilliantButton>
           </div>
         </div>

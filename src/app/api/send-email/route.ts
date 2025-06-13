@@ -148,14 +148,44 @@ export async function POST(req: NextRequest) {
         // 6) Convert any attachments data→content for Resend
         if (Array.isArray(attachments) && attachments.length > 0) {
             sendPayload.attachments = (attachments as {
-                filename: string;
-                type: string;
-                data: string;
+              filename: string;
+              type: string;
+              data: string;
             }[]).map((att) => ({
-                filename: att.filename,
-                type: att.type,
-                content: att.data, // Resend expects `content` instead of `data`
+              filename: att.filename,
+              type: att.type,
+              content: att.data, // Resend expects `content` instead of `data`
             }));
+
+            // Send confirmation email to the user
+            const userConfirmationPayload = {
+              from: getFromHeader(),
+              to: [email],
+              subject: `Thank you, ${firstName}! We've received your message`,
+              html: `
+                <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; background-color: #f5f5f5;">
+                <div style="background-color: #0d9488; color: #fff; padding: 10px 20px; border-radius: 5px 5px 0 0;">
+                  <h1 style="margin: 0; font-size: 22px;">Thank you for contacting us, ${firstName} ${lastName}!</h1>
+                </div>
+                <div style="background-color: #fff; padding: 20px; border-radius: 0 0 5px 5px;">
+                  <p>We have received your message and will get back to you as soon as possible.</p>
+                  <p><strong>Your message:</strong></p>
+                  <blockquote style="border-left: 4px solid #0d9488; margin: 0; padding-left: 12px; color: #555;">
+                  ${(message as string).replace(/\n/g, "<br/>")}
+                  </blockquote>
+                  <p style="margin-top: 20px;">Best regards,<br/>The Team</p>
+                </div>
+                 <div style="margin-top: 20px; text-align: center;">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/brilliant-ai-6d2ad.firebasestorage.app/o/logos%2Flogo-dark.png?alt=media&token=75857067-a378-4973-8dbf-2b1add87f2af"
+            alt="Brilliant AI"
+            style="width: 120px; opacity: 0.8;"
+          />
+        </div>
+                </div>
+              `,
+            };
+            await resend.emails.send(userConfirmationPayload);
         }
 
         // 7) Send via Resend

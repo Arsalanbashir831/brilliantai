@@ -84,7 +84,7 @@ export default function WhatWeOffer() {
 
 	return (
 		<section  className="pb-10 py-0  text-center">
-			<section id="services" className="pb-10 py-0 text-center scroll-mt-80 md:scroll-mt-20"></section>
+			<section id="services" className="pb-10 py-0 text-center scroll-mt-40  md:scroll-mt-20"></section>
 			<h2 className="text-3xl md:text-6xl text-white font-semibold mb-4">
 				What We Offer
 			</h2>

@@ -149,7 +149,7 @@ export default function Hero() {
 						// animate={{ opacity: 1, y: 0 }}
 						// transition={{ delay: 1.3, duration: 0.4, ease: "easeOut" }}
 					>
-						<BrilliantButton onClick={()=>router.push('/contact-us')} variant="gradient">Get in Touch</BrilliantButton>
+						<BrilliantButton onClick={()=>router.push('/contact-us#contact-form')} variant="gradient">Get in Touch</BrilliantButton>
 						<BrilliantButton onClick={()=>router.push('/about')} variant="transparent">Learn More</BrilliantButton>
 					</motion.div>
 				</main>

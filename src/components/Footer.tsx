@@ -64,7 +64,7 @@ const router = useRouter()
 {/* <BrilliantButton variant="white"  hasArrow>
               Get in touch
             </BrilliantButton> */}
-            <div className="flex items-center justify-center gap-5 ">
+            <div onClick={()=>router.push('/contact-us#contact-form')} className="flex items-center justify-center gap-5 ">
                 <div className="">
 
                 <h2 className="text-2xl font-semibold text-white ">
