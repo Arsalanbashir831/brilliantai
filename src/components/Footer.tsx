@@ -9,6 +9,9 @@ import useMobile from "@/hook/useMobile";
 import { useRouter } from "next/navigation";
 
 export default function Footer() {
+  const SOCIAL_EMAIL = "info@brilliant-ai.co.uk"; 
+const SOCIAL_SUBJECT = encodeURIComponent("");
+const SOCIAL_BODY = encodeURIComponent("");
   const isMobile = useMobile();
 const router = useRouter()
   // Shared elements
@@ -30,13 +33,34 @@ const router = useRouter()
 
   const socialIcons = (
     <div className="flex space-x-4">
-      {/* <button aria-label="X Twitter" className="border rounded-full p-2 hover:text-gray-300">
-        <X />
-      </button> */}
-      <button aria-label="LinkedIn" className="border rounded-full p-2 hover:text-gray-300">
+      <button 
+        onClick={() =>
+          window.open(
+            "https://www.linkedin.com/company/brilliant-aidev/",
+            "_blank",
+            "noopener,noreferrer"
+          )
+        }
+        aria-label="LinkedIn"
+        className="border rounded-full p-2 hover:text-gray-300 cursor-pointer"
+      >
         <Linkedin />
       </button>
-      <button aria-label="Email" className="border rounded-full p-2 hover:text-gray-300">
+  
+      <button
+        onClick={() => {
+          const gmailUrl = [
+            "https://mail.google.com/mail/?view=cm&fs=1",
+            `to=${SOCIAL_EMAIL}`,
+            `su=${SOCIAL_SUBJECT}`,
+            `body=${SOCIAL_BODY}`,
+          ].join("&");
+  
+          window.open(gmailUrl, "_blank", "noopener,noreferrer");
+        }}
+        aria-label="Email via Gmail"
+        className="border rounded-full p-2 hover:text-gray-300 cursor-pointer"
+      >
         <Mail />
       </button>
     </div>
