@@ -46,12 +46,12 @@ export default function Header() {
   return (
     <nav className="sticky top-0 z-50 bg-[#011010] border-b border-[#C3FFFF]">
       <div className="flex items-center justify-between p-4 lg:px-20 lg:py-3">
-        <Image
+        <Image onClick={()=> router.push("/")}
           height={150}
           width={150}
           src="/logo.svg"
           alt="Logo"
-          className="h-8 lg:h-10"
+          className="h-8 lg:h-10 cursor-pointer"
         />
 
         {/* Desktop Navigation */}
