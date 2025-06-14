@@ -26,7 +26,7 @@ const FAQ_ITEMS = [
       "Yes. We’ve helped many founders build investor-ready products. We can provide pitch support, product demos, and technical documentation that help you present your MVP to investors with confidence.",
   },
   {
-    question: "How do I change my account email?",
+    question: "Will I own the product and code?",
     answer:
       "Once the project is completed, you will have full ownership of the product and its source code. We believe in giving founders full control of their product.",
   },
