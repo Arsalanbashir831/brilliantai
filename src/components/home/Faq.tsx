@@ -1,35 +1,35 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { PlusCircle, MinusCircle } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from 'react';
+import { PlusCircle, MinusCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FAQ_ITEMS = [
   {
-    question: "Do you work with non-technical founders?",
+    question: 'What does your company do?',
     answer:
-      "Yes, absolutely. Many of our clients come from backgrounds in business, legal, operations or other industries. We handle all the technical details and guide you through the process with clear communication, structured milestones and no jargon, making it easy to stay in control of your project.",
+      'We are an AI engineering company that designs, builds and delivers intelligent software solutions. From early stage prototypes to full scale platforms, we turn complex ideas into working products using cutting edge technologies and practical engineering.'
   },
   {
-    question: "What types of businesses do you work with?",
+    question: 'Who do you work with?',
     answer:
-      "We currently specialise in supporting businesses in the legal and HR sectors. Whether it is a law firm, legal department or HR consultancy, we build tailored AI solutions designed to improve productivity, streamline processes and reduce manual work. Our sector focus allows us to bring targeted insights and deliver meaningful results from day one.",
+      'We work with startups, legal teams and HR service providers, as well as non technical founders looking to build with AI. Our clients come to us for smart, reliable solutions that streamline workflows, reduce manual work and create real business value.'
   },
   {
-    question: "Do you work with international clients?",
+    question: 'Do you handle the full build process?',
     answer:
-      "Yes, we support clients across the United Kingdom, Europe, North America, the Middle East and other regions. Our team is experienced in remote collaboration and we use tools that ensure smooth communication and reliable delivery across time zones.",
+      'Yes. We manage everything from product discovery and design to engineering, testing and launch. We also provide ongoing support and iteration so your product evolves with your users and your business.'
   },
   {
-    question: "Can you help refine or improve an existing product?",
+    question: '⁠Is your work fully custom?',
     answer:
-      "Absolutely. If you already have a prototype or live product, we can help you enhance it. Our team can run code reviews, user experience assessments and product strategy workshops to identify improvements, introduce artificial intelligence features or resolve technical challenges.",
+      'Every solution we build is designed from the ground up to meet your specific goals. We do not use off the shelf templates or one size fits all approaches. Our team delivers robust, scalable systems with clean architecture and clear documentation.'
   },
   {
-    question: "Will I own the product and code?",
+    question: 'How do we get started?',
     answer:
-      "Yes, everything we build for your project is yours. You will own the full intellectual property including the codebase and any supporting documentation. We also provide training and support if you need help managing or scaling the product after delivery.",
-  },
+      'Book a call with us. We will learn more about your goals, assess the technical needs and suggest a path forward. If there is a fit, we will send you a detailed proposal with timelines, pricing and deliverables.'
+  }
 ];
 
 export default function FAQ() {
@@ -55,7 +55,7 @@ export default function FAQ() {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? 0 : itemIndex)}
-                  className="flex items-center justify-between gap-[3px] w-full p-4"
+                  className="flex items-center gap-[3px] justify-between w-full p-4"
                 >
                   {/* question text */}
                   <span className="flex-1 text-left text-[18px] md:text-[20px] leading-[28px] font-medium text-white">

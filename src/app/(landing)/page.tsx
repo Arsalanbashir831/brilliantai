@@ -10,6 +10,7 @@ import GradientCTA from "@/components/home/GradientCTA";
 import AIMeasurableOutcomes from "@/components/home/AIMeasurableOutcomes";
 import CallToAction from "@/components/home/CallToAction";
 import { fadeUp } from "@/effects/Effects";
+import FAQ from "@/components/home/Faq";
 
 
 
@@ -21,6 +22,7 @@ export default function Home() {
     { Component: EndToEndTeam, key: "team" },
     { Component: GradientCTA,   key: "gradient" },
     { Component: AIMeasurableOutcomes, key: "outcomes" },
+    { Component: FAQ,    key: "faqs" },
     { Component: CallToAction,    key: "cta" },
     ];
     

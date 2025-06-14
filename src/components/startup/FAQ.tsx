@@ -6,92 +6,89 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const FAQ_ITEMS = [
     {
-        question: 'How long does it take to build an MVP?',
+        question: 'I have an idea but no tech team. Can you help?',
         answer:
-            'The timeline for building an MVP depends on the project scope, but most MVPs take between 4 to 12 weeks. We work closely with you to define essential features and ensure a fast, efficient build.'
+            'Yes. We work closely with non technical founders to turn ideas into fully working products. From planning and design to development and launch, we take care of the entire process while keeping you involved and informed at every step.'
     },
     {
-        question: 'Do I need a detailed plan before reaching out?',
+        question: 'How long does it take to launch a product?',
         answer:
-            'No, a detailed plan isn’t required. We’re happy to explore your idea with you, help define the scope, and guide you through shaping it into a clear development roadmap.'
+            'It depends on the scope, but most startups we work with launch an initial version within four to twelve weeks. We focus on building lean, focused MVPs so you can test fast, learn from real users and grow with confidence.'
     },
     {
-        question: 'What if I do not have a technical background?',
+        question: 'Do I need to raise funding before working with you?',
         answer:
-            'That’s completely fine. Many of our clients come from business, legal, or operations backgrounds. We handle the technical side and communicate everything in a clear and structured way.'
+            'Not necessarily. Some of our clients are bootstrapped, others have secured funding. We offer flexible engagement options and can advise on the best approach for your budget and goals. If needed, we can also support your fundraising efforts with pitch materials or technical input.'
     },
     {
-        question: 'Can you help me raise investment with the product?',
+        question: 'Can you improve or rebuild an existing product?',
         answer:
-            'Yes. We’ve helped many founders build investor-ready products. We can provide pitch support, product demos, and technical documentation that help you present your MVP to investors with confidence.'
+            'Yes. If you already have something live but it needs fixing, upgrading or rebuilding, we can step in. Whether it is legacy code, poor UX or missing features, we will help you get back on track and make your product investor and user ready.'
     },
     {
-        question: 'Will I own the product and code?',
+        question: 'Will I own everything you build?',
         answer:
-            'Yes, absolutely. Once the project is completed, you will have full ownership of the product and its source code. We believe in giving founders full control of their product.'
+            'Yes, 100 percent. You will own the product, code and all related intellectual property. We build everything under your name and provide full access, handover and documentation once development is complete.'
     }
 ];
 
 export default function FAQ() {
-    // State starts at 0 (no FAQ open by default)
-    const [openIndex, setOpenIndex] = useState<number>(0);
-  
-    return (
-      <section className="bg-[#000E0F] py-20">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="md:text-[40px] text-3xl font-semibold text-white text-center">
-            Frequently asked questions
-          </h2>
-          <p className="mt-2 md:text-[18px] text-xl leading-[28px] text-[#E0E0E0] text-center">
-            Everything you need to know about Brilliant AI
-          </p>
-  
-          <div className="mt-12">
-            {FAQ_ITEMS.map((item, idx) => {
-              // Convert to 1-based index
-              const itemIndex = idx + 1;
-              const isOpen = itemIndex === openIndex;
-              return (
-                <div key={itemIndex}>
-                  <button
-                    type="button"
-                    onClick={() => setOpenIndex(isOpen ? 0 : itemIndex)}
-                    className="flex items-center justify-between w-full py-4"
-                  >
-                    <span className="text-[20px] leading-[28px] font-medium text-white">
-                      {item.question}
-                    </span>
-                    {isOpen ? (
-                      <MinusCircle size={24} className="text-[#23D5D5]" />
-                    ) : (
-                      <PlusCircle size={24} className="text-[#23D5D5]" />
-                    )}
-                  </button>
-  
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                      >
-                        <p className="px-1 pb-4 text-[14px] leading-[28px] text-[#E0E0E0]">
-                          {item.answer}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-  
-                  {idx < FAQ_ITEMS.length - 1 && (
-                    <hr className="border-t border-2 border-[#404040]" />
+  const [openIndex, setOpenIndex] = useState<number>(0);
+
+  return (
+    <section className="bg-[#000E0F] py-20">
+      <div className="max-w-3xl mx-auto px-6">
+        <h2 className="text-center text-white font-semibold text-3xl md:text-[40px]">
+          Frequently Asked Questions
+        </h2>
+        <p className="mt-2 text-center text-[#E0E0E0] text-xl md:text-[18px] leading-[28px]">
+          Everything you need to know about Brilliant AI
+        </p>
+
+        <div className="mt-12 space-y-4">
+          {FAQ_ITEMS.map((item, idx) => {
+            const itemIndex = idx + 1;
+            const isOpen = itemIndex === openIndex;
+
+            return (
+              <div key={idx} className="bg-[#07101165] rounded-lg overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? 0 : itemIndex)}
+                  className="flex items-center gap-[3px] justify-between w-full p-4"
+                >
+                  {/* question text */}
+                  <span className="flex-1 text-left text-[18px] md:text-[20px] leading-[28px] font-medium text-white">
+                    {item.question}
+                  </span>
+
+                  {/* consistent icon size and fixed right alignment */}
+                  {isOpen ? (
+                    <MinusCircle size={24} className="flex-shrink-0 text-[#23D5D5]" />
+                  ) : (
+                    <PlusCircle size={24} className="flex-shrink-0 text-[#23D5D5]" />
                   )}
-                </div>
-              );
-            })}
-          </div>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    >
+                      <p className="px-4 pb-4 text-[14px] leading-[28px] text-[#E0E0E0]">
+                        {item.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
-      </section>
-    );
-  }
-  
+      </div>
+    </section>
+  );
+}
