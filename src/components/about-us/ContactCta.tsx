@@ -28,7 +28,7 @@ export default function ContactCta() {
 							Ready to start the conversation?
 						</h3>
 
-						<BrilliantButton onClick={() => {router.push("/contact-us")}} 
+						<BrilliantButton onClick={() => {router.push("/contact-us#contact-form")}} 
 							variant="white"
 							className="flex items-center  text-[#23D5D5] bg-gradient-to-b from-[#23D5D546] to-[#1eb2b246] text-xs h-fit py-2 rounded-lg md:text-xl">
 							Book a call
