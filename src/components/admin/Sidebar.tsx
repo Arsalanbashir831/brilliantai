@@ -4,7 +4,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { BookOpen, Newspaper } from "lucide-react";
+import { BookOpen, Newspaper, Users2 } from "lucide-react";
 import LogoutButton from "./LogoutButton";
 
 interface NavLinkProps {
@@ -38,6 +38,7 @@ export function Sidebar() {
 	const navItems = [
 		{ href: "/admin?blogs", icon: BookOpen, label: "Blogs" },
 		{ href: "/admin/headlines", icon: Newspaper, label: "Headlines" },
+		{ href: "/admin/subscriptions", icon: Users2, label: "Subscriptions" },
 	];
 
 	return (
