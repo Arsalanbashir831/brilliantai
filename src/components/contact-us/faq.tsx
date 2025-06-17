@@ -51,11 +51,11 @@ export default function FAQ() {
             const isOpen = itemIndex === openIndex;
 
             return (
-              <div key={idx} className="bg-[#07101165] rounded-lg overflow-hidden">
+              <div key={idx} className="bg-[#07101165] rounded-lg overflow-hidden ">
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? 0 : itemIndex)}
-                  className="flex items-center justify-between gap-[3px] w-full p-4"
+                  className="flex items-center justify-between gap-[3px] w-full p-4 cursor-pointer"
                 >
                   {/* question text */}
                   <span className="flex-1 text-left text-[18px] md:text-[20px] leading-[28px] font-medium text-white">
