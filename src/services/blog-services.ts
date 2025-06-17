@@ -1,167 +1,202 @@
+// services/blog-services.ts
+
 import { v4 as uuidv4 } from "uuid";
 import type { Blog } from "@/types/blog";
 import { db, bucket } from "@/firebase/admin";
 
+// — simple slugifier —
+function slugifyTitle(title: string): string {
+  return title
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9\-]/g, "");
+}
+
 // Helper: upload a File (Buffer) to Storage and return { publicUrl, pathInBucket }
 async function uploadThumbnail(
-	fileName: string,
-	buffer: Buffer,
-	mimeType: string
+  fileName: string,
+  buffer: Buffer,
+  mimeType: string
 ): Promise<{ publicUrl: string; pathInBucket: string }> {
-	// Choose a path like 'blogs/<uuid>_<originalname>'
-	const uniqueId = uuidv4();
-	const extension = fileName.split(".").pop();
-	const pathInBucket = `blogs/${uniqueId}.${extension}`;
-	const fileRef = bucket.file(pathInBucket);
+  const uniqueId = uuidv4();
+  const extension = fileName.split(".").pop();
+  const pathInBucket = `blogs/${uniqueId}.${extension}`;
+  const fileRef = bucket.file(pathInBucket);
 
-	// Upload data
-	await fileRef.save(buffer, {
-		contentType: mimeType,
-		resumable: false,
-	});
+  await fileRef.save(buffer, {
+    contentType: mimeType,
+    resumable: false,
+  });
+  await fileRef.makePublic();
 
-	// Make publicly readable
-	await fileRef.makePublic();
-
-	// Construct public URL
-	const publicUrl = `https://storage.googleapis.com/${bucket.name}/${pathInBucket}`;
-
-	return { publicUrl, pathInBucket };
+  const publicUrl = `https://storage.googleapis.com/${bucket.name}/${pathInBucket}`;
+  return { publicUrl, pathInBucket };
 }
 
 // Create a new blog record:
-// - Upload thumbnail to Storage
-// - Push a new record under /blogs in Realtime DB
+// 1) Atomically claim the slug under /blogTitles
+// 2) Upload thumbnail to Storage
+// 3) Write the blog under /blogs/{blogId}
+// 4) Roll back slug claim if anything fails
 export async function createBlog(
-	title: string,
-	description: string,
-	fileName: string,
-	fileBuffer: Buffer,
-	mimeType: string
+  title: string,
+  description: string,
+  fileName: string,
+  fileBuffer: Buffer,
+  mimeType: string
 ): Promise<Blog> {
-	// 1) Upload to Storage
-	const { publicUrl, pathInBucket } = await uploadThumbnail(
-		fileName,
-		fileBuffer,
-		mimeType
-	);
+  const slug     = slugifyTitle(title);
+  const blogId   = uuidv4();
+  const titleRef = db.ref(`blogTitles/${slug}`);
 
-	// 2) Push to Realtime DB under /blogs
-	const blogRef = db.ref("blogs").push();
-	const id = blogRef.key!; // generated key
-	const publishedDate = new Date().toISOString();
+  // 1) Claim the slug (transaction will abort if already exists)
+  const tx = await titleRef.transaction(current => {
+    if (current !== null) return;     // abort
+    return blogId;                    // claim it
+  });
+  if (!tx.committed) {
+    throw new Error("TITLE_EXISTS");
+  }
 
-	const blogData: Omit<Blog, "id"> = {
-		title,
-		description,
-		thumbnailUrl: publicUrl,
-		thumbnailPath: pathInBucket,
-		publishedDate,
-	};
+  // 2) Upload & 3) Write blog inside try/catch
+  let publicUrl: string;
+  let pathInBucket: string;
+  let publishedDate: string;
 
-	await blogRef.set(blogData);
+  try {
+    ({ publicUrl, pathInBucket } = await uploadThumbnail(
+      fileName, fileBuffer, mimeType
+    ));
+    publishedDate = new Date().toISOString();
 
-	return { id, ...blogData } as Blog;
+    const blogData = {
+      title,
+      description,
+      thumbnailUrl:  publicUrl,
+      thumbnailPath: pathInBucket,
+        publishedDate,
+      slug,
+    };
+    await db.ref(`blogs/${blogId}`).set(blogData);
+  } catch (err) {
+    // 4) Rollback slug claim on any failure
+    await titleRef.remove();
+    throw err;
+  }
+
+  // 5) Return a full Blog object
+  return {
+    id:             blogId,
+    title,
+    description,
+    thumbnailUrl:   publicUrl,
+    thumbnailPath:  pathInBucket,
+      publishedDate,
+    slug,
+  };
 }
 
-// List all blogs (returns array of Blog)
+// List all blogs
 export async function listBlogs(): Promise<Blog[]> {
-	const snapshot = await db.ref("blogs").once("value");
-	const raw: Record<string, Omit<Blog, "id">> = snapshot.val() || {};
-	return Object.entries(raw).map(([id, data]) => ({
-		id,
-		...data,
-	} as Blog));
+  const snapshot = await db.ref("blogs").once("value");
+  const raw: Record<string, Omit<Blog, "id">> = snapshot.val() || {};
+  return Object.entries(raw).map(([id, data]) => ({
+    id,
+    ...data,
+  } as Blog));
 }
 
 // Get a single blog by id
 export async function getBlogById(id: string): Promise<Blog | null> {
-	const snapshot = await db.ref(`blogs/${id}`).once("value");
-	const data = snapshot.val();
-	if (!data) return null;
-  
-	// Assert that the spread object now fully satisfies Blog
-	return { id, ...(data as Omit<Blog, "id">) } as Blog;
-  }
-  
-// Update an existing blog:
-// - If new thumbnailBuffer is provided, delete the old file from Storage, upload new one, update fields
-// - Otherwise, only update title/description
-export async function updateBlog(
-	id: string,
-	title: string,
-	description: string,
-	newFile?: {
-		fileName: string;
-		buffer: Buffer;
-		mimeType: string;
-	}
-): Promise<Blog | null> {
-	const blogSnapshot = await db.ref(`blogs/${id}`).once("value");
-	const existing: Omit<Blog, "id"> | null = blogSnapshot.val();
-	if (!existing) return null;
-
-	let thumbnailUrl = existing.thumbnailUrl;
-	let thumbnailPath = existing.thumbnailPath;
-
-	if (newFile) {
-		// 1) Delete old thumbnail from Storage
-		if (typeof thumbnailPath === 'string' && thumbnailPath.length > 0) {
-			try {
-				await bucket.file(thumbnailPath).delete();
-			} catch (err) {
-				console.warn("Could not delete old thumbnail:", err);
-			}
-		}
-
-		// 2) Upload new thumbnail
-		const uploadRes = await uploadThumbnail(
-			newFile.fileName,
-			newFile.buffer,
-			newFile.mimeType
-		);
-		thumbnailUrl = uploadRes.publicUrl;
-		thumbnailPath = uploadRes.pathInBucket;
-	}
-
-	// 3) Update the DB record
-	const updatedData: Partial<Omit<Blog, "id">> = {
-		title,
-		description,
-		thumbnailUrl,
-		thumbnailPath,
-		// We typically don’t overwrite publishedDate on edit; keep original.
-	};
-	await db.ref(`blogs/${id}`).update(updatedData);
-
-	return {
-		id,
-		title,
-		description,
-		thumbnailUrl: thumbnailUrl as string,
-		thumbnailPath: thumbnailPath as string,
-		publishedDate: existing.publishedDate as string,
-	};
+  const snapshot = await db.ref(`blogs/${id}`).once("value");
+  const data = snapshot.val();
+  if (!data) return null;
+  return { id, ...(data as Omit<Blog, "id">) } as Blog;
 }
 
-// Delete a blog:
-// - Delete thumbnail from Storage
-// - Remove record from Realtime DB
+// Update an existing blog (no slug‐change logic here)
+export async function updateBlog(
+  id: string,
+  title: string,
+  description: string,
+  newFile?: {
+    fileName: string;
+    buffer: Buffer;
+    mimeType: string;
+  }
+): Promise<Blog | null> {
+    const blogSnapshot = await db.ref(`blogs/${id}`).once("value");
+    const raw = blogSnapshot.val();
+    if (!raw) return null;
+
+ 
+
+    const existing = raw as {
+        title: string;
+        description: string;
+        thumbnailUrl: string;
+        thumbnailPath: string;
+        publishedDate: string;
+        slug: string;
+        [key: string]: unknown;
+    };
+    
+  let thumbnailUrl  = existing.thumbnailUrl;
+  let thumbnailPath = existing.thumbnailPath;
+
+  if (newFile) {
+    // Delete old
+    if (thumbnailPath) {
+      try {
+        await bucket.file(thumbnailPath).delete();
+      } catch {
+        /* ignore */}
+    }
+    // Upload new
+    const uploadRes = await uploadThumbnail(
+      newFile.fileName,
+      newFile.buffer,
+      newFile.mimeType
+    );
+    thumbnailUrl  = uploadRes.publicUrl;
+    thumbnailPath = uploadRes.pathInBucket;
+  }
+
+  const updatedData: Partial<Omit<Blog, "id">> = {
+    title,
+    description,
+    thumbnailUrl,
+    thumbnailPath,
+    // keep existing.publishedDate
+  };
+  await db.ref(`blogs/${id}`).update(updatedData);
+
+  return {
+    id,
+    title,
+    description,
+    thumbnailUrl,
+    thumbnailPath,
+      publishedDate: existing.publishedDate,
+      slug: existing.slug,
+  };
+}
+
+// Delete a blog
 export async function deleteBlog(id: string): Promise<boolean> {
-	// 1) Fetch existing record
-	const blog = await getBlogById(id);
-	if (!blog) return false;
+  const blog = await getBlogById(id);
+  if (!blog) return false;
 
-	// 2) Delete thumbnail
-	if (blog.thumbnailPath) {
-		try {
-			await bucket.file(blog.thumbnailPath).delete();
-		} catch (err) {
-			console.warn("Error deleting thumbnail:", err);
-		}
-	}
+  // Delete thumbnail
+  if (blog.thumbnailPath) {
+    try {
+      await bucket.file(blog.thumbnailPath).delete();
+    } catch {
+      /* ignore */}
+  }
 
-	// 3) Remove from Realtime DB
-	await db.ref(`blogs/${id}`).remove();
-	return true;
+  // Remove blog record
+  await db.ref(`blogs/${id}`).remove();
+  return true;
 }

@@ -72,21 +72,21 @@ const FutureTechSection: FC = () => {
                                         type="button"
                                         disabled
                                         className="
-    inline-block px-4 py-1 relative
-    bg-[linear-gradient(180deg,_#23D5D5_0%,_#1EB2B2_100%)]
-    text-white text-sm font-medium rounded-full
-    opacity-50 cursor-not-allowed
-    transition
-    group
-  "
+                                            inline-block px-4 py-1 relative
+                                            bg-[linear-gradient(180deg,_#23D5D5_0%,_#1EB2B2_100%)]
+                                            text-white text-sm font-medium rounded-full
+                                            opacity-50 cursor-not-allowed
+                                            transition
+                                            group
+                                        "
                                     >
                                         <span className="group-hover:opacity-0 transition">Download</span>
                                         <span
                                             className="
-      absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-      opacity-0 group-hover:opacity-100
-      transition
-    "
+                                            absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+                                            opacity-0 group-hover:opacity-100
+                                            transition
+                                            "
                                         >
                                             Download
                                         </span>

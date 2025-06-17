@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import MarkdownEditor from "@/components/admin/MdEditor";
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,30 @@ export default function AddBlogPage() {
 	const [description, setDescription] = useState("");
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const [checking, setChecking] = useState(false);
+    const [titleError, setTitleError] = useState<string | null>(null);
+    
+    // debounce & check
+    useEffect(() => {
+        if (!title) {
+            setTitleError(null);
+            return;
+        }
+        setChecking(true);
+        const tid = setTimeout(async () => {
+            try {
+                const res = await fetch(`/api/blogs/check?title=${encodeURIComponent(title)}`);
+                const { exists } = await res.json();
+                setTitleError(exists ? "That title is already in use." : null);
+            } catch {
+                setTitleError("Could not validate title.");
+            }
+            setChecking(false);
+        }, 500);
+
+        return () => clearTimeout(tid);
+    }, [title]);
+    
 	const handleThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0] || null;
 		setThumbnail(file);
@@ -103,7 +127,9 @@ export default function AddBlogPage() {
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
 						required
-					/>
+                    />
+                    {checking && <p className="text-gray-500 text-sm">Checking…</p>}
+                    {titleError && <p className="text-red-500 text-sm">{titleError}</p>}
 				</div>
 
 				{/* Description */}

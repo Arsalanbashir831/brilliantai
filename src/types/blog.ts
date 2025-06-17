@@ -4,6 +4,7 @@ export interface Blog {
 	description: string;
 	thumbnailUrl: string;
 	thumbnailPath: string;
-	publishedDate: string;
+    publishedDate: string;
+    slug: string;            
 	[key: string]: unknown;
 }

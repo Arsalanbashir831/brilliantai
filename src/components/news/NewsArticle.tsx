@@ -19,7 +19,8 @@ interface Blog {
 }
 
 export default function NewsArticle() {
-  const { id } = useParams() as { id: string };
+    const { slug } = useParams() as { slug: string };
+    console.log("slug",slug);
   const router = useRouter();
 
   const [blog, setBlog] = useState<Blog | null>(null);
@@ -27,15 +28,15 @@ export default function NewsArticle() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!id) {
-      setError('No ID provided');
+      if (!slug) {
+      setError('No Slug provided');
       setLoading(false);
       return;
     }
 
     async function fetchBlog() {
       try {
-        const res = await fetch(`/api/blogs/${id}`);
+          const res = await fetch(`/api/blogs/slug/${encodeURIComponent(slug)}`);
         if (res.status === 404) {
           setError('Article not found');
           setLoading(false);
@@ -52,7 +53,7 @@ export default function NewsArticle() {
     }
 
     fetchBlog();
-  }, [id]);
+  }, [slug]);
 
   // Compute current page URL for share
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
