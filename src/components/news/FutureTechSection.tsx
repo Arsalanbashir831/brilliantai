@@ -6,6 +6,7 @@ import { FC } from "react";
 
 const FutureTechSection: FC = () => {
     const isMobile = useMobile()
+   
     return (
         <section className="py-16">
             <div className="max-w-7xl mx-auto px-0">
@@ -19,20 +20,20 @@ const FutureTechSection: FC = () => {
                             height={50}
                             className="md:w-40 md:h-40 w-10 h-10"
                         />
-                       {isMobile && (<>
-                        <p className="text-[#23D5D5] uppercase text-sm md:text-base font-medium">
-                            Learn, Connect, and Innovate
-                        </p>
-                       </>)}
-                   
+                        {isMobile && (<>
+                            <p className="text-[#23D5D5] uppercase text-sm md:text-base font-medium">
+                                Learn, Connect, and Innovate
+                            </p>
+                        </>)}
+
                     </div>
                     <div className="mt-6 md:mt-0 md:ml-6 text-left px-4">
-                      {!isMobile &&(<>
-                        <p className="text-[#23D5D5] uppercase text-sm md:text-base font-medium">
-                            Learn, Connect, and Innovate
-                        </p>
-                      </>)}
-                      
+                        {!isMobile && (<>
+                            <p className="text-[#23D5D5] uppercase text-sm md:text-base font-medium">
+                                Learn, Connect, and Innovate
+                            </p>
+                        </>)}
+
                         <h2 className="mt-2 text-3xl md:text-4xl font-semibold text-white leading-tight">
                             Be Part of the Future Tech Revolution
                         </h2>
@@ -69,16 +70,28 @@ const FutureTechSection: FC = () => {
                                     </h3>
                                     <button
                                         type="button"
+                                        disabled
                                         className="
-                                          inline-block px-4 py-1
-                                          bg-[linear-gradient(180deg,_#23D5D5_0%,_#1EB2B2_100%)]
-                                          text-white text-sm font-medium rounded-full
-                                          hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#23D5D5]
-                                          transition
-                                        "
+    inline-block px-4 py-1 relative
+    bg-[linear-gradient(180deg,_#23D5D5_0%,_#1EB2B2_100%)]
+    text-white text-sm font-medium rounded-full
+    opacity-50 cursor-not-allowed
+    transition
+    group
+  "
                                     >
-                                        Download
+                                        <span className="group-hover:opacity-0 transition">Download</span>
+                                        <span
+                                            className="
+      absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+      opacity-0 group-hover:opacity-100
+      transition
+    "
+                                        >
+                                            Download
+                                        </span>
                                     </button>
+
                                 </div>
                                 <p className="mt-2 text-gray-300 text-sm">
                                     Download the most recent company reports, including annual summaries and performance insights.
@@ -105,18 +118,21 @@ const FutureTechSection: FC = () => {
                                     <h3 className="text-white font-medium text-lg">
                                         Stay Connected on LinkedIn
                                     </h3>
-                                    <button
-                                        type="button"
+                                    <a
+                                        href="https://www.linkedin.com/company/compl-ai-uk/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="
-                                          inline-block px-4 py-1
-                                          bg-[linear-gradient(180deg,_#23D5D5_0%,_#1EB2B2_100%)]
-                                          text-white text-sm font-medium rounded-full
-                                          hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#23D5D5]
-                                          transition
-                                        "
+                                        inline-block px-4 py-1
+                                        bg-[linear-gradient(180deg,_#23D5D5_0%,_#1EB2B2_100%)]
+                                        text-white text-sm font-medium rounded-full
+                                        hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#23D5D5]
+                                        transition
+                                    "
                                     >
                                         Follow
-                                    </button>
+                                    </a>
+
                                 </div>
                                 <p className="mt-2 text-gray-300 text-sm">
                                     Discover the latest company updates, exciting job opportunities, and in-depth industry insights.

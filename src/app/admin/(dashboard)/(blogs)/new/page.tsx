@@ -1,189 +1,134 @@
-// File: src/app/dashboard/blogs/new/page.tsx
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Editor from '@/components/admin/Editor';
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
+import React, { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import MarkdownEditor from "@/components/admin/MdEditor";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
-type EJOutputData = EditorJS.OutputData;
+export default function AddBlogPage() {
+	const router = useRouter();
 
-const NewBlogPage: React.FC = () => {
-    const router = useRouter();
+	const [thumbnail, setThumbnail] = useState<File | null>(null);
+	const [preview, setPreview] = useState<string | null>(null);
+	const [title, setTitle] = useState("");
+	const [description, setDescription] = useState("");
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Form state
-    const [title, setTitle] = useState('');
-    const [publishedDate, setPublishedDate] = useState(
-        new Date().toISOString().substring(0, 10)
-    );
+	const handleThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const file = e.target.files?.[0] || null;
+		setThumbnail(file);
 
-    // Instead of a URL‐string, we store either a File or a base64 string
-    const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
-    const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(null);
+		if (file) {
+			setPreview(URL.createObjectURL(file));
+		} else {
+			setPreview(null);
+		}
+	};
 
-    // Editor content
-    const [contentData, setContentData] = useState<EJOutputData | null>(null);
-    const [submitting, setSubmitting] = useState(false);
+	const handleSubmit = async (e: FormEvent) => {
+		e.preventDefault();
+		if (!title || !description || !thumbnail) return;
 
-    // Called by our <Editor> component
-    const handleEditorChange = (data: EJOutputData) => {
-        setContentData(data);
-    };
+		setIsSubmitting(true);
+		try {
+			const formData = new FormData();
+			formData.append("title", title);
+			formData.append("description", description);
+			formData.append("thumbnail", thumbnail);
 
-    // When user chooses a file from <input type="file">
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0] ?? null;
-        setThumbnailFile(file);
+			const res = await fetch("/api/blogs", {
+				method: "POST",
+				body: formData,
+			});
 
-        if (file) {
-            // Optional: create a base64 preview (so we can display it before upload)
-            const reader = new FileReader();
-            reader.onload = () => {
-                setThumbnailPreview(reader.result as string);
-            };
-            reader.readAsDataURL(file);
-        } else {
-            setThumbnailPreview(null);
-        }
-    };
+			if (!res.ok) {
+				const { error } = await res.json();
+				throw new Error(error || "Failed to create blog");
+			}
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!title.trim() || !contentData) {
-            alert('Title and body are required.');
-            return;
-        }
+			// Redirect back to list
+			router.push("/admin/blogs");
+		} catch (err) {
+			console.error(err);
+			alert("Error creating blog. See console.");
+		} finally {
+			setIsSubmitting(false);
+		}
+	};
 
-        setSubmitting(true);
+	return (
+		<div className="p-6 max-w-4xl mx-auto">
+			<h1 className="text-3xl font-bold text-gray-800 mb-8 border-b pb-2">
+				📝 Add New Blog
+			</h1>
+			<form onSubmit={handleSubmit} className="space-y-8">
+				{/* Thumbnail */}
+				<div className="space-y-2">
+					<label className="block font-semibold text-gray-700">
+						Thumbnail Image
+					</label>
+					<input
+						type="file"
+						accept="image/*"
+						onChange={handleThumbnailChange}
+						className="block w-full text-sm text-gray-600
+                       file:mr-4 file:py-2 file:px-4
+                       file:rounded file:border-0
+                       file:text-sm file:font-semibold
+                       file:bg-blue-50 file:text-blue-700
+                       hover:file:bg-blue-100"
+						required
+					/>
+					{preview && (
+						<Image
+							src={preview}
+							alt="Thumbnail Preview"
+							width={400}
+							height={225}
+							className="rounded-md border mt-3 object-cover"
+						/>
+					)}
+				</div>
 
-        // Build payload. If you want to send the image file to your own API,
-        // you could create a FormData. For simplicity, we'll inline base64 here.
-        let thumbnailDataUrl: string | null = null;
-        if (thumbnailFile) {
-            // Convert the File to a base64 string (you could also upload to a server)
-            thumbnailDataUrl = await new Promise<string>((resolve) => {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    resolve(reader.result as string);
-                };
-                reader.readAsDataURL(thumbnailFile);
-            });
-        }
+				{/* Title */}
+				<div>
+					<label className="block font-semibold text-gray-700 mb-1">
+						Title
+					</label>
+					<input
+						type="text"
+						className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+						placeholder="Enter blog title"
+						value={title}
+						onChange={(e) => setTitle(e.target.value)}
+						required
+					/>
+				</div>
 
-        // Send everything as JSON. 
-        // If you plan to store thumbnails in a CDN, replace thumbnailDataUrl
-        // with the URL returned by your upload API instead.
-        const payload = {
-            title,
-            publishedDate,
-            thumbnail: thumbnailDataUrl, // base64 or null
-            content: contentData,
-        };
+				{/* Description */}
+				<div>
+					<label className="block font-semibold text-gray-700 mb-1">
+						Description (Markdown)
+					</label>
+					<div className="bg-white border rounded-md shadow-sm">
+						<MarkdownEditor
+							value={description}
+							onChange={(val) => setDescription(val || "")}
+						/>
+					</div>
+				</div>
 
-        try {
-            const res = await fetch('/api/blogs', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
-            });
-            if (!res.ok) throw new Error('Failed to create blog');
-            router.push('/admin'); // adjust path to your blog list
-        } catch (err) {
-            console.error(err);
-            alert('Error saving blog.');
-        } finally {
-            setSubmitting(false);
-        }
-    };
-
-    return (
-        <div className="p-6 bg-gray-50 min-h-screen">
-            <h1 className="text-2xl font-semibold mb-4 text-gray-800">
-                Create New Blog
-            </h1>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Title */}
-                <div>
-                    <label
-                        htmlFor="title"
-                        className="block text-sm font-medium text-gray-700"
-                    >
-                        Title
-                    </label>
-                    <input
-                        id="title"
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder="Enter blog title"
-                        required
-                    />
-                </div>
-
-                {/* Published Date */}
-                <div>
-                    <label
-                        htmlFor="publishedDate"
-                        className="block text-sm font-medium text-gray-700"
-                    >
-                        Published Date
-                    </label>
-                    <input
-                        id="publishedDate"
-                        type="date"
-                        value={publishedDate}
-                        onChange={(e) => setPublishedDate(e.target.value)}
-                        className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                    />
-                </div>
-
-                {/* Thumbnail File */}
-                <div>
-                    <label
-                        htmlFor="thumbnailFile"
-                        className="block text-sm font-medium text-gray-700"
-                    >
-                        Thumbnail
-                    </label>
-                    <input
-                        id="thumbnailFile"
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        className="mt-1 block w-full text-gray-700"
-                    />
-                    {thumbnailPreview && (
-                        <Image
-                            src={thumbnailPreview}
-                            alt="Thumbnail preview"
-                            fill
-                            className="mt-2 h-24 w-auto rounded border"
-                        />
-                    )}
-                </div>
-
-                {/* Editor.js for Body */}
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Content
-                    </label>
-                    <div className="border rounded bg-white p-2">
-                        <Editor onChange={handleEditorChange} />
-                    </div>
-                </div>
-
-                {/* Submit Button */}
-                <div className="pt-4">
-                    <Button className='text-black border' type="submit" disabled={submitting}>
-                        {submitting ? 'Saving...' : 'Create Blog'}
-                    </Button>
-                </div>
-            </form>
-        </div>
-    );
-};
-
-export default NewBlogPage;
+				{/* Submit */}
+				<div className="pt-4">
+					<Button
+						type="submit"
+						className="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md"
+						disabled={isSubmitting}>
+						{isSubmitting ? "Publishing..." : "Publish Blog"}
+					</Button>
+				</div>
+			</form>
+		</div>
+	);
+}

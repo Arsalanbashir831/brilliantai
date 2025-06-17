@@ -10,39 +10,56 @@ import NewsItem from '@/components/news/NewsItem';
 import Newsletter from '@/components/news/Newsletter';
 import { Welcome } from '@/components/news/welcome';
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
 };
 
-const transition = {
-  duration: 0.6,
-  ease: 'easeOut',
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 40,      // softer spring
+      damping: 14,        // gentle settle
+      mass: 0.6,          // a bit more “weight”
+      ease: [0.42, 0, 0.58, 1], // smooth fallback
+    },
+  },
 };
 
 const AnimatedSection = ({ children }: { children: React.ReactNode }) => (
   <motion.section
+    variants={sectionVariants}
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, amount: 0.2 }}
-    variants={sectionVariants}
-    transition={transition}
   >
     {children}
   </motion.section>
 );
 
-const Page = () => {
+export default function Page() {
   return (
-    <div>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <AnimatedSection><Hero /></AnimatedSection>
       <AnimatedSection><NewsItem /></AnimatedSection>
       <AnimatedSection><Welcome /></AnimatedSection>
       <AnimatedSection><BlogList /></AnimatedSection>
       <AnimatedSection><FutureTechSection /></AnimatedSection>
       <AnimatedSection><Newsletter /></AnimatedSection>
-    </div>
+    </motion.div>
   );
-};
-
-export default Page;
+}

@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 const stats = [
-	{ value: "130+", label: "AI solutions built" },
-	{ value: "40%", label: "Year-over-year team growth" },
-	{ value: "5", label: "Successful product exits" },
+	{ value: "Invent", label: "We prototype novel Al use cases monthly." },
+	{ value: "Experiment", label: "R&D baked into every build - not just a phase." },
+	{ value: "Advance", label: "Using the latest models and custom pipelines, always." },
 ];
 
 export function StatsSection() {
@@ -45,7 +45,7 @@ export function StatsSection() {
 								{stats.map((stat, idx) => (
 									<div key={stat.value}>
 										<div className="px-10 py-5 flex flex-col">
-											<span className="text-5xl font-normal text-white">
+											<span className="text-4xl font-normal text-white">
 												{stat.value}
 											</span>
 											<span className="mt-1 text-md leading-[28px] font-normal text-[#E0E0E0]">

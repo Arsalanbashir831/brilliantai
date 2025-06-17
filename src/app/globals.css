@@ -326,38 +326,9 @@ select:-webkit-autofill {
 	-webkit-text-fill-color: white !important;
 }
 
+/* globals.css (or your main CSS file) */
 
-/* globals.css */
+/* globals.css (or your global stylesheet) */
 
-#editorjs h1 {
-    font-size: 2rem;
-    /* or whatever scale you want */
-    font-weight: 700;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-}
-
-#editorjs h2 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-top: 1.25rem;
-    margin-bottom: 0.5rem;
-}
-
-#editorjs h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-#editorjs h4 {
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin-top: 0.875rem;
-    margin-bottom: 0.5rem;
-}
-
-
-
-/* Add as many levels as you need… */
+/* ------------------------------------------- */
+/* Keyframes for sliding 0 → +5px → 0 over 1s */

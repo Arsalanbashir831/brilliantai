@@ -30,13 +30,13 @@ const steps = [
 
 export default function IdeaToImpact() {
 	return (
-		<section className="py-20 px-[60] bg-[#011010] text-white  ">
+		<section className="py-20 px-[15px] md:px-[60] bg-[#011010] text-white  ">
 			<div className="md:max-w-full md:px-[200px] mx-auto text-center">
 				<h2 className=" text-3xl md:text-6xl  font-semibold mb-4">
 					From Idea To Impact
 				</h2>
 				<div className="text-white  text-center text-base sm:text-lg mb-28">
-					<p className=" w-[82%] md:max-w-xl  mx-auto text-md">
+					<p className=" w-[95%] md:w-[82%] md:max-w-xl  mx-auto text-md">
 						We deliver AI solutions fast and safely, from concept to scale,
 						driving real results with full-cycle support and seamless
 						integration.
