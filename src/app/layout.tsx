@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Metadata } from "next";
-import Script from "next/script";
+
 import FaviconSwitcher from "@/components/FaviconSwitcher";
 
 const geistSans = Geist({
@@ -24,7 +24,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+
 
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -32,22 +32,7 @@ export default function RootLayout({
         <FaviconSwitcher />
         {children}
 
-        {GA_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_ID}');
-              `}
-            </Script>
-          </>
-        )}
+       
       </body>
     </html>
   );

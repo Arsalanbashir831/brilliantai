@@ -1,9 +1,13 @@
-import type { Metadata } from "next";
+'use client'
+
 import { Geist, Geist_Mono } from "next/font/google";
 import '@/app/globals.css';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import { usePathname } from "next/navigation";
+import { useAnalytics } from "@/hook/useAnalytics";
+import { useEffect } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,16 +19,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Brilliant AI",
-  description: "We take you from idea to execution by building AI web apps, developing machine learning solutions and implementing AI-driven processes that power scalable products and smarter operations.",
-};
+
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const pathname = usePathname();
+  const { trackPageview } = useAnalytics();
+
+  useEffect(() => {
+    
+    trackPageview(pathname);
+  }, [pathname,trackPageview]);
+
   return (
     <html lang="en">
       <body 
