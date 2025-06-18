@@ -96,7 +96,9 @@ export default function BlogsPage() {
 			accessor: "slug",
 			header: "Slug",
 			cell: ({ getValue }: { getValue: () => unknown }) => (
-				<span className="text-gray-600 truncate max-w-[200px] block" title={getValue() as string}>
+				<span
+					className="text-gray-600 truncate max-w-[200px] block"
+					title={getValue() as string}>
 					{getValue() as string}
 				</span>
 			),
