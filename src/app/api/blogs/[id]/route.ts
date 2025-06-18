@@ -1,7 +1,8 @@
 // /app/api/blogs/[id]/route.ts
 import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { getBlogById, updateBlog, deleteBlog } from "@/services/blog-services";
+import { getBlogById, deleteBlog, updateBlogWithSlugChange } from "@/services/blog-services";
+import slugify from "slugify";
 
 export async function GET(
   req: NextRequest,
@@ -19,12 +20,12 @@ export async function GET(
     return NextResponse.json({ error: "Failed to fetch blog" }, { status: 500 });
   }
 }
-
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await params;
+  const { id } = params;
+
   try {
     const formData = await req.formData();
     const title = formData.get("title") as string;
@@ -48,7 +49,12 @@ export async function PATCH(
       };
     }
 
-    const updated = await updateBlog(id, title, description, newFileBuffer);
+    // 🧠 Step: auto-regenerate slug
+    const baseSlug = slugify(title, { lower: true, strict: true });
+    const newSlug = `${baseSlug}`; 
+
+    const updated = await updateBlogWithSlugChange(id, newSlug, title, description, newFileBuffer);
+
     if (!updated) {
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
     }

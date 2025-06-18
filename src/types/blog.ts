@@ -1,5 +1,7 @@
+
 export interface Blog {
 	id: string;
+	slug: string;
 	title: string;
 	description: string;
 	thumbnailUrl: string;

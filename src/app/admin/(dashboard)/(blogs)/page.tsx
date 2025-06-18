@@ -13,7 +13,6 @@ export default function BlogsPage() {
 	const [blogs, setBlogs] = useState<Blog[]>([]);
 	const [loading, setLoading] = useState(true);
 
-	// Fetch list on mount
 	useEffect(() => {
 		async function fetchBlogs() {
 			try {
@@ -31,7 +30,6 @@ export default function BlogsPage() {
 		fetchBlogs();
 	}, []);
 
-	// Delete handler
 	const handleDelete = async (blog: Blog) => {
 		if (
 			confirm(
@@ -43,7 +41,6 @@ export default function BlogsPage() {
 					method: "DELETE",
 				});
 				if (!res.ok) throw new Error("Delete failed");
-				// Remove from state
 				setBlogs((prev) => prev.filter((b) => b.id !== blog.id));
 			} catch (err) {
 				console.error(err);
@@ -57,7 +54,7 @@ export default function BlogsPage() {
 	};
 
 	const handleAddNew = () => {
-		router.push("/admin/new"); // match your route
+		router.push("/admin/new");
 	};
 
 	const columns = [
@@ -70,8 +67,7 @@ export default function BlogsPage() {
 						src={getValue() as string}
 						alt="Blog thumbnail"
 						fill
-						style={{ objectFit: "cover" }}
-						className="rounded"
+						className="object-cover rounded"
 					/>
 				</div>
 			),
@@ -80,7 +76,7 @@ export default function BlogsPage() {
 			accessor: "title",
 			header: "Title",
 			cell: ({ getValue }: { getValue: () => unknown }) => (
-				<span className="font-medium text-gray-800">
+				<span className="font-medium text-gray-800 truncate block max-w-[200px]">
 					{getValue() as string}
 				</span>
 			),
@@ -90,8 +86,17 @@ export default function BlogsPage() {
 			header: "Content",
 			cell: ({ getValue }: { getValue: () => unknown }) => (
 				<span
-					className="font-medium text-gray-800 truncate max-w-[300px] block"
+					className="text-gray-600 truncate max-w-[280px] block"
 					title={getValue() as string}>
+					{getValue() as string}
+				</span>
+			),
+		},
+		{
+			accessor: "slug",
+			header: "Slug",
+			cell: ({ getValue }: { getValue: () => unknown }) => (
+				<span className="text-gray-600 truncate max-w-[200px] block" title={getValue() as string}>
 					{getValue() as string}
 				</span>
 			),
@@ -100,7 +105,7 @@ export default function BlogsPage() {
 			accessor: "publishedDate",
 			header: "Published Date",
 			cell: ({ getValue }: { getValue: () => unknown }) => (
-				<span className="text-gray-600">
+				<span className="text-gray-500 text-sm">
 					{new Date(getValue() as string).toLocaleDateString()}
 				</span>
 			),
@@ -109,7 +114,7 @@ export default function BlogsPage() {
 			accessor: "actions",
 			header: "Actions",
 			cell: ({ row }: { row: Blog }) => (
-				<div className="flex space-x-2">
+				<div className="flex gap-2">
 					<Button
 						variant="ghost"
 						size="icon"
@@ -130,10 +135,11 @@ export default function BlogsPage() {
 	];
 
 	return (
-		<div className="p-4 md:p-8 min-h-screen">
-			<div className="flex justify-between items-center mb-6">
+		<div className="p-4 md:p-8 max-w-screen-xl mx-auto w-full min-h-screen">
+			{/* Header */}
+			<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
 				<h1 className="text-2xl md:text-3xl font-semibold text-gray-800">
-					Blogs
+					📚 Blogs
 				</h1>
 				<Button
 					className="bg-blue-700 hover:bg-blue-900"
@@ -142,11 +148,15 @@ export default function BlogsPage() {
 					Add New Blog
 				</Button>
 			</div>
+
+			{/* Table */}
 			{loading ? (
-				<div>Loading…</div>
+				<div className="text-gray-500">Loading…</div>
 			) : (
 				<div className="bg-white shadow rounded-lg overflow-hidden">
-					<DataTable<Blog> columns={columns} data={blogs} />
+					<div className="overflow-x-auto">
+						<DataTable<Blog> columns={columns} data={blogs} />
+					</div>
 				</div>
 			)}
 		</div>

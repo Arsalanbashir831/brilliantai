@@ -1,13 +1,10 @@
+// components/news/NewsArticle.tsx
 'use client';
 
-import {
-  ArrowLeft,
-  LinkedinIcon,
-} from 'lucide-react';
+import { ArrowLeft, LinkedinIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 
 interface Blog {
@@ -15,51 +12,24 @@ interface Blog {
   title: string;
   description: string;
   thumbnailUrl: string;
-  publishedDate: string; // ISO string
+  publishedDate: string;
 }
 
-export default function NewsArticle() {
-  const { id } = useParams() as { id: string };
+interface NewsArticleProps {
+  blog: Blog | null;
+  loading: boolean;
+  error: string | null;
+}
+
+export default function NewsArticle({ blog, loading, error }: NewsArticleProps) {
   const router = useRouter();
 
-  const [blog, setBlog] = useState<Blog | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!id) {
-      setError('No ID provided');
-      setLoading(false);
-      return;
-    }
-
-    async function fetchBlog() {
-      try {
-        const res = await fetch(`/api/blogs/${id}`);
-        if (res.status === 404) {
-          setError('Article not found');
-          setLoading(false);
-          return;
-        }
-        if (!res.ok) throw new Error(`Failed to fetch: ${res.statusText}`);
-        const data: Blog = await res.json();
-        setBlog(data);
-      } catch {
-        setError('Error loading article');
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchBlog();
-  }, [id]);
-
-  // Compute current page URL for share
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
   if (loading) {
     return (
       <article className="max-w-4xl mx-auto px-4 py-8 text-white">
+        {/* Skeleton UI */}
         <div className="animate-pulse space-y-6">
           <div className="h-6 bg-gray-700 rounded w-24" />
           <div className="h-4 bg-gray-700 rounded w-32" />
@@ -93,13 +63,12 @@ export default function NewsArticle() {
 
   const { title, description, thumbnailUrl, publishedDate } = blog;
 
-  // Build LinkedIn share URL with title, summary, and source
   const linkedInShareUrl =
     `https://www.linkedin.com/shareArticle?mini=true` +
     `&url=${encodeURIComponent(currentUrl)}` +
     `&title=${encodeURIComponent(title)}` +
     `&summary=${encodeURIComponent(description.slice(0, 200))}` +
-    `&source=${encodeURIComponent(window.location.host)}`;
+    `&source=${encodeURIComponent(typeof window !== 'undefined' ? window.location.host : '')}`;
 
   return (
     <article className="max-w-4xl mx-auto px-4 py-8 text-white">
@@ -139,12 +108,12 @@ export default function NewsArticle() {
       <div className="prose prose-invert max-w-none">
         <ReactMarkdown
           components={{
-            h1: ({ ...props }) => <h1 className="text-4xl font-bold my-6" {...props} />,  
-            h2: ({ ...props }) => <h2 className="text-3xl font-semibold my-5" {...props} />,  
-            h3: ({ ...props }) => <h3 className="text-2xl font-medium my-4" {...props} />,  
-            p: ({ ...props }) => <p className="text-lg leading-relaxed text-gray-300 my-4" {...props} />,  
-            a: ({ ...props }) => <a className="text-cyan-400 hover:underline" {...props} />,  
-            li: ({ ...props }) => <li className="ml-4 list-disc text-gray-300" {...props} />,  
+            h1: (props) => <h1 className="text-4xl font-bold my-6" {...props} />,
+            h2: (props) => <h2 className="text-3xl font-semibold my-5" {...props} />,
+            h3: (props) => <h3 className="text-2xl font-medium my-4" {...props} />,
+            p: (props) => <p className="text-lg leading-relaxed text-gray-300 my-4" {...props} />,
+            a: (props) => <a className="text-cyan-400 hover:underline" {...props} />,
+            li: (props) => <li className="ml-4 list-disc text-gray-300" {...props} />,
           }}
         >
           {description}

@@ -19,26 +19,24 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
 	try {
-		// Parse form data
+		// Parse multipart form data
 		const formData = await req.formData();
 		const title = formData.get("title") as string;
 		const description = formData.get("description") as string;
-
-		// The <input name="thumbnail" type="file" /> field
-		const file = formData.get("thumbnail") as File | null;
+		const file = formData.get("thumbnail") as File;
 
 		if (!title || !description || !file) {
 			return NextResponse.json(
-				{ error: "Missing title/description/thumbnail" },
+				{ error: "Missing title, description, or thumbnail" },
 				{ status: 400 }
 			);
 		}
 
-		// Convert Web File → Buffer
+		// Convert File to Buffer
 		const arrayBuffer = await file.arrayBuffer();
 		const buffer = Buffer.from(arrayBuffer);
 
-		// Call service
+		// Create blog with upload and slug generation
 		const newBlog = await createBlog(
 			title,
 			description,
@@ -50,9 +48,6 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json(newBlog, { status: 201 });
 	} catch (err) {
 		console.error("POST /api/blogs error:", err);
-		return NextResponse.json(
-			{ error: "Failed to create blog" },
-			{ status: 500 }
-		);
+		return NextResponse.json({ error: "Failed to create blog" }, { status: 500 });
 	}
 }

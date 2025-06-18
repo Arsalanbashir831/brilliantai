@@ -10,6 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 interface BlogItem {
   id: string;
   title: string;
+  slug:string;
   description: string;
   thumbnailUrl: string;
   publishedDate: string;
@@ -98,7 +99,7 @@ export default function NewsItem() {
             </div>
           </div>
           <div className="md:flex md:justify-end">
-            <ReadMoreButton href={`/news/${featured.id}`} />
+            <ReadMoreButton href={`/news/${featured.slug}`} />
           </div>
         </div>
       </div>
@@ -118,7 +119,7 @@ export default function NewsItem() {
                 </p>
               </div>
               <div className="w-full md:flex md:justify-end">
-                <ReadMoreButton href={`/news/${item.id}`} />
+                <ReadMoreButton href={`/news/${item.slug}`} />
               </div>
             </div>
           </div>

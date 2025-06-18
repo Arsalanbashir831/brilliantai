@@ -1,5 +1,3 @@
-// File: components/admin/Datatable.tsx
-
 import React from "react";
 import {
   Table,
@@ -26,41 +24,43 @@ const DataTable = <T extends Record<string, unknown>>({
   data,
 }: DataTableProps<T>) => {
   return (
-    <div className="overflow-x-auto w-full">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            {columns.map((column) => (
-              <TableHead key={column.accessor}>{column.header}</TableHead>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data.length > 0 ? (
-            data.map((row, rowIndex) => (
-              <TableRow key={rowIndex}>
-                {columns.map((column) => {
-                  const rawValue = row[column.accessor] as T[keyof T];
-                  const getValue = () => rawValue;
-                  return (
-                    <TableCell key={column.accessor}>
-                      {column.cell
-                        ? column.cell({ row, getValue })
-                        : String(rawValue ?? "")}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            ))
-          ) : (
+    <div className="w-full overflow-x-auto">
+      <div className="min-w-[640px]"> {/* optional: adjust min-width */}
+        <Table className="w-full text-sm text-left">
+          <TableHeader>
             <TableRow>
-              <TableCell colSpan={columns.length} className="text-center">
-                No data available.
-              </TableCell>
+              {columns.map((column) => (
+                <TableHead key={column.accessor}>{column.header}</TableHead>
+              ))}
             </TableRow>
-          )}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {data.length > 0 ? (
+              data.map((row, rowIndex) => (
+                <TableRow key={rowIndex}>
+                  {columns.map((column) => {
+                    const rawValue = row[column.accessor] as T[keyof T];
+                    const getValue = () => rawValue;
+                    return (
+                      <TableCell key={column.accessor}>
+                        {column.cell
+                          ? column.cell({ row, getValue })
+                          : String(rawValue ?? "")}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={columns.length} className="text-center">
+                  No data available.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 };
