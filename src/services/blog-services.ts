@@ -37,11 +37,10 @@ async function uploadThumbnail(
 // 	const year = now.getFullYear();
 // 	const month = pad(now.getMonth() + 1);
 // 	const day = pad(now.getDate());
-	
 
 // 	return `${day}-${month}-${year}`;
 // }
-  
+
 // Create a new blog record:
 // - Upload thumbnail to Storage
 // - Push a new record under /blogs in Realtime DB
@@ -83,10 +82,13 @@ export async function createBlog(
 export async function listBlogs(): Promise<Blog[]> {
 	const snapshot = await db.ref("blogs").once("value");
 	const raw: Record<string, Omit<Blog, "id">> = snapshot.val() || {};
-	return Object.entries(raw).map(([id, data]) => ({
-		id,
-		...data,
-	} as Blog));
+	return Object.entries(raw).map(
+		([id, data]) =>
+			({
+				id,
+				...data,
+			}) as Blog
+	);
 }
 
 // Get a single blog by id
@@ -94,21 +96,20 @@ export async function getBlogById(id: string): Promise<Blog | null> {
 	const snapshot = await db.ref(`blogs/${id}`).once("value");
 	const data = snapshot.val();
 	if (!data) return null;
-  
+
 	// Assert that the spread object now fully satisfies Blog
 	return { id, ...(data as Omit<Blog, "id">) } as Blog;
-  }
-  
+}
 
-  export async function getBlogBySlug(slug: string): Promise<Blog | null> {
+export async function getBlogBySlug(slug: string): Promise<Blog | null> {
 	const snapshot = await db.ref(`blogs/${slug}`).once("value");
 	const data = snapshot.val();
 	if (!data) return null;
-  
+
 	// Assert that the spread object now fully satisfies Blog
 	return { slug, ...(data as Omit<Blog, "slug">) } as Blog;
-  }
-  
+}
+
 // Update an existing blog:
 // - If new thumbnailBuffer is provided, delete the old file from Storage, upload new one, update fields
 // - Otherwise, only update title/description
@@ -131,7 +132,7 @@ export async function updateBlog(
 
 	if (newFile) {
 		// 1) Delete old thumbnail from Storage
-		if (typeof thumbnailPath === 'string' && thumbnailPath.length > 0) {
+		if (typeof thumbnailPath === "string" && thumbnailPath.length > 0) {
 			try {
 				await bucket.file(thumbnailPath).delete();
 			} catch (err) {
@@ -192,53 +193,47 @@ export async function deleteBlog(id: string): Promise<boolean> {
 	return true;
 }
 
-
-
-
-
 export async function updateBlogWithSlugChange(
-  oldSlug: string,
-  newSlug: string,
-  title: string,
-  description: string,
-  newFileBuffer?: { fileName: string; buffer: Buffer; mimeType: string }
+	oldSlug: string,
+	newSlug: string,
+	title: string,
+	description: string,
+	newFileBuffer?: { fileName: string; buffer: Buffer; mimeType: string }
 ): Promise<Blog | null> {
-  const blogSnap = await db.ref(`blogs/${oldSlug}`).get();
-  if (!blogSnap.exists()) return null;
+	const blogSnap = await db.ref(`blogs/${oldSlug}`).get();
+	if (!blogSnap.exists()) return null;
 
-  const oldBlog = blogSnap.val() as Blog;
+	const oldBlog = blogSnap.val() as Blog;
 
-  let thumbnailUrl = oldBlog.thumbnailUrl;
-  let thumbnailPath = oldBlog.thumbnailPath;
+	let thumbnailUrl = oldBlog.thumbnailUrl;
+	let thumbnailPath = oldBlog.thumbnailPath;
 
-  // Re-upload thumbnail if new one is given
-  if (newFileBuffer) {
-    const { publicUrl, pathInBucket } = await uploadThumbnail(
-      newFileBuffer.fileName,
-      newFileBuffer.buffer,
-      newFileBuffer.mimeType
-    );
-    thumbnailUrl = publicUrl;
-    thumbnailPath = pathInBucket;
-  }
+	// Re-upload thumbnail if new one is given
+	if (newFileBuffer) {
+		const { publicUrl, pathInBucket } = await uploadThumbnail(
+			newFileBuffer.fileName,
+			newFileBuffer.buffer,
+			newFileBuffer.mimeType
+		);
+		thumbnailUrl = publicUrl;
+		thumbnailPath = pathInBucket;
+	}
 
-  const updatedBlog: Blog = {
-    id: newSlug,
-    slug: newSlug,
-    title,
-    description,
-    thumbnailUrl,
-    thumbnailPath,
-    publishedDate: oldBlog.publishedDate,
-  };
+	const updatedBlog: Blog = {
+		id: newSlug,
+		slug: newSlug,
+		title,
+		description,
+		thumbnailUrl,
+		thumbnailPath,
+		publishedDate: oldBlog.publishedDate,
+	};
 
-  // Save to new slug
-  await db.ref(`blogs/${newSlug}`).set(updatedBlog);
+	// Save to new slug
+	await db.ref(`blogs/${newSlug}`).set(updatedBlog);
 
-  // Delete old entry
-  await db.ref(`blogs/${oldSlug}`).remove();
+	// Delete old entry
+	await db.ref(`blogs/${oldSlug}`).remove();
 
-  return updatedBlog;
+	return updatedBlog;
 }
-
-
