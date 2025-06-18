@@ -10,6 +10,20 @@ export const metadata: Metadata = {
 		description:
 			"We take you from idea to execution by building AI web apps, developing machine learning solutions and implementing AI-driven processes that power scalable products and smarter operations.",
 		url: process.env.NEXT_PUBLIC_FRONTEND_URL + "/",
+		images: [
+			{
+				url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/opengraph-image.png`,
+				width: 1200,
+				height: 630,
+				alt: "Brilliant AI Logo",
+			},
+			{
+				url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/opengraph-image.png`,
+				width: 600,
+				height: 315,
+				alt: "Brilliant AI Logo",
+			},
+		],
 	},
 	twitter: {
 		title: "Unlock Your Vision With Transformative AI - Brilliant AI",

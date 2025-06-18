@@ -31,13 +31,13 @@ export const metadata: Metadata = {
 		siteName: "Brilliant AI",
 		images: [
 			{
-				url: "/favicon.png",
+				url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/opengraph-image.png`,
 				width: 1200,
 				height: 630,
 				alt: "Brilliant AI Logo",
 			},
 			{
-				url: "/favicon.png",
+				url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/opengraph-image.png`,
 				width: 600,
 				height: 315,
 				alt: "Brilliant AI Logo",
@@ -55,7 +55,10 @@ export const metadata: Metadata = {
 			"We take you from idea to execution by building AI web apps, developing machine learning solutions and implementing AI-driven processes that power scalable products and smarter operations.",
 		site: "@BrilliantAI", // Replace with your company's Twitter handle if you have one
 		creator: "@YourCreatorHandle", // Replace with a specific creator's Twitter handle if relevant
-		images: [process.env.NEXT_PUBLIC_FRONTEND_URL + "/favicon.png"],
+		images: [
+			process.env.NEXT_PUBLIC_FRONTEND_URL +
+				`${process.env.NEXT_PUBLIC_FRONTEND_URL}/opengraph-image.png`,
+		],
 	},
 };
 
