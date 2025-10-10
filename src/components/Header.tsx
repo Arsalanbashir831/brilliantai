@@ -60,7 +60,7 @@ export default function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className={`transition-colors ${
+              className={`transition-colors cursor-pointer ${
                 isActive(item.href)
                   ? "text-cyan-400 font-semibold"
                   : "text-white hover:text-cyan-300"
@@ -116,7 +116,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`text-2xl font-medium ${
+                  className={`text-2xl font-medium cursor-pointer ${
                     isActive(item.href)
                       ? "text-cyan-400"
                       : "text-white hover:text-cyan-300"

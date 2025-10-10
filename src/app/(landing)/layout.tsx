@@ -38,14 +38,12 @@ export default function LandingLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
-			<body className="antialiased">
-				<Header />
-				{/* Wrap the page content with the client-only analytics */}
-				<ClientAnalytics>{children}</ClientAnalytics>
-				<BackToTop threshold={300} />
-				<Footer />
-			</body>
-		</html>
+		<>
+			<Header />
+			{/* Wrap the page content with the client-only analytics */}
+			<ClientAnalytics>{children}</ClientAnalytics>
+			<BackToTop threshold={300} />
+			<Footer />
+		</>
 	);
 }

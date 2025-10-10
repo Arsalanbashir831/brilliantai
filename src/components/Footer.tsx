@@ -68,7 +68,7 @@ const router = useRouter()
 
   return (
     <footer
-    style={{zIndex: -100}}  className=" relative overflow-hidden text-white pb-2 pt-10 md:pt-32 lg:pt-48 bg-[url('/home/Ellipse.png')] bg-repeat bg-center"
+    className=" relative overflow-hidden text-white pb-2 pt-10 md:pt-32 lg:pt-48 bg-[url('/home/Ellipse.png')] bg-repeat bg-center"
     >
       {/* Glow rings */}
       <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-[1600px] h-[1600px] rounded-full border-[24px] border-[#23D5D5] filter blur-[300px]" />
@@ -88,7 +88,7 @@ const router = useRouter()
 {/* <BrilliantButton variant="white"  hasArrow>
               Get in touch
             </BrilliantButton> */}
-            <div onClick={()=>router.push('/contact-us#contact-form')} className="flex items-center justify-center gap-5 ">
+            <div onClick={()=>router.push('/contact-us#contact-form')} className="flex items-center justify-center gap-5 cursor-pointer">
                 <div className="">
 
                 <h2 className="text-2xl font-semibold text-white ">
@@ -104,7 +104,7 @@ const router = useRouter()
               <ul className="flex flex-wrap justify-center gap-3 text-sm pt-5">
                 {navLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="hover:text-gray-300">
+                    <Link href={link.href} className="hover:text-gray-300 cursor-pointer">
                       {link.label}
                     </Link>
                   </li>
@@ -132,7 +132,7 @@ const router = useRouter()
               <ul className="space-y-3 text-md">
                 {navLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="hover:text-gray-300">
+                    <Link href={link.href} className="hover:text-gray-300 cursor-pointer">
                       {link.label}
                     </Link>
                   </li>
@@ -143,9 +143,9 @@ const router = useRouter()
             <div>
               <h3 className="font-semibold text-xl mb-4">Our Policies</h3>
               <ul className="space-y-3 text-md">
-                <li><Link href="/policies/privacy" className="hover:text-gray-300">Privacy Policy</Link></li>
-                <li><Link href="/policies/cookies" className="hover:text-gray-300">Cookies Policy</Link></li>
-                <li><Link href="/policies/terms" className="hover:text-gray-300">Terms &amp; Conditions</Link></li>
+                <li><Link href="/policies/privacy" className="hover:text-gray-300 cursor-pointer">Privacy Policy</Link></li>
+                <li><Link href="/policies/cookies" className="hover:text-gray-300 cursor-pointer">Cookies Policy</Link></li>
+                <li><Link href="/policies/terms" className="hover:text-gray-300 cursor-pointer">Terms &amp; Conditions</Link></li>
               </ul>
             </div>
 
