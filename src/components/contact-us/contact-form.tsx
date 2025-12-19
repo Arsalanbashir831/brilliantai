@@ -44,6 +44,7 @@ const contactFields = [
 ];
 
 const servicesList = [
+    "Web Development",
     "AI Web Applications",
     "Machine learning",
     "Process automation",
@@ -177,7 +178,7 @@ export function ContactForm() {
             setServices([]);
             setMessage("");
             setSelectedFiles([]);
-        
+
         } catch (err: any) {
             console.error("Error sending email:", err);
             alert("❌ Error sending email: " + (err.message || err));
@@ -187,7 +188,7 @@ export function ContactForm() {
     }
 
     return (
-        <section  className="px-6 py-16">
+        <section className="px-6 py-16">
             <div className="max-w-2xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
@@ -401,7 +402,7 @@ export function ContactForm() {
                     </CardContent>
                 </Card>
             </div>
-            <SubmissionModal open={modalOpen} onClose={()=>setModalOpen(false)} />
+            <SubmissionModal open={modalOpen} onClose={() => setModalOpen(false)} />
         </section>
     );
 }

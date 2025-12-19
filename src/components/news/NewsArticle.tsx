@@ -102,7 +102,10 @@ export default function NewsArticle({ blog, loading, error }: NewsArticleProps) 
       </div>
 
       <div className="w-full h-64 md:h-96 relative mb-8">
-        <Image src={thumbnailUrl} alt={title} fill className="w-full h-full object-cover rounded-lg" />
+        <div className="bg-[#001d1d] w-full h-full flex items-center justify-center">
+          <Image src='/favicon.png' alt={title} width={150} height={150} className="object-contain" />
+        </div>
+        {/* <Image src={thumbnailUrl} alt={title} fill className="w-full h-full object-cover rounded-lg" /> */}
       </div>
 
       <div className="prose prose-invert max-w-none">

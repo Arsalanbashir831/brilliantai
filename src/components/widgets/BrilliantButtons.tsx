@@ -49,9 +49,9 @@ export const BrilliantButton: React.FC<BrilliantButtonProps> = ({
 		<motion.div
 			initial="rest"
 			whileHover="hover"
-			className={"inline-block " + containerClassName}>
+			className={"inline-flex " + containerClassName}>
 			<Button
-				className={classes}
+				className={classes + " w-full"}
 				{...(buttonVariant ? { variant: buttonVariant } : {})}
 				{...props}>
 				<div className="flex items-center gap-2">

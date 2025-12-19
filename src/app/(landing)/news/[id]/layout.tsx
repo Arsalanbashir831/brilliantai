@@ -108,7 +108,7 @@ export async function generateMetadata(
 			siteName: "Brilliant AI",
 			images: [
 				{
-					url: blog.thumbnailUrl,
+					url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/opengraph-image.png`,
 					width: 1200,
 					height: 630,
 					alt: blog.title,
@@ -124,7 +124,7 @@ export async function generateMetadata(
 			description: cleanDescription,
 			site: "@BrilliantAI",
 			creator: "@YourCreatorHandle",
-			images: [blog.thumbnailUrl],
+			images: [`${process.env.NEXT_PUBLIC_FRONTEND_URL}/opengraph-image.png`],
 		},
 	};
 }

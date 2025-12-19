@@ -10,13 +10,18 @@ import { Skeleton } from "@/components/ui/skeleton";
 interface BlogItem {
   id: string;
   title: string;
-  slug:string;
+  slug: string;
   description: string;
   thumbnailUrl: string;
   publishedDate: string;
 }
 
-export default function NewsItem() {
+interface NewsItemProps {
+  /** Blog ID/slug to exclude from the list (useful on blog detail pages) */
+  excludeId?: string;
+}
+
+export default function NewsItem({ excludeId }: NewsItemProps) {
   const [blogs, setBlogs] = useState<BlogItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +32,11 @@ export default function NewsItem() {
         if (!res.ok) throw new Error("Failed to fetch blogs");
         const data: BlogItem[] = await res.json();
         data.sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
-        setBlogs(data);
+        // Filter out the excluded blog (if viewing a specific blog's detail page)
+        const filteredData = excludeId
+          ? data.filter((blog) => blog.id !== excludeId && blog.slug !== excludeId)
+          : data;
+        setBlogs(filteredData);
       } catch (err) {
         console.error(err);
       } finally {
@@ -35,7 +44,7 @@ export default function NewsItem() {
       }
     }
     fetchBlogs();
-  }, []);
+  }, [excludeId]);
 
   if (loading) {
     return (
@@ -85,7 +94,9 @@ export default function NewsItem() {
       {/* Featured Article */}
       <div className="border-y border-gray-800 py-16 flex flex-col md:flex-row gap-8 mb-12 px-0">
         <div className="relative w-full md:w-1/2 h-64 sm:h-80 rounded-lg overflow-hidden">
-          <Image src={featured.thumbnailUrl} alt={featured.title} fill className="object-cover" />
+          <div className="bg-[#001d1d] w-full h-full flex items-center justify-center">
+            <Image src='/favicon.png' alt={featured.title} width={150} height={150} className="object-contain" />
+          </div>
         </div>
         <div className="flex flex-col justify-center w-full md:w-1/2">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{featured.title}</h2>
@@ -109,7 +120,10 @@ export default function NewsItem() {
         {others.map((item) => (
           <div key={item.id} className="flex flex-col rounded-lg overflow-hidden">
             <div className="relative h-62 md:h-40 lg:h-40 w-full">
-              <Image src={item.thumbnailUrl} alt={item.title} fill className="object-cover" />
+              <div className="bg-[#001d1d] w-full h-full flex items-center justify-center">
+                <Image src='/favicon.png' alt={item.title} width={100} height={100} className="object-contain" />
+              </div>
+              {/* <Image src={item.thumbnailUrl} alt={item.title} fill className="object-cover" /> */}
             </div>
             <div className="p-4 flex-1 flex flex-col justify-between">
               <div>

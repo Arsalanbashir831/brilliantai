@@ -33,7 +33,9 @@ export default function ContactCta() {
 								router.push("/contact-us#contact-form");
 							}}
 							variant="white"
-							className="flex items-center  text-[#23D5D5] bg-gradient-to-b from-[#23D5D546] to-[#1eb2b246] text-xs h-fit py-2 rounded-lg md:text-xl hover:bg-gradient-to-b hover:from-[#23D5D546] hover:to-[#1eb2b246]">
+							className="flex items-center  text-[#23D5D5] bg-linear-to-b from-[#23D5D546] to-[#1eb2b246] text-xs h-fit py-2 rounded-lg md:text-xl hover:bg-linear-to-b hover:from-[#23D5D546] hover:to-[#1eb2b246] cursor-pointer"
+							containerClassName="z-10 cursor-pointer"
+						>
 							Book a call
 						</BrilliantButton>
 					</div>

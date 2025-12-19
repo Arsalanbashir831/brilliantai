@@ -64,8 +64,8 @@ const Page = () => {
         if (!res.ok) throw new Error('Fetch failed');
         const data: Blog = await res.json();
         setBlog(data);
-      } catch (err:unknown) {
-        setError('Error loading article'+err);
+      } catch (err: unknown) {
+        setError('Error loading article' + err);
       } finally {
         setLoading(false);
       }
@@ -83,7 +83,7 @@ const Page = () => {
         <CtaSection />
       </AnimatedSection>
       <AnimatedSection>
-        <NewsItem />
+        <NewsItem excludeId={id} />
       </AnimatedSection>
       <AnimatedSection>
         <Newsletter />
