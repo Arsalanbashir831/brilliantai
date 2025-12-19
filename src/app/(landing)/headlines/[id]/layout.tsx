@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Blog } from "@/types/blog";
+import { getHeadlineById } from "@/services/headline-services";
 
 function cleanAndTruncateDescription(
 	text: string,
@@ -22,22 +22,10 @@ function cleanAndTruncateDescription(
 	return cleanedText;
 }
 
-async function getHeadlineData(id: string): Promise<Blog | null> {
+// Function to get headline data directly from the service (avoids HTTP fetch issues)
+async function getHeadlineData(id: string) {
 	try {
-		const baseUrl =
-			process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000";
-		const res = await fetch(`${baseUrl}/api/blogs/${id}`, {
-			// Fetch from your blogs API
-			// Add caching strategies if needed, e.g., next: { revalidate: 3600 }
-		});
-
-		if (!res.ok) {
-			console.error(
-				`Failed to fetch headline with ID ${id}: ${res.status} ${res.statusText}`
-			);
-			return null;
-		}
-		const headline: Blog = await res.json();
+		const headline = await getHeadlineById(id);
 		return headline;
 	} catch (error) {
 		console.error(`Error fetching headline data for metadata (${id}):`, error);
@@ -98,7 +86,7 @@ export async function generateMetadata(
 			siteName: "Brilliant AI",
 			images: [
 				{
-					url: headline.thumbnailUrl,
+					url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/opengraph-image.png`,
 					width: 1200,
 					height: 630,
 					alt: headline.title,
@@ -114,7 +102,7 @@ export async function generateMetadata(
 			description: cleanDescription,
 			site: "@BrilliantAI",
 			creator: "@YourCreatorHandle",
-			images: [headline.thumbnailUrl],
+			images: [`${process.env.NEXT_PUBLIC_FRONTEND_URL}/opengraph-image.png`],
 		},
 	};
 }

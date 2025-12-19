@@ -61,7 +61,7 @@ export default function NewsArticle({ blog, loading, error }: NewsArticleProps) 
     );
   }
 
-  const { title, description, thumbnailUrl, publishedDate } = blog;
+  const { title, description, publishedDate } = blog;
 
   const linkedInShareUrl =
     `https://www.linkedin.com/shareArticle?mini=true` +

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Blog } from "@/types/blog";
+import { getBlogBySlug } from "@/services/blog-services";
 
 // Helper function to clean Markdown and truncate text for descriptions
 function cleanAndTruncateDescription(
@@ -28,24 +28,10 @@ function cleanAndTruncateDescription(
 	return cleanedText;
 }
 
-// Function to fetch blog data (this runs on the server during build/request)
-async function getBlogData(id: string): Promise<Blog | null> {
+// Function to get blog data directly from the service (avoids HTTP fetch issues)
+async function getBlogData(id: string) {
 	try {
-		const baseUrl =
-			process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000";
-		const res = await fetch(`${baseUrl}/api/blogs/${id}`, {
-			// Consider caching strategy for dynamic data
-			// For revalidation, use: next: { revalidate: 60 } (revalidate every 60 seconds)
-			// Or no-store for completely dynamic: cache: 'no-store'
-		});
-
-		if (!res.ok) {
-			console.error(
-				`Failed to fetch blog with ID ${id}: ${res.status} ${res.statusText}`
-			);
-			return null;
-		}
-		const blog: Blog = await res.json();
+		const blog = await getBlogBySlug(id);
 		return blog;
 	} catch (error) {
 		console.error(`Error fetching blog data for metadata (${id}):`, error);
