@@ -90,8 +90,11 @@ export default function BuildWithConfidence() {
                             Let’s create an AI product that is reliable, scalable and built to perform.
                         </p>
                     </div>
-
+                    <div className="max-w-[200px]">
                     <BrilliantButton variant="white">Talk to Our Team </BrilliantButton>
+                    </div>
+
+                  
                 </div>
 
                 {/* Rainbow graphic (desktop) */}
