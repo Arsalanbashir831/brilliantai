@@ -1,32 +1,47 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import mammoth from 'mammoth';
 
 export default function DocumentViewer({ filePath }: { filePath: string }) {
   const [html, setHtml] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!filePath) return;
-    setLoading(true);
-    setError(null);
-    fetch(filePath)
-      .then(response => {
+
+    let cancelled = false;
+
+    const loadDocument = async () => {
+      try {
+        const response = await fetch(filePath);
         if (!response.ok) {
           throw new Error(`Failed to fetch document: ${response.statusText}`);
         }
-        return response.arrayBuffer();
-      })
-      .then(arrayBuffer => mammoth.convertToHtml({ arrayBuffer }))
-      .then(result => {
-        setHtml(result.value);
-      })
-      .catch(err => {
+        const arrayBuffer = await response.arrayBuffer();
+        const result = await mammoth.convertToHtml({ arrayBuffer });
+
+        if (!cancelled) {
+          setHtml(result.value);
+          setError(null);
+        }
+      } catch (err) {
         console.error(err);
-        setError(err.message || 'Error loading document');
-      })
-      .finally(() => setLoading(false));
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : 'Error loading document');
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    };
+
+    setLoading(true);
+    loadDocument();
+
+    return () => {
+      cancelled = true;
+    };
   }, [filePath]);
 
   if (loading) {
@@ -52,7 +67,3 @@ export default function DocumentViewer({ filePath }: { filePath: string }) {
     />
   );
 }
-
-DocumentViewer.propTypes = {
-  filePath: PropTypes.string.isRequired,
-};
