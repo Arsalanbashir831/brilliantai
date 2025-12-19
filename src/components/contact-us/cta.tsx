@@ -19,7 +19,7 @@ const fadeUpBlur = {
     filter: "blur(0px)",
     transition: {
       duration: 0.8,
-      ease: "easeOut"
+      ease: "easeOut" as const
     }
   }
 };
@@ -66,7 +66,7 @@ export default function CTA() {
             Can’t find the answer you’re looking for? Please chat to our friendly team
           </p>
           <BrilliantButton
-           onClick={()=>router.push('/contact-us#contact-form')}
+            onClick={() => router.push('/contact-us#contact-form')}
             variant="white"
             className="mt-8"
           >

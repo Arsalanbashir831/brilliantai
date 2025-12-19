@@ -27,11 +27,10 @@ const sectionVariants = {
     y: 0,
     scale: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 40,
       damping: 14,
       mass: 0.6,
-      ease: [0.42, 0, 0.58, 1],
     },
   },
 };
@@ -60,7 +59,7 @@ export default function Page() {
           if (!elementRect) return;
           const elementPosition = elementRect.top + window.pageYOffset;
           const scrollTo = elementPosition - offset;
-  
+
           window.scrollTo({
             top: scrollTo,
             behavior: "smooth",
@@ -69,7 +68,7 @@ export default function Page() {
       }
     }
   }, []);
-  
+
 
   return (
     <motion.div
@@ -79,12 +78,12 @@ export default function Page() {
       viewport={{ once: true, amount: 0.2 }}
     >
       <AnimatedSection><HeroSection onScrollToContact={() => {
-    if (contactFormRef.current) {
-      const offset = 80;
-      const top = contactFormRef.current.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  }}/></AnimatedSection>
+        if (contactFormRef.current) {
+          const offset = 80;
+          const top = contactFormRef.current.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }} /></AnimatedSection>
 
       <AnimatedSection >
         <div ref={contactFormRef}>

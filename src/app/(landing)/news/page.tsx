@@ -26,11 +26,10 @@ const sectionVariants = {
     y: 0,
     scale: 1,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 40,      // softer spring
       damping: 14,        // gentle settle
-      mass: 0.6,          // a bit more “weight”
-      ease: [0.42, 0, 0.58, 1], // smooth fallback
+      mass: 0.6,          // a bit more "weight"
     },
   },
 };

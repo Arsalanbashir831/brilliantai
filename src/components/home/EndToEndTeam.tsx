@@ -68,7 +68,7 @@ export default function EndToEndTeam() {
 						transition={{
 							delay: idx * 0.2,
 							duration: 0.5,
-							ease: "easeOut",
+							ease: "easeOut" as const,
 						}}
 						whileHover="hover"
 						variants={zoomVariants}

@@ -17,7 +17,7 @@ const sectionVariants = {
 
 const transition = {
   duration: 0.6,
-  ease: 'easeOut',
+  ease: 'easeOut' as const,
 };
 
 const AnimatedSection = ({ children }: { children: React.ReactNode }) => (
