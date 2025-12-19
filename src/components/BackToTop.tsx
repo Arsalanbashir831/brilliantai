@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
 
 interface BackToTopProps {
-  /** How many pixels scrolled before showing */
+  /** How many pixels scrolled before showinggg */
   threshold?: number;
 }
 
