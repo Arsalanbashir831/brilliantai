@@ -14,7 +14,7 @@ const FutureTechSection: FC = () => {
 				<div className="flex flex-col md:flex-row items-center md:items-start mb-12">
 					<div className="flex-shrink-0 flex justify-start items-center w-[100%] md:w-auto px-4">
 						<Image
-							src="/news/logo.svg"
+							src="/logo.svg"
 							alt="Company Logo"
 							width={50}
 							height={50}
