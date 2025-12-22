@@ -6,7 +6,7 @@ import BrilliantButton from "../widgets/BrilliantButtons";
 
 export default function MissionSection() {
   return (
-    <section className="py-20 ">
+    <section className="py-20 overflow-hidden">
       <div className="w-full mx-auto px-0 flex flex-col items-center gap-4">
         <h2 className="text-4xl md:text-[64px] text-center font-bold text-white">
           Our Mission
@@ -19,9 +19,9 @@ export default function MissionSection() {
           To turn ambitious ideas into high performing AI systems
         </p>
 
-        <div className="flex md:pl-32 flex-col md:flex-row items-center gap-12 mt-4 w-full text-center md:text-left text-[16px] text-normal pt-10 md:pr-0">
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12 mt-10 w-full pt-10 px-5 md:px-0">
           {/* — Left text block */}
-          <div className="flex-1 space-y-6 px-[50px] text-white max-w-xl">
+          <div className="space-y-6 md:px-[50px] text-white max-w-xl text-center md:text-left mx-auto md:mx-0">
             <div className="space-y-10">
               <p
                 style={{
@@ -64,16 +64,17 @@ export default function MissionSection() {
             </BrilliantButton>
           </div>
 
-          {/* — Right image block */}
-          <div className="flex-1 hidden md:block w-full">
-            <div className="relative w-full flex justify-end rounded-l-2xl overflow-hidden shadow-xl">
-              {/* <ShineBorder shineColor={["#23D5D5", "#00FFFF"]} /> */}
+          {/* — Right spacer block (keeps grid structure) */}
+          <div className="hidden md:block"></div>
+
+          {/* — Absolute Image Breakout */}
+          <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-[50vw]">
+            <div className="relative w-full h-full">
               <Image
                 src="/about/mission.svg"
                 alt="Workflow of planning, coding, testing, building, monitoring"
-                width={672}
-                height={549}
-                className="object-contain"
+                fill
+                className="object-contain object-right"
               />
             </div>
           </div>
