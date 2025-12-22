@@ -7,7 +7,7 @@ import BrilliantButton from "../widgets/BrilliantButtons";
 export default function MissionSection() {
   return (
     <section className="py-20 overflow-hidden">
-      <div className="w-full mx-auto px-0 flex flex-col items-center gap-4">
+      <div className="w-full mx-auto px-0 flex flex-col items-center gap-2">
         <h2 className="text-4xl md:text-[64px] text-center font-bold text-white">
           Our Mission
         </h2>
@@ -19,7 +19,7 @@ export default function MissionSection() {
           To turn ambitious ideas into high performing AI systems
         </p>
 
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12 mt-10 w-full pt-10 px-5 md:px-0">
+        <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-4 mt-10 w-full pt-10 px-5 md:px-0">
           {/* — Left text block */}
           <div className="space-y-6 md:px-[50px] text-white max-w-xl text-center md:text-left mx-auto md:mx-0">
             <div className="space-y-10">
@@ -74,7 +74,7 @@ export default function MissionSection() {
                 src="/about/mission.svg"
                 alt="Workflow of planning, coding, testing, building, monitoring"
                 fill
-                className="object-contain object-right"
+                className="object-contain object-right w-100%"
               />
             </div>
           </div>
