@@ -19,9 +19,9 @@ export default function MissionSection() {
           To turn ambitious ideas into high performing AI systems
         </p>
 
-        <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-4 mt-10 w-full pt-10 px-5 md:px-0">
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-4 mt-10 w-full pt-10 px-5 md:px-0">
           {/* — Left text block */}
-          <div className="space-y-6 md:px-[50px] text-white max-w-xl text-center md:text-left mx-auto md:mx-0">
+          <div className="space-y-6 md:pr-[50px] text-white max-w-xl text-center md:text-left mx-auto md:mx-0">
             <div className="space-y-10">
               <p
                 style={{
@@ -64,17 +64,29 @@ export default function MissionSection() {
             </BrilliantButton>
           </div>
 
-          {/* — Right spacer block (keeps grid structure) */}
-          <div className="hidden md:block"></div>
+          {/* — Right spacer block (keeps grid structure on md-xl only) */}
+          <div className="hidden md:block 3xl:hidden"></div>
 
-          {/* — Absolute Image Breakout */}
-          <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-[50vw]">
+          {/* — Absolute Image Breakout (md-xl) */}
+          <div className="hidden md:block 3xl:hidden absolute top-0 bottom-0 left-1/2 w-[50vw]">
             <div className="relative w-full h-full">
               <Image
                 src="/about/mission.svg"
                 alt="Workflow of planning, coding, testing, building, monitoring"
                 fill
                 className="object-contain object-right w-100%"
+              />
+            </div>
+          </div>
+
+          {/* — Centered Image (3xl+) */}
+          <div className="hidden 3xl:flex justify-center w-full mt-10">
+            <div className="relative w-full max-w-4xl h-[800px]">
+              <Image
+                src="/about/mission.svg"
+                alt="Workflow of planning, coding, testing, building, monitoring"
+                fill
+                className="object-contain object-center"
               />
             </div>
           </div>
