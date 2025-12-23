@@ -5,57 +5,57 @@ import BrilliantButton from "../widgets/BrilliantButtons";
 import useMobile from "@/hook/useMobile";
 
 interface HeroSectionProps {
-	onScrollToContact: () => void;
+  onScrollToContact: () => void;
 }
 
 export default function HeroSection({ onScrollToContact }: HeroSectionProps) {
-	const isMobile = useMobile();
+  const isMobile = useMobile();
 
-	return (
-		<section
-			style={
-				isMobile
-					? {
-							backgroundPositionX: "-745px",
-							backgroundPositionY: "0px",
-					  }
-					: {}
-			}
-			className="bg-[url('/contact-us/hero.svg')] bg-center bg-no-repeat w-full bg-cover"
-		>
-			<div className="md:px-20 px-7">
-				<div className="pt-10 md:pt-40 pb-10 text-white">
-					<h1 className="text-4xl md:text-4xl text-center md:text-left lg:text-7xl md:font-bold font-light">
-						Get In Touch With Us
-					</h1>
-				</div>
-			</div>
+  return (
+    <section
+      style={
+        isMobile
+          ? {
+              backgroundPositionX: "-745px",
+              backgroundPositionY: "0px",
+            }
+          : {}
+      }
+      className="bg-[url('/contact-us/hero.svg')] bg-center bg-no-repeat w-full bg-cover">
+      <div className="w-full max-w-7xl px-3 md:px-0 mx-auto">
+        <div className="md:px-0 px-7">
+          <div className="pt-10 md:pt-40 pb-10 text-white">
+            <h1 className="text-4xl md:text-6xl text-center md:text-left lg:text-7xl md:font-bold font-light tracking-wider word-spacing-10">
+              Get In Touch With Us
+            </h1>
+          </div>
+        </div>
 
-			<div className="flex flex-col md:flex-row gap-12 pb-20 md:px-10">
-				<div className="text-white md:w-[60%] px-10 md:text-xl text-md line-spacing-8">
-					<div className="py-2">
-						If you are planning to build an AI product, implement machine
-						learning, automate business processes or explore strategic AI
-						consulting, we are ready to support you.
-					</div>
-					<div className="py-2">
-						We work with startups, enterprise teams and public sector
-						organisations to deliver intelligent systems that are designed for
-						scale, stability and real-world impact.
-					</div>
-					<div className="py-2">
-						Share your goals with us and we will show you how we can help you
-						move forward with clarity and confidence.
-					</div>
-					<BrilliantButton
-						onClick={onScrollToContact}
-						className="mt-10"
-						variant="gradient"
-					>
-						Get in Touch
-					</BrilliantButton>
-				</div>
-			</div>
-		</section>
-	);
+        <div className="flex flex-col md:flex-row gap-12 pb-20 md:px-0">
+          <div className="text-white md:w-[80%] px-0 md:text-2xl text-md line-spacing-8">
+            <div className="py-2">
+              If you are planning to build an AI product, implement machine
+              learning, automate business processes or explore strategic AI
+              consulting, we are ready to support you.
+            </div>
+            <div className="py-2">
+              We work with startups, enterprise teams and public sector
+              organisations to deliver intelligent systems that are designed for
+              scale, stability and real-world impact.
+            </div>
+            <div className="py-2">
+              Share your goals with us and we will show you how we can help you
+              move forward with clarity and confidence.
+            </div>
+            <BrilliantButton
+              onClick={onScrollToContact}
+              className="mt-10"
+              variant="gradient">
+              Get in Touch
+            </BrilliantButton>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
