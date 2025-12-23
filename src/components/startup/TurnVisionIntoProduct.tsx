@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React from "react";
 import { motion } from "framer-motion";
@@ -9,7 +9,7 @@ const fadeUpBlur = {
   hidden: {
     opacity: 0,
     y: 50,
-    filter: "blur(8px)"
+    filter: "blur(8px)",
   },
   visible: {
     opacity: 1,
@@ -17,9 +17,9 @@ const fadeUpBlur = {
     filter: "blur(0px)",
     transition: {
       duration: 0.8,
-      ease: "easeOut" as const
-    }
-  }
+      ease: "easeOut" as const,
+    },
+  },
 };
 
 export default function TurnVisionIntoProduct() {
@@ -31,13 +31,12 @@ export default function TurnVisionIntoProduct() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="w-full py-16 flex flex-col items-center md:px-50 justify-center"
-    >
+      className="w-full py-16 flex flex-col items-center md:px-50 justify-center">
       <div
         className="
-          max-w-full
+          max-w-7xl
           mx-auto
-          px-4 sm:px-12 rounded-0
+          px-5 sm:px-20 rounded-0
           md:rounded-[16px] lg:rounded-[16px]
           relative
           bg-center bg-cover
@@ -56,8 +55,7 @@ export default function TurnVisionIntoProduct() {
             ),
             url('/startup/vision.svg')
           `,
-        }}
-      >
+        }}>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16 py-12">
           <div className="w-full sm:w-auto space-y-6 text-center sm:text-left">
             <h2 className="text-3xl md:text-4xl font-bold text-white capitalize">
@@ -67,7 +65,8 @@ export default function TurnVisionIntoProduct() {
             </h2>
 
             <div className="hidden sm:flex">
-              <BrilliantButton onClick={() => router.push('/contact-us#contact-form')}>
+              <BrilliantButton
+                onClick={() => router.push("/contact-us#contact-form")}>
                 Get in touch
               </BrilliantButton>
             </div>
@@ -86,7 +85,8 @@ export default function TurnVisionIntoProduct() {
           </div>
 
           <div className="flex sm:hidden justify-center w-full">
-            <BrilliantButton onClick={() => router.push('/contact-us#contact-form')}>
+            <BrilliantButton
+              onClick={() => router.push("/contact-us#contact-form")}>
               Get in touch
             </BrilliantButton>
           </div>
