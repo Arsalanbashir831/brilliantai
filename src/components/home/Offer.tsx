@@ -49,7 +49,7 @@ export default function WhatWeOffer() {
         "Our experts provide strategic guidance, enabling your business to implement AI solutions that drive transformative growth.",
       imageSrcDesktop: "/home/Chart.png",
       imageSrcMobile: "/home/Chart.png",
-      imageObjectFit: "object-cover",
+      imageObjectFit: "object-contain",
     },
   ];
 
@@ -120,11 +120,7 @@ export default function WhatWeOffer() {
             const idx = j + 2; // for clarity, though idx isn't used directly for delay now
             return (
               <motion.div key={idx} variants={itemVariants}>
-                <Card
-                  {...svc}
-                  imagePadding={idx === 4 ? "p-0" : undefined}
-                  imageObjectFit={idx === 4 ? " h-auto" : undefined}
-                />
+                <Card {...svc} imagePadding={idx === 4 ? "p-0" : undefined} />
               </motion.div>
             );
           })}
