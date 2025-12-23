@@ -59,8 +59,8 @@ export default function TrustedSection() {
 								className="
                                 px-6 py-3
                                 rounded-full
-                                bg-[linear-gradient(180deg,_#23D5D5_0%,_#1EB2B2_100%)]
-                                shadow-[inset_0px_2px_1px_0px_#FFFFFF40,_inset_0px_-4px_2px_0px_#0000001F,_0px_0px_1px_4px_#FFFFFF1A,_0px_0px_180px_0px_#23D5D5]
+                                bg-[linear-gradient(180deg,#23D5D5_0%,#1EB2B2_100%)]
+                                shadow-[inset_0px_2px_1px_0px_#FFFFFF40,inset_0px_-4px_2px_0px_#0000001F,0px_0px_1px_4px_#FFFFFF1A,0px_0px_180px_0px_#23D5D5]
                                 text-white font-medium
                                 transition
                                 ">

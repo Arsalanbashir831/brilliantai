@@ -24,7 +24,6 @@ const baseClasses =
 
 const variantClasses: Record<BrilliantButtonVariant, string> = {
 	gradient:
-		"border-[0.7px] border-white/60 " +
 		"bg-[radial-gradient(80%_80%_at_50%_-20%,#56FFFF_0%,#00B9B9_100%)] " +
 		"shadow-[0px_12px_60px_-12px_#23D5D5] text-white hover:opacity-90",
 	transparent: "text-white hover:bg-transparent hover:text-white",
