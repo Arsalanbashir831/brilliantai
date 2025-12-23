@@ -1,14 +1,13 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
-import BlogList from '@/components/news/BlogList';
-import FutureTechSection from '@/components/news/FutureTechSection';
-import Hero from '@/components/news/hero';
-import NewsItem from '@/components/news/NewsItem';
-import Newsletter from '@/components/news/Newsletter';
-import { Welcome } from '@/components/news/welcome';
+import BlogList from "@/components/news/BlogList";
+import FutureTechSection from "@/components/news/FutureTechSection";
+import Hero from "@/components/news/hero";
+import NewsItem from "@/components/news/NewsItem";
+import Newsletter from "@/components/news/Newsletter";
 
 const containerVariants = {
   hidden: {},
@@ -26,10 +25,10 @@ const sectionVariants = {
     y: 0,
     scale: 1,
     transition: {
-      type: 'spring' as const,
-      stiffness: 40,      // softer spring
-      damping: 14,        // gentle settle
-      mass: 0.6,          // a bit more "weight"
+      type: "spring" as const,
+      stiffness: 40, // softer spring
+      damping: 14, // gentle settle
+      mass: 0.6, // a bit more "weight"
     },
   },
 };
@@ -39,8 +38,7 @@ const AnimatedSection = ({ children }: { children: React.ReactNode }) => (
     variants={sectionVariants}
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true, amount: 0.2 }}
-  >
+    viewport={{ once: true, amount: 0.2 }}>
     {children}
   </motion.section>
 );
@@ -51,14 +49,23 @@ export default function Page() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      <AnimatedSection><Hero /></AnimatedSection>
-      <AnimatedSection><NewsItem /></AnimatedSection>
-      <AnimatedSection><Welcome /></AnimatedSection>
-      <AnimatedSection><BlogList /></AnimatedSection>
-      <AnimatedSection><FutureTechSection /></AnimatedSection>
-      <AnimatedSection><Newsletter /></AnimatedSection>
+      viewport={{ once: true, amount: 0.2 }}>
+      <AnimatedSection>
+        <Hero />
+      </AnimatedSection>
+      <AnimatedSection>
+        <NewsItem />
+      </AnimatedSection>
+
+      <AnimatedSection>
+        <BlogList />
+      </AnimatedSection>
+      <AnimatedSection>
+        <FutureTechSection />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Newsletter />
+      </AnimatedSection>
     </motion.div>
   );
 }

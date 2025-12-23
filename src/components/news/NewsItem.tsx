@@ -31,10 +31,16 @@ export default function NewsItem({ excludeId }: NewsItemProps) {
         const res = await fetch("/api/blogs");
         if (!res.ok) throw new Error("Failed to fetch blogs");
         const data: BlogItem[] = await res.json();
-        data.sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
+        data.sort(
+          (a, b) =>
+            new Date(b.publishedDate).getTime() -
+            new Date(a.publishedDate).getTime()
+        );
         // Filter out the excluded blog (if viewing a specific blog's detail page)
         const filteredData = excludeId
-          ? data.filter((blog) => blog.id !== excludeId && blog.slug !== excludeId)
+          ? data.filter(
+              (blog) => blog.id !== excludeId && blog.slug !== excludeId
+            )
           : data;
         setBlogs(filteredData);
       } catch (err) {
@@ -80,11 +86,7 @@ export default function NewsItem({ excludeId }: NewsItemProps) {
   }
 
   if (blogs.length === 0) {
-    return (
-      <section className="mx-auto max-w-7xl px-4 py-12 text-white">
-        <div>No blogs published yet.</div>
-      </section>
-    );
+    return null;
   }
 
   const [featured, ...others] = blogs;
@@ -95,18 +97,32 @@ export default function NewsItem({ excludeId }: NewsItemProps) {
       <div className="border-y border-gray-800 py-16 flex flex-col md:flex-row gap-8 mb-12 px-0">
         <div className="relative w-full md:w-1/2 h-64 sm:h-80 rounded-lg overflow-hidden">
           <div className="bg-[#001d1d] w-full h-full flex items-center justify-center">
-            <Image src='/favicon.png' alt={featured.title} width={150} height={150} className="object-contain" />
+            <Image
+              src="/favicon.png"
+              alt={featured.title}
+              width={150}
+              height={150}
+              className="object-contain"
+            />
           </div>
         </div>
         <div className="flex flex-col justify-center w-full md:w-1/2">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{featured.title}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+            {featured.title}
+          </h2>
           <div className="mb-6 text-gray-400">
-            <ReactMarkdown>{truncateMarkdown(featured.description, 120)}</ReactMarkdown>
+            <ReactMarkdown>
+              {truncateMarkdown(featured.description, 120)}
+            </ReactMarkdown>
           </div>
           <div className="flex flex-wrap gap-4 mb-6 text-white">
             <div>
-              <span className="text-sm text-gray-400 font-semibold block">Published</span>
-              <span className="text-sm">{new Date(featured.publishedDate).toLocaleDateString()}</span>
+              <span className="text-sm text-gray-400 font-semibold block">
+                Published
+              </span>
+              <span className="text-sm">
+                {new Date(featured.publishedDate).toLocaleDateString()}
+              </span>
             </div>
           </div>
           <div className="md:flex md:justify-end">
@@ -118,10 +134,18 @@ export default function NewsItem({ excludeId }: NewsItemProps) {
       {/* Grid of Other Articles */}
       <div className="pt-12 px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {others.map((item) => (
-          <div key={item.id} className="flex flex-col rounded-lg overflow-hidden">
+          <div
+            key={item.id}
+            className="flex flex-col rounded-lg overflow-hidden">
             <div className="relative h-62 md:h-40 lg:h-40 w-full">
               <div className="bg-[#001d1d] w-full h-full flex items-center justify-center">
-                <Image src='/favicon.png' alt={item.title} width={100} height={100} className="object-contain" />
+                <Image
+                  src="/favicon.png"
+                  alt={item.title}
+                  width={100}
+                  height={100}
+                  className="object-contain"
+                />
               </div>
               {/* <Image src={item.thumbnailUrl} alt={item.title} fill className="object-cover" /> */}
             </div>
