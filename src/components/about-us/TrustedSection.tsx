@@ -18,11 +18,11 @@ export default function TrustedSection() {
 					<ShineBorder shineColor={["#23D5D5", "#00FFFF"]} />
 
 					{/* Background SVG */}
-					<Image
+					<Image style={{ opacity: 0.1 }}
 						src="/about/trusted.svg"
 						alt=""
 						fill
-						className="absolute inset-0 object-cover opacity-40"
+						className="absolute inset-0 object-cover "
 						priority
 					/>
 
