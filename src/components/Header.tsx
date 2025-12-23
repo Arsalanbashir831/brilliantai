@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 
-import { Menu, X as Close, } from "lucide-react";
+import { Menu, X as Close } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import BrilliantButton from "./widgets/BrilliantButtons";
@@ -46,12 +46,13 @@ export default function Header() {
   return (
     <nav className="sticky top-0 z-50 bg-[#011010] border-b border-[#C3FFFF]">
       <div className="flex items-center justify-between p-4 lg:px-20 lg:py-3">
-        <Image onClick={()=> router.push("/")}
+        <Image
+          onClick={() => router.push("/")}
           height={150}
           width={150}
           src="/logo.svg"
           alt="Logo"
-          className="h-8 lg:h-10 cursor-pointer"
+          className="h-8 lg:h-10 w-auto cursor-pointer"
         />
 
         {/* Desktop Navigation */}
@@ -64,8 +65,7 @@ export default function Header() {
                 isActive(item.href)
                   ? "text-cyan-400 font-semibold"
                   : "text-white hover:text-cyan-300"
-              }`}
-            >
+              }`}>
               {item.name}
             </Link>
           ))}
@@ -74,10 +74,9 @@ export default function Header() {
         {/* Desktop “Book a Call” */}
         {!isMobile && (
           <BrilliantButton
-          onClick={()=>router.push('/contact-us#contact-form')}
+            onClick={() => router.push("/contact-us#contact-form")}
             className="px-4 py-2 text-sm"
-            variant="white"
-          >
+            variant="white">
             Book a Call
           </BrilliantButton>
         )}
@@ -86,8 +85,7 @@ export default function Header() {
         <button
           className="lg:hidden text-white"
           onClick={() => setMobileOpen(true)}
-          aria-label="Open menu"
-        >
+          aria-label="Open menu">
           <Menu className="h-6 w-6" />
         </button>
       </div>
@@ -101,17 +99,15 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-[#00000069] bg-opacity-80 backdrop-blur-md flex flex-col"
-          >
+            className="fixed inset-0 z-50 bg-[#00000069] bg-opacity-80 backdrop-blur-md flex flex-col">
             <div className="flex justify-end p-4">
               <button
                 onClick={() => setMobileOpen(false)}
-                aria-label="Close menu"
-              >
+                aria-label="Close menu">
                 <Close className="h-6 w-6 text-white" />
               </button>
             </div>
-            <div className="flex-grow flex flex-col items-center justify-center space-y-8 px-6">
+            <div className="grow flex flex-col items-center justify-center space-y-8 px-6">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -121,17 +117,17 @@ export default function Header() {
                       ? "text-cyan-400"
                       : "text-white hover:text-cyan-300"
                   }`}
-                  onClick={() => setMobileOpen(false)}
-                >
+                  onClick={() => setMobileOpen(false)}>
                   {item.name}
                 </Link>
               ))}
-            
-              <BrilliantButton onClick={()=>router.push('/contact-us#contact-form')} className="w-full">
-              Book a Call
+
+              <BrilliantButton
+                onClick={() => router.push("/contact-us#contact-form")}
+                className="w-full">
+                Book a Call
               </BrilliantButton>
             </div>
-            
           </motion.div>
         )}
       </AnimatePresence>
