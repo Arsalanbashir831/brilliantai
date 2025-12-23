@@ -69,7 +69,7 @@ export default function ComparisonCards() {
             className={clsx(
               "relative flex flex-col items-stretch w-full md:max-w-[400px] transition-all duration-300 shadow-[inset_-20px_4px_120px_0px_rgba(31,187,187,0.14)] backdrop-blur-[15px]",
               highlight &&
-                "md:w-96 scale-105 shadow-lg border border-teal-400/40 rounded-2xl bg-gradient-to-br from-[#00F0FF1A] to-[#0BFFFF0A]",
+                "md:w-96 scale-105 shadow-lg border border-teal-400/40 rounded-2xl bg-linear-to-br from-[#00F0FF1A] to-[#0BFFFF0A]",
               !highlight && "bg-[#1a1a1a]/10 rounded-xl"
             )}>
             {/* Title */}
@@ -77,7 +77,7 @@ export default function ComparisonCards() {
               className={clsx(
                 "flex flex-col justify-center items-center gap-2 w-full h-16 px-8 rounded-t-xl",
                 highlight
-                  ? "bg-gradient-to-r from-cyan-800 to-teal-700 text-white font-bold text-xl shadow-inner"
+                  ? "bg-linear-to-r from-cyan-800 to-teal-700 text-white font-bold text-xl shadow-inner"
                   : "bg-[rgba(77,77,77,0.24)] text-white font-medium"
               )}>
               <span>{title}</span>

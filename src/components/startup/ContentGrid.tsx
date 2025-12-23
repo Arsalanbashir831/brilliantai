@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface Stat {
   value: string;
@@ -6,10 +6,10 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: '130+', label: 'AI solutions successfully delivered' },
-  { value: '98%', label: 'Internal quality assurance success rate' },
-  { value: '40%', label: 'Year over year team growth and capability' },
-  { value: '5',   label: 'Supporting startup teams from idea to launch' },
+  { value: "130+", label: "AI solutions successfully delivered" },
+  { value: "98%", label: "Internal quality assurance success rate" },
+  { value: "40%", label: "Year over year team growth and capability" },
+  { value: "5", label: "Supporting startup teams from idea to launch" },
 ];
 
 export default function ContentGrid() {
@@ -25,15 +25,15 @@ export default function ContentGrid() {
             <p>
               Brilliant AI is your dedicated technology partner, focused on
               delivering AI-powered product development for startups. Whether
-              you’re building an MVP or scaling your core platform, we bring
-              the technical expertise to turn ambitious ideas into investor-ready,
+              you’re building an MVP or scaling your core platform, we bring the
+              technical expertise to turn ambitious ideas into investor-ready,
               real-world solutions.
             </p>
             <p>
               We cover the entire delivery pipeline, including machine learning,
-              web development, automation, and system integration. Our structured,
-              results-driven approach ensures every product is built for speed,
-              quality, and long-term growth.
+              web development, automation, and system integration. Our
+              structured, results-driven approach ensures every product is built
+              for speed, quality, and long-term growth.
             </p>
             <p>
               Looking to validate an idea, accelerate development, or launch a
@@ -58,18 +58,19 @@ export default function ContentGrid() {
             {stats.map((stat, idx) => (
               <div key={idx}>
                 <div className="flex justify-between items-center">
-                  <span className="text-3xl font-bold text-white">{stat.value}</span>
+                  <span className="text-3xl font-bold text-white">
+                    {stat.value}
+                  </span>
                   <span className="text-sm text-white/60">{stat.label}</span>
                 </div>
                 {idx < stats.length - 1 && (
-                  <div className="h-px bg-gradient-to-r from-[#00AEFF] to-[#00FF52] opacity-60" />
+                  <div className="h-px bg-linear-to-r from-[#00AEFF] to-[#00FF52] opacity-60" />
                 )}
               </div>
             ))}
           </div>
         </div>
       </div>
-
     </section>
   );
 }

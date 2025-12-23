@@ -82,13 +82,13 @@ export default function EndToEndTeam() {
               relative
               overflow-hidden
               cursor-pointer
-              bg-[linear-gradient(110.72deg,_rgba(77,77,77,0.24)_1.21%,_rgba(151,151,151,0.04)_100%)]
+              bg-[linear-gradient(110.72deg,rgba(77,77,77,0.24)_1.21%,rgba(151,151,151,0.04)_100%)]
               shadow-[inset_-20px_4px_120px_-80px_rgba(31,187,187,0.14)]
               backdrop-blur-[30px]
               border-t border-teal-400/20
               transition-colors duration-300
             ">
-            <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center border border-white/10 bg-[linear-gradient(151.06deg,_rgba(217,217,217,0.09)_10.77%,_rgba(255,255,255,0)_85.22%)]">
+            <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center border border-white/10 bg-[linear-gradient(151.06deg,rgba(217,217,217,0.09)_10.77%,rgba(255,255,255,0)_85.22%)]">
               <Image
                 src={service.icon}
                 alt={service.title}

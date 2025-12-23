@@ -47,7 +47,7 @@ export function StatsSection() {
                         </span>
                       </div>
                       {idx < stats.length - 1 && (
-                        <div className="h-[3px] w-full bg-gradient-to-r from-[#00AEFF] via-[#00DE94] to-[#00FF52] opacity-30" />
+                        <div className="h-[3px] w-full bg-linear-to-r from-[#00AEFF] via-[#00DE94] to-[#00FF52] opacity-30" />
                       )}
                     </div>
                   ))}

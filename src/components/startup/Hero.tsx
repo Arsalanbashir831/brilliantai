@@ -17,7 +17,7 @@ export default function Hero() {
             <br />
             for{" "}
             <span
-              className="bg-gradient-to-r from-[#00AEFF] via-[#00DE94] to-[#00FF52] bg-clip-text text-transparent"
+              className="bg-linear-to-r from-[#00AEFF] via-[#00DE94] to-[#00FF52] bg-clip-text text-transparent"
               style={{
                 background:
                   "linear-gradient(90deg, #00AEFF 16.33%, #00DE94 45.1%, #00FF52 73.68%)",
@@ -86,7 +86,7 @@ export default function Hero() {
                     We build Al startups side by side with founders.
                   </p>
                 </div>
-                <div className="h-[1px] w-full bg-[linear-gradient(90deg,_#00AEFF_16.33%,_#00DE94_45.1%,_#00FF52_73.68%)]" />
+                <div className="h-px w-full bg-[linear-gradient(90deg,#00AEFF_16.33%,#00DE94_45.1%,#00FF52_73.68%)]" />
 
                 {/* Stat #2 */}
                 <div className="flex-1 flex flex-col justify-center px-6 py-4">
@@ -95,7 +95,7 @@ export default function Hero() {
                     From MVP to market in under 6 weeks.
                   </p>
                 </div>
-                <div className="h-[1px] w-full bg-[linear-gradient(90deg,_#00AEFF_16.33%,_#00DE94_45.1%,_#00FF52_73.68%)]" />
+                <div className="h-px w-full bg-[linear-gradient(90deg,#00AEFF_16.33%,#00DE94_45.1%,#00FF52_73.68%)]" />
 
                 {/* Stat #3 */}
                 <div className="flex-1 flex flex-col justify-center px-6 py-4">
@@ -104,7 +104,7 @@ export default function Hero() {
                     Tech that grows with your vision - no rewrites.
                   </p>
                 </div>
-                <div className="h-[1px] w-full bg-[linear-gradient(90deg,_#00AEFF_16.33%,_#00DE94_45.1%,_#00FF52_73.68%)]" />
+                <div className="h-px w-full bg-[linear-gradient(90deg,#00AEFF_16.33%,#00DE94_45.1%,#00FF52_73.68%)]" />
 
                 {/* Stat #4 */}
                 <div className="flex-1 flex flex-col justify-center px-6 py-4">

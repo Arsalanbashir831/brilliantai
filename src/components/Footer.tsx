@@ -70,8 +70,8 @@ export default function Footer() {
   return (
     <footer className=" relative overflow-hidden text-white pb-2 pt-10 md:pt-32 lg:pt-48 bg-[url('/home/Ellipse.png')] bg-repeat bg-center">
       {/* Glow rings */}
-      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-[1600px] h-[1600px] rounded-full border-[24px] border-[#23D5D5] filter blur-[300px]" />
-      <div className=" absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-[1100px] h-[1100px] rounded-full border-[16px] border-[#23D5D5] filter blur-[200px]" />
+      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-[1600px] h-[1600px] rounded-full border-24 border-[#23D5D5] filter blur-[300px]" />
+      <div className=" absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-[1100px] h-[1100px] rounded-full border-16 border-[#23D5D5] filter blur-[200px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
         {isMobile ? (
@@ -93,7 +93,7 @@ export default function Footer() {
                     Get In Touch
                   </h2>
                 </div>
-                <div className="bg-gradient-to-b from-green-950 to-cyan-800 p-2 rounded-full px-4  ">
+                <div className="bg-linear-to-b from-green-950 to-cyan-800 p-2 rounded-full px-4  ">
                   <LucideArrowRight className="ml-2 text-white transform rotate-[-40deg]" />
                 </div>
               </div>

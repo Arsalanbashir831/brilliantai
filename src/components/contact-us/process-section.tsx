@@ -96,7 +96,7 @@ export function ProcessSection() {
                 {/* Step pill */}
                 <div className="w-[150px] md:w-[90px] shrink-0 text-center">
                   <div className="bg-gray-900 border border-cyan-500 p-5 md:px-3 md:py-1 md:rounded-full rounded-xl text-sm font-medium mx-auto ">
-                    <span className="text-transparent text-xl font-bold md:font-light bg-clip-text bg-gradient-to-r from-cyan-400 to-green-500 ">
+                    <span className="text-transparent text-xl font-bold md:font-light bg-clip-text bg-lineart-to-r from-cyan-400 to-green-500 ">
                       {process.step}
                     </span>
                   </div>
@@ -127,7 +127,7 @@ export function ProcessSection() {
                         <li key={itemIndex} className="ml-3">
                           {/* Main line with a check bullet */}
                           <div className="flex items-start">
-                            <CheckCircle2 className="w-4 h-4 fill-cyan-400 text-black mt-1 mr-2 flex-shrink-0" />
+                            <CheckCircle2 className="w-4 h-4 fill-cyan-400 text-black mt-1 mr-2 shrink-0" />
                             <span className="text-gray-300 text-md md:text-sm">
                               {item.text}
                             </span>
