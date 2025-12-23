@@ -45,7 +45,7 @@ export default function BuildWithConfidence() {
         </div>
 
         {/* Teal divider line at bottom */}
-        <span className="absolute bottom-0 left-1/2 w-full max-w-[360px] -translate-x-1/2  border-teal-400" />
+        <span className="absolute bottom-0 left-1/2 w-full max-w-7xl -translate-x-1/2  border-teal-400" />
       </div>
 
       {/* ========== DESKTOP LAYOUT (sm and above) ========== */}
@@ -100,7 +100,7 @@ export default function BuildWithConfidence() {
           alt="Technology stack rainbow"
           width={700.8}
           height={300}
-          className="absolute top-[100px] left-[441.2px]"
+          className="absolute top-[100px] left-[600.2px]"
           style={{ width: "670.8px", height: "300px" }}
         />
       </div>

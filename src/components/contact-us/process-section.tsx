@@ -96,7 +96,7 @@ export function ProcessSection() {
                 {/* Step pill */}
                 <div className="w-[150px] md:w-[90px] shrink-0 text-center">
                   <div className="bg-gray-900 border border-cyan-500 p-5 md:px-3 md:py-1 md:rounded-full rounded-xl text-sm font-medium mx-auto ">
-                    <span className="text-transparent text-xl font-bold md:font-light bg-clip-text bg-lineart-to-r from-cyan-400 to-green-500 ">
+                    <span className="text-transparent text-xl font-bold md:font-light bg-clip-text bg-linear-to-r from-cyan-400 to-green-500 ">
                       {process.step}
                     </span>
                   </div>

@@ -5,18 +5,18 @@ import { useRouter } from "next/navigation";
 import BrilliantButton from "../widgets/BrilliantButtons";
 
 export default function ContactCta() {
-	const router = useRouter();
-	return (
-		<section className=" md:-mb-12 ">
-			<div className="max-w-[930px] mx-auto px-5 md:px-6">
-				{/* outer wrapper: gradient border + glow */}
-				<div
-					className="
+  const router = useRouter();
+  return (
+    <section className=" md:-mb-12 ">
+      <div className="max-w-[930px] mx-auto px-5 md:px-6">
+        {/* outer wrapper: gradient border + glow */}
+        <div
+          className="
             rounded-xl bg-black shadow-[0px_0px_27px_0px_#23D5D57A]
           ">
-					{/* inner panel: solid dark */}
-					<div
-						className="
+          {/* inner panel: solid dark */}
+          <div
+            className="
               bg-black
               rounded-xl
               flex flex-col sm:flex-row
@@ -24,23 +24,22 @@ export default function ContactCta() {
               px-8 py-6
               md:gap-6
             ">
-						<h3 className="text-white text-lg text-center mb-2 md:mb-0 md:text-4xl font-medium">
-							Ready to start the conversation?
-						</h3>
+            <h3 className="text-white text-lg text-center mb-2 md:mb-0 md:text-4xl font-medium">
+              Ready to start the conversation?
+            </h3>
 
-						<BrilliantButton
-							onClick={() => {
-								router.push("/contact-us#contact-form");
-							}}
-							// variant="white"
-							className="flex items-center  text-[#23D5D5] bg-linear-to-b from-[#23D5D546] to-[#1eb2b246] text-xs h-fit py-2 rounded-lg md:text-xl hover:bg-linear-to-b hover:from-[#23D5D546] hover:to-[#1eb2b246] cursor-pointer"
-							containerClassName="z-10 cursor-pointer"
-						>
-							Book a call
-						</BrilliantButton>
-					</div>
-				</div>
-			</div>
-		</section>
-	);
+            <BrilliantButton
+              onClick={() => {
+                router.push("/contact-us#contact-form");
+              }}
+              variant="transparent"
+              className="flex items-center  text-[#23D5D5] bg-linear-to-b from-[#23D5D546] to-[#1eb2b246] text-xs h-fit py-2 rounded-lg md:text-xl hover:bg-linear-to-b hover:from-[#23D5D546] hover:to-[#1eb2b246] cursor-pointer"
+              containerClassName="z-10 cursor-pointer">
+              Book a call
+            </BrilliantButton>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

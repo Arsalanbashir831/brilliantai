@@ -120,7 +120,11 @@ export default function WhatWeOffer() {
             const idx = j + 2; // for clarity, though idx isn't used directly for delay now
             return (
               <motion.div key={idx} variants={itemVariants}>
-                <Card {...svc} imagePadding={idx === 4 ? "p-0" : undefined} />
+                <Card
+                  {...svc}
+                  imagePadding={idx === 4 ? "p-0" : undefined}
+                  imageObjectFit={idx === 4 ? " h-auto" : undefined}
+                />
               </motion.div>
             );
           })}

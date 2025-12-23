@@ -33,7 +33,6 @@ export default function Card({
         rounded-2xl
         h-[360px]        
         px-2
-
         overflow-hidden
         border border-white/10
         bg-[linear-gradient(110.72deg,rgba(77,77,77,0.24)_1.21%,rgba(151,151,151,0.04)_100%)]
