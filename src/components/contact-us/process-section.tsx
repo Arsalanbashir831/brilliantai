@@ -73,8 +73,8 @@ export function ProcessSection() {
     <section className="px-3 py-16">
       <div className="md:max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 px-5 md:px-0 ">
-          <h2 className="text-[32px] md:text-6xl md:font-bold font-light text-white mb-4 md:tracking-[0.07em]">
+        <div className="text-center mb-12 px-5 md:px-0">
+          <h2 className="text-[32px] md:text-6xl md:font-bold font-light text-white mb-4 md:tracking-[0.09em]">
             What To Expect After You Hit Submit!
           </h2>
           <p className="text-gray-300 text-lg">
@@ -88,7 +88,7 @@ export function ProcessSection() {
           <div className="absolute hidden md:block left-[65px] top-[14px] bottom-[14px] border-l-2 border-dashed border-cyan-500 z-0 h-[700px]" />
 
           {/* Steps and content */}
-          <div className="relative space-y-10 z-10 md:px-5 px-5">
+          <div className="relative space-y-10 z-10 md:px-0 px-5">
             {processSteps.map((process, index) => (
               <div
                 key={index}
