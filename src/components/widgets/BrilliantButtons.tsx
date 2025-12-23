@@ -56,7 +56,7 @@ export const BrilliantButton: React.FC<BrilliantButtonProps> = ({
         <div className="flex items-center gap-2">
           {children}
           {hasArrow && (
-            <motion.span variants={arrowVariants} className="flex-shrink-0">
+            <motion.span variants={arrowVariants} className="shrink-0">
               <MoveRight className="h-4 w-4" />
             </motion.span>
           )}
