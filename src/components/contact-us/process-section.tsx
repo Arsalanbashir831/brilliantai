@@ -74,7 +74,7 @@ export function ProcessSection() {
       <div className="md:max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 px-5 md:px-0 ">
-          <h2 className="text-[32px]   md:text-6xl md:font-bold font-light text-white mb-4 md:tracking-[0.07em]">
+          <h2 className="text-[32px] md:text-6xl md:font-bold font-light text-white mb-4 md:tracking-[0.07em]">
             What To Expect After You Hit Submit!
           </h2>
           <p className="text-gray-300 text-lg">
