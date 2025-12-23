@@ -25,7 +25,7 @@ export default function HeroSection({ onScrollToContact }: HeroSectionProps) {
       <div className="w-full max-w-7xl px-3 md:px-0 mx-auto">
         <div className="md:px-0 px-7">
           <div className="pt-10 md:pt-40 pb-10 text-white">
-            <h1 className="text-4xl md:text-6xl text-center md:text-left lg:text-7xl md:font-bold font-light tracking-wider word-spacing-10">
+            <h1 className="text-3xl md:text-6xl text-center md:text-left lg:text-7xl md:font-bold font-light tracking-wider word-spacing-10">
               Get In Touch With Us
             </h1>
           </div>
