@@ -85,7 +85,7 @@ export function ProcessSection() {
         {/* Timeline container */}
         <div className="relative">
           {/* Continuous vertical dashed line behind the steps */}
-          <div className="absolute hidden md:block left-[65px] top-[14px] bottom-[14px] border-l-2 border-dashed border-cyan-500 z-0 h-[700px]" />
+          <div className="absolute hidden md:block left-[43px] top-[14px] bottom-[14px] border-l-2 border-dashed border-cyan-500 z-0 h-[700px]" />
 
           {/* Steps and content */}
           <div className="relative space-y-10 z-10 md:px-0 px-5">
