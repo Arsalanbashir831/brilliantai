@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
@@ -40,8 +40,7 @@ const AnimatedSection = ({ children }: { children: React.ReactNode }) => (
     variants={sectionVariants}
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true, amount: 0.2 }}
-  >
+    viewport={{ once: true, amount: 0.2 }}>
     {children}
   </motion.section>
 );
@@ -69,33 +68,48 @@ export default function Page() {
     }
   }, []);
 
-
   return (
     <motion.div
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      <AnimatedSection><HeroSection onScrollToContact={() => {
-        if (contactFormRef.current) {
-          const offset = 80;
-          const top = contactFormRef.current.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top, behavior: "smooth" });
-        }
-      }} /></AnimatedSection>
+      viewport={{ once: true, amount: 0.2 }}>
+      <AnimatedSection>
+        <HeroSection
+          onScrollToContact={() => {
+            if (contactFormRef.current) {
+              const offset = 80;
+              const top =
+                contactFormRef.current.getBoundingClientRect().top +
+                window.scrollY -
+                offset;
+              window.scrollTo({ top, behavior: "smooth" });
+            }
+          }}
+        />
+      </AnimatedSection>
 
-      <AnimatedSection >
+      <AnimatedSection>
         <div ref={contactFormRef}>
           <ContactForm />
         </div>
       </AnimatedSection>
 
-      <AnimatedSection><StatsSection /></AnimatedSection>
-      <AnimatedSection><ProcessSection /></AnimatedSection>
-      <AnimatedSection><TrustSection /></AnimatedSection>
-      <AnimatedSection><FAQ /></AnimatedSection>
-      <AnimatedSection><CTA /></AnimatedSection>
+      <AnimatedSection>
+        <StatsSection />
+      </AnimatedSection>
+      <AnimatedSection>
+        <ProcessSection />
+      </AnimatedSection>
+      <AnimatedSection>
+        <TrustSection />
+      </AnimatedSection>
+      <AnimatedSection>
+        <FAQ />
+      </AnimatedSection>
+      <AnimatedSection>
+        <CTA />
+      </AnimatedSection>
     </motion.div>
   );
 }

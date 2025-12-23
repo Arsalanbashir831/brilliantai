@@ -190,7 +190,6 @@ export async function POST(req: NextRequest) {
 
         // 7) Send via Resend
         const result = await resend.emails.send(sendPayload);
-        console.log("Email sent successfully:", result);
         return NextResponse.json({ success: true, id: result.data?.id || "unknown" });
     } catch (error: any) {
         console.error("Error sending email via Resend:", error);
