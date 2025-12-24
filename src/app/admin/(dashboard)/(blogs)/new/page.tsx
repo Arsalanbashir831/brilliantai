@@ -4,42 +4,24 @@ import React, { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import MarkdownEditor from "@/components/admin/MdEditor";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 export default function AddBlogPage() {
 	const router = useRouter();
 
-	const [thumbnail, setThumbnail] = useState<File | null>(null);
-	const [preview, setPreview] = useState<string | null>(null);
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
-	const handleThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const file = e.target.files?.[0] || null;
-		setThumbnail(file);
-
-		if (file) {
-			setPreview(URL.createObjectURL(file));
-		} else {
-			setPreview(null);
-		}
-	};
-
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
-		if (!title || !description || !thumbnail) return;
+		if (!title || !description) return;
 
 		setIsSubmitting(true);
 		try {
-			const formData = new FormData();
-			formData.append("title", title);
-			formData.append("description", description);
-			formData.append("thumbnail", thumbnail);
-
 			const res = await fetch("/api/blogs", {
 				method: "POST",
-				body: formData,
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ title, description }),
 			});
 
 			if (!res.ok) {
@@ -58,39 +40,11 @@ export default function AddBlogPage() {
 	};
 
 	return (
-		<div className="p-6 max-w-4xl mx-auto">
+		<div className="p-6 max-w-3xl mx-auto">
 			<h1 className="text-3xl font-bold text-gray-800 mb-8 border-b pb-2">
 				📝 Add New Blog
 			</h1>
-			<form onSubmit={handleSubmit} className="space-y-8">
-				{/* Thumbnail */}
-				<div className="space-y-2">
-					<label className="block font-semibold text-gray-700">
-						Thumbnail Image
-					</label>
-					<input
-						type="file"
-						accept="image/*"
-						onChange={handleThumbnailChange}
-						className="block w-full text-sm text-gray-600
-                       file:mr-4 file:py-2 file:px-4
-                       file:rounded file:border-0
-                       file:text-sm file:font-semibold
-                       file:bg-blue-50 file:text-blue-700
-                       hover:file:bg-blue-100"
-						required
-					/>
-					{preview && (
-						<Image
-							src={preview}
-							alt="Thumbnail Preview"
-							width={400}
-							height={225}
-							className="rounded-md border mt-3 object-cover"
-						/>
-					)}
-				</div>
-
+			<form onSubmit={handleSubmit} className="space-y-6">
 				{/* Title */}
 				<div>
 					<label className="block font-semibold text-gray-700 mb-1">
@@ -98,7 +52,7 @@ export default function AddBlogPage() {
 					</label>
 					<input
 						type="text"
-						className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+						className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 						placeholder="Enter blog title"
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
@@ -109,7 +63,7 @@ export default function AddBlogPage() {
 				{/* Description */}
 				<div>
 					<label className="block font-semibold text-gray-700 mb-1">
-						Description (Markdown)
+						Content (Markdown)
 					</label>
 					<div className="bg-white border rounded-md shadow-sm">
 						<MarkdownEditor

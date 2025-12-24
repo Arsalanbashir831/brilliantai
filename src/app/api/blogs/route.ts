@@ -3,7 +3,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { listBlogs, createBlog } from "@/services/blog-services";
 
-// For parsing multipart/form-data, we use the Web FormData API.
+// For parsing JSON data from the request body
 export async function GET() {
 	try {
 		const blogs = await listBlogs();
@@ -19,31 +19,19 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
 	try {
-		// Parse multipart form data
-		const formData = await req.formData();
-		const title = formData.get("title") as string;
-		const description = formData.get("description") as string;
-		const file = formData.get("thumbnail") as File;
+		// Parse JSON body
+		const body = await req.json();
+		const { title, description } = body;
 
-		if (!title || !description || !file) {
+		if (!title || !description) {
 			return NextResponse.json(
-				{ error: "Missing title, description, or thumbnail" },
+				{ error: "Missing title or description" },
 				{ status: 400 }
 			);
 		}
 
-		// Convert File to Buffer
-		const arrayBuffer = await file.arrayBuffer();
-		const buffer = Buffer.from(arrayBuffer);
-
-		// Create blog with upload and slug generation
-		const newBlog = await createBlog(
-			title,
-			description,
-			file.name,
-			buffer,
-			file.type
-		);
+		// Create blog without thumbnail
+		const newBlog = await createBlog(title, description);
 
 		return NextResponse.json(newBlog, { status: 201 });
 	} catch (err) {

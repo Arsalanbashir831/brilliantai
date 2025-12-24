@@ -42,21 +42,28 @@ async function uploadThumbnail(
 // }
 
 // Create a new blog record:
-// - Upload thumbnail to Storage
+// - Upload thumbnail to Storage (if provided)
 // - Push a new record under /blogs in Realtime DB
 export async function createBlog(
 	title: string,
 	description: string,
-	fileName: string,
-	fileBuffer: Buffer,
-	mimeType: string
+	fileName?: string,
+	fileBuffer?: Buffer,
+	mimeType?: string
 ): Promise<Blog> {
-	// 1. Upload thumbnail to Firebase Storage
-	const { publicUrl, pathInBucket } = await uploadThumbnail(
-		fileName,
-		fileBuffer,
-		mimeType
-	);
+	let publicUrl = "";
+	let pathInBucket = "";
+
+	// 1. Upload thumbnail to Firebase Storage (if provided)
+	if (fileName && fileBuffer && mimeType) {
+		const uploadResult = await uploadThumbnail(
+			fileName,
+			fileBuffer,
+			mimeType
+		);
+		publicUrl = uploadResult.publicUrl;
+		pathInBucket = uploadResult.pathInBucket;
+	}
 
 	// 2. Generate a slug from the title (timestamp makes it unique)
 	const baseSlug = slugify(title, { lower: true, strict: true });

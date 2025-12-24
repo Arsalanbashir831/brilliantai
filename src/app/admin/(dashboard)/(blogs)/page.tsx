@@ -58,20 +58,20 @@ export default function BlogsPage() {
 	};
 
 	const columns = [
-		{
-			accessor: "thumbnailUrl",
-			header: "Thumbnail",
-			cell: ({ getValue }: { getValue: () => unknown }) => (
-				<div className="w-24 h-14 relative">
-					<Image
-						src={getValue() as string}
-						alt="Blog thumbnail"
-						fill
-						className="object-cover rounded"
-					/>
-				</div>
-			),
-		},
+		// {
+		// 	accessor: "thumbnailUrl",
+		// 	header: "Thumbnail",
+		// 	cell: ({ getValue }: { getValue: () => unknown }) => (
+		// 		<div className="w-24 h-14 relative">
+		// 			<Image
+		// 				src={getValue() as string}
+		// 				alt="Blog thumbnail"
+		// 				fill
+		// 				className="object-cover rounded"
+		// 			/>
+		// 		</div>
+		// 	),
+		// },
 		{
 			accessor: "title",
 			header: "Title",
