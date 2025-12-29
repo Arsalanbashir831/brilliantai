@@ -1,14 +1,14 @@
 // app/news/[id]/page.tsx or wherever your route file is
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useParams } from 'next/navigation';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useParams } from "next/navigation";
 
-import CtaSection from '@/components/news/CtaSection';
-import NewsArticle from '@/components/news/NewsArticle';
-import NewsItem from '@/components/news/NewsItem';
-import Newsletter from '@/components/news/Newsletter';
+import CtaSection from "@/components/news/CtaSection";
+import NewsArticle from "@/components/news/NewsArticle";
+import NewsItem from "@/components/news/NewsItem";
+import Newsletter from "@/components/news/Newsletter";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -17,7 +17,7 @@ const sectionVariants = {
 
 const transition = {
   duration: 0.6,
-  ease: 'easeOut' as const,
+  ease: "easeOut" as const,
 };
 
 const AnimatedSection = ({ children }: { children: React.ReactNode }) => (
@@ -26,8 +26,7 @@ const AnimatedSection = ({ children }: { children: React.ReactNode }) => (
     whileInView="visible"
     viewport={{ once: true, amount: 0.2 }}
     variants={sectionVariants}
-    transition={transition}
-  >
+    transition={transition}>
     {children}
   </motion.section>
 );
@@ -49,7 +48,7 @@ const Page = () => {
 
   useEffect(() => {
     if (!id) {
-      setError('No ID provided');
+      setError("No ID provided");
       setLoading(false);
       return;
     }
@@ -58,14 +57,14 @@ const Page = () => {
       try {
         const res = await fetch(`/api/blogs/${id}`);
         if (res.status === 404) {
-          setError('Article not found');
+          setError("Article not found");
           return;
         }
-        if (!res.ok) throw new Error('Fetch failed');
+        if (!res.ok) throw new Error("Fetch failed");
         const data: Blog = await res.json();
         setBlog(data);
       } catch (err: unknown) {
-        setError('Error loading article' + err);
+        setError("Error loading article" + err);
       } finally {
         setLoading(false);
       }
