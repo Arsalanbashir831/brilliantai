@@ -40,7 +40,8 @@ export default function Header() {
     if (href.startsWith("/#")) {
       return pathname === "/" && hash === href.replace("/", "");
     }
-    return pathname === href;
+    // Support sub-routes (e.g. /news/123 active for /news)
+    return pathname.startsWith(href);
   };
 
   return (

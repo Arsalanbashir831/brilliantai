@@ -1,11 +1,12 @@
 // components/news/NewsArticle.tsx
-'use client';
+"use client";
 
-import { ArrowLeft, LinkedinIcon } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
+import { ArrowLeft, LinkedinIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface Blog {
   id: string;
@@ -21,10 +22,14 @@ interface NewsArticleProps {
   error: string | null;
 }
 
-export default function NewsArticle({ blog, loading, error }: NewsArticleProps) {
+export default function NewsArticle({
+  blog,
+  loading,
+  error,
+}: NewsArticleProps) {
   const router = useRouter();
 
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
   if (loading) {
     return (
@@ -53,10 +58,12 @@ export default function NewsArticle({ blog, loading, error }: NewsArticleProps) 
   if (error || !blog) {
     return (
       <article className="max-w-4xl mx-auto px-4 py-8 text-white">
-        <button onClick={() => router.back()} className="inline-flex items-center text-lg hover:text-white">
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center text-lg hover:text-white">
           <ArrowLeft className="mr-2" /> Go back
         </button>
-        <div className="mt-4">{error || 'Article not found.'}</div>
+        <div className="mt-4">{error || "Article not found."}</div>
       </article>
     );
   }
@@ -68,11 +75,15 @@ export default function NewsArticle({ blog, loading, error }: NewsArticleProps) 
     `&url=${encodeURIComponent(currentUrl)}` +
     `&title=${encodeURIComponent(title)}` +
     `&summary=${encodeURIComponent(description.slice(0, 200))}` +
-    `&source=${encodeURIComponent(typeof window !== 'undefined' ? window.location.host : '')}`;
+    `&source=${encodeURIComponent(
+      typeof window !== "undefined" ? window.location.host : ""
+    )}`;
 
   return (
     <article className="max-w-4xl mx-auto px-4 py-8 text-white">
-      <Link href="/news" className="inline-flex items-center text-lg hover:text-white mb-8">
+      <Link
+        href="/news"
+        className="inline-flex items-center text-lg hover:text-white mb-8">
         <ArrowLeft className="mr-2" /> Go back
       </Link>
 
@@ -93,8 +104,7 @@ export default function NewsArticle({ blog, loading, error }: NewsArticleProps) 
               href={linkedInShareUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Share on LinkedIn"
-            >
+              aria-label="Share on LinkedIn">
               <LinkedinIcon className="w-10 h-10 text-gray-400 border rounded-full p-2 hover:text-white transition-colors" />
             </Link>
           </div>
@@ -103,22 +113,67 @@ export default function NewsArticle({ blog, loading, error }: NewsArticleProps) 
 
       <div className="w-full h-64 md:h-96 relative mb-8">
         <div className="bg-[#001d1d] w-full h-full flex items-center justify-center">
-          <Image src='/favicon.png' alt={title} width={150} height={150} className="object-contain" />
+          <Image
+            src="/favicon.png"
+            alt={title}
+            width={150}
+            height={150}
+            className="object-contain"
+          />
         </div>
         {/* <Image src={thumbnailUrl} alt={title} fill className="w-full h-full object-cover rounded-lg" /> */}
       </div>
 
       <div className="prose prose-invert max-w-none">
         <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
           components={{
-            h1: (props) => <h1 className="text-4xl font-bold my-6" {...props} />,
-            h2: (props) => <h2 className="text-3xl font-semibold my-5" {...props} />,
-            h3: (props) => <h3 className="text-2xl font-medium my-4" {...props} />,
-            p: (props) => <p className="text-lg leading-relaxed text-gray-300 my-4" {...props} />,
-            a: (props) => <a className="text-cyan-400 hover:underline" {...props} />,
-            li: (props) => <li className="ml-4 list-disc text-gray-300" {...props} />,
-          }}
-        >
+            h1: (props) => (
+              <h1 className="text-4xl font-bold my-6" {...props} />
+            ),
+            h2: (props) => (
+              <h2 className="text-3xl font-semibold my-5" {...props} />
+            ),
+            h3: (props) => (
+              <h3 className="text-2xl font-medium my-4" {...props} />
+            ),
+            p: (props) => (
+              <p
+                className="text-lg leading-relaxed text-gray-300 my-4"
+                {...props}
+              />
+            ),
+            a: (props) => (
+              <a className="text-cyan-400 hover:underline" {...props} />
+            ),
+            li: (props) => (
+              <li className="ml-4 list-disc text-gray-300" {...props} />
+            ),
+            table: (props) => (
+              <div className="overflow-x-auto my-8 border rounded-lg">
+                <table
+                  className="w-full text-left border-collapse"
+                  {...props}
+                />
+              </div>
+            ),
+            thead: (props) => <thead className="bg-gray-800/20" {...props} />,
+            tbody: (props) => (
+              <tbody className="divide-y divide-gray-700" {...props} />
+            ),
+            tr: (props) => (
+              <tr className="divide-x divide-gray-700" {...props} />
+            ),
+            th: (props) => (
+              <th
+                className="py-4 px-6 font-bold text-lg text-white whitespace-nowrap border-b border-gray-700"
+                {...props}
+              />
+            ),
+            td: (props) => (
+              <td className="py-4 px-6 text-gray-300 align-top" {...props} />
+            ),
+          }}>
           {description}
         </ReactMarkdown>
       </div>
